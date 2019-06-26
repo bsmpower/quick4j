@@ -1,0 +1,20 @@
+.tableBasic {
+    background-color: #F9F9F9;
+    color: #666666;
+    border-left: 1px dotted #CCCCCC;
+    border-top: 1px dotted #CCCCCC;
+}
+.tableBasic select {
+    color: #8F8F8F;
+}
+.tableBasic td, .tableBasic th {
+    border-right: 1px dotted #CCCCCC;
+    border-bottom: 1px dotted #CCCCCC;
+}
+.tableBasic th {
+    background-color: #EEEEEE;
+    height: 16px;
+}
+.tableBasic .child {
+    background-color: #FFFFFF;
+}
