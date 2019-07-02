@@ -192,7 +192,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                 </a>
                             </li>
                             <li>
-                                <a href="javascript:;" id="pfkwh">
+                                <a href="rest/page/pwktable;" id="pfkwh">
                                     排放口基本信息查询与维护
                                 </a>
                             </li>
@@ -240,7 +240,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:;" id="pwkwh">
+                                    <a href="/rest/pwk/pwktable" id="pwkwh">
                                         排放调查数据查询及维护
                                     </a>
                                 </li>
@@ -254,13 +254,18 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                             </a>
                             <ul class="sub-menu">
                                 <li>
-                                    <a href="rest/page/document" class="btn-document" id="docupload">
-                                        文档资料上传
+                                    <a href="rest/page/document" class="btn-document" id="conutrylevel">
+                                        国家级
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:;" id="docusearch">
-                                        文档资料检索
+                                    <a href="javascript:;" id="provincelevel">
+                                        省级
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" id="citylevel">
+                                        市级
                                     </a>
                                 </li>
                             </ul>
@@ -382,7 +387,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     <div class="row">
                         <div class="col-md-12">
                             <!-- BEGIN PAGE TITLE & BREADCRUMB-->
-                            <h3 class="page-title" id="index-page-title">Dashboard</h3>
                             <ul class="page-breadcrumb breadcrumb" id="transto">
                                 <li>
                                     <i class="fa fa-location-arrow"></i>

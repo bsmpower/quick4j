@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eliteams.quick4j.web.dao.islandMapper" >
+  <resultMap id="BaseResultMap" type="com.eliteams.quick4j.web.model.island" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="tjyear" property="tjyear" jdbcType="VARCHAR" />
+    <result column="tjmonth" property="tjmonth" jdbcType="VARCHAR" />
+    <result column="tjday" property="tjday" jdbcType="VARCHAR" />
+    <result column="hdpsk_name" property="hdpskName" jdbcType="VARCHAR" />
+    <result column="hdpsk_code" property="hdpskCode" jdbcType="VARCHAR" />
+    <result column="hd_name" property="hdName" jdbcType="VARCHAR" />
+    <result column="hd_area" property="hdArea" jdbcType="DOUBLE" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="country" property="country" jdbcType="VARCHAR" />
+    <result column="village" property="village" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="longitude" property="longitude" jdbcType="DOUBLE" />
+    <result column="latitude" property="latitude" jdbcType="DOUBLE" />
+    <result column="sea_mode" property="seaMode" jdbcType="VARCHAR" />
+    <result column="sea_name" property="seaName" jdbcType="VARCHAR" />
+    <result column="psl_td" property="pslTd" jdbcType="DOUBLE" />
+    <result column="psl_ty" property="pslTy" jdbcType="DOUBLE" />
+    <result column="emission_standard" property="emissionStandard" jdbcType="VARCHAR" />
+    <result column="is_get" property="isGet" jdbcType="VARCHAR" />
+    <result column="noget_items" property="nogetItems" jdbcType="VARCHAR" />
+    <result column="hy_gnq" property="hyGnq" jdbcType="VARCHAR" />
+    <result column="hy_szmb" property="hySzmb" jdbcType="VARCHAR" />
+    <result column="hysea_gnq" property="hyseaGnq" jdbcType="VARCHAR" />
+    <result column="hysea_szmb" property="hyseaSzmb" jdbcType="VARCHAR" />
+    <result column="spareone" property="spareone" jdbcType="VARCHAR" />
+    <result column="sparetwo" property="sparetwo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, tjyear, tjmonth, tjday, hdpsk_name, hdpsk_code, hd_name, hd_area, city, country, 
+    village, address, longitude, latitude, sea_mode, sea_name, psl_td, psl_ty, emission_standard, 
+    is_get, noget_items, hy_gnq, hy_szmb, hysea_gnq, hysea_szmb, spareone, sparetwo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from island
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from island
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.eliteams.quick4j.web.model.island" >
+    insert into island (id, tjyear, tjmonth, 
+      tjday, hdpsk_name, hdpsk_code, 
+      hd_name, hd_area, city, 
+      country, village, address, 
+      longitude, latitude, sea_mode, 
+      sea_name, psl_td, psl_ty, 
+      emission_standard, is_get, noget_items, 
+      hy_gnq, hy_szmb, hysea_gnq, 
+      hysea_szmb, spareone, sparetwo
+      )
+    values (#{id,jdbcType=INTEGER}, #{tjyear,jdbcType=VARCHAR}, #{tjmonth,jdbcType=VARCHAR}, 
+      #{tjday,jdbcType=VARCHAR}, #{hdpskName,jdbcType=VARCHAR}, #{hdpskCode,jdbcType=VARCHAR}, 
+      #{hdName,jdbcType=VARCHAR}, #{hdArea,jdbcType=DOUBLE}, #{city,jdbcType=VARCHAR}, 
+      #{country,jdbcType=VARCHAR}, #{village,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{longitude,jdbcType=DOUBLE}, #{latitude,jdbcType=DOUBLE}, #{seaMode,jdbcType=VARCHAR}, 
+      #{seaName,jdbcType=VARCHAR}, #{pslTd,jdbcType=DOUBLE}, #{pslTy,jdbcType=DOUBLE}, 
+      #{emissionStandard,jdbcType=VARCHAR}, #{isGet,jdbcType=VARCHAR}, #{nogetItems,jdbcType=VARCHAR}, 
+      #{hyGnq,jdbcType=VARCHAR}, #{hySzmb,jdbcType=VARCHAR}, #{hyseaGnq,jdbcType=VARCHAR}, 
+      #{hyseaSzmb,jdbcType=VARCHAR}, #{spareone,jdbcType=VARCHAR}, #{sparetwo,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.eliteams.quick4j.web.model.island" >
+    insert into island
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="tjyear != null" >
+        tjyear,
+      </if>
+      <if test="tjmonth != null" >
+        tjmonth,
+      </if>
+      <if test="tjday != null" >
+        tjday,
+      </if>
+      <if test="hdpskName != null" >
+        hdpsk_name,
+      </if>
+      <if test="hdpskCode != null" >
+        hdpsk_code,
+      </if>
+      <if test="hdName != null" >
+        hd_name,
+      </if>
+      <if test="hdArea != null" >
+        hd_area,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="country != null" >
+        country,
+      </if>
+      <if test="village != null" >
+        village,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="longitude != null" >
+        longitude,
+      </if>
+      <if test="latitude != null" >
+        latitude,
+      </if>
+      <if test="seaMode != null" >
+        sea_mode,
+      </if>
+      <if test="seaName != null" >
+        sea_name,
+      </if>
+      <if test="pslTd != null" >
+        psl_td,
+      </if>
+      <if test="pslTy != null" >
+        psl_ty,
+      </if>
+      <if test="emissionStandard != null" >
+        emission_standard,
+      </if>
+      <if test="isGet != null" >
+        is_get,
+      </if>
+      <if test="nogetItems != null" >
+        noget_items,
+      </if>
+      <if test="hyGnq != null" >
+        hy_gnq,
+      </if>
+      <if test="hySzmb != null" >
+        hy_szmb,
+      </if>
+      <if test="hyseaGnq != null" >
+        hysea_gnq,
+      </if>
+      <if test="hyseaSzmb != null" >
+        hysea_szmb,
+      </if>
+      <if test="spareone != null" >
+        spareone,
+      </if>
+      <if test="sparetwo != null" >
+        sparetwo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="tjyear != null" >
+        #{tjyear,jdbcType=VARCHAR},
+      </if>
+      <if test="tjmonth != null" >
+        #{tjmonth,jdbcType=VARCHAR},
+      </if>
+      <if test="tjday != null" >
+        #{tjday,jdbcType=VARCHAR},
+      </if>
+      <if test="hdpskName != null" >
+        #{hdpskName,jdbcType=VARCHAR},
+      </if>
+      <if test="hdpskCode != null" >
+        #{hdpskCode,jdbcType=VARCHAR},
+      </if>
+      <if test="hdName != null" >
+        #{hdName,jdbcType=VARCHAR},
+      </if>
+      <if test="hdArea != null" >
+        #{hdArea,jdbcType=DOUBLE},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="village != null" >
+        #{village,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        #{longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="latitude != null" >
+        #{latitude,jdbcType=DOUBLE},
+      </if>
+      <if test="seaMode != null" >
+        #{seaMode,jdbcType=VARCHAR},
+      </if>
+      <if test="seaName != null" >
+        #{seaName,jdbcType=VARCHAR},
+      </if>
+      <if test="pslTd != null" >
+        #{pslTd,jdbcType=DOUBLE},
+      </if>
+      <if test="pslTy != null" >
+        #{pslTy,jdbcType=DOUBLE},
+      </if>
+      <if test="emissionStandard != null" >
+        #{emissionStandard,jdbcType=VARCHAR},
+      </if>
+      <if test="isGet != null" >
+        #{isGet,jdbcType=VARCHAR},
+      </if>
+      <if test="nogetItems != null" >
+        #{nogetItems,jdbcType=VARCHAR},
+      </if>
+      <if test="hyGnq != null" >
+        #{hyGnq,jdbcType=VARCHAR},
+      </if>
+      <if test="hySzmb != null" >
+        #{hySzmb,jdbcType=VARCHAR},
+      </if>
+      <if test="hyseaGnq != null" >
+        #{hyseaGnq,jdbcType=VARCHAR},
+      </if>
+      <if test="hyseaSzmb != null" >
+        #{hyseaSzmb,jdbcType=VARCHAR},
+      </if>
+      <if test="spareone != null" >
+        #{spareone,jdbcType=VARCHAR},
+      </if>
+      <if test="sparetwo != null" >
+        #{sparetwo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.eliteams.quick4j.web.model.island" >
+    update island
+    <set >
+      <if test="tjyear != null" >
+        tjyear = #{tjyear,jdbcType=VARCHAR},
+      </if>
+      <if test="tjmonth != null" >
+        tjmonth = #{tjmonth,jdbcType=VARCHAR},
+      </if>
+      <if test="tjday != null" >
+        tjday = #{tjday,jdbcType=VARCHAR},
+      </if>
+      <if test="hdpskName != null" >
+        hdpsk_name = #{hdpskName,jdbcType=VARCHAR},
+      </if>
+      <if test="hdpskCode != null" >
+        hdpsk_code = #{hdpskCode,jdbcType=VARCHAR},
+      </if>
+      <if test="hdName != null" >
+        hd_name = #{hdName,jdbcType=VARCHAR},
+      </if>
+      <if test="hdArea != null" >
+        hd_area = #{hdArea,jdbcType=DOUBLE},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="village != null" >
+        village = #{village,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        longitude = #{longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="latitude != null" >
+        latitude = #{latitude,jdbcType=DOUBLE},
+      </if>
+      <if test="seaMode != null" >
+        sea_mode = #{seaMode,jdbcType=VARCHAR},
+      </if>
+      <if test="seaName != null" >
+        sea_name = #{seaName,jdbcType=VARCHAR},
+      </if>
+      <if test="pslTd != null" >
+        psl_td = #{pslTd,jdbcType=DOUBLE},
+      </if>
+      <if test="pslTy != null" >
+        psl_ty = #{pslTy,jdbcType=DOUBLE},
+      </if>
+      <if test="emissionStandard != null" >
+        emission_standard = #{emissionStandard,jdbcType=VARCHAR},
+      </if>
+      <if test="isGet != null" >
+        is_get = #{isGet,jdbcType=VARCHAR},
+      </if>
+      <if test="nogetItems != null" >
+        noget_items = #{nogetItems,jdbcType=VARCHAR},
+      </if>
+      <if test="hyGnq != null" >
+        hy_gnq = #{hyGnq,jdbcType=VARCHAR},
+      </if>
+      <if test="hySzmb != null" >
+        hy_szmb = #{hySzmb,jdbcType=VARCHAR},
+      </if>
+      <if test="hyseaGnq != null" >
+        hysea_gnq = #{hyseaGnq,jdbcType=VARCHAR},
+      </if>
+      <if test="hyseaSzmb != null" >
+        hysea_szmb = #{hyseaSzmb,jdbcType=VARCHAR},
+      </if>
+      <if test="spareone != null" >
+        spareone = #{spareone,jdbcType=VARCHAR},
+      </if>
+      <if test="sparetwo != null" >
+        sparetwo = #{sparetwo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.eliteams.quick4j.web.model.island" >
+    update island
+    set tjyear = #{tjyear,jdbcType=VARCHAR},
+      tjmonth = #{tjmonth,jdbcType=VARCHAR},
+      tjday = #{tjday,jdbcType=VARCHAR},
+      hdpsk_name = #{hdpskName,jdbcType=VARCHAR},
+      hdpsk_code = #{hdpskCode,jdbcType=VARCHAR},
+      hd_name = #{hdName,jdbcType=VARCHAR},
+      hd_area = #{hdArea,jdbcType=DOUBLE},
+      city = #{city,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      village = #{village,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=DOUBLE},
+      latitude = #{latitude,jdbcType=DOUBLE},
+      sea_mode = #{seaMode,jdbcType=VARCHAR},
+      sea_name = #{seaName,jdbcType=VARCHAR},
+      psl_td = #{pslTd,jdbcType=DOUBLE},
+      psl_ty = #{pslTy,jdbcType=DOUBLE},
+      emission_standard = #{emissionStandard,jdbcType=VARCHAR},
+      is_get = #{isGet,jdbcType=VARCHAR},
+      noget_items = #{nogetItems,jdbcType=VARCHAR},
+      hy_gnq = #{hyGnq,jdbcType=VARCHAR},
+      hy_szmb = #{hySzmb,jdbcType=VARCHAR},
+      hysea_gnq = #{hyseaGnq,jdbcType=VARCHAR},
+      hysea_szmb = #{hyseaSzmb,jdbcType=VARCHAR},
+      spareone = #{spareone,jdbcType=VARCHAR},
+      sparetwo = #{sparetwo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

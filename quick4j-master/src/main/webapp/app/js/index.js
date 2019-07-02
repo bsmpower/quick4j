@@ -42,9 +42,9 @@ $(function() {
 
     createTransto();
     function createTransto() {
-        $('#docupload').click(function (e) {
+        $('#conutrylevel').click(function (e) {
             var pagetitle = $('#docparent').text();
-            var subpagetitle = $('#docupload').text();
+            var subpagetitle = $('#conutrylevel').text();
 
             $('#first').text(pagetitle);
             $('#second').text(subpagetitle);
@@ -60,9 +60,16 @@ $(function() {
                 }
             });
         })
-        $('#docusearch').click(function(e){
+        $('#provincelevel').click(function(e){
             var pagetitle = $('#docparent').text();
-            var subpagetitle = $('#docusearch').text();
+            var subpagetitle = $('#provincelevel').text();
+
+            $('#first').text(pagetitle);
+            $('#second').text(subpagetitle);
+        })
+        $('#citylevel').click(function (e) {
+            var pagetitle = $('#docparent').text();
+            var subpagetitle = $('#pcitylevel').text();
 
             $('#first').text(pagetitle);
             $('#second').text(subpagetitle);

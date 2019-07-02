@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eliteams.quick4j.web.dao.portMapper" >
+  <resultMap id="BaseResultMap" type="com.eliteams.quick4j.web.model.port" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="tjyear" property="tjyear" jdbcType="VARCHAR" />
+    <result column="tjmonth" property="tjmonth" jdbcType="VARCHAR" />
+    <result column="tjday" property="tjday" jdbcType="VARCHAR" />
+    <result column="gk_game" property="gkGame" jdbcType="VARCHAR" />
+    <result column="gk_code" property="gkCode" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="country" property="country" jdbcType="VARCHAR" />
+    <result column="village" property="village" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="longitude" property="longitude" jdbcType="DOUBLE" />
+    <result column="latitude" property="latitude" jdbcType="DOUBLE" />
+    <result column="gk_area" property="gkArea" jdbcType="VARCHAR" />
+    <result column="river_name" property="riverName" jdbcType="VARCHAR" />
+    <result column="river_level" property="riverLevel" jdbcType="VARCHAR" />
+    <result column="gk_func" property="gkFunc" jdbcType="VARCHAR" />
+    <result column="gk_goal" property="gkGoal" jdbcType="VARCHAR" />
+    <result column="sea_name" property="seaName" jdbcType="VARCHAR" />
+    <result column="ja_function" property="jaFunction" jdbcType="VARCHAR" />
+    <result column="ja_goal" property="jaGoal" jdbcType="VARCHAR" />
+    <result column="sea_functiontype" property="seaFunctiontype" jdbcType="VARCHAR" />
+    <result column="sea_functiongoal" property="seaFunctiongoal" jdbcType="VARCHAR" />
+    <result column="spareone" property="spareone" jdbcType="VARCHAR" />
+    <result column="sparetwo" property="sparetwo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, tjyear, tjmonth, tjday, gk_game, gk_code, city, country, village, address, longitude, 
+    latitude, gk_area, river_name, river_level, gk_func, gk_goal, sea_name, ja_function, 
+    ja_goal, sea_functiontype, sea_functiongoal, spareone, sparetwo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from port
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from port
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.eliteams.quick4j.web.model.port" >
+    insert into port (id, tjyear, tjmonth, 
+      tjday, gk_game, gk_code, 
+      city, country, village, 
+      address, longitude, latitude, 
+      gk_area, river_name, river_level, 
+      gk_func, gk_goal, sea_name, 
+      ja_function, ja_goal, sea_functiontype, 
+      sea_functiongoal, spareone, sparetwo
+      )
+    values (#{id,jdbcType=INTEGER}, #{tjyear,jdbcType=VARCHAR}, #{tjmonth,jdbcType=VARCHAR}, 
+      #{tjday,jdbcType=VARCHAR}, #{gkGame,jdbcType=VARCHAR}, #{gkCode,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, #{village,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{longitude,jdbcType=DOUBLE}, #{latitude,jdbcType=DOUBLE}, 
+      #{gkArea,jdbcType=VARCHAR}, #{riverName,jdbcType=VARCHAR}, #{riverLevel,jdbcType=VARCHAR}, 
+      #{gkFunc,jdbcType=VARCHAR}, #{gkGoal,jdbcType=VARCHAR}, #{seaName,jdbcType=VARCHAR}, 
+      #{jaFunction,jdbcType=VARCHAR}, #{jaGoal,jdbcType=VARCHAR}, #{seaFunctiontype,jdbcType=VARCHAR}, 
+      #{seaFunctiongoal,jdbcType=VARCHAR}, #{spareone,jdbcType=VARCHAR}, #{sparetwo,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.eliteams.quick4j.web.model.port" >
+    insert into port
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="tjyear != null" >
+        tjyear,
+      </if>
+      <if test="tjmonth != null" >
+        tjmonth,
+      </if>
+      <if test="tjday != null" >
+        tjday,
+      </if>
+      <if test="gkGame != null" >
+        gk_game,
+      </if>
+      <if test="gkCode != null" >
+        gk_code,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="country != null" >
+        country,
+      </if>
+      <if test="village != null" >
+        village,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="longitude != null" >
+        longitude,
+      </if>
+      <if test="latitude != null" >
+        latitude,
+      </if>
+      <if test="gkArea != null" >
+        gk_area,
+      </if>
+      <if test="riverName != null" >
+        river_name,
+      </if>
+      <if test="riverLevel != null" >
+        river_level,
+      </if>
+      <if test="gkFunc != null" >
+        gk_func,
+      </if>
+      <if test="gkGoal != null" >
+        gk_goal,
+      </if>
+      <if test="seaName != null" >
+        sea_name,
+      </if>
+      <if test="jaFunction != null" >
+        ja_function,
+      </if>
+      <if test="jaGoal != null" >
+        ja_goal,
+      </if>
+      <if test="seaFunctiontype != null" >
+        sea_functiontype,
+      </if>
+      <if test="seaFunctiongoal != null" >
+        sea_functiongoal,
+      </if>
+      <if test="spareone != null" >
+        spareone,
+      </if>
+      <if test="sparetwo != null" >
+        sparetwo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="tjyear != null" >
+        #{tjyear,jdbcType=VARCHAR},
+      </if>
+      <if test="tjmonth != null" >
+        #{tjmonth,jdbcType=VARCHAR},
+      </if>
+      <if test="tjday != null" >
+        #{tjday,jdbcType=VARCHAR},
+      </if>
+      <if test="gkGame != null" >
+        #{gkGame,jdbcType=VARCHAR},
+      </if>
+      <if test="gkCode != null" >
+        #{gkCode,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="village != null" >
+        #{village,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        #{longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="latitude != null" >
+        #{latitude,jdbcType=DOUBLE},
+      </if>
+      <if test="gkArea != null" >
+        #{gkArea,jdbcType=VARCHAR},
+      </if>
+      <if test="riverName != null" >
+        #{riverName,jdbcType=VARCHAR},
+      </if>
+      <if test="riverLevel != null" >
+        #{riverLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="gkFunc != null" >
+        #{gkFunc,jdbcType=VARCHAR},
+      </if>
+      <if test="gkGoal != null" >
+        #{gkGoal,jdbcType=VARCHAR},
+      </if>
+      <if test="seaName != null" >
+        #{seaName,jdbcType=VARCHAR},
+      </if>
+      <if test="jaFunction != null" >
+        #{jaFunction,jdbcType=VARCHAR},
+      </if>
+      <if test="jaGoal != null" >
+        #{jaGoal,jdbcType=VARCHAR},
+      </if>
+      <if test="seaFunctiontype != null" >
+        #{seaFunctiontype,jdbcType=VARCHAR},
+      </if>
+      <if test="seaFunctiongoal != null" >
+        #{seaFunctiongoal,jdbcType=VARCHAR},
+      </if>
+      <if test="spareone != null" >
+        #{spareone,jdbcType=VARCHAR},
+      </if>
+      <if test="sparetwo != null" >
+        #{sparetwo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.eliteams.quick4j.web.model.port" >
+    update port
+    <set >
+      <if test="tjyear != null" >
+        tjyear = #{tjyear,jdbcType=VARCHAR},
+      </if>
+      <if test="tjmonth != null" >
+        tjmonth = #{tjmonth,jdbcType=VARCHAR},
+      </if>
+      <if test="tjday != null" >
+        tjday = #{tjday,jdbcType=VARCHAR},
+      </if>
+      <if test="gkGame != null" >
+        gk_game = #{gkGame,jdbcType=VARCHAR},
+      </if>
+      <if test="gkCode != null" >
+        gk_code = #{gkCode,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="village != null" >
+        village = #{village,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        longitude = #{longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="latitude != null" >
+        latitude = #{latitude,jdbcType=DOUBLE},
+      </if>
+      <if test="gkArea != null" >
+        gk_area = #{gkArea,jdbcType=VARCHAR},
+      </if>
+      <if test="riverName != null" >
+        river_name = #{riverName,jdbcType=VARCHAR},
+      </if>
+      <if test="riverLevel != null" >
+        river_level = #{riverLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="gkFunc != null" >
+        gk_func = #{gkFunc,jdbcType=VARCHAR},
+      </if>
+      <if test="gkGoal != null" >
+        gk_goal = #{gkGoal,jdbcType=VARCHAR},
+      </if>
+      <if test="seaName != null" >
+        sea_name = #{seaName,jdbcType=VARCHAR},
+      </if>
+      <if test="jaFunction != null" >
+        ja_function = #{jaFunction,jdbcType=VARCHAR},
+      </if>
+      <if test="jaGoal != null" >
+        ja_goal = #{jaGoal,jdbcType=VARCHAR},
+      </if>
+      <if test="seaFunctiontype != null" >
+        sea_functiontype = #{seaFunctiontype,jdbcType=VARCHAR},
+      </if>
+      <if test="seaFunctiongoal != null" >
+        sea_functiongoal = #{seaFunctiongoal,jdbcType=VARCHAR},
+      </if>
+      <if test="spareone != null" >
+        spareone = #{spareone,jdbcType=VARCHAR},
+      </if>
+      <if test="sparetwo != null" >
+        sparetwo = #{sparetwo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.eliteams.quick4j.web.model.port" >
+    update port
+    set tjyear = #{tjyear,jdbcType=VARCHAR},
+      tjmonth = #{tjmonth,jdbcType=VARCHAR},
+      tjday = #{tjday,jdbcType=VARCHAR},
+      gk_game = #{gkGame,jdbcType=VARCHAR},
+      gk_code = #{gkCode,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      village = #{village,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=DOUBLE},
+      latitude = #{latitude,jdbcType=DOUBLE},
+      gk_area = #{gkArea,jdbcType=VARCHAR},
+      river_name = #{riverName,jdbcType=VARCHAR},
+      river_level = #{riverLevel,jdbcType=VARCHAR},
+      gk_func = #{gkFunc,jdbcType=VARCHAR},
+      gk_goal = #{gkGoal,jdbcType=VARCHAR},
+      sea_name = #{seaName,jdbcType=VARCHAR},
+      ja_function = #{jaFunction,jdbcType=VARCHAR},
+      ja_goal = #{jaGoal,jdbcType=VARCHAR},
+      sea_functiontype = #{seaFunctiontype,jdbcType=VARCHAR},
+      sea_functiongoal = #{seaFunctiongoal,jdbcType=VARCHAR},
+      spareone = #{spareone,jdbcType=VARCHAR},
+      sparetwo = #{sparetwo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -64,6 +64,7 @@
     <plugins>
         <plugin interceptor="com.eliteams.quick4j.core.feature.orm.mybatis.PaginationResultSetHandlerInterceptor"/>
         <plugin interceptor="com.eliteams.quick4j.core.feature.orm.mybatis.PaginationStatementHandlerInterceptor"/>
+
     </plugins>
 
 </configuration>

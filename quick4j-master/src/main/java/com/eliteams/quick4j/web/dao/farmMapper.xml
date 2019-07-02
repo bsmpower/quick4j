@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eliteams.quick4j.web.dao.farmMapper" >
+  <resultMap id="BaseResultMap" type="com.eliteams.quick4j.web.model.farm" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="tjyear" property="tjyear" jdbcType="VARCHAR" />
+    <result column="tjmonth" property="tjmonth" jdbcType="VARCHAR" />
+    <result column="tjday" property="tjday" jdbcType="VARCHAR" />
+    <result column="farmer_name" property="farmerName" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="county" property="county" jdbcType="VARCHAR" />
+    <result column="village" property="village" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="longitude" property="longitude" jdbcType="DOUBLE" />
+    <result column="latitude" property="latitude" jdbcType="DOUBLE" />
+    <result column="year_famount" property="yearFamount" jdbcType="DOUBLE" />
+    <result column="pesticide_dosage" property="pesticideDosage" jdbcType="DOUBLE" />
+    <result column="pesticide_concentration" property="pesticideConcentration" jdbcType="DOUBLE" />
+    <result column="year_ptimes" property="yearPtimes" jdbcType="INTEGER" />
+    <result column="year_pamount" property="yearPamount" jdbcType="DOUBLE" />
+    <result column="outlet_season" property="outletSeason" jdbcType="VARCHAR" />
+    <result column="outlet_times" property="outletTimes" jdbcType="INTEGER" />
+    <result column="outlet_amount" property="outletAmount" jdbcType="DOUBLE" />
+    <result column="outlet_time" property="outletTime" jdbcType="INTEGER" />
+    <result column="spareone" property="spareone" jdbcType="VARCHAR" />
+    <result column="sparetwo" property="sparetwo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, tjyear, tjmonth, tjday, farmer_name, city, county, village, address, longitude, 
+    latitude, year_famount, pesticide_dosage, pesticide_concentration, year_ptimes, year_pamount, 
+    outlet_season, outlet_times, outlet_amount, outlet_time, spareone, sparetwo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from farm
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from farm
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.eliteams.quick4j.web.model.farm" >
+    insert into farm (id, tjyear, tjmonth, 
+      tjday, farmer_name, city, 
+      county, village, address, 
+      longitude, latitude, year_famount, 
+      pesticide_dosage, pesticide_concentration, 
+      year_ptimes, year_pamount, outlet_season, 
+      outlet_times, outlet_amount, outlet_time, 
+      spareone, sparetwo)
+    values (#{id,jdbcType=INTEGER}, #{tjyear,jdbcType=VARCHAR}, #{tjmonth,jdbcType=VARCHAR}, 
+      #{tjday,jdbcType=VARCHAR}, #{farmerName,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{county,jdbcType=VARCHAR}, #{village,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{longitude,jdbcType=DOUBLE}, #{latitude,jdbcType=DOUBLE}, #{yearFamount,jdbcType=DOUBLE}, 
+      #{pesticideDosage,jdbcType=DOUBLE}, #{pesticideConcentration,jdbcType=DOUBLE}, 
+      #{yearPtimes,jdbcType=INTEGER}, #{yearPamount,jdbcType=DOUBLE}, #{outletSeason,jdbcType=VARCHAR}, 
+      #{outletTimes,jdbcType=INTEGER}, #{outletAmount,jdbcType=DOUBLE}, #{outletTime,jdbcType=INTEGER}, 
+      #{spareone,jdbcType=VARCHAR}, #{sparetwo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.eliteams.quick4j.web.model.farm" >
+    insert into farm
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="tjyear != null" >
+        tjyear,
+      </if>
+      <if test="tjmonth != null" >
+        tjmonth,
+      </if>
+      <if test="tjday != null" >
+        tjday,
+      </if>
+      <if test="farmerName != null" >
+        farmer_name,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="county != null" >
+        county,
+      </if>
+      <if test="village != null" >
+        village,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="longitude != null" >
+        longitude,
+      </if>
+      <if test="latitude != null" >
+        latitude,
+      </if>
+      <if test="yearFamount != null" >
+        year_famount,
+      </if>
+      <if test="pesticideDosage != null" >
+        pesticide_dosage,
+      </if>
+      <if test="pesticideConcentration != null" >
+        pesticide_concentration,
+      </if>
+      <if test="yearPtimes != null" >
+        year_ptimes,
+      </if>
+      <if test="yearPamount != null" >
+        year_pamount,
+      </if>
+      <if test="outletSeason != null" >
+        outlet_season,
+      </if>
+      <if test="outletTimes != null" >
+        outlet_times,
+      </if>
+      <if test="outletAmount != null" >
+        outlet_amount,
+      </if>
+      <if test="outletTime != null" >
+        outlet_time,
+      </if>
+      <if test="spareone != null" >
+        spareone,
+      </if>
+      <if test="sparetwo != null" >
+        sparetwo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="tjyear != null" >
+        #{tjyear,jdbcType=VARCHAR},
+      </if>
+      <if test="tjmonth != null" >
+        #{tjmonth,jdbcType=VARCHAR},
+      </if>
+      <if test="tjday != null" >
+        #{tjday,jdbcType=VARCHAR},
+      </if>
+      <if test="farmerName != null" >
+        #{farmerName,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="village != null" >
+        #{village,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        #{longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="latitude != null" >
+        #{latitude,jdbcType=DOUBLE},
+      </if>
+      <if test="yearFamount != null" >
+        #{yearFamount,jdbcType=DOUBLE},
+      </if>
+      <if test="pesticideDosage != null" >
+        #{pesticideDosage,jdbcType=DOUBLE},
+      </if>
+      <if test="pesticideConcentration != null" >
+        #{pesticideConcentration,jdbcType=DOUBLE},
+      </if>
+      <if test="yearPtimes != null" >
+        #{yearPtimes,jdbcType=INTEGER},
+      </if>
+      <if test="yearPamount != null" >
+        #{yearPamount,jdbcType=DOUBLE},
+      </if>
+      <if test="outletSeason != null" >
+        #{outletSeason,jdbcType=VARCHAR},
+      </if>
+      <if test="outletTimes != null" >
+        #{outletTimes,jdbcType=INTEGER},
+      </if>
+      <if test="outletAmount != null" >
+        #{outletAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="outletTime != null" >
+        #{outletTime,jdbcType=INTEGER},
+      </if>
+      <if test="spareone != null" >
+        #{spareone,jdbcType=VARCHAR},
+      </if>
+      <if test="sparetwo != null" >
+        #{sparetwo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.eliteams.quick4j.web.model.farm" >
+    update farm
+    <set >
+      <if test="tjyear != null" >
+        tjyear = #{tjyear,jdbcType=VARCHAR},
+      </if>
+      <if test="tjmonth != null" >
+        tjmonth = #{tjmonth,jdbcType=VARCHAR},
+      </if>
+      <if test="tjday != null" >
+        tjday = #{tjday,jdbcType=VARCHAR},
+      </if>
+      <if test="farmerName != null" >
+        farmer_name = #{farmerName,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        county = #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="village != null" >
+        village = #{village,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        longitude = #{longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="latitude != null" >
+        latitude = #{latitude,jdbcType=DOUBLE},
+      </if>
+      <if test="yearFamount != null" >
+        year_famount = #{yearFamount,jdbcType=DOUBLE},
+      </if>
+      <if test="pesticideDosage != null" >
+        pesticide_dosage = #{pesticideDosage,jdbcType=DOUBLE},
+      </if>
+      <if test="pesticideConcentration != null" >
+        pesticide_concentration = #{pesticideConcentration,jdbcType=DOUBLE},
+      </if>
+      <if test="yearPtimes != null" >
+        year_ptimes = #{yearPtimes,jdbcType=INTEGER},
+      </if>
+      <if test="yearPamount != null" >
+        year_pamount = #{yearPamount,jdbcType=DOUBLE},
+      </if>
+      <if test="outletSeason != null" >
+        outlet_season = #{outletSeason,jdbcType=VARCHAR},
+      </if>
+      <if test="outletTimes != null" >
+        outlet_times = #{outletTimes,jdbcType=INTEGER},
+      </if>
+      <if test="outletAmount != null" >
+        outlet_amount = #{outletAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="outletTime != null" >
+        outlet_time = #{outletTime,jdbcType=INTEGER},
+      </if>
+      <if test="spareone != null" >
+        spareone = #{spareone,jdbcType=VARCHAR},
+      </if>
+      <if test="sparetwo != null" >
+        sparetwo = #{sparetwo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.eliteams.quick4j.web.model.farm" >
+    update farm
+    set tjyear = #{tjyear,jdbcType=VARCHAR},
+      tjmonth = #{tjmonth,jdbcType=VARCHAR},
+      tjday = #{tjday,jdbcType=VARCHAR},
+      farmer_name = #{farmerName,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      county = #{county,jdbcType=VARCHAR},
+      village = #{village,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=DOUBLE},
+      latitude = #{latitude,jdbcType=DOUBLE},
+      year_famount = #{yearFamount,jdbcType=DOUBLE},
+      pesticide_dosage = #{pesticideDosage,jdbcType=DOUBLE},
+      pesticide_concentration = #{pesticideConcentration,jdbcType=DOUBLE},
+      year_ptimes = #{yearPtimes,jdbcType=INTEGER},
+      year_pamount = #{yearPamount,jdbcType=DOUBLE},
+      outlet_season = #{outletSeason,jdbcType=VARCHAR},
+      outlet_times = #{outletTimes,jdbcType=INTEGER},
+      outlet_amount = #{outletAmount,jdbcType=DOUBLE},
+      outlet_time = #{outletTime,jdbcType=INTEGER},
+      spareone = #{spareone,jdbcType=VARCHAR},
+      sparetwo = #{sparetwo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eliteams.quick4j.web.dao.section_contaminantsMapper" >
+  <resultMap id="BaseResultMap" type="com.eliteams.quick4j.web.model.section_contaminants" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="dm_code" property="dmCode" jdbcType="VARCHAR" />
+    <result column="tjyear" property="tjyear" jdbcType="VARCHAR" />
+    <result column="tjmonth" property="tjmonth" jdbcType="VARCHAR" />
+    <result column="tjday" property="tjday" jdbcType="VARCHAR" />
+    <result column="salt" property="salt" jdbcType="DOUBLE" />
+    <result column="COD" property="cod" jdbcType="DOUBLE" />
+    <result column="NH3" property="nh3" jdbcType="DOUBLE" />
+    <result column="P" property="p" jdbcType="DOUBLE" />
+    <result column="N" property="n" jdbcType="DOUBLE" />
+    <result column="Cr6" property="cr6" jdbcType="DOUBLE" />
+    <result column="CN" property="cn" jdbcType="DOUBLE" />
+    <result column="fdcjqs" property="fdcjqs" jdbcType="DOUBLE" />
+    <result column="BOD5" property="bod5" jdbcType="DOUBLE" />
+    <result column="xfw" property="xfw" jdbcType="DOUBLE" />
+    <result column="oil" property="oil" jdbcType="DOUBLE" />
+    <result column="phenol" property="phenol" jdbcType="DOUBLE" />
+    <result column="Az" property="az" jdbcType="DOUBLE" />
+    <result column="Hg" property="hg" jdbcType="DOUBLE" />
+    <result column="Hb" property="hb" jdbcType="DOUBLE" />
+    <result column="Cd" property="cd" jdbcType="DOUBLE" />
+    <result column="flow" property="flow" jdbcType="DOUBLE" />
+    <result column="PH" property="ph" jdbcType="DOUBLE" />
+    <result column="chloride" property="chloride" jdbcType="DOUBLE" />
+    <result column="sulfide" property="sulfide" jdbcType="DOUBLE" />
+    <result column="ylzbmhxj" property="ylzbmhxj" jdbcType="DOUBLE" />
+    <result column="others" property="others" jdbcType="VARCHAR" />
+    <result column="is_get" property="isGet" jdbcType="VARCHAR" />
+    <result column="noget_items" property="nogetItems" jdbcType="VARCHAR" />
+    <result column="spareone" property="spareone" jdbcType="VARCHAR" />
+    <result column="sparetwo" property="sparetwo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, dm_code, tjyear, tjmonth, tjday, salt, COD, NH3, P, N, Cr6, CN, fdcjqs, BOD5, 
+    xfw, oil, phenol, Az, Hg, Hb, Cd, flow, PH, chloride, sulfide, ylzbmhxj, others, 
+    is_get, noget_items, spareone, sparetwo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from section_contaminants
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from section_contaminants
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.eliteams.quick4j.web.model.section_contaminants" >
+    insert into section_contaminants (id, dm_code, tjyear, 
+      tjmonth, tjday, salt, 
+      COD, NH3, P, N, 
+      Cr6, CN, fdcjqs, BOD5, 
+      xfw, oil, phenol, Az, 
+      Hg, Hb, Cd, flow, 
+      PH, chloride, sulfide, 
+      ylzbmhxj, others, is_get, 
+      noget_items, spareone, sparetwo
+      )
+    values (#{id,jdbcType=INTEGER}, #{dmCode,jdbcType=VARCHAR}, #{tjyear,jdbcType=VARCHAR}, 
+      #{tjmonth,jdbcType=VARCHAR}, #{tjday,jdbcType=VARCHAR}, #{salt,jdbcType=DOUBLE}, 
+      #{cod,jdbcType=DOUBLE}, #{nh3,jdbcType=DOUBLE}, #{p,jdbcType=DOUBLE}, #{n,jdbcType=DOUBLE}, 
+      #{cr6,jdbcType=DOUBLE}, #{cn,jdbcType=DOUBLE}, #{fdcjqs,jdbcType=DOUBLE}, #{bod5,jdbcType=DOUBLE}, 
+      #{xfw,jdbcType=DOUBLE}, #{oil,jdbcType=DOUBLE}, #{phenol,jdbcType=DOUBLE}, #{az,jdbcType=DOUBLE}, 
+      #{hg,jdbcType=DOUBLE}, #{hb,jdbcType=DOUBLE}, #{cd,jdbcType=DOUBLE}, #{flow,jdbcType=DOUBLE}, 
+      #{ph,jdbcType=DOUBLE}, #{chloride,jdbcType=DOUBLE}, #{sulfide,jdbcType=DOUBLE}, 
+      #{ylzbmhxj,jdbcType=DOUBLE}, #{others,jdbcType=VARCHAR}, #{isGet,jdbcType=VARCHAR}, 
+      #{nogetItems,jdbcType=VARCHAR}, #{spareone,jdbcType=VARCHAR}, #{sparetwo,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.eliteams.quick4j.web.model.section_contaminants" >
+    insert into section_contaminants
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="dmCode != null" >
+        dm_code,
+      </if>
+      <if test="tjyear != null" >
+        tjyear,
+      </if>
+      <if test="tjmonth != null" >
+        tjmonth,
+      </if>
+      <if test="tjday != null" >
+        tjday,
+      </if>
+      <if test="salt != null" >
+        salt,
+      </if>
+      <if test="cod != null" >
+        COD,
+      </if>
+      <if test="nh3 != null" >
+        NH3,
+      </if>
+      <if test="p != null" >
+        P,
+      </if>
+      <if test="n != null" >
+        N,
+      </if>
+      <if test="cr6 != null" >
+        Cr6,
+      </if>
+      <if test="cn != null" >
+        CN,
+      </if>
+      <if test="fdcjqs != null" >
+        fdcjqs,
+      </if>
+      <if test="bod5 != null" >
+        BOD5,
+      </if>
+      <if test="xfw != null" >
+        xfw,
+      </if>
+      <if test="oil != null" >
+        oil,
+      </if>
+      <if test="phenol != null" >
+        phenol,
+      </if>
+      <if test="az != null" >
+        Az,
+      </if>
+      <if test="hg != null" >
+        Hg,
+      </if>
+      <if test="hb != null" >
+        Hb,
+      </if>
+      <if test="cd != null" >
+        Cd,
+      </if>
+      <if test="flow != null" >
+        flow,
+      </if>
+      <if test="ph != null" >
+        PH,
+      </if>
+      <if test="chloride != null" >
+        chloride,
+      </if>
+      <if test="sulfide != null" >
+        sulfide,
+      </if>
+      <if test="ylzbmhxj != null" >
+        ylzbmhxj,
+      </if>
+      <if test="others != null" >
+        others,
+      </if>
+      <if test="isGet != null" >
+        is_get,
+      </if>
+      <if test="nogetItems != null" >
+        noget_items,
+      </if>
+      <if test="spareone != null" >
+        spareone,
+      </if>
+      <if test="sparetwo != null" >
+        sparetwo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="dmCode != null" >
+        #{dmCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tjyear != null" >
+        #{tjyear,jdbcType=VARCHAR},
+      </if>
+      <if test="tjmonth != null" >
+        #{tjmonth,jdbcType=VARCHAR},
+      </if>
+      <if test="tjday != null" >
+        #{tjday,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null" >
+        #{salt,jdbcType=DOUBLE},
+      </if>
+      <if test="cod != null" >
+        #{cod,jdbcType=DOUBLE},
+      </if>
+      <if test="nh3 != null" >
+        #{nh3,jdbcType=DOUBLE},
+      </if>
+      <if test="p != null" >
+        #{p,jdbcType=DOUBLE},
+      </if>
+      <if test="n != null" >
+        #{n,jdbcType=DOUBLE},
+      </if>
+      <if test="cr6 != null" >
+        #{cr6,jdbcType=DOUBLE},
+      </if>
+      <if test="cn != null" >
+        #{cn,jdbcType=DOUBLE},
+      </if>
+      <if test="fdcjqs != null" >
+        #{fdcjqs,jdbcType=DOUBLE},
+      </if>
+      <if test="bod5 != null" >
+        #{bod5,jdbcType=DOUBLE},
+      </if>
+      <if test="xfw != null" >
+        #{xfw,jdbcType=DOUBLE},
+      </if>
+      <if test="oil != null" >
+        #{oil,jdbcType=DOUBLE},
+      </if>
+      <if test="phenol != null" >
+        #{phenol,jdbcType=DOUBLE},
+      </if>
+      <if test="az != null" >
+        #{az,jdbcType=DOUBLE},
+      </if>
+      <if test="hg != null" >
+        #{hg,jdbcType=DOUBLE},
+      </if>
+      <if test="hb != null" >
+        #{hb,jdbcType=DOUBLE},
+      </if>
+      <if test="cd != null" >
+        #{cd,jdbcType=DOUBLE},
+      </if>
+      <if test="flow != null" >
+        #{flow,jdbcType=DOUBLE},
+      </if>
+      <if test="ph != null" >
+        #{ph,jdbcType=DOUBLE},
+      </if>
+      <if test="chloride != null" >
+        #{chloride,jdbcType=DOUBLE},
+      </if>
+      <if test="sulfide != null" >
+        #{sulfide,jdbcType=DOUBLE},
+      </if>
+      <if test="ylzbmhxj != null" >
+        #{ylzbmhxj,jdbcType=DOUBLE},
+      </if>
+      <if test="others != null" >
+        #{others,jdbcType=VARCHAR},
+      </if>
+      <if test="isGet != null" >
+        #{isGet,jdbcType=VARCHAR},
+      </if>
+      <if test="nogetItems != null" >
+        #{nogetItems,jdbcType=VARCHAR},
+      </if>
+      <if test="spareone != null" >
+        #{spareone,jdbcType=VARCHAR},
+      </if>
+      <if test="sparetwo != null" >
+        #{sparetwo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.eliteams.quick4j.web.model.section_contaminants" >
+    update section_contaminants
+    <set >
+      <if test="dmCode != null" >
+        dm_code = #{dmCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tjyear != null" >
+        tjyear = #{tjyear,jdbcType=VARCHAR},
+      </if>
+      <if test="tjmonth != null" >
+        tjmonth = #{tjmonth,jdbcType=VARCHAR},
+      </if>
+      <if test="tjday != null" >
+        tjday = #{tjday,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null" >
+        salt = #{salt,jdbcType=DOUBLE},
+      </if>
+      <if test="cod != null" >
+        COD = #{cod,jdbcType=DOUBLE},
+      </if>
+      <if test="nh3 != null" >
+        NH3 = #{nh3,jdbcType=DOUBLE},
+      </if>
+      <if test="p != null" >
+        P = #{p,jdbcType=DOUBLE},
+      </if>
+      <if test="n != null" >
+        N = #{n,jdbcType=DOUBLE},
+      </if>
+      <if test="cr6 != null" >
+        Cr6 = #{cr6,jdbcType=DOUBLE},
+      </if>
+      <if test="cn != null" >
+        CN = #{cn,jdbcType=DOUBLE},
+      </if>
+      <if test="fdcjqs != null" >
+        fdcjqs = #{fdcjqs,jdbcType=DOUBLE},
+      </if>
+      <if test="bod5 != null" >
+        BOD5 = #{bod5,jdbcType=DOUBLE},
+      </if>
+      <if test="xfw != null" >
+        xfw = #{xfw,jdbcType=DOUBLE},
+      </if>
+      <if test="oil != null" >
+        oil = #{oil,jdbcType=DOUBLE},
+      </if>
+      <if test="phenol != null" >
+        phenol = #{phenol,jdbcType=DOUBLE},
+      </if>
+      <if test="az != null" >
+        Az = #{az,jdbcType=DOUBLE},
+      </if>
+      <if test="hg != null" >
+        Hg = #{hg,jdbcType=DOUBLE},
+      </if>
+      <if test="hb != null" >
+        Hb = #{hb,jdbcType=DOUBLE},
+      </if>
+      <if test="cd != null" >
+        Cd = #{cd,jdbcType=DOUBLE},
+      </if>
+      <if test="flow != null" >
+        flow = #{flow,jdbcType=DOUBLE},
+      </if>
+      <if test="ph != null" >
+        PH = #{ph,jdbcType=DOUBLE},
+      </if>
+      <if test="chloride != null" >
+        chloride = #{chloride,jdbcType=DOUBLE},
+      </if>
+      <if test="sulfide != null" >
+        sulfide = #{sulfide,jdbcType=DOUBLE},
+      </if>
+      <if test="ylzbmhxj != null" >
+        ylzbmhxj = #{ylzbmhxj,jdbcType=DOUBLE},
+      </if>
+      <if test="others != null" >
+        others = #{others,jdbcType=VARCHAR},
+      </if>
+      <if test="isGet != null" >
+        is_get = #{isGet,jdbcType=VARCHAR},
+      </if>
+      <if test="nogetItems != null" >
+        noget_items = #{nogetItems,jdbcType=VARCHAR},
+      </if>
+      <if test="spareone != null" >
+        spareone = #{spareone,jdbcType=VARCHAR},
+      </if>
+      <if test="sparetwo != null" >
+        sparetwo = #{sparetwo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.eliteams.quick4j.web.model.section_contaminants" >
+    update section_contaminants
+    set dm_code = #{dmCode,jdbcType=VARCHAR},
+      tjyear = #{tjyear,jdbcType=VARCHAR},
+      tjmonth = #{tjmonth,jdbcType=VARCHAR},
+      tjday = #{tjday,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=DOUBLE},
+      COD = #{cod,jdbcType=DOUBLE},
+      NH3 = #{nh3,jdbcType=DOUBLE},
+      P = #{p,jdbcType=DOUBLE},
+      N = #{n,jdbcType=DOUBLE},
+      Cr6 = #{cr6,jdbcType=DOUBLE},
+      CN = #{cn,jdbcType=DOUBLE},
+      fdcjqs = #{fdcjqs,jdbcType=DOUBLE},
+      BOD5 = #{bod5,jdbcType=DOUBLE},
+      xfw = #{xfw,jdbcType=DOUBLE},
+      oil = #{oil,jdbcType=DOUBLE},
+      phenol = #{phenol,jdbcType=DOUBLE},
+      Az = #{az,jdbcType=DOUBLE},
+      Hg = #{hg,jdbcType=DOUBLE},
+      Hb = #{hb,jdbcType=DOUBLE},
+      Cd = #{cd,jdbcType=DOUBLE},
+      flow = #{flow,jdbcType=DOUBLE},
+      PH = #{ph,jdbcType=DOUBLE},
+      chloride = #{chloride,jdbcType=DOUBLE},
+      sulfide = #{sulfide,jdbcType=DOUBLE},
+      ylzbmhxj = #{ylzbmhxj,jdbcType=DOUBLE},
+      others = #{others,jdbcType=VARCHAR},
+      is_get = #{isGet,jdbcType=VARCHAR},
+      noget_items = #{nogetItems,jdbcType=VARCHAR},
+      spareone = #{spareone,jdbcType=VARCHAR},
+      sparetwo = #{sparetwo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

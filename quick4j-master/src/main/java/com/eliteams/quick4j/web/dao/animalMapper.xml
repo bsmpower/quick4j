@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eliteams.quick4j.web.dao.animalMapper" >
+  <resultMap id="BaseResultMap" type="com.eliteams.quick4j.web.model.animal" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="tjyear" property="tjyear" jdbcType="VARCHAR" />
+    <result column="tjmonth" property="tjmonth" jdbcType="VARCHAR" />
+    <result column="tjday" property="tjday" jdbcType="VARCHAR" />
+    <result column="USCC_Code" property="usccCode" jdbcType="VARCHAR" />
+    <result column="livestock" property="livestock" jdbcType="VARCHAR" />
+    <result column="livestock_amount" property="livestockAmount" jdbcType="INTEGER" />
+    <result column="slaughter_amount" property="slaughterAmount" jdbcType="INTEGER" />
+    <result column="period" property="period" jdbcType="DOUBLE" />
+    <result column="spareone" property="spareone" jdbcType="VARCHAR" />
+    <result column="sparetwo" property="sparetwo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, tjyear, tjmonth, tjday, USCC_Code, livestock, livestock_amount, slaughter_amount, 
+    period, spareone, sparetwo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from animal
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from animal
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.eliteams.quick4j.web.model.animal" >
+    insert into animal (id, tjyear, tjmonth, 
+      tjday, USCC_Code, livestock, 
+      livestock_amount, slaughter_amount, period, 
+      spareone, sparetwo)
+    values (#{id,jdbcType=INTEGER}, #{tjyear,jdbcType=VARCHAR}, #{tjmonth,jdbcType=VARCHAR}, 
+      #{tjday,jdbcType=VARCHAR}, #{usccCode,jdbcType=VARCHAR}, #{livestock,jdbcType=VARCHAR}, 
+      #{livestockAmount,jdbcType=INTEGER}, #{slaughterAmount,jdbcType=INTEGER}, #{period,jdbcType=DOUBLE}, 
+      #{spareone,jdbcType=VARCHAR}, #{sparetwo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.eliteams.quick4j.web.model.animal" >
+    insert into animal
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="tjyear != null" >
+        tjyear,
+      </if>
+      <if test="tjmonth != null" >
+        tjmonth,
+      </if>
+      <if test="tjday != null" >
+        tjday,
+      </if>
+      <if test="usccCode != null" >
+        USCC_Code,
+      </if>
+      <if test="livestock != null" >
+        livestock,
+      </if>
+      <if test="livestockAmount != null" >
+        livestock_amount,
+      </if>
+      <if test="slaughterAmount != null" >
+        slaughter_amount,
+      </if>
+      <if test="period != null" >
+        period,
+      </if>
+      <if test="spareone != null" >
+        spareone,
+      </if>
+      <if test="sparetwo != null" >
+        sparetwo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="tjyear != null" >
+        #{tjyear,jdbcType=VARCHAR},
+      </if>
+      <if test="tjmonth != null" >
+        #{tjmonth,jdbcType=VARCHAR},
+      </if>
+      <if test="tjday != null" >
+        #{tjday,jdbcType=VARCHAR},
+      </if>
+      <if test="usccCode != null" >
+        #{usccCode,jdbcType=VARCHAR},
+      </if>
+      <if test="livestock != null" >
+        #{livestock,jdbcType=VARCHAR},
+      </if>
+      <if test="livestockAmount != null" >
+        #{livestockAmount,jdbcType=INTEGER},
+      </if>
+      <if test="slaughterAmount != null" >
+        #{slaughterAmount,jdbcType=INTEGER},
+      </if>
+      <if test="period != null" >
+        #{period,jdbcType=DOUBLE},
+      </if>
+      <if test="spareone != null" >
+        #{spareone,jdbcType=VARCHAR},
+      </if>
+      <if test="sparetwo != null" >
+        #{sparetwo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.eliteams.quick4j.web.model.animal" >
+    update animal
+    <set >
+      <if test="tjyear != null" >
+        tjyear = #{tjyear,jdbcType=VARCHAR},
+      </if>
+      <if test="tjmonth != null" >
+        tjmonth = #{tjmonth,jdbcType=VARCHAR},
+      </if>
+      <if test="tjday != null" >
+        tjday = #{tjday,jdbcType=VARCHAR},
+      </if>
+      <if test="usccCode != null" >
+        USCC_Code = #{usccCode,jdbcType=VARCHAR},
+      </if>
+      <if test="livestock != null" >
+        livestock = #{livestock,jdbcType=VARCHAR},
+      </if>
+      <if test="livestockAmount != null" >
+        livestock_amount = #{livestockAmount,jdbcType=INTEGER},
+      </if>
+      <if test="slaughterAmount != null" >
+        slaughter_amount = #{slaughterAmount,jdbcType=INTEGER},
+      </if>
+      <if test="period != null" >
+        period = #{period,jdbcType=DOUBLE},
+      </if>
+      <if test="spareone != null" >
+        spareone = #{spareone,jdbcType=VARCHAR},
+      </if>
+      <if test="sparetwo != null" >
+        sparetwo = #{sparetwo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.eliteams.quick4j.web.model.animal" >
+    update animal
+    set tjyear = #{tjyear,jdbcType=VARCHAR},
+      tjmonth = #{tjmonth,jdbcType=VARCHAR},
+      tjday = #{tjday,jdbcType=VARCHAR},
+      USCC_Code = #{usccCode,jdbcType=VARCHAR},
+      livestock = #{livestock,jdbcType=VARCHAR},
+      livestock_amount = #{livestockAmount,jdbcType=INTEGER},
+      slaughter_amount = #{slaughterAmount,jdbcType=INTEGER},
+      period = #{period,jdbcType=DOUBLE},
+      spareone = #{spareone,jdbcType=VARCHAR},
+      sparetwo = #{sparetwo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

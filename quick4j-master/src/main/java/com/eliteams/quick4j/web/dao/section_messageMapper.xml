@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eliteams.quick4j.web.dao.section_messageMapper" >
+  <resultMap id="BaseResultMap" type="com.eliteams.quick4j.web.model.section_message" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="tjyear" property="tjyear" jdbcType="VARCHAR" />
+    <result column="tjmonth" property="tjmonth" jdbcType="VARCHAR" />
+    <result column="tjday" property="tjday" jdbcType="VARCHAR" />
+    <result column="dm_name" property="dmName" jdbcType="VARCHAR" />
+    <result column="dm_code" property="dmCode" jdbcType="VARCHAR" />
+    <result column="dm_type" property="dmType" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="county" property="county" jdbcType="VARCHAR" />
+    <result column="village" property="village" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="longitude" property="longitude" jdbcType="DOUBLE" />
+    <result column="laititude" property="laititude" jdbcType="DOUBLE" />
+    <result column="sssx" property="sssx" jdbcType="VARCHAR" />
+    <result column="river_name" property="riverName" jdbcType="VARCHAR" />
+    <result column="sz_type" property="szType" jdbcType="VARCHAR" />
+    <result column="dm_goal" property="dmGoal" jdbcType="VARCHAR" />
+    <result column="hls_gnq" property="hlsGnq" jdbcType="VARCHAR" />
+    <result column="is_get" property="isGet" jdbcType="VARCHAR" />
+    <result column="noget_items" property="nogetItems" jdbcType="VARCHAR" />
+    <result column="spareone" property="spareone" jdbcType="VARCHAR" />
+    <result column="sparetwo" property="sparetwo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, tjyear, tjmonth, tjday, dm_name, dm_code, dm_type, city, county, village, address, 
+    longitude, laititude, sssx, river_name, sz_type, dm_goal, hls_gnq, is_get, noget_items, 
+    spareone, sparetwo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from section_message
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from section_message
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.eliteams.quick4j.web.model.section_message" >
+    insert into section_message (id, tjyear, tjmonth, 
+      tjday, dm_name, dm_code, 
+      dm_type, city, county, 
+      village, address, longitude, 
+      laititude, sssx, river_name, 
+      sz_type, dm_goal, hls_gnq, 
+      is_get, noget_items, spareone, 
+      sparetwo)
+    values (#{id,jdbcType=INTEGER}, #{tjyear,jdbcType=VARCHAR}, #{tjmonth,jdbcType=VARCHAR}, 
+      #{tjday,jdbcType=VARCHAR}, #{dmName,jdbcType=VARCHAR}, #{dmCode,jdbcType=VARCHAR}, 
+      #{dmType,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{county,jdbcType=VARCHAR}, 
+      #{village,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{longitude,jdbcType=DOUBLE}, 
+      #{laititude,jdbcType=DOUBLE}, #{sssx,jdbcType=VARCHAR}, #{riverName,jdbcType=VARCHAR}, 
+      #{szType,jdbcType=VARCHAR}, #{dmGoal,jdbcType=VARCHAR}, #{hlsGnq,jdbcType=VARCHAR}, 
+      #{isGet,jdbcType=VARCHAR}, #{nogetItems,jdbcType=VARCHAR}, #{spareone,jdbcType=VARCHAR}, 
+      #{sparetwo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.eliteams.quick4j.web.model.section_message" >
+    insert into section_message
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="tjyear != null" >
+        tjyear,
+      </if>
+      <if test="tjmonth != null" >
+        tjmonth,
+      </if>
+      <if test="tjday != null" >
+        tjday,
+      </if>
+      <if test="dmName != null" >
+        dm_name,
+      </if>
+      <if test="dmCode != null" >
+        dm_code,
+      </if>
+      <if test="dmType != null" >
+        dm_type,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="county != null" >
+        county,
+      </if>
+      <if test="village != null" >
+        village,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="longitude != null" >
+        longitude,
+      </if>
+      <if test="laititude != null" >
+        laititude,
+      </if>
+      <if test="sssx != null" >
+        sssx,
+      </if>
+      <if test="riverName != null" >
+        river_name,
+      </if>
+      <if test="szType != null" >
+        sz_type,
+      </if>
+      <if test="dmGoal != null" >
+        dm_goal,
+      </if>
+      <if test="hlsGnq != null" >
+        hls_gnq,
+      </if>
+      <if test="isGet != null" >
+        is_get,
+      </if>
+      <if test="nogetItems != null" >
+        noget_items,
+      </if>
+      <if test="spareone != null" >
+        spareone,
+      </if>
+      <if test="sparetwo != null" >
+        sparetwo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="tjyear != null" >
+        #{tjyear,jdbcType=VARCHAR},
+      </if>
+      <if test="tjmonth != null" >
+        #{tjmonth,jdbcType=VARCHAR},
+      </if>
+      <if test="tjday != null" >
+        #{tjday,jdbcType=VARCHAR},
+      </if>
+      <if test="dmName != null" >
+        #{dmName,jdbcType=VARCHAR},
+      </if>
+      <if test="dmCode != null" >
+        #{dmCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dmType != null" >
+        #{dmType,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="village != null" >
+        #{village,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        #{longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="laititude != null" >
+        #{laititude,jdbcType=DOUBLE},
+      </if>
+      <if test="sssx != null" >
+        #{sssx,jdbcType=VARCHAR},
+      </if>
+      <if test="riverName != null" >
+        #{riverName,jdbcType=VARCHAR},
+      </if>
+      <if test="szType != null" >
+        #{szType,jdbcType=VARCHAR},
+      </if>
+      <if test="dmGoal != null" >
+        #{dmGoal,jdbcType=VARCHAR},
+      </if>
+      <if test="hlsGnq != null" >
+        #{hlsGnq,jdbcType=VARCHAR},
+      </if>
+      <if test="isGet != null" >
+        #{isGet,jdbcType=VARCHAR},
+      </if>
+      <if test="nogetItems != null" >
+        #{nogetItems,jdbcType=VARCHAR},
+      </if>
+      <if test="spareone != null" >
+        #{spareone,jdbcType=VARCHAR},
+      </if>
+      <if test="sparetwo != null" >
+        #{sparetwo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.eliteams.quick4j.web.model.section_message" >
+    update section_message
+    <set >
+      <if test="tjyear != null" >
+        tjyear = #{tjyear,jdbcType=VARCHAR},
+      </if>
+      <if test="tjmonth != null" >
+        tjmonth = #{tjmonth,jdbcType=VARCHAR},
+      </if>
+      <if test="tjday != null" >
+        tjday = #{tjday,jdbcType=VARCHAR},
+      </if>
+      <if test="dmName != null" >
+        dm_name = #{dmName,jdbcType=VARCHAR},
+      </if>
+      <if test="dmCode != null" >
+        dm_code = #{dmCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dmType != null" >
+        dm_type = #{dmType,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        county = #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="village != null" >
+        village = #{village,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        longitude = #{longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="laititude != null" >
+        laititude = #{laititude,jdbcType=DOUBLE},
+      </if>
+      <if test="sssx != null" >
+        sssx = #{sssx,jdbcType=VARCHAR},
+      </if>
+      <if test="riverName != null" >
+        river_name = #{riverName,jdbcType=VARCHAR},
+      </if>
+      <if test="szType != null" >
+        sz_type = #{szType,jdbcType=VARCHAR},
+      </if>
+      <if test="dmGoal != null" >
+        dm_goal = #{dmGoal,jdbcType=VARCHAR},
+      </if>
+      <if test="hlsGnq != null" >
+        hls_gnq = #{hlsGnq,jdbcType=VARCHAR},
+      </if>
+      <if test="isGet != null" >
+        is_get = #{isGet,jdbcType=VARCHAR},
+      </if>
+      <if test="nogetItems != null" >
+        noget_items = #{nogetItems,jdbcType=VARCHAR},
+      </if>
+      <if test="spareone != null" >
+        spareone = #{spareone,jdbcType=VARCHAR},
+      </if>
+      <if test="sparetwo != null" >
+        sparetwo = #{sparetwo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.eliteams.quick4j.web.model.section_message" >
+    update section_message
+    set tjyear = #{tjyear,jdbcType=VARCHAR},
+      tjmonth = #{tjmonth,jdbcType=VARCHAR},
+      tjday = #{tjday,jdbcType=VARCHAR},
+      dm_name = #{dmName,jdbcType=VARCHAR},
+      dm_code = #{dmCode,jdbcType=VARCHAR},
+      dm_type = #{dmType,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      county = #{county,jdbcType=VARCHAR},
+      village = #{village,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=DOUBLE},
+      laititude = #{laititude,jdbcType=DOUBLE},
+      sssx = #{sssx,jdbcType=VARCHAR},
+      river_name = #{riverName,jdbcType=VARCHAR},
+      sz_type = #{szType,jdbcType=VARCHAR},
+      dm_goal = #{dmGoal,jdbcType=VARCHAR},
+      hls_gnq = #{hlsGnq,jdbcType=VARCHAR},
+      is_get = #{isGet,jdbcType=VARCHAR},
+      noget_items = #{nogetItems,jdbcType=VARCHAR},
+      spareone = #{spareone,jdbcType=VARCHAR},
+      sparetwo = #{sparetwo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

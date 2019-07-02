@@ -36,6 +36,15 @@ public class PageController {
     public String document(){return "document";}
 
     /**
+     * pwkfuntion
+     */
+    @RequestMapping("/pwktable")
+    public String pwktable(){
+//        return "pwk/pwktable";
+        return "pwk/pwktabledemo";
+    }
+
+    /**
      * 404页
      */
     @RequestMapping("/404")

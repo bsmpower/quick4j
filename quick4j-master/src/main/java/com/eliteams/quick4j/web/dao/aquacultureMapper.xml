@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eliteams.quick4j.web.dao.aquacultureMapper" >
+  <resultMap id="BaseResultMap" type="com.eliteams.quick4j.web.model.aquaculture" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="tjyear" property="tjyear" jdbcType="VARCHAR" />
+    <result column="tjmonth" property="tjmonth" jdbcType="VARCHAR" />
+    <result column="tjday" property="tjday" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="county" property="county" jdbcType="VARCHAR" />
+    <result column="village" property="village" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="longitude" property="longitude" jdbcType="DOUBLE" />
+    <result column="latitude" property="latitude" jdbcType="DOUBLE" />
+    <result column="sc_way" property="scWay" jdbcType="VARCHAR" />
+    <result column="yzsyxz" property="yzsyxz" jdbcType="VARCHAR" />
+    <result column="yzcsl" property="yzcsl" jdbcType="DOUBLE" />
+    <result column="yzc_num" property="yzcNum" jdbcType="INTEGER" />
+    <result column="yzc_sum" property="yzcSum" jdbcType="DOUBLE" />
+    <result column="yz_day" property="yzDay" jdbcType="DOUBLE" />
+    <result column="period" property="period" jdbcType="DOUBLE" />
+    <result column="season" property="season" jdbcType="VARCHAR" />
+    <result column="psl" property="psl" jdbcType="DOUBLE" />
+    <result column="rjsl_day" property="rjslDay" jdbcType="DOUBLE" />
+    <result column="rjsl_year" property="rjslYear" jdbcType="DOUBLE" />
+    <result column="spareone" property="spareone" jdbcType="VARCHAR" />
+    <result column="sparetwo" property="sparetwo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, tjyear, tjmonth, tjday, name, city, county, village, address, longitude, latitude, 
+    sc_way, yzsyxz, yzcsl, yzc_num, yzc_sum, yz_day, period, season, psl, rjsl_day, rjsl_year, 
+    spareone, sparetwo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from aquaculture
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from aquaculture
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.eliteams.quick4j.web.model.aquaculture" >
+    insert into aquaculture (id, tjyear, tjmonth, 
+      tjday, name, city, 
+      county, village, address, 
+      longitude, latitude, sc_way, 
+      yzsyxz, yzcsl, yzc_num, 
+      yzc_sum, yz_day, period, 
+      season, psl, rjsl_day, 
+      rjsl_year, spareone, sparetwo
+      )
+    values (#{id,jdbcType=INTEGER}, #{tjyear,jdbcType=VARCHAR}, #{tjmonth,jdbcType=VARCHAR}, 
+      #{tjday,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{county,jdbcType=VARCHAR}, #{village,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{longitude,jdbcType=DOUBLE}, #{latitude,jdbcType=DOUBLE}, #{scWay,jdbcType=VARCHAR}, 
+      #{yzsyxz,jdbcType=VARCHAR}, #{yzcsl,jdbcType=DOUBLE}, #{yzcNum,jdbcType=INTEGER}, 
+      #{yzcSum,jdbcType=DOUBLE}, #{yzDay,jdbcType=DOUBLE}, #{period,jdbcType=DOUBLE}, 
+      #{season,jdbcType=VARCHAR}, #{psl,jdbcType=DOUBLE}, #{rjslDay,jdbcType=DOUBLE}, 
+      #{rjslYear,jdbcType=DOUBLE}, #{spareone,jdbcType=VARCHAR}, #{sparetwo,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.eliteams.quick4j.web.model.aquaculture" >
+    insert into aquaculture
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="tjyear != null" >
+        tjyear,
+      </if>
+      <if test="tjmonth != null" >
+        tjmonth,
+      </if>
+      <if test="tjday != null" >
+        tjday,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="county != null" >
+        county,
+      </if>
+      <if test="village != null" >
+        village,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="longitude != null" >
+        longitude,
+      </if>
+      <if test="latitude != null" >
+        latitude,
+      </if>
+      <if test="scWay != null" >
+        sc_way,
+      </if>
+      <if test="yzsyxz != null" >
+        yzsyxz,
+      </if>
+      <if test="yzcsl != null" >
+        yzcsl,
+      </if>
+      <if test="yzcNum != null" >
+        yzc_num,
+      </if>
+      <if test="yzcSum != null" >
+        yzc_sum,
+      </if>
+      <if test="yzDay != null" >
+        yz_day,
+      </if>
+      <if test="period != null" >
+        period,
+      </if>
+      <if test="season != null" >
+        season,
+      </if>
+      <if test="psl != null" >
+        psl,
+      </if>
+      <if test="rjslDay != null" >
+        rjsl_day,
+      </if>
+      <if test="rjslYear != null" >
+        rjsl_year,
+      </if>
+      <if test="spareone != null" >
+        spareone,
+      </if>
+      <if test="sparetwo != null" >
+        sparetwo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="tjyear != null" >
+        #{tjyear,jdbcType=VARCHAR},
+      </if>
+      <if test="tjmonth != null" >
+        #{tjmonth,jdbcType=VARCHAR},
+      </if>
+      <if test="tjday != null" >
+        #{tjday,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="village != null" >
+        #{village,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        #{longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="latitude != null" >
+        #{latitude,jdbcType=DOUBLE},
+      </if>
+      <if test="scWay != null" >
+        #{scWay,jdbcType=VARCHAR},
+      </if>
+      <if test="yzsyxz != null" >
+        #{yzsyxz,jdbcType=VARCHAR},
+      </if>
+      <if test="yzcsl != null" >
+        #{yzcsl,jdbcType=DOUBLE},
+      </if>
+      <if test="yzcNum != null" >
+        #{yzcNum,jdbcType=INTEGER},
+      </if>
+      <if test="yzcSum != null" >
+        #{yzcSum,jdbcType=DOUBLE},
+      </if>
+      <if test="yzDay != null" >
+        #{yzDay,jdbcType=DOUBLE},
+      </if>
+      <if test="period != null" >
+        #{period,jdbcType=DOUBLE},
+      </if>
+      <if test="season != null" >
+        #{season,jdbcType=VARCHAR},
+      </if>
+      <if test="psl != null" >
+        #{psl,jdbcType=DOUBLE},
+      </if>
+      <if test="rjslDay != null" >
+        #{rjslDay,jdbcType=DOUBLE},
+      </if>
+      <if test="rjslYear != null" >
+        #{rjslYear,jdbcType=DOUBLE},
+      </if>
+      <if test="spareone != null" >
+        #{spareone,jdbcType=VARCHAR},
+      </if>
+      <if test="sparetwo != null" >
+        #{sparetwo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.eliteams.quick4j.web.model.aquaculture" >
+    update aquaculture
+    <set >
+      <if test="tjyear != null" >
+        tjyear = #{tjyear,jdbcType=VARCHAR},
+      </if>
+      <if test="tjmonth != null" >
+        tjmonth = #{tjmonth,jdbcType=VARCHAR},
+      </if>
+      <if test="tjday != null" >
+        tjday = #{tjday,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        county = #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="village != null" >
+        village = #{village,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        longitude = #{longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="latitude != null" >
+        latitude = #{latitude,jdbcType=DOUBLE},
+      </if>
+      <if test="scWay != null" >
+        sc_way = #{scWay,jdbcType=VARCHAR},
+      </if>
+      <if test="yzsyxz != null" >
+        yzsyxz = #{yzsyxz,jdbcType=VARCHAR},
+      </if>
+      <if test="yzcsl != null" >
+        yzcsl = #{yzcsl,jdbcType=DOUBLE},
+      </if>
+      <if test="yzcNum != null" >
+        yzc_num = #{yzcNum,jdbcType=INTEGER},
+      </if>
+      <if test="yzcSum != null" >
+        yzc_sum = #{yzcSum,jdbcType=DOUBLE},
+      </if>
+      <if test="yzDay != null" >
+        yz_day = #{yzDay,jdbcType=DOUBLE},
+      </if>
+      <if test="period != null" >
+        period = #{period,jdbcType=DOUBLE},
+      </if>
+      <if test="season != null" >
+        season = #{season,jdbcType=VARCHAR},
+      </if>
+      <if test="psl != null" >
+        psl = #{psl,jdbcType=DOUBLE},
+      </if>
+      <if test="rjslDay != null" >
+        rjsl_day = #{rjslDay,jdbcType=DOUBLE},
+      </if>
+      <if test="rjslYear != null" >
+        rjsl_year = #{rjslYear,jdbcType=DOUBLE},
+      </if>
+      <if test="spareone != null" >
+        spareone = #{spareone,jdbcType=VARCHAR},
+      </if>
+      <if test="sparetwo != null" >
+        sparetwo = #{sparetwo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.eliteams.quick4j.web.model.aquaculture" >
+    update aquaculture
+    set tjyear = #{tjyear,jdbcType=VARCHAR},
+      tjmonth = #{tjmonth,jdbcType=VARCHAR},
+      tjday = #{tjday,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      county = #{county,jdbcType=VARCHAR},
+      village = #{village,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=DOUBLE},
+      latitude = #{latitude,jdbcType=DOUBLE},
+      sc_way = #{scWay,jdbcType=VARCHAR},
+      yzsyxz = #{yzsyxz,jdbcType=VARCHAR},
+      yzcsl = #{yzcsl,jdbcType=DOUBLE},
+      yzc_num = #{yzcNum,jdbcType=INTEGER},
+      yzc_sum = #{yzcSum,jdbcType=DOUBLE},
+      yz_day = #{yzDay,jdbcType=DOUBLE},
+      period = #{period,jdbcType=DOUBLE},
+      season = #{season,jdbcType=VARCHAR},
+      psl = #{psl,jdbcType=DOUBLE},
+      rjsl_day = #{rjslDay,jdbcType=DOUBLE},
+      rjsl_year = #{rjslYear,jdbcType=DOUBLE},
+      spareone = #{spareone,jdbcType=VARCHAR},
+      sparetwo = #{sparetwo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eliteams.quick4j.web.dao.productMapper" >
+  <resultMap id="BaseResultMap" type="com.eliteams.quick4j.web.model.product" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="tjyear" property="tjyear" jdbcType="VARCHAR" />
+    <result column="tjmonth" property="tjmonth" jdbcType="VARCHAR" />
+    <result column="tjday" property="tjday" jdbcType="VARCHAR" />
+    <result column="USCC_Code" property="usccCode" jdbcType="VARCHAR" />
+    <result column="cp_type" property="cpType" jdbcType="VARCHAR" />
+    <result column="cp_unit" property="cpUnit" jdbcType="VARCHAR" />
+    <result column="cp_sum" property="cpSum" jdbcType="DOUBLE" />
+    <result column="sc_tech" property="scTech" jdbcType="VARCHAR" />
+    <result column="spareone" property="spareone" jdbcType="VARCHAR" />
+    <result column="sparetwo" property="sparetwo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, tjyear, tjmonth, tjday, USCC_Code, cp_type, cp_unit, cp_sum, sc_tech, spareone, 
+    sparetwo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from product
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from product
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.eliteams.quick4j.web.model.product" >
+    insert into product (id, tjyear, tjmonth, 
+      tjday, USCC_Code, cp_type, 
+      cp_unit, cp_sum, sc_tech, 
+      spareone, sparetwo)
+    values (#{id,jdbcType=INTEGER}, #{tjyear,jdbcType=VARCHAR}, #{tjmonth,jdbcType=VARCHAR}, 
+      #{tjday,jdbcType=VARCHAR}, #{usccCode,jdbcType=VARCHAR}, #{cpType,jdbcType=VARCHAR}, 
+      #{cpUnit,jdbcType=VARCHAR}, #{cpSum,jdbcType=DOUBLE}, #{scTech,jdbcType=VARCHAR}, 
+      #{spareone,jdbcType=VARCHAR}, #{sparetwo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.eliteams.quick4j.web.model.product" >
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="tjyear != null" >
+        tjyear,
+      </if>
+      <if test="tjmonth != null" >
+        tjmonth,
+      </if>
+      <if test="tjday != null" >
+        tjday,
+      </if>
+      <if test="usccCode != null" >
+        USCC_Code,
+      </if>
+      <if test="cpType != null" >
+        cp_type,
+      </if>
+      <if test="cpUnit != null" >
+        cp_unit,
+      </if>
+      <if test="cpSum != null" >
+        cp_sum,
+      </if>
+      <if test="scTech != null" >
+        sc_tech,
+      </if>
+      <if test="spareone != null" >
+        spareone,
+      </if>
+      <if test="sparetwo != null" >
+        sparetwo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="tjyear != null" >
+        #{tjyear,jdbcType=VARCHAR},
+      </if>
+      <if test="tjmonth != null" >
+        #{tjmonth,jdbcType=VARCHAR},
+      </if>
+      <if test="tjday != null" >
+        #{tjday,jdbcType=VARCHAR},
+      </if>
+      <if test="usccCode != null" >
+        #{usccCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cpType != null" >
+        #{cpType,jdbcType=VARCHAR},
+      </if>
+      <if test="cpUnit != null" >
+        #{cpUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="cpSum != null" >
+        #{cpSum,jdbcType=DOUBLE},
+      </if>
+      <if test="scTech != null" >
+        #{scTech,jdbcType=VARCHAR},
+      </if>
+      <if test="spareone != null" >
+        #{spareone,jdbcType=VARCHAR},
+      </if>
+      <if test="sparetwo != null" >
+        #{sparetwo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.eliteams.quick4j.web.model.product" >
+    update product
+    <set >
+      <if test="tjyear != null" >
+        tjyear = #{tjyear,jdbcType=VARCHAR},
+      </if>
+      <if test="tjmonth != null" >
+        tjmonth = #{tjmonth,jdbcType=VARCHAR},
+      </if>
+      <if test="tjday != null" >
+        tjday = #{tjday,jdbcType=VARCHAR},
+      </if>
+      <if test="usccCode != null" >
+        USCC_Code = #{usccCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cpType != null" >
+        cp_type = #{cpType,jdbcType=VARCHAR},
+      </if>
+      <if test="cpUnit != null" >
+        cp_unit = #{cpUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="cpSum != null" >
+        cp_sum = #{cpSum,jdbcType=DOUBLE},
+      </if>
+      <if test="scTech != null" >
+        sc_tech = #{scTech,jdbcType=VARCHAR},
+      </if>
+      <if test="spareone != null" >
+        spareone = #{spareone,jdbcType=VARCHAR},
+      </if>
+      <if test="sparetwo != null" >
+        sparetwo = #{sparetwo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.eliteams.quick4j.web.model.product" >
+    update product
+    set tjyear = #{tjyear,jdbcType=VARCHAR},
+      tjmonth = #{tjmonth,jdbcType=VARCHAR},
+      tjday = #{tjday,jdbcType=VARCHAR},
+      USCC_Code = #{usccCode,jdbcType=VARCHAR},
+      cp_type = #{cpType,jdbcType=VARCHAR},
+      cp_unit = #{cpUnit,jdbcType=VARCHAR},
+      cp_sum = #{cpSum,jdbcType=DOUBLE},
+      sc_tech = #{scTech,jdbcType=VARCHAR},
+      spareone = #{spareone,jdbcType=VARCHAR},
+      sparetwo = #{sparetwo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
