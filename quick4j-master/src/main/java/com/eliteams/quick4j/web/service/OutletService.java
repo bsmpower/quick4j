@@ -14,6 +14,8 @@ public interface OutletService{
      */
     List<outlet> selectPwk(outlet ot);
 
+    int deleteByids(int[] ids);
+
     List<outlet> selectBypage(String pageNow, outlet ot);
 
 }

@@ -6,11 +6,21 @@ import com.eliteams.quick4j.web.model.outlet;
 import org.junit.Test;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 public class OutletMapperTest extends TestSupport {
     @Resource
     private outletMapper outletMapperTest;
+
+    @Test
+    public void outletMapperTest1(){
+        outlet ot = new outlet();
+        ot.setTjyear("2019");
+        List<outlet> list = new ArrayList<>();
+        list = outletMapperTest.selectPwk(ot);
+        System.out.println(list.size());
+    }
 
     @Test
     public void outletMapperTest(){

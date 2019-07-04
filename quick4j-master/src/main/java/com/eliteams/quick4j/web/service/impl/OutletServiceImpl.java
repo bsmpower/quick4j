@@ -25,4 +25,15 @@ public class OutletServiceImpl implements OutletService{
     public List<outlet> selectBypage(String pageNow, outlet ot){
         return null;
     }
+
+    @Override
+    public int  deleteByids(int[] ids){
+        for(int i = 0; i < ids.length; i ++){
+            int flag = outletmapper.deleteByPrimaryKey(ids[i]);
+            if(flag == 0){
+                return 0;
+            }
+        }
+        return 1;
+    }
 }

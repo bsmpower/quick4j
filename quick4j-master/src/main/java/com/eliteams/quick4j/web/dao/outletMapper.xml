@@ -1,55 +1,55 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.eliteams.quick4j.web.dao.outletMapper" >
-  <resultMap id="BaseResultMap" type="com.eliteams.quick4j.web.model.outlet" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="tjyear" property="tjyear" jdbcType="VARCHAR" />
-    <result column="tjmonth" property="tjmonth" jdbcType="VARCHAR" />
-    <result column="tjday" property="tjday" jdbcType="VARCHAR" />
-    <result column="pwk_code" property="pwkCode" jdbcType="VARCHAR" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="pwk_name" property="pwkName" jdbcType="VARCHAR" />
-    <result column="pwk_type" property="pwkType" jdbcType="VARCHAR" />
-    <result column="city" property="city" jdbcType="VARCHAR" />
-    <result column="county" property="county" jdbcType="VARCHAR" />
-    <result column="village" property="village" jdbcType="VARCHAR" />
-    <result column="address" property="address" jdbcType="VARCHAR" />
-    <result column="longitude" property="longitude" jdbcType="DOUBLE" />
-    <result column="latitude" property="latitude" jdbcType="DOUBLE" />
-    <result column="is_shenpi" property="isShenpi" jdbcType="VARCHAR" />
-    <result column="shenpi" property="shenpi" jdbcType="VARCHAR" />
-    <result column="main_type" property="mainType" jdbcType="VARCHAR" />
-    <result column="day_allow" property="dayAllow" jdbcType="DOUBLE" />
-    <result column="year_allow" property="yearAllow" jdbcType="DOUBLE" />
-    <result column="is_permit" property="isPermit" jdbcType="VARCHAR" />
-    <result column="pw_code" property="pwCode" jdbcType="VARCHAR" />
-    <result column="usetime" property="usetime" jdbcType="VARCHAR" />
-    <result column="is_inlaw" property="isInlaw" jdbcType="VARCHAR" />
-    <result column="is_reasonable" property="isReasonable" jdbcType="VARCHAR" />
-    <result column="position" property="position" jdbcType="VARCHAR" />
-    <result column="process_tech" property="processTech" jdbcType="VARCHAR" />
-    <result column="emission_mode" property="emissionMode" jdbcType="VARCHAR" />
-    <result column="pwqx" property="pwqx" jdbcType="VARCHAR" />
-    <result column="river_mode" property="riverMode" jdbcType="VARCHAR" />
-    <result column="river_name" property="riverName" jdbcType="VARCHAR" />
-    <result column="river_level" property="riverLevel" jdbcType="VARCHAR" />
-    <result column="river_type" property="riverType" jdbcType="VARCHAR" />
-    <result column="tosea" property="tosea" jdbcType="VARCHAR" />
-    <result column="sea_mode" property="seaMode" jdbcType="VARCHAR" />
-    <result column="sea_name" property="seaName" jdbcType="VARCHAR" />
-    <result column="emission_standard" property="emissionStandard" jdbcType="VARCHAR" />
-    <result column="river_gnq" property="riverGnq" jdbcType="VARCHAR" />
-    <result column="river_szmb" property="riverSzmb" jdbcType="VARCHAR" />
-    <result column="hy_gnq" property="hyGnq" jdbcType="VARCHAR" />
-    <result column="hy_szmb" property="hySzmb" jdbcType="VARCHAR" />
-    <result column="hysea_gnq" property="hyseaGnq" jdbcType="VARCHAR" />
-    <result column="hysea_szmb" property="hyseaSzmb" jdbcType="VARCHAR" />
-    <result column="is_get" property="isGet" jdbcType="VARCHAR" />
-    <result column="noget_items" property="nogetItems" jdbcType="VARCHAR" />
-    <result column="spareone" property="spareone" jdbcType="VARCHAR" />
-    <result column="sparetwo" property="sparetwo" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
+<mapper namespace="com.eliteams.quick4j.web.dao.outletMapper">
+    <resultMap id="BaseResultMap" type="com.eliteams.quick4j.web.model.outlet">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="tjyear" property="tjyear" jdbcType="VARCHAR"/>
+        <result column="tjmonth" property="tjmonth" jdbcType="VARCHAR"/>
+        <result column="tjday" property="tjday" jdbcType="VARCHAR"/>
+        <result column="pwk_code" property="pwkCode" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="pwk_name" property="pwkName" jdbcType="VARCHAR"/>
+        <result column="pwk_type" property="pwkType" jdbcType="VARCHAR"/>
+        <result column="city" property="city" jdbcType="VARCHAR"/>
+        <result column="county" property="county" jdbcType="VARCHAR"/>
+        <result column="village" property="village" jdbcType="VARCHAR"/>
+        <result column="address" property="address" jdbcType="VARCHAR"/>
+        <result column="longitude" property="longitude" jdbcType="DOUBLE"/>
+        <result column="latitude" property="latitude" jdbcType="DOUBLE"/>
+        <result column="is_shenpi" property="isShenpi" jdbcType="VARCHAR"/>
+        <result column="shenpi" property="shenpi" jdbcType="VARCHAR"/>
+        <result column="main_type" property="mainType" jdbcType="VARCHAR"/>
+        <result column="day_allow" property="dayAllow" jdbcType="DOUBLE"/>
+        <result column="year_allow" property="yearAllow" jdbcType="DOUBLE"/>
+        <result column="is_permit" property="isPermit" jdbcType="VARCHAR"/>
+        <result column="pw_code" property="pwCode" jdbcType="VARCHAR"/>
+        <result column="usetime" property="usetime" jdbcType="VARCHAR"/>
+        <result column="is_inlaw" property="isInlaw" jdbcType="VARCHAR"/>
+        <result column="is_reasonable" property="isReasonable" jdbcType="VARCHAR"/>
+        <result column="position" property="position" jdbcType="VARCHAR"/>
+        <result column="process_tech" property="processTech" jdbcType="VARCHAR"/>
+        <result column="emission_mode" property="emissionMode" jdbcType="VARCHAR"/>
+        <result column="pwqx" property="pwqx" jdbcType="VARCHAR"/>
+        <result column="river_mode" property="riverMode" jdbcType="VARCHAR"/>
+        <result column="river_name" property="riverName" jdbcType="VARCHAR"/>
+        <result column="river_level" property="riverLevel" jdbcType="VARCHAR"/>
+        <result column="river_type" property="riverType" jdbcType="VARCHAR"/>
+        <result column="tosea" property="tosea" jdbcType="VARCHAR"/>
+        <result column="sea_mode" property="seaMode" jdbcType="VARCHAR"/>
+        <result column="sea_name" property="seaName" jdbcType="VARCHAR"/>
+        <result column="emission_standard" property="emissionStandard" jdbcType="VARCHAR"/>
+        <result column="river_gnq" property="riverGnq" jdbcType="VARCHAR"/>
+        <result column="river_szmb" property="riverSzmb" jdbcType="VARCHAR"/>
+        <result column="hy_gnq" property="hyGnq" jdbcType="VARCHAR"/>
+        <result column="hy_szmb" property="hySzmb" jdbcType="VARCHAR"/>
+        <result column="hysea_gnq" property="hyseaGnq" jdbcType="VARCHAR"/>
+        <result column="hysea_szmb" property="hyseaSzmb" jdbcType="VARCHAR"/>
+        <result column="is_get" property="isGet" jdbcType="VARCHAR"/>
+        <result column="noget_items" property="nogetItems" jdbcType="VARCHAR"/>
+        <result column="spareone" property="spareone" jdbcType="VARCHAR"/>
+        <result column="sparetwo" property="sparetwo" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     id, tjyear, tjmonth, tjday, pwk_code, `name`, pwk_name, pwk_type, city, county, village,
     address, longitude, latitude, is_shenpi, shenpi, main_type, day_allow, year_allow, 
     is_permit, pw_code, usetime, is_inlaw, is_reasonable, `position`, process_tech, emission_mode,
@@ -57,34 +57,159 @@
     emission_standard, river_gnq, river_szmb, hy_gnq, hy_szmb, hysea_gnq, hysea_szmb, 
     is_get, noget_items, spareone, sparetwo
   </sql>
-  <select id="selectPwk" resultMap="BaseResultMap" parameterType="com.eliteams.quick4j.web.model.outlet">
-    SELECT
-    <include refid="Base_Column_List" />
-    FROM  outlet
-    <where>
-    <if test="id != null">
-      and id = #{id}
-    </if>
-
-    <if test="name != null">
-      and `name` = #{name}
-    </if>
-      <if test="pwkCode != null">
-        and pwk_code = #{pwkCode}
-      </if>
-    </where>
-  </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from outlet
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="selectPwk" resultMap="BaseResultMap" parameterType="com.eliteams.quick4j.web.model.outlet" resultType="com.eliteams.quick4j.web.model.outlet">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM outlet
+        <where>
+            <if test="tjyear != null and tjyear !=''">
+                AND tjyear = #{tjyear,jdbcType=VARCHAR}
+            </if>
+            <if test="tjmonth != null and tjmonth !=''" >
+                AND tjmonth = #{tjmonth,jdbcType=VARCHAR}
+            </if>
+            <if test="tjday != null and tjday !=''">
+                AND tjday = #{tjday,jdbcType=VARCHAR}
+            </if>
+            <if test="pwkCode != null and pwkCode !=''">
+                AND pwk_code = #{pwkCode,jdbcType=VARCHAR}
+            </if>
+            <if test="name != null and name !=''">
+                AND `name` = #{name,jdbcType=VARCHAR}
+            </if>
+            <if test="pwkName != null and pwkName !=''">
+                AND pwk_name = #{pwkName,jdbcType=VARCHAR}
+            </if>
+            <if test="pwkType != null and pwkType !=''">
+                AND pwk_type = #{pwkType,jdbcType=VARCHAR}
+            </if>
+            <if test="city != null and city !=''">
+                AND city = #{city,jdbcType=VARCHAR}
+            </if>
+            <if test="county != null and county !=''">
+                AND county = #{county,jdbcType=VARCHAR}
+            </if>
+            <if test="village != null and village !=''">
+                AND village = #{village,jdbcType=VARCHAR}
+            </if>
+            <if test="address != null and address !=''">
+                AND address = #{address,jdbcType=VARCHAR}
+            </if>
+            <if test="longitude != null and longitude !=''">
+                AND longitude = #{longitude,jdbcType=DOUBLE}
+            </if>
+            <if test="latitude != null and latitude !=''">
+                AND latitude = #{latitude,jdbcType=DOUBLE}
+            </if>
+            <if test="isShenpi != null and isShenpi !=''">
+                AND is_shenpi = #{isShenpi,jdbcType=VARCHAR}
+            </if>
+            <if test="shenpi != null and shenpi !=''" >
+                AND shenpi = #{shenpi,jdbcType=VARCHAR}
+            </if>
+            <if test="mainType != null and mainType !=''">
+                main_type = #{mainType,jdbcType=VARCHAR}
+            </if>
+            <if test="dayAllow != null and dayAllow !=''">
+                AND day_allow = #{dayAllow,jdbcType=DOUBLE}
+            </if>
+            <if test="yearAllow != null and yearAllow !=''">
+                AND year_allow = #{yearAllow,jdbcType=DOUBLE}
+            </if>
+            <if test="isPermit != null and isPermit !=''">
+                AND is_permit = #{isPermit,jdbcType=VARCHAR}
+            </if>
+            <if test="pwCode != null and pwCode !=''">
+                AND pw_code = #{pwCode,jdbcType=VARCHAR}
+            </if>
+            <if test="usetime != null and usetime !=''">
+                AND usetime = #{usetime,jdbcType=VARCHAR}
+            </if>
+            <if test="isInlaw != null and isInlaw !=''">
+                AND is_inlaw = #{isInlaw,jdbcType=VARCHAR}
+            </if>
+            <if test="isReasonable != null and isReasonable !=''">
+                AND is_reasonable = #{isReasonable,jdbcType=VARCHAR}
+            </if>
+            <if test="position != null and position !=''">
+                AND `position` = #{position,jdbcType=VARCHAR}
+            </if>
+            <if test="processTech != null and processTech !=''">
+                AND process_tech = #{processTech,jdbcType=VARCHAR}
+            </if>
+            <if test="emissionMode != null and emissionMode !=''">
+                AND emission_mode = #{emissionMode,jdbcType=VARCHAR}
+            </if>
+            <if test="pwqx != null and pwqx ！=''">
+                AND pwqx = #{pwqx,jdbcType=VARCHAR}
+            </if>
+            <if test="riverMode != null and riverMode !=''">
+                AND river_mode = #{riverMode,jdbcType=VARCHAR}
+            </if>
+            <if test="riverName != null and riverName !=''">
+                AND river_name = #{riverName,jdbcType=VARCHAR}
+            </if>
+            <if test="riverLevel != null and riverLevel !=''">
+                AND river_level = #{riverLevel,jdbcType=VARCHAR}
+            </if>
+            <if test="riverType != null and riverType !=''">
+                AND river_type = #{riverType,jdbcType=VARCHAR}
+            </if>
+            <if test="tosea != null and tosea !=''">
+                AND tosea = #{tosea,jdbcType=VARCHAR}
+            </if>
+            <if test="seaMode != null and seaMode !=''">
+                AND sea_mode = #{seaMode,jdbcType=VARCHAR}
+            </if>
+            <if test="seaName != null and seaName !=''">
+                AND sea_name = #{seaName,jdbcType=VARCHAR}
+            </if>
+            <if test="emissionStandard != null and emissionStandard !=''">
+                AND emission_standard = #{emissionStandard,jdbcType=VARCHAR}
+            </if>
+            <if test="riverGnq != null and riverGnq !=''">
+                AND river_gnq = #{riverGnq,jdbcType=VARCHAR}
+            </if>
+            <if test="riverSzmb != null and riverSzmb !=''">
+                AND river_szmb = #{riverSzmb,jdbcType=VARCHAR}
+            </if>
+            <if test="hyGnq != null and hyGnq !=''">
+                AND hy_gnq = #{hyGnq,jdbcType=VARCHAR}
+            </if>
+            <if test="hySzmb != null and hySzmb !=''">
+                AND hy_szmb = #{hySzmb,jdbcType=VARCHAR}
+            </if>
+            <if test="hyseaGnq != null and hyseaGnq !=''">
+                AND hysea_gnq = #{hyseaGnq,jdbcType=VARCHAR}
+            </if>
+            <if test="hyseaSzmb != null and hyseaSzmb !=''">
+                AND hysea_szmb = #{hyseaSzmb,jdbcType=VARCHAR}
+            </if>
+            <if test="isGet != null and isGet !=''">
+                AND is_get = #{isGet,jdbcType=VARCHAR}
+            </if>
+            <if test="nogetItems != null and nogetItems !=''">
+                AND noget_items = #{nogetItems,jdbcType=VARCHAR}
+            </if>
+            <if test="spareone != null and spareone !=''">
+                AND spareone = #{spareone,jdbcType=VARCHAR}
+            </if>
+            <if test="sparetwo != null and sparetwo !=''">
+                AND sparetwo = #{sparetwo,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from outlet
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from outlet
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.eliteams.quick4j.web.model.outlet" >
+    <insert id="insert" parameterType="com.eliteams.quick4j.web.model.outlet">
     insert into outlet (id, tjyear, tjmonth, 
       tjday, pwk_code, name, 
       pwk_name, pwk_type, city, 
@@ -118,431 +243,431 @@
       #{isGet,jdbcType=VARCHAR}, #{nogetItems,jdbcType=VARCHAR}, #{spareone,jdbcType=VARCHAR}, 
       #{sparetwo,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.eliteams.quick4j.web.model.outlet" >
-    insert into outlet
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="tjyear != null" >
-        tjyear,
-      </if>
-      <if test="tjmonth != null" >
-        tjmonth,
-      </if>
-      <if test="tjday != null" >
-        tjday,
-      </if>
-      <if test="pwkCode != null" >
-        pwk_code,
-      </if>
-      <if test="name != null" >
-        name,
-      </if>
-      <if test="pwkName != null" >
-        pwk_name,
-      </if>
-      <if test="pwkType != null" >
-        pwk_type,
-      </if>
-      <if test="city != null" >
-        city,
-      </if>
-      <if test="county != null" >
-        county,
-      </if>
-      <if test="village != null" >
-        village,
-      </if>
-      <if test="address != null" >
-        address,
-      </if>
-      <if test="longitude != null" >
-        longitude,
-      </if>
-      <if test="latitude != null" >
-        latitude,
-      </if>
-      <if test="isShenpi != null" >
-        is_shenpi,
-      </if>
-      <if test="shenpi != null" >
-        shenpi,
-      </if>
-      <if test="mainType != null" >
-        main_type,
-      </if>
-      <if test="dayAllow != null" >
-        day_allow,
-      </if>
-      <if test="yearAllow != null" >
-        year_allow,
-      </if>
-      <if test="isPermit != null" >
-        is_permit,
-      </if>
-      <if test="pwCode != null" >
-        pw_code,
-      </if>
-      <if test="usetime != null" >
-        usetime,
-      </if>
-      <if test="isInlaw != null" >
-        is_inlaw,
-      </if>
-      <if test="isReasonable != null" >
-        is_reasonable,
-      </if>
-      <if test="position != null" >
-        position,
-      </if>
-      <if test="processTech != null" >
-        process_tech,
-      </if>
-      <if test="emissionMode != null" >
-        emission_mode,
-      </if>
-      <if test="pwqx != null" >
-        pwqx,
-      </if>
-      <if test="riverMode != null" >
-        river_mode,
-      </if>
-      <if test="riverName != null" >
-        river_name,
-      </if>
-      <if test="riverLevel != null" >
-        river_level,
-      </if>
-      <if test="riverType != null" >
-        river_type,
-      </if>
-      <if test="tosea != null" >
-        tosea,
-      </if>
-      <if test="seaMode != null" >
-        sea_mode,
-      </if>
-      <if test="seaName != null" >
-        sea_name,
-      </if>
-      <if test="emissionStandard != null" >
-        emission_standard,
-      </if>
-      <if test="riverGnq != null" >
-        river_gnq,
-      </if>
-      <if test="riverSzmb != null" >
-        river_szmb,
-      </if>
-      <if test="hyGnq != null" >
-        hy_gnq,
-      </if>
-      <if test="hySzmb != null" >
-        hy_szmb,
-      </if>
-      <if test="hyseaGnq != null" >
-        hysea_gnq,
-      </if>
-      <if test="hyseaSzmb != null" >
-        hysea_szmb,
-      </if>
-      <if test="isGet != null" >
-        is_get,
-      </if>
-      <if test="nogetItems != null" >
-        noget_items,
-      </if>
-      <if test="spareone != null" >
-        spareone,
-      </if>
-      <if test="sparetwo != null" >
-        sparetwo,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="tjyear != null" >
-        #{tjyear,jdbcType=VARCHAR},
-      </if>
-      <if test="tjmonth != null" >
-        #{tjmonth,jdbcType=VARCHAR},
-      </if>
-      <if test="tjday != null" >
-        #{tjday,jdbcType=VARCHAR},
-      </if>
-      <if test="pwkCode != null" >
-        #{pwkCode,jdbcType=VARCHAR},
-      </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="pwkName != null" >
-        #{pwkName,jdbcType=VARCHAR},
-      </if>
-      <if test="pwkType != null" >
-        #{pwkType,jdbcType=VARCHAR},
-      </if>
-      <if test="city != null" >
-        #{city,jdbcType=VARCHAR},
-      </if>
-      <if test="county != null" >
-        #{county,jdbcType=VARCHAR},
-      </if>
-      <if test="village != null" >
-        #{village,jdbcType=VARCHAR},
-      </if>
-      <if test="address != null" >
-        #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="longitude != null" >
-        #{longitude,jdbcType=DOUBLE},
-      </if>
-      <if test="latitude != null" >
-        #{latitude,jdbcType=DOUBLE},
-      </if>
-      <if test="isShenpi != null" >
-        #{isShenpi,jdbcType=VARCHAR},
-      </if>
-      <if test="shenpi != null" >
-        #{shenpi,jdbcType=VARCHAR},
-      </if>
-      <if test="mainType != null" >
-        #{mainType,jdbcType=VARCHAR},
-      </if>
-      <if test="dayAllow != null" >
-        #{dayAllow,jdbcType=DOUBLE},
-      </if>
-      <if test="yearAllow != null" >
-        #{yearAllow,jdbcType=DOUBLE},
-      </if>
-      <if test="isPermit != null" >
-        #{isPermit,jdbcType=VARCHAR},
-      </if>
-      <if test="pwCode != null" >
-        #{pwCode,jdbcType=VARCHAR},
-      </if>
-      <if test="usetime != null" >
-        #{usetime,jdbcType=VARCHAR},
-      </if>
-      <if test="isInlaw != null" >
-        #{isInlaw,jdbcType=VARCHAR},
-      </if>
-      <if test="isReasonable != null" >
-        #{isReasonable,jdbcType=VARCHAR},
-      </if>
-      <if test="position != null" >
-        #{position,jdbcType=VARCHAR},
-      </if>
-      <if test="processTech != null" >
-        #{processTech,jdbcType=VARCHAR},
-      </if>
-      <if test="emissionMode != null" >
-        #{emissionMode,jdbcType=VARCHAR},
-      </if>
-      <if test="pwqx != null" >
-        #{pwqx,jdbcType=VARCHAR},
-      </if>
-      <if test="riverMode != null" >
-        #{riverMode,jdbcType=VARCHAR},
-      </if>
-      <if test="riverName != null" >
-        #{riverName,jdbcType=VARCHAR},
-      </if>
-      <if test="riverLevel != null" >
-        #{riverLevel,jdbcType=VARCHAR},
-      </if>
-      <if test="riverType != null" >
-        #{riverType,jdbcType=VARCHAR},
-      </if>
-      <if test="tosea != null" >
-        #{tosea,jdbcType=VARCHAR},
-      </if>
-      <if test="seaMode != null" >
-        #{seaMode,jdbcType=VARCHAR},
-      </if>
-      <if test="seaName != null" >
-        #{seaName,jdbcType=VARCHAR},
-      </if>
-      <if test="emissionStandard != null" >
-        #{emissionStandard,jdbcType=VARCHAR},
-      </if>
-      <if test="riverGnq != null" >
-        #{riverGnq,jdbcType=VARCHAR},
-      </if>
-      <if test="riverSzmb != null" >
-        #{riverSzmb,jdbcType=VARCHAR},
-      </if>
-      <if test="hyGnq != null" >
-        #{hyGnq,jdbcType=VARCHAR},
-      </if>
-      <if test="hySzmb != null" >
-        #{hySzmb,jdbcType=VARCHAR},
-      </if>
-      <if test="hyseaGnq != null" >
-        #{hyseaGnq,jdbcType=VARCHAR},
-      </if>
-      <if test="hyseaSzmb != null" >
-        #{hyseaSzmb,jdbcType=VARCHAR},
-      </if>
-      <if test="isGet != null" >
-        #{isGet,jdbcType=VARCHAR},
-      </if>
-      <if test="nogetItems != null" >
-        #{nogetItems,jdbcType=VARCHAR},
-      </if>
-      <if test="spareone != null" >
-        #{spareone,jdbcType=VARCHAR},
-      </if>
-      <if test="sparetwo != null" >
-        #{sparetwo,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.eliteams.quick4j.web.model.outlet" >
-    update outlet
-    <set >
-      <if test="tjyear != null" >
-        tjyear = #{tjyear,jdbcType=VARCHAR},
-      </if>
-      <if test="tjmonth != null" >
-        tjmonth = #{tjmonth,jdbcType=VARCHAR},
-      </if>
-      <if test="tjday != null" >
-        tjday = #{tjday,jdbcType=VARCHAR},
-      </if>
-      <if test="pwkCode != null" >
-        pwk_code = #{pwkCode,jdbcType=VARCHAR},
-      </if>
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="pwkName != null" >
-        pwk_name = #{pwkName,jdbcType=VARCHAR},
-      </if>
-      <if test="pwkType != null" >
-        pwk_type = #{pwkType,jdbcType=VARCHAR},
-      </if>
-      <if test="city != null" >
-        city = #{city,jdbcType=VARCHAR},
-      </if>
-      <if test="county != null" >
-        county = #{county,jdbcType=VARCHAR},
-      </if>
-      <if test="village != null" >
-        village = #{village,jdbcType=VARCHAR},
-      </if>
-      <if test="address != null" >
-        address = #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="longitude != null" >
-        longitude = #{longitude,jdbcType=DOUBLE},
-      </if>
-      <if test="latitude != null" >
-        latitude = #{latitude,jdbcType=DOUBLE},
-      </if>
-      <if test="isShenpi != null" >
-        is_shenpi = #{isShenpi,jdbcType=VARCHAR},
-      </if>
-      <if test="shenpi != null" >
-        shenpi = #{shenpi,jdbcType=VARCHAR},
-      </if>
-      <if test="mainType != null" >
-        main_type = #{mainType,jdbcType=VARCHAR},
-      </if>
-      <if test="dayAllow != null" >
-        day_allow = #{dayAllow,jdbcType=DOUBLE},
-      </if>
-      <if test="yearAllow != null" >
-        year_allow = #{yearAllow,jdbcType=DOUBLE},
-      </if>
-      <if test="isPermit != null" >
-        is_permit = #{isPermit,jdbcType=VARCHAR},
-      </if>
-      <if test="pwCode != null" >
-        pw_code = #{pwCode,jdbcType=VARCHAR},
-      </if>
-      <if test="usetime != null" >
-        usetime = #{usetime,jdbcType=VARCHAR},
-      </if>
-      <if test="isInlaw != null" >
-        is_inlaw = #{isInlaw,jdbcType=VARCHAR},
-      </if>
-      <if test="isReasonable != null" >
-        is_reasonable = #{isReasonable,jdbcType=VARCHAR},
-      </if>
-      <if test="position != null" >
-        position = #{position,jdbcType=VARCHAR},
-      </if>
-      <if test="processTech != null" >
-        process_tech = #{processTech,jdbcType=VARCHAR},
-      </if>
-      <if test="emissionMode != null" >
-        emission_mode = #{emissionMode,jdbcType=VARCHAR},
-      </if>
-      <if test="pwqx != null" >
-        pwqx = #{pwqx,jdbcType=VARCHAR},
-      </if>
-      <if test="riverMode != null" >
-        river_mode = #{riverMode,jdbcType=VARCHAR},
-      </if>
-      <if test="riverName != null" >
-        river_name = #{riverName,jdbcType=VARCHAR},
-      </if>
-      <if test="riverLevel != null" >
-        river_level = #{riverLevel,jdbcType=VARCHAR},
-      </if>
-      <if test="riverType != null" >
-        river_type = #{riverType,jdbcType=VARCHAR},
-      </if>
-      <if test="tosea != null" >
-        tosea = #{tosea,jdbcType=VARCHAR},
-      </if>
-      <if test="seaMode != null" >
-        sea_mode = #{seaMode,jdbcType=VARCHAR},
-      </if>
-      <if test="seaName != null" >
-        sea_name = #{seaName,jdbcType=VARCHAR},
-      </if>
-      <if test="emissionStandard != null" >
-        emission_standard = #{emissionStandard,jdbcType=VARCHAR},
-      </if>
-      <if test="riverGnq != null" >
-        river_gnq = #{riverGnq,jdbcType=VARCHAR},
-      </if>
-      <if test="riverSzmb != null" >
-        river_szmb = #{riverSzmb,jdbcType=VARCHAR},
-      </if>
-      <if test="hyGnq != null" >
-        hy_gnq = #{hyGnq,jdbcType=VARCHAR},
-      </if>
-      <if test="hySzmb != null" >
-        hy_szmb = #{hySzmb,jdbcType=VARCHAR},
-      </if>
-      <if test="hyseaGnq != null" >
-        hysea_gnq = #{hyseaGnq,jdbcType=VARCHAR},
-      </if>
-      <if test="hyseaSzmb != null" >
-        hysea_szmb = #{hyseaSzmb,jdbcType=VARCHAR},
-      </if>
-      <if test="isGet != null" >
-        is_get = #{isGet,jdbcType=VARCHAR},
-      </if>
-      <if test="nogetItems != null" >
-        noget_items = #{nogetItems,jdbcType=VARCHAR},
-      </if>
-      <if test="spareone != null" >
-        spareone = #{spareone,jdbcType=VARCHAR},
-      </if>
-      <if test="sparetwo != null" >
-        sparetwo = #{sparetwo,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.eliteams.quick4j.web.model.outlet" >
+    <insert id="insertSelective" parameterType="com.eliteams.quick4j.web.model.outlet">
+        insert into outlet
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="tjyear != null">
+                tjyear,
+            </if>
+            <if test="tjmonth != null">
+                tjmonth,
+            </if>
+            <if test="tjday != null">
+                tjday,
+            </if>
+            <if test="pwkCode != null">
+                pwk_code,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="pwkName != null">
+                pwk_name,
+            </if>
+            <if test="pwkType != null">
+                pwk_type,
+            </if>
+            <if test="city != null">
+                city,
+            </if>
+            <if test="county != null">
+                county,
+            </if>
+            <if test="village != null">
+                village,
+            </if>
+            <if test="address != null">
+                address,
+            </if>
+            <if test="longitude != null">
+                longitude,
+            </if>
+            <if test="latitude != null">
+                latitude,
+            </if>
+            <if test="isShenpi != null">
+                is_shenpi,
+            </if>
+            <if test="shenpi != null">
+                shenpi,
+            </if>
+            <if test="mainType != null">
+                main_type,
+            </if>
+            <if test="dayAllow != null">
+                day_allow,
+            </if>
+            <if test="yearAllow != null">
+                year_allow,
+            </if>
+            <if test="isPermit != null">
+                is_permit,
+            </if>
+            <if test="pwCode != null">
+                pw_code,
+            </if>
+            <if test="usetime != null">
+                usetime,
+            </if>
+            <if test="isInlaw != null">
+                is_inlaw,
+            </if>
+            <if test="isReasonable != null">
+                is_reasonable,
+            </if>
+            <if test="position != null">
+                position,
+            </if>
+            <if test="processTech != null">
+                process_tech,
+            </if>
+            <if test="emissionMode != null">
+                emission_mode,
+            </if>
+            <if test="pwqx != null">
+                pwqx,
+            </if>
+            <if test="riverMode != null">
+                river_mode,
+            </if>
+            <if test="riverName != null">
+                river_name,
+            </if>
+            <if test="riverLevel != null">
+                river_level,
+            </if>
+            <if test="riverType != null">
+                river_type,
+            </if>
+            <if test="tosea != null">
+                tosea,
+            </if>
+            <if test="seaMode != null">
+                sea_mode,
+            </if>
+            <if test="seaName != null">
+                sea_name,
+            </if>
+            <if test="emissionStandard != null">
+                emission_standard,
+            </if>
+            <if test="riverGnq != null">
+                river_gnq,
+            </if>
+            <if test="riverSzmb != null">
+                river_szmb,
+            </if>
+            <if test="hyGnq != null">
+                hy_gnq,
+            </if>
+            <if test="hySzmb != null">
+                hy_szmb,
+            </if>
+            <if test="hyseaGnq != null">
+                hysea_gnq,
+            </if>
+            <if test="hyseaSzmb != null">
+                hysea_szmb,
+            </if>
+            <if test="isGet != null">
+                is_get,
+            </if>
+            <if test="nogetItems != null">
+                noget_items,
+            </if>
+            <if test="spareone != null">
+                spareone,
+            </if>
+            <if test="sparetwo != null">
+                sparetwo,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="tjyear != null">
+                #{tjyear,jdbcType=VARCHAR},
+            </if>
+            <if test="tjmonth != null">
+                #{tjmonth,jdbcType=VARCHAR},
+            </if>
+            <if test="tjday != null">
+                #{tjday,jdbcType=VARCHAR},
+            </if>
+            <if test="pwkCode != null">
+                #{pwkCode,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="pwkName != null">
+                #{pwkName,jdbcType=VARCHAR},
+            </if>
+            <if test="pwkType != null">
+                #{pwkType,jdbcType=VARCHAR},
+            </if>
+            <if test="city != null">
+                #{city,jdbcType=VARCHAR},
+            </if>
+            <if test="county != null">
+                #{county,jdbcType=VARCHAR},
+            </if>
+            <if test="village != null">
+                #{village,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="longitude != null">
+                #{longitude,jdbcType=DOUBLE},
+            </if>
+            <if test="latitude != null">
+                #{latitude,jdbcType=DOUBLE},
+            </if>
+            <if test="isShenpi != null">
+                #{isShenpi,jdbcType=VARCHAR},
+            </if>
+            <if test="shenpi != null">
+                #{shenpi,jdbcType=VARCHAR},
+            </if>
+            <if test="mainType != null">
+                #{mainType,jdbcType=VARCHAR},
+            </if>
+            <if test="dayAllow != null">
+                #{dayAllow,jdbcType=DOUBLE},
+            </if>
+            <if test="yearAllow != null">
+                #{yearAllow,jdbcType=DOUBLE},
+            </if>
+            <if test="isPermit != null">
+                #{isPermit,jdbcType=VARCHAR},
+            </if>
+            <if test="pwCode != null">
+                #{pwCode,jdbcType=VARCHAR},
+            </if>
+            <if test="usetime != null">
+                #{usetime,jdbcType=VARCHAR},
+            </if>
+            <if test="isInlaw != null">
+                #{isInlaw,jdbcType=VARCHAR},
+            </if>
+            <if test="isReasonable != null">
+                #{isReasonable,jdbcType=VARCHAR},
+            </if>
+            <if test="position != null">
+                #{position,jdbcType=VARCHAR},
+            </if>
+            <if test="processTech != null">
+                #{processTech,jdbcType=VARCHAR},
+            </if>
+            <if test="emissionMode != null">
+                #{emissionMode,jdbcType=VARCHAR},
+            </if>
+            <if test="pwqx != null">
+                #{pwqx,jdbcType=VARCHAR},
+            </if>
+            <if test="riverMode != null">
+                #{riverMode,jdbcType=VARCHAR},
+            </if>
+            <if test="riverName != null">
+                #{riverName,jdbcType=VARCHAR},
+            </if>
+            <if test="riverLevel != null">
+                #{riverLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="riverType != null">
+                #{riverType,jdbcType=VARCHAR},
+            </if>
+            <if test="tosea != null">
+                #{tosea,jdbcType=VARCHAR},
+            </if>
+            <if test="seaMode != null">
+                #{seaMode,jdbcType=VARCHAR},
+            </if>
+            <if test="seaName != null">
+                #{seaName,jdbcType=VARCHAR},
+            </if>
+            <if test="emissionStandard != null">
+                #{emissionStandard,jdbcType=VARCHAR},
+            </if>
+            <if test="riverGnq != null">
+                #{riverGnq,jdbcType=VARCHAR},
+            </if>
+            <if test="riverSzmb != null">
+                #{riverSzmb,jdbcType=VARCHAR},
+            </if>
+            <if test="hyGnq != null">
+                #{hyGnq,jdbcType=VARCHAR},
+            </if>
+            <if test="hySzmb != null">
+                #{hySzmb,jdbcType=VARCHAR},
+            </if>
+            <if test="hyseaGnq != null">
+                #{hyseaGnq,jdbcType=VARCHAR},
+            </if>
+            <if test="hyseaSzmb != null">
+                #{hyseaSzmb,jdbcType=VARCHAR},
+            </if>
+            <if test="isGet != null">
+                #{isGet,jdbcType=VARCHAR},
+            </if>
+            <if test="nogetItems != null">
+                #{nogetItems,jdbcType=VARCHAR},
+            </if>
+            <if test="spareone != null">
+                #{spareone,jdbcType=VARCHAR},
+            </if>
+            <if test="sparetwo != null">
+                #{sparetwo,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.eliteams.quick4j.web.model.outlet">
+        update outlet
+        <set>
+            <if test="tjyear != null">
+                tjyear = #{tjyear,jdbcType=VARCHAR},
+            </if>
+            <if test="tjmonth != null">
+                tjmonth = #{tjmonth,jdbcType=VARCHAR},
+            </if>
+            <if test="tjday != null">
+                tjday = #{tjday,jdbcType=VARCHAR},
+            </if>
+            <if test="pwkCode != null">
+                pwk_code = #{pwkCode,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="pwkName != null">
+                pwk_name = #{pwkName,jdbcType=VARCHAR},
+            </if>
+            <if test="pwkType != null">
+                pwk_type = #{pwkType,jdbcType=VARCHAR},
+            </if>
+            <if test="city != null">
+                city = #{city,jdbcType=VARCHAR},
+            </if>
+            <if test="county != null">
+                county = #{county,jdbcType=VARCHAR},
+            </if>
+            <if test="village != null">
+                village = #{village,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="longitude != null">
+                longitude = #{longitude,jdbcType=DOUBLE},
+            </if>
+            <if test="latitude != null">
+                latitude = #{latitude,jdbcType=DOUBLE},
+            </if>
+            <if test="isShenpi != null">
+                is_shenpi = #{isShenpi,jdbcType=VARCHAR},
+            </if>
+            <if test="shenpi != null">
+                shenpi = #{shenpi,jdbcType=VARCHAR},
+            </if>
+            <if test="mainType != null">
+                main_type = #{mainType,jdbcType=VARCHAR},
+            </if>
+            <if test="dayAllow != null">
+                day_allow = #{dayAllow,jdbcType=DOUBLE},
+            </if>
+            <if test="yearAllow != null">
+                year_allow = #{yearAllow,jdbcType=DOUBLE},
+            </if>
+            <if test="isPermit != null">
+                is_permit = #{isPermit,jdbcType=VARCHAR},
+            </if>
+            <if test="pwCode != null">
+                pw_code = #{pwCode,jdbcType=VARCHAR},
+            </if>
+            <if test="usetime != null">
+                usetime = #{usetime,jdbcType=VARCHAR},
+            </if>
+            <if test="isInlaw != null">
+                is_inlaw = #{isInlaw,jdbcType=VARCHAR},
+            </if>
+            <if test="isReasonable != null">
+                is_reasonable = #{isReasonable,jdbcType=VARCHAR},
+            </if>
+            <if test="position != null">
+                position = #{position,jdbcType=VARCHAR},
+            </if>
+            <if test="processTech != null">
+                process_tech = #{processTech,jdbcType=VARCHAR},
+            </if>
+            <if test="emissionMode != null">
+                emission_mode = #{emissionMode,jdbcType=VARCHAR},
+            </if>
+            <if test="pwqx != null">
+                pwqx = #{pwqx,jdbcType=VARCHAR},
+            </if>
+            <if test="riverMode != null">
+                river_mode = #{riverMode,jdbcType=VARCHAR},
+            </if>
+            <if test="riverName != null">
+                river_name = #{riverName,jdbcType=VARCHAR},
+            </if>
+            <if test="riverLevel != null">
+                river_level = #{riverLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="riverType != null">
+                river_type = #{riverType,jdbcType=VARCHAR},
+            </if>
+            <if test="tosea != null">
+                tosea = #{tosea,jdbcType=VARCHAR},
+            </if>
+            <if test="seaMode != null">
+                sea_mode = #{seaMode,jdbcType=VARCHAR},
+            </if>
+            <if test="seaName != null">
+                sea_name = #{seaName,jdbcType=VARCHAR},
+            </if>
+            <if test="emissionStandard != null">
+                emission_standard = #{emissionStandard,jdbcType=VARCHAR},
+            </if>
+            <if test="riverGnq != null">
+                river_gnq = #{riverGnq,jdbcType=VARCHAR},
+            </if>
+            <if test="riverSzmb != null">
+                river_szmb = #{riverSzmb,jdbcType=VARCHAR},
+            </if>
+            <if test="hyGnq != null">
+                hy_gnq = #{hyGnq,jdbcType=VARCHAR},
+            </if>
+            <if test="hySzmb != null">
+                hy_szmb = #{hySzmb,jdbcType=VARCHAR},
+            </if>
+            <if test="hyseaGnq != null">
+                hysea_gnq = #{hyseaGnq,jdbcType=VARCHAR},
+            </if>
+            <if test="hyseaSzmb != null">
+                hysea_szmb = #{hyseaSzmb,jdbcType=VARCHAR},
+            </if>
+            <if test="isGet != null">
+                is_get = #{isGet,jdbcType=VARCHAR},
+            </if>
+            <if test="nogetItems != null">
+                noget_items = #{nogetItems,jdbcType=VARCHAR},
+            </if>
+            <if test="spareone != null">
+                spareone = #{spareone,jdbcType=VARCHAR},
+            </if>
+            <if test="sparetwo != null">
+                sparetwo = #{sparetwo,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.eliteams.quick4j.web.model.outlet">
     update outlet
     set tjyear = #{tjyear,jdbcType=VARCHAR},
       tjmonth = #{tjmonth,jdbcType=VARCHAR},
