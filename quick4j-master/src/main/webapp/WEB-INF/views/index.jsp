@@ -182,7 +182,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         </a>
                         <ul class="sub-menu">
                             <li>
-                                <a href="javascript:;" id="pfkdr">
+                                <a href="rest/page/pwkupload" id="pfkdr">
                                     排放口信息导入
                                 </a>
                             </li>

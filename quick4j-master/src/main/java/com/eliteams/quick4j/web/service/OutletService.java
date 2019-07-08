@@ -16,6 +16,10 @@ public interface OutletService{
 
     int deleteByids(int[] ids);
 
-    List<outlet> selectBypage(String pageNow, outlet ot);
+    List<outlet> selectByPrimaryKey(int[] id);
+
+    List<outlet> selectBypage(String pageNow, outlet ots);
+
+    int insertall(List<outlet> ot);
 
 }

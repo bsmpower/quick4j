@@ -5,6 +5,54 @@ $(function () {
     // $("#btn_add").click(function(){
     //     $('#myModal').modal();
     // });
+    $("#btn_excelout").click(function () {
+        var allData = $("#PwkInfoTable").bootstrapTable('getData');
+        var ids = new Array();
+        $(allData).each(function () {
+            ids.push(this.id);
+        });
+        console.log(ids);
+        var excelout = "rest/pwk/excelout"
+        $.ajax({
+           url: excelout,
+            type: "POST",
+            data: {"ids":ids},
+            type: "POST",
+            // dataType: "json",
+            traditional: true,
+            success: function(data){
+                alert("已经下载到E盘")
+            }
+        });
+    });
+
+
+    /**
+     * 導入exel觸發模態框
+     */
+    $("#btn_excelin").click(function(){
+        $('#myModalExcelin').modal();
+    });
+    $("#upload").click(function () {
+        $.ajax({
+            type: "POST",
+            url: "rest/upload/uploadexcel",
+            processData: false,
+            contentType: false,
+            data: new FormData($('#form1')[0]),
+            success: function (data) {
+                if (data.success) {
+                    document.getElementById("jindutiao").setAttribute("style","width:100%;");
+                    $("#jindutiao").text("100%")
+                } else {
+                    document.getElementById("jindutiao").setAttribute("style","width:60%;");
+                    $("#jindutiao").text("60%")
+                }
+            }
+
+        });
+    });
+
     $("#submitPwk").click(function () {
         var addurl = "/rest/pwk/addpwk";
         var addpwkmsc = {};
@@ -152,6 +200,7 @@ $(function () {
         });
 
     });
+
 
     $("#btn_search").click(function(){
         $('#myModalsearch').modal();
@@ -353,4 +402,18 @@ $(function () {
     $("#closeMod1").click(function () {
         $('.modal-backdrop').remove();
     })
+    $("#btn_show").click(function(){
+        // var div = document.getElementById("daohang");
+        // var w = parseInt(div.style.width);
+        // alert(w)
+        $("#btn_add").fadeToggle();
+        $("#btn_edit").fadeToggle();
+        $("#btn_delete").fadeToggle();
+        $("#btn_search").fadeToggle();
+        $("#btn_excelout").fadeToggle();
+        $("#btn_excelin").fadeToggle();
+        $("#tablecontrol").fadeToggle();
+
+        // alert(div.style.width);
+    });
 });

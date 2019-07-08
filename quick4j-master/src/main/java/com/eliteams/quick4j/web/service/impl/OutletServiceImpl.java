@@ -36,4 +36,26 @@ public class OutletServiceImpl implements OutletService{
         }
         return 1;
     }
+
+    @Override
+    public List<outlet> selectByPrimaryKey(int[] ids) {
+        List<outlet> ots = new ArrayList<>();
+        for(int i = 0; i < ids.length; i++)
+            ots.add(outletmapper.selectByPrimaryKey(ids[i]));
+        return ots;
+    }
+
+    @Override
+    public int insertall(List<outlet> ots) {
+        int length = ots.size();
+        for(outlet ot: ots ){
+            outletmapper.insertSelective(ot);
+            length--;
+        }
+        if(length == 0){
+            return 1;
+        }else {
+            return 0;
+        }
+    }
 }

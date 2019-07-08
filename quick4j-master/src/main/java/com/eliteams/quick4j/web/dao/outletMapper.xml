@@ -140,7 +140,7 @@
             <if test="emissionMode != null and emissionMode !=''">
                 AND emission_mode = #{emissionMode,jdbcType=VARCHAR}
             </if>
-            <if test="pwqx != null and pwqx ！=''">
+            <if test="pwqx != null and pwqx !=''">
                 AND pwqx = #{pwqx,jdbcType=VARCHAR}
             </if>
             <if test="riverMode != null and riverMode !=''">
