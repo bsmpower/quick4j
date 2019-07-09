@@ -56,7 +56,7 @@ public class ImageUtil {
             }
         }
 
-        System.out.println("文件上传路径："+strFolder);
+//        System.out.println("文件上传路径："+strFolder);
         return  true;
     }
 //    //文件原始地址
@@ -90,10 +90,10 @@ public class ImageUtil {
 //     * @param fileName
 //     * @return
 //     */
-//    private static String getFileExtension(String fileName){
-//        //先找到.,以.作为切割，分割文件名
-//        return fileName.substring(fileName.lastIndexOf("."));
-//    }
+    private static String getFileExtension(String fileName){
+        //先找到.,以.作为切割，分割文件名
+        return fileName.substring(fileName.lastIndexOf("."));
+    }
 //
     public static String getRandomFileName(){
         int rannum = r.nextInt(89999)+10000;

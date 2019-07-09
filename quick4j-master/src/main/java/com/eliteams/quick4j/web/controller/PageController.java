@@ -45,6 +45,15 @@ public class PageController {
     }
 
     /**
+     * 雨水排污口功能界面
+     */
+    @RequestMapping("/pwkraintable")
+    public String pwkrantable(){
+        return "pwk/pwkraintable";
+    }
+
+
+    /**
      * 404页
      */
     @RequestMapping("/404")

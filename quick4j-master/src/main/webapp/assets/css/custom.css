@@ -75,8 +75,11 @@
 }
 .btnz-info {
     color: #fff;
-    background-color: #00C0C2;
-    border-color: #00C0C2;
+    background-color: #007ACC;
+    border-color: #007ACC;
+
+    /*background-color: #00C0C2;*/
+    /*border-color: #00C0C2;*/
 }
 
 .btnz-black {

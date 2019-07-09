@@ -2,6 +2,8 @@ package com.eliteams.quick4j.web.dao;
 
 import com.eliteams.quick4j.web.model.rain_outlet;
 
+import java.util.List;
+
 public interface rain_outletMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -10,6 +12,8 @@ public interface rain_outletMapper {
     int insertSelective(rain_outlet record);
 
     rain_outlet selectByPrimaryKey(Integer id);
+
+    List<rain_outlet> selectRainoutlet(rain_outlet rot);
 
     int updateByPrimaryKeySelective(rain_outlet record);
 

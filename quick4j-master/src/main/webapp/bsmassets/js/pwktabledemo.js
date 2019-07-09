@@ -21,7 +21,17 @@ $(function () {
             // dataType: "json",
             traditional: true,
             success: function(data){
-                alert("已经下载到E盘")
+                var link = document.createElement('a');
+                //设置下载的文件名
+                link.download = "Member";
+                link.style.display = 'none';
+                //设置下载路径
+                link.href = "download/Member.xls";
+                //触发点击
+                document.body.appendChild(link);
+                link.click();
+                //移除节点
+                document.body.removeChild(link);
             }
         });
     });
@@ -48,8 +58,11 @@ $(function () {
                     document.getElementById("jindutiao").setAttribute("style","width:60%;");
                     $("#jindutiao").text("60%")
                 }
+            },
+            error:function (e) {
+                document.getElementById("jindutiao").setAttribute("style", "width:60%;");
+                $("#jindutiao").text("20%")
             }
-
         });
     });
 
