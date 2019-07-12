@@ -125,6 +125,16 @@ public class PageController {
     public String industryTrash(){
         return "enterprise/industryTrash";
     }
+
+    /**
+     * 断面信息管理
+     */
+    @RequestMapping("/emissionlist")
+    public String emissionlist(){return "emis/listEmission";}
+
+    @RequestMapping("/emisimport")
+    public String emisimport(){return "emis/emisimport";}
+
     /**
      * 404页
      */

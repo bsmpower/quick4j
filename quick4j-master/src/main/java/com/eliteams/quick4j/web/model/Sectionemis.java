@@ -1,9 +1,11 @@
 package com.eliteams.quick4j.web.model;
 
-public class section_contaminants {
+public class Sectionemis {
     private Integer id;
 
     private String dmCode;
+
+    private String dmName;
 
     private String tjyear;
 
@@ -13,21 +15,21 @@ public class section_contaminants {
 
     private Double salt;
 
-    private Double cod;
+    private Double COD;
 
-    private Double nh3;
+    private Double NH3;
 
-    private Double p;
+    private Double P;
 
-    private Double n;
+    private Double N;
 
-    private Double cr6;
+    private Double Cr6;
 
-    private Double cn;
+    private Double CN;
 
     private Double fdcjqs;
 
-    private Double bod5;
+    private Double BOD5;
 
     private Double xfw;
 
@@ -35,17 +37,17 @@ public class section_contaminants {
 
     private Double phenol;
 
-    private Double az;
+    private Double As;
 
-    private Double hg;
+    private Double Hg;
 
-    private Double hb;
+    private Double Pb;
 
-    private Double cd;
+    private Double Cd;
 
     private Double flow;
 
-    private Double ph;
+    private Double PH;
 
     private Double chloride;
 
@@ -54,10 +56,6 @@ public class section_contaminants {
     private Double ylzbmhxj;
 
     private String others;
-
-    private String isGet;
-
-    private String nogetItems;
 
     private String spareone;
 
@@ -76,7 +74,7 @@ public class section_contaminants {
     }
 
     public void setDmCode(String dmCode) {
-        this.dmCode = dmCode == null ? null : dmCode.trim();
+        this.dmCode = dmCode;
     }
 
     public String getTjyear() {
@@ -84,7 +82,7 @@ public class section_contaminants {
     }
 
     public void setTjyear(String tjyear) {
-        this.tjyear = tjyear == null ? null : tjyear.trim();
+        this.tjyear = tjyear;
     }
 
     public String getTjmonth() {
@@ -92,7 +90,7 @@ public class section_contaminants {
     }
 
     public void setTjmonth(String tjmonth) {
-        this.tjmonth = tjmonth == null ? null : tjmonth.trim();
+        this.tjmonth = tjmonth;
     }
 
     public String getTjday() {
@@ -100,7 +98,7 @@ public class section_contaminants {
     }
 
     public void setTjday(String tjday) {
-        this.tjday = tjday == null ? null : tjday.trim();
+        this.tjday = tjday;
     }
 
     public Double getSalt() {
@@ -111,52 +109,52 @@ public class section_contaminants {
         this.salt = salt;
     }
 
-    public Double getCod() {
-        return cod;
+    public Double getCOD() {
+        return COD;
     }
 
-    public void setCod(Double cod) {
-        this.cod = cod;
+    public void setCOD(Double COD) {
+        this.COD = COD;
     }
 
-    public Double getNh3() {
-        return nh3;
+    public Double getNH3() {
+        return NH3;
     }
 
-    public void setNh3(Double nh3) {
-        this.nh3 = nh3;
+    public void setNH3(Double NH3) {
+        this.NH3 = NH3;
     }
 
     public Double getP() {
-        return p;
+        return P;
     }
 
     public void setP(Double p) {
-        this.p = p;
+        P = p;
     }
 
     public Double getN() {
-        return n;
+        return N;
     }
 
     public void setN(Double n) {
-        this.n = n;
+        N = n;
     }
 
     public Double getCr6() {
-        return cr6;
+        return Cr6;
     }
 
     public void setCr6(Double cr6) {
-        this.cr6 = cr6;
+        Cr6 = cr6;
     }
 
-    public Double getCn() {
-        return cn;
+    public Double getCN() {
+        return CN;
     }
 
-    public void setCn(Double cn) {
-        this.cn = cn;
+    public void setCN(Double CN) {
+        this.CN = CN;
     }
 
     public Double getFdcjqs() {
@@ -167,12 +165,12 @@ public class section_contaminants {
         this.fdcjqs = fdcjqs;
     }
 
-    public Double getBod5() {
-        return bod5;
+    public Double getBOD5() {
+        return BOD5;
     }
 
-    public void setBod5(Double bod5) {
-        this.bod5 = bod5;
+    public void setBOD5(Double BOD5) {
+        this.BOD5 = BOD5;
     }
 
     public Double getXfw() {
@@ -199,36 +197,36 @@ public class section_contaminants {
         this.phenol = phenol;
     }
 
-    public Double getAz() {
-        return az;
+    public Double getAs() {
+        return As;
     }
 
-    public void setAz(Double az) {
-        this.az = az;
+    public void setAs(Double as) {
+        As = as;
     }
 
     public Double getHg() {
-        return hg;
+        return Hg;
     }
 
     public void setHg(Double hg) {
-        this.hg = hg;
+        Hg = hg;
     }
 
-    public Double getHb() {
-        return hb;
+    public Double getPb() {
+        return Pb;
     }
 
-    public void setHb(Double hb) {
-        this.hb = hb;
+    public void setPb(Double pb) {
+        Pb = pb;
     }
 
     public Double getCd() {
-        return cd;
+        return Cd;
     }
 
     public void setCd(Double cd) {
-        this.cd = cd;
+        Cd = cd;
     }
 
     public Double getFlow() {
@@ -239,12 +237,12 @@ public class section_contaminants {
         this.flow = flow;
     }
 
-    public Double getPh() {
-        return ph;
+    public Double getPH() {
+        return PH;
     }
 
-    public void setPh(Double ph) {
-        this.ph = ph;
+    public void setPH(Double PH) {
+        this.PH = PH;
     }
 
     public Double getChloride() {
@@ -276,23 +274,7 @@ public class section_contaminants {
     }
 
     public void setOthers(String others) {
-        this.others = others == null ? null : others.trim();
-    }
-
-    public String getIsGet() {
-        return isGet;
-    }
-
-    public void setIsGet(String isGet) {
-        this.isGet = isGet == null ? null : isGet.trim();
-    }
-
-    public String getNogetItems() {
-        return nogetItems;
-    }
-
-    public void setNogetItems(String nogetItems) {
-        this.nogetItems = nogetItems == null ? null : nogetItems.trim();
+        this.others = others;
     }
 
     public String getSpareone() {
@@ -300,7 +282,7 @@ public class section_contaminants {
     }
 
     public void setSpareone(String spareone) {
-        this.spareone = spareone == null ? null : spareone.trim();
+        this.spareone = spareone;
     }
 
     public String getSparetwo() {
@@ -308,6 +290,15 @@ public class section_contaminants {
     }
 
     public void setSparetwo(String sparetwo) {
-        this.sparetwo = sparetwo == null ? null : sparetwo.trim();
+        this.sparetwo = sparetwo;
+    }
+
+    public String getDmName() {
+        return dmName;
+    }
+
+    public void setDmName(String dmName) {
+        this.dmName = dmName;
     }
 }
+

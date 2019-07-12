@@ -71,6 +71,15 @@ $(function () {
         var addpwkmsc = {};
         /*********************************************/
         var t = $("form").serializeArray();
+        if(t[0].value=="") {document.getElementById('message').innerHTML="年份字段不可为空!";return 0;}
+        if(t[1].value=="") {document.getElementById('message').innerHTML="月份字段不可为空!";return 0;}
+        if(t[2].value=="") {document.getElementById('message').innerHTML="日期字段不可为空!";return 0;}
+        if(t[0].value.length<4) {document.getElementById('message').innerHTML="请检查年份字段!";return 0;}
+        if((t[0].value.indexOf(".")!=-1)||(t[1].value.indexOf(".")!=-1)||(t[2].value.indexOf(".")!=-1)) {document.getElementById('message').innerHTML="请检查年、月、日!";return 0;}
+        if((t[0].value<1)||(t[1].value<1)||(t[2].value<1)) {document.getElementById('message').innerHTML="请检查年、月、日!";return 0;}
+        document.getElementById('message').innerHTML=""
+        if(t[41].value !="是" && t[41].value !="否") {document.getElementById('message').innerHTML="是否达标字段，只能填是或否!";return 0;}
+
         // alert(tjyear);
         console.log(t);
         addpwkmsc.tjyear = t[0].value;

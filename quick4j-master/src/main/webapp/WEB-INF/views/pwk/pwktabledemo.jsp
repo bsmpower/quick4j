@@ -81,19 +81,19 @@
                                 <div class="col-lg-6">
                                     <div class="input-group">
                                         <span class="input-group-addon">统计年份</span>
-                                        <input name="tjyear" type="text" class="form-control" placeholder="">
+                                        <input name="tjyear" type="text" class="form-control" oninput="if(value.length>4)value=value.slice(0,4)" placeholder="">
                                         <span class="input-group-addon">注释</span>
                                     </div>
                                     <br>
                                     <div class="input-group">
                                         <span class="input-group-addon">统计月份</span>
-                                        <input name="tjmonth" type="text" class="form-control" placeholder="">
+                                        <input name="tjmonth" type="text" class="form-control" oninput="if(value>12) value=12" placeholder="">
                                         <span class="input-group-addon">注释</span>
                                     </div>
                                     <br>
                                     <div class="input-group">
                                         <span class="input-group-addon">统计日</span>
-                                        <input name="tjday" type="text" class="form-control" placeholder="">
+                                        <input name="tjday" type="text" class="form-control" oninput="if(value>31) value=31" placeholder="">
                                         <span class="input-group-addon">注释</span>
                                     </div>
                                     <br>
@@ -344,6 +344,8 @@
                     </form>
                 </div>
                 <div class="modal-footer">
+                    <div class="alert alert-warning" id="message" style="font-size: 20px">
+                    </div>
                     <button id="closeMod" type="button" class="btn btn-default" data-dismiss="modal">关闭
                     </button>
                     <button id="submitPwk" type="button" class="btn btn-primary">

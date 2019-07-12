@@ -266,21 +266,17 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="javascript:;" id="pwkdr">
+                            <a href="rest/page/emisimport" id="pwkdr">
                                 排放调查数据导入
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:;" id="pwklr">
-                                排放调查数据录入
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/rest/pwk/pwktable" id="pwkwh">
+                            <a href="rest/page/emissionlist" id="pwkwh">
                                 排放调查数据查询及维护
                             </a>
                         </li>
                     </ul>
+
                 </li>
 
                 <li class="">

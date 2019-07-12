@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eliteams.quick4j.web.dao.SectionemisMapper">
+    <select id="listSectionemis" resultType="com.eliteams.quick4j.web.model.Sectionemis">
+        select * FROM section_contaminants
+    </select>
+    <select id="selectSectionemis" resultType="com.eliteams.quick4j.web.model.Sectionemis">
+        SELECT * FROM section_contaminants
+        <where>
+            <if test="e.dmCode!=null">
+                and dm_code=#{e.dmCode}
+            </if>
+            <if test="e.dmName!=null">
+                and dm_name like concat('%',#{e.dmName},'%')
+            </if>
+            <if test="e.tjyear!=null">
+                and tjyear=#{e.tjyear}
+            </if>
+            <if test="e.tjmonth!=null">
+                and tjmonth=#{e.tjmonth}
+            </if>
+            <if test="e.salt!=null and e.salt!=0">
+                and salt>=#{e.salt}
+            </if>
+            <if test="e.COD!=null and e.COD!=0">
+                and COD>=#{e.COD}
+            </if>
+            <if test="e.NH3!=null and e.NH3!=0">
+                and NH3>=#{e.NH3}
+            </if>
+            <if test="e.P!=null and e.P!=0">
+                and P>=#{e.P}
+            </if>
+            <if test="e.N!=null and e.N!=0">
+                and N>=#{e.N}
+            </if>
+            <if test="e.Cr6!=null and e.Cr6!=0">
+                and Cr6>=#{e.Cr6}
+            </if>
+            <if test="e.CN!=null and e.CN!=0">
+                and CN>=#{e.CN}
+            </if>
+            <if test="e.fdcjqs!=null and e.fdcjqs!=0">
+                and fdcjqs>=#{e.fdcjqs}
+            </if>
+            <if test="e.BOD5!=null and e.BOD5!=0">
+                and BOD5>=#{e.BOD5}
+            </if>
+            <if test="e.xfw!=null and e.xfw!=0">
+                and xfw>=#{e.xfw}
+            </if>
+            <if test="e.oil!=null and e.oil!=0">
+                and oil>=#{e.oil}
+            </if>
+            <if test="e.phenol!=null and e.phenol!=0">
+                and phenol>=#{e.phenol}
+            </if>
+            <if test="e.As!=null and e.As!=0">
+                and `As`>=#{e.As}
+            </if>
+            <if test="e.Hg!=null and e.Hg!=0">
+                and Hg>=#{e.Hg}
+            </if>
+            <if test="e.Pb!=null and e.Pb!=0">
+                and Pb>=#{e.Pb}
+            </if>
+            <if test="e.Cd!=null and e.Cd!=0">
+                and Cd>=#{e.Cd}
+            </if>
+            <if test="e.PH!=null and e.PH!=0">
+                and PH>=#{e.PH}
+            </if>
+            <if test="e.flow!=null and e.flow!=0">
+                and flow>=#{e.flow}
+            </if>
+            <if test="e.chloride!=null and e.chloride!=0">
+                and chloride>=#{e.chloride}
+            </if>
+            <if test="e.sulfide!=null and e.sulfide!=0">
+                and sulfide>=#{e.sulfide}
+            </if>
+            <if test="e.ylzbmhxj!=null and e.ylzbmhxj!=0">
+                and ylzbmhxj>=#{e.ylzbmhxj}
+            </if>
+            <!--<if test="startdate!=null and enddate!=null">-->
+                <!--and str_to_date(concat_ws('-',tjyear,tjmonth,tjday),'%Y-%m-%d') between #{startdate} and #{enddate}-->
+            <!--</if>-->
+        </where>
+    </select>
+
+    <select id="get" parameterType="_int" resultType="Sectionemis">
+        select * from  section_contaminants  where id= #{id}
+    </select>
+
+    <insert id="addSectionemis" parameterType="Sectionemis" >
+        insert into section_contaminants (dm_code,dm_name,tjyear,tjmonth,tjday,salt,COD,NH3,P,N,Cr6,CN,fdcjqs,BOD5,xfw,oil,phenol,`As`,Hg,Pb,Cd,flow,PH,chloride,sulfide,ylzbmhxj,`others`,spareone,sparetwo)
+        values (#{dmCode},#{dmName},#{tjyear},#{tjmonth},#{tjday},#{salt},#{COD},#{NH3},#{P},#{N},#{Cr6},#{CN},#{fdcjqs},#{BOD5},#{xfw},#{oil},#{phenol},#{As},#{Hg},#{Pb},#{Cd},#{flow},#{PH},#{chloride},#{sulfide},#{ylzbmhxj},#{others},#{spareone},#{sparetwo})
+    </insert>
+
+
+    <delete id="deleteSectionemis" parameterType="_int" >
+        delete from section_contaminants where id= #{id}
+    </delete>
+
+    <update id="updateSectionemis" parameterType="Sectionemis" >
+        update section_contaminants set dm_code=#{dmCode},dm_name=#{dmName},tjyear=#{tjyear},tjmonth=#{tjmonth},tjday=#{tjday},salt=#{salt},COD=#{COD},NH3=#{NH3},P=#{P},N=#{N},Cr6=#{Cr6},CN=#{CN},fdcjqs=#{fdcjqs},BOD5=#{BOD5},xfw=#{xfw},oil=#{oil},
+        phenol=#{phenol},`As`=#{As},Hg=#{Hg},Pb=#{Pb},Cd=#{Cd},flow=#{flow},PH=#{PH},chloride=#{chloride},sulfide=#{sulfide},ylzbmhxj=#{ylzbmhxj},`others`=#{others},spareone=#{spareone},sparetwo=#{sparetwo} where id=#{id}
+    </update>
+</mapper>
