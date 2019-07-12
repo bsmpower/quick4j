@@ -9,7 +9,7 @@
     <result column="psk_name" property="pskName" jdbcType="VARCHAR" />
     <result column="psk_code" property="pskCode" jdbcType="VARCHAR" />
     <result column="city" property="city" jdbcType="VARCHAR" />
-    <result column="country" property="country" jdbcType="VARCHAR" />
+    <result column="county" property="county" jdbcType="VARCHAR" />
     <result column="village" property="village" jdbcType="VARCHAR" />
     <result column="address" property="address" jdbcType="VARCHAR" />
     <result column="longitude" property="longitude" jdbcType="DOUBLE" />
@@ -37,11 +37,109 @@
     <result column="sparetwo" property="sparetwo" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, tjyear, tjmonth, tjday, psk_name, psk_code, city, country, village, address, 
+    id, tjyear, tjmonth, tjday, psk_name, psk_code, city, county, village, address, 
     longitude, latitude, position, psqx, river_mode, river_name, river_level, sea_mode, 
     sea_name, pwk_rjpsl, pwk_njpsl, mcjypsl, njscs, source, standard, river_gnq, river_szmb, 
     hy_gnq, hy_szmb, hysea_gnq, hysea_szmb, spareone, sparetwo
   </sql>
+  <select id="selectRainsewage" resultMap="BaseResultMap" parameterType="com.eliteams.quick4j.web.model.rainsewage" resultType="com.eliteams.quick4j.web.model.rainsewage">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM rainsewage
+    <where>
+      <if test="tjyear != null and tjyear !=''">
+        AND tjyear = #{tjyear,jdbcType=VARCHAR}
+      </if>
+      <if test="tjmonth != null and tjmonth !=''" >
+        AND tjmonth = #{tjmonth,jdbcType=VARCHAR}
+      </if>
+      <if test="tjday != null and tjday !=''">
+        AND tjday = #{tjday,jdbcType=VARCHAR}
+      </if>
+      <if test="city != null and city !=''">
+        AND city = #{city,jdbcType=VARCHAR}
+      </if>
+      <if test="pskName != null and pskName !=''" >
+        AND psk_name = #{pskName,jdbcType=VARCHAR}
+      </if>
+      <if test="pskCode != null and pskCode !=''">
+        AND psk_code = #{pskCode,jdbcType=VARCHAR}
+      </if>
+      <if test="county != null and county !=''">
+        AND county = #{county,jdbcType=VARCHAR}
+      </if>
+      <if test="village != null and village !=''" >
+        AND village = #{village,jdbcType=VARCHAR}
+      </if>
+      <if test="address != null and address !=''">
+        AND address = #{address,jdbcType=VARCHAR}
+      </if>
+      <if test="longitude != null and longitude !=''">
+        AND longitude = #{longitude,jdbcType=DOUBLE}
+      </if>
+      <if test="latitude != null and latitude !=''">
+        AND latitude = #{latitude,jdbcType=DOUBLE}
+      </if>
+      <if test="position != null and position !=''" >
+        AND `position` = #{position,jdbcType=VARCHAR}
+      </if>
+      <if test="psqx != null and psqx !=''">
+        AND psqx = #{psqx,jdbcType=VARCHAR}
+      </if>
+      <if test="riverMode != null and riverMode !=''">
+        AND river_mode = #{riverMode,jdbcType=VARCHAR}
+      </if>
+      <if test="riverName != null and riverName !=''" >
+        AND river_name = #{riverName,jdbcType=VARCHAR}
+      </if>
+      <if test="riverLevel != null and riverLevel !=''">
+        AND river_level = #{riverLevel,jdbcType=VARCHAR}
+      </if>
+      <if test="seaMode != null and seaMode !=''">
+        AND sea_mode = #{seaMode,jdbcType=VARCHAR}
+      </if>
+      <if test="seaName != null and seaName !=''" >
+        AND sea_name = #{seaName,jdbcType=VARCHAR}
+      </if>
+      <if test="pwkRjpsl != null and pwkRjpsl !=''">
+        AND pwk_rjpsl = #{pwkRjpsl,jdbcType=DOUBLE}
+      </if>
+      <if test="pwkNjpsl != null and pwkNjpsl !=''">
+        AND pwk_njpsl = #{pwkNjpsl,jdbcType=DOUBLE}
+      </if>
+      <if test="mcjypsl != null and mcjypsl !=''">
+        AND mcjypsl = #{mcjypsl,jdbcType=DOUBLE}
+      </if>
+      <if test="njscs != null and njscs !=''" >
+        AND njscs = #{njscs,jdbcType=DOUBLE}
+      </if>
+      <if test="source != null and source !=''">
+        AND source= #{source,jdbcType=VARCHAR}
+      </if>
+      <if test="standard != null and standard !=''">
+        AND standard = #{standard,jdbcType=DOUBLE}
+      </if>
+      <if test="riverGnq != null and riverGnq !=''" >
+        AND river_gnq = #{riverGnq,jdbcType=VARCHAR}
+      </if>
+      <if test="riverSzmb != null and riverSzmb !=''">
+        AND river_szmb = #{riverSzmb,jdbcType=VARCHAR}
+      </if>
+      <if test="hyGnq != null and hyGnq !=''">
+        AND hy_gnq = #{hyGnq,jdbcType=VARCHAR}
+      </if>
+      <if test="hySzmb != null and hySzmb !=''" >
+        AND hy_szmb = #{hySzmb,jdbcType=VARCHAR}
+      </if>
+      <if test="hyseaGnq != null and hyseaGnq !=''">
+        AND hysea_gnq = #{hyseaGnq,jdbcType=VARCHAR}
+      </if>
+      <if test="hyseaSzmb != null and hyseaSzmb !=''">
+        AND  hysea_szmb = #{ hyseaSzmb,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -55,7 +153,7 @@
   <insert id="insert" parameterType="com.eliteams.quick4j.web.model.rainsewage" >
     insert into rainsewage (id, tjyear, tjmonth, 
       tjday, psk_name, psk_code, 
-      city, country, village, 
+      city, county, village, 
       address, longitude, latitude, 
       position, psqx, river_mode, 
       river_name, river_level, sea_mode, 
@@ -67,7 +165,7 @@
       )
     values (#{id,jdbcType=INTEGER}, #{tjyear,jdbcType=VARCHAR}, #{tjmonth,jdbcType=VARCHAR}, 
       #{tjday,jdbcType=VARCHAR}, #{pskName,jdbcType=VARCHAR}, #{pskCode,jdbcType=VARCHAR}, 
-      #{city,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, #{village,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{county,jdbcType=VARCHAR}, #{village,jdbcType=VARCHAR}, 
       #{address,jdbcType=VARCHAR}, #{longitude,jdbcType=DOUBLE}, #{latitude,jdbcType=DOUBLE}, 
       #{position,jdbcType=VARCHAR}, #{psqx,jdbcType=VARCHAR}, #{riverMode,jdbcType=VARCHAR}, 
       #{riverName,jdbcType=VARCHAR}, #{riverLevel,jdbcType=VARCHAR}, #{seaMode,jdbcType=VARCHAR}, 
@@ -102,8 +200,8 @@
       <if test="city != null" >
         city,
       </if>
-      <if test="country != null" >
-        country,
+      <if test="county != null" >
+        county,
       </if>
       <if test="village != null" >
         village,
@@ -203,8 +301,8 @@
       <if test="city != null" >
         #{city,jdbcType=VARCHAR},
       </if>
-      <if test="country != null" >
-        #{country,jdbcType=VARCHAR},
+      <if test="county != null" >
+        #{county,jdbcType=VARCHAR},
       </if>
       <if test="village != null" >
         #{village,jdbcType=VARCHAR},
@@ -304,8 +402,8 @@
       <if test="city != null" >
         city = #{city,jdbcType=VARCHAR},
       </if>
-      <if test="country != null" >
-        country = #{country,jdbcType=VARCHAR},
+      <if test="county != null" >
+        county = #{county,jdbcType=VARCHAR},
       </if>
       <if test="village != null" >
         village = #{village,jdbcType=VARCHAR},
@@ -393,7 +491,7 @@
       psk_name = #{pskName,jdbcType=VARCHAR},
       psk_code = #{pskCode,jdbcType=VARCHAR},
       city = #{city,jdbcType=VARCHAR},
-      country = #{country,jdbcType=VARCHAR},
+      county = #{county,jdbcType=VARCHAR},
       village = #{village,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
       longitude = #{longitude,jdbcType=DOUBLE},

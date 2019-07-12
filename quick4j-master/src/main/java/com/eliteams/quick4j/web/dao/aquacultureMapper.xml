@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.eliteams.quick4j.web.dao.aquacultureMapper" >
-  <resultMap id="BaseResultMap" type="com.eliteams.quick4j.web.model.aquaculture" >
+<mapper namespace="com.eliteams.quick4j.web.dao.AquacultureMapper" >
+  <resultMap id="BaseResultMap" type="com.eliteams.quick4j.web.model.Aquaculture" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="tjyear" property="tjyear" jdbcType="VARCHAR" />
     <result column="tjmonth" property="tjmonth" jdbcType="VARCHAR" />
@@ -32,6 +32,81 @@
     sc_way, yzsyxz, yzcsl, yzc_num, yzc_sum, yz_day, period, season, psl, rjsl_day, rjsl_year, 
     spareone, sparetwo
   </sql>
+  <select id="list" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from aquaculture
+  </select>
+  <select id="searchAllAqua" resultMap="BaseResultMap" parameterType="com.eliteams.quick4j.web.model.Aquaculture">
+    select
+    <include refid="Base_Column_List" />
+    from aquaculture
+    <where>
+      <if test="tjyear!=null and tjyear!=''">
+        AND tjyear = #{tjyear,jdbcType=VARCHAR}
+      </if>
+      <if test="tjmonth!=null and tjmonth!=''">
+        AND tjmonth = #{tjmonth,jdbcType=VARCHAR}
+      </if>
+      <if test="tjday!=null and tjday!=''">
+        AND tjday = #{tjday,jdbcType=VARCHAR}
+      </if>
+      <if test="name!=null and name!=''">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="city!=null and city!=''">
+        AND city = #{city,jdbcType=VARCHAR}
+      </if>
+      <if test="county!=null and county!=''">
+        AND county = #{county,jdbcType=VARCHAR}
+      </if>
+      <if test="village!=null and village!=''">
+        AND village = #{village,jdbcType=VARCHAR}
+      </if>
+      <if test="address!=null and address!=''">
+        AND address = #{address,jdbcType=VARCHAR}
+      </if>
+      <if test="longitude!=null and longitude!=''">
+        AND longitude = #{longitude,jdbcType=DOUBLE}
+      </if>
+      <if test="latitude!=null and latitude!=''">
+        AND latitude = #{latitude,jdbcType=DOUBLE}
+      </if>
+      <if test="scWay!=null and scWay!=''">
+        AND sc_way = #{scWay,jdbcType=VARCHAR}
+      </if>
+      <if test="yzsyxz!=null and yzsyxz!=''">
+        AND yzsyxz = #{yzsyxz,jdbcType=VARCHAR},
+      </if>
+      <if test="yzcsl!=null and yzcsl!=''">
+        AND yzcsl = #{yzcsl,jdbcType=DOUBLE}
+      </if>
+      <if test="yzcNum!=null and yzcNum!=''">
+        AND yzc_num = #{yzcNum,jdbcType=INTEGER}
+      </if>
+      <if test="yzcSum!=null and yzcSum!=''">
+        AND yzc_sum = #{yzcSum,jdbcType=DOUBLE}
+      </if>
+      <if test="yzDay!=null and yzDay!=''">
+        AND yz_day = #{yzDay,jdbcType=DOUBLE}
+      </if>
+      <if test="period!=null and period!=''">
+        AND period = #{period,jdbcType=DOUBLE}
+      </if>
+      <if test="season!=null and season!=''">
+        AND season = #{season,jdbcType=VARCHAR}
+      </if>
+      <if test="psl!=null and psl!=''">
+        AND psl = #{psl,jdbcType=DOUBLE}
+      </if>
+      <if test="rjslDay!=null and rjslDay!=''">
+        AND rjsl_day = #{rjslDay,jdbcType=DOUBLE}
+      </if>
+      <if test="rjslYear!=null and rjslYear!=''">
+        AND rjsl_year = #{rjslYear,jdbcType=DOUBLE}
+      </if>
+    </where>
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -42,7 +117,7 @@
     delete from aquaculture
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.eliteams.quick4j.web.model.aquaculture" >
+  <insert id="insert" parameterType="com.eliteams.quick4j.web.model.Aquaculture" >
     insert into aquaculture (id, tjyear, tjmonth, 
       tjday, name, city, 
       county, village, address, 
@@ -62,7 +137,7 @@
       #{rjslYear,jdbcType=DOUBLE}, #{spareone,jdbcType=VARCHAR}, #{sparetwo,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.eliteams.quick4j.web.model.aquaculture" >
+  <insert id="insertSelective" parameterType="com.eliteams.quick4j.web.model.Aquaculture" >
     insert into aquaculture
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -213,7 +288,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.eliteams.quick4j.web.model.aquaculture" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.eliteams.quick4j.web.model.Aquaculture" >
     update aquaculture
     <set >
       <if test="tjyear != null" >
@@ -288,7 +363,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.eliteams.quick4j.web.model.aquaculture" >
+  <update id="updateByPrimaryKey" parameterType="com.eliteams.quick4j.web.model.Aquaculture" >
     update aquaculture
     set tjyear = #{tjyear,jdbcType=VARCHAR},
       tjmonth = #{tjmonth,jdbcType=VARCHAR},

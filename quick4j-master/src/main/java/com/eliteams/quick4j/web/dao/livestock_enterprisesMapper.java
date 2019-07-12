@@ -1,17 +1,25 @@
 package com.eliteams.quick4j.web.dao;
 
-import com.eliteams.quick4j.web.model.livestock_enterprises;
 
-public interface livestock_enterprisesMapper {
+import com.eliteams.quick4j.core.generic.GenericDao;
+import com.eliteams.quick4j.web.model.Livestock_enterprises;
+
+import java.util.List;
+
+public interface Livestock_enterprisesMapper extends GenericDao<Livestock_enterprises,Long> {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(livestock_enterprises record);
+    int insert(Livestock_enterprises record);
 
-    int insertSelective(livestock_enterprises record);
+    int insertSelective(Livestock_enterprises record);
 
-    livestock_enterprises selectByPrimaryKey(Integer id);
+    Livestock_enterprises selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(livestock_enterprises record);
+    int updateByPrimaryKeySelective(Livestock_enterprises record);
 
-    int updateByPrimaryKey(livestock_enterprises record);
+    int updateByPrimaryKey(Livestock_enterprises record);
+
+    List<Livestock_enterprises> list();
+
+    List<Livestock_enterprises> searchAllLivestock(Livestock_enterprises record);
 }

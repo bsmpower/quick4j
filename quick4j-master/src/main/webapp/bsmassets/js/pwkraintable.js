@@ -118,8 +118,9 @@ $(function () {
             contentType: "application/json",
             success: function (data) {
                 if (data.success) {
-                    $("#myModal").remove();
-                    $('.modal-backdrop').remove();
+                    // $("#myModal").remove();
+                    // $('.modal-backdrop').remove();
+                    $("#RainPwkInfoTable").bootstrapTable('refresh');
                     alert("数据添加成功！")
                 } else {
                     alert(data.errMsg);
@@ -159,18 +160,19 @@ $(function () {
         selectpwkmsc.riverMode = $("#select13").val();
         selectpwkmsc.riverName = $("#select14").val();
         selectpwkmsc.riverLevel = $("#select15").val();
-        selectpwkmsc.seaMode = parseFloat($("#select16").val());
-        selectpwkmsc.seaName = parseFloat($("#select17").val());
+        selectpwkmsc.seaMode = $("#select16").val();
+        selectpwkmsc.seaName = $("#select17").val();
         selectpwkmsc.pwkNjpsl =  parseFloat($("#select18").val());
         selectpwkmsc.mcjypsl =  parseFloat($("#select19").val());
         selectpwkmsc.njscs =  parseFloat($("#select20").val());
         selectpwkmsc.rainName = $("#select21").val();
         selectpwkmsc.rainArea =  parseFloat($("#select22").val());
-        selectpwkmsc.riverSzmb = $("#select23").val();
-        selectpwkmsc.hyGnq = $("#select24").val();
-        selectpwkmsc.hySzmb = $("#select25").val();
-        selectpwkmsc.hyseaGnq = $("#select26").val();
-        selectpwkmsc.hyseaSzmb = $("#select27").val();
+        selectpwkmsc.riverGnq = $("#select23").val();
+        selectpwkmsc.riverSzmb = $("#select24").val();
+        selectpwkmsc.hyGnq = $("#select25").val();
+        selectpwkmsc.hySzmb = $("#select26").val();
+        selectpwkmsc.hyseaGnq = $("#select27").val();
+        selectpwkmsc.hyseaSzmb = $("#select28").val();
 
         console.log(selectpwkmsc)
 
@@ -183,6 +185,7 @@ $(function () {
             datatype: "json",
             contentType: "application/json",
             success: function (data) {
+                alert("查询成功！")
                 // $("#PwkInfoTable").bootstrapTable('destroy');
                 $("#RainPwkInfoTable").bootstrapTable('load', data);
 

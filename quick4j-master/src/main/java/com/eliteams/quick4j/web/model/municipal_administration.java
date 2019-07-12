@@ -1,6 +1,6 @@
 package com.eliteams.quick4j.web.model;
 
-public class municipal_administration {
+public class Municipal_administration {
     private Integer id;
 
     private String tjyear;

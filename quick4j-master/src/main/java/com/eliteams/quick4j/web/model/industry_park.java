@@ -1,6 +1,6 @@
 package com.eliteams.quick4j.web.model;
 
-public class industry_park {
+public class Industry_park {
     private Integer id;
 
     private String tjyear;

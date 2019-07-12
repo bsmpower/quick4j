@@ -15,7 +15,7 @@ public class rainsewage {
 
     private String city;
 
-    private String country;
+    private String county;
 
     private String village;
 
@@ -123,12 +123,12 @@ public class rainsewage {
         this.city = city == null ? null : city.trim();
     }
 
-    public String getCountry() {
-        return country;
+    public String getcounty() {
+        return county;
     }
 
-    public void setCountry(String country) {
-        this.country = country == null ? null : country.trim();
+    public void setcounty(String county) {
+        this.county = county == null ? null : county.trim();
     }
 
     public String getVillage() {

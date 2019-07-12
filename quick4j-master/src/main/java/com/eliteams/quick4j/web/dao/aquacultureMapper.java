@@ -1,17 +1,26 @@
 package com.eliteams.quick4j.web.dao;
 
-import com.eliteams.quick4j.web.model.aquaculture;
+import com.eliteams.quick4j.core.generic.GenericDao;
+import com.eliteams.quick4j.web.model.Aquaculture;
 
-public interface aquacultureMapper {
+import java.util.List;
+
+public interface AquacultureMapper extends GenericDao<Aquaculture,Long> {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(aquaculture record);
+    int insert(Aquaculture record);
 
-    int insertSelective(aquaculture record);
+    int insertSelective(Aquaculture record);
 
-    aquaculture selectByPrimaryKey(Integer id);
+    Aquaculture selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(aquaculture record);
+    int updateByPrimaryKeySelective(Aquaculture record);
 
-    int updateByPrimaryKey(aquaculture record);
+    int updateByPrimaryKey(Aquaculture record);
+
+    List<Aquaculture> list();
+
+    List<Aquaculture> searchAllAqua(Aquaculture aquaculture);
+
+
 }

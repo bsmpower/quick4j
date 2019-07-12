@@ -150,8 +150,7 @@ $(function () {
     $("#submitPwk2").click(function(){
         //获取到新添加的东西
         var selectpwkmsc = {};
-        var a = $("#select0").val();
-        alert(a);
+        // var a = $("#select0").val();
         selectpwkmsc.tjyear = $("#select0").val();
         selectpwkmsc.tjmonth = $("#select1").val();
         selectpwkmsc.tjday = $("#select2").val();
@@ -206,6 +205,7 @@ $(function () {
             datatype: "json",
             contentType: "application/json",
             success:function(data){
+                alert("查询成功！");
                 // $("#PwkInfoTable").bootstrapTable('destroy');
                 $("#PwkInfoTable").bootstrapTable('load',data);
 

@@ -1,17 +1,24 @@
 package com.eliteams.quick4j.web.dao;
 
-import com.eliteams.quick4j.web.model.farm;
+import com.eliteams.quick4j.core.generic.GenericDao;
+import com.eliteams.quick4j.web.model.Farm;
 
-public interface farmMapper {
+import java.util.List;
+
+public interface FarmMapper extends GenericDao<Farm,Long> {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(farm record);
+    int insert(Farm record);
 
-    int insertSelective(farm record);
+    int insertSelective(Farm record);
 
-    farm selectByPrimaryKey(Integer id);
+    Farm selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(farm record);
+    int updateByPrimaryKeySelective(Farm record);
 
-    int updateByPrimaryKey(farm record);
+    int updateByPrimaryKey(Farm record);
+
+    List<Farm> list();
+
+    List<Farm> searchAllFarm(Farm aquaculture);
 }

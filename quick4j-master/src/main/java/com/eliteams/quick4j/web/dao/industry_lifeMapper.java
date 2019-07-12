@@ -1,17 +1,24 @@
 package com.eliteams.quick4j.web.dao;
 
-import com.eliteams.quick4j.web.model.industry_life;
+import com.eliteams.quick4j.core.generic.GenericDao;
+import com.eliteams.quick4j.web.model.Industry_life;
 
-public interface industry_lifeMapper {
+import java.util.List;
+
+public interface Industry_lifeMapper extends GenericDao<Industry_life,Long> {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(industry_life record);
+    int insert(Industry_life record);
 
-    int insertSelective(industry_life record);
+    int insertSelective(Industry_life record);
 
-    industry_life selectByPrimaryKey(Integer id);
+    Industry_life selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(industry_life record);
+    int updateByPrimaryKeySelective(Industry_life record);
 
-    int updateByPrimaryKey(industry_life record);
+    int updateByPrimaryKey(Industry_life record);
+
+    List<Industry_life> list();
+
+    List<Industry_life> searchAllIndustryLife(Industry_life record);
 }

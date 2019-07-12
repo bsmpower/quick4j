@@ -12,7 +12,7 @@ $(function () {
             ids.push(this.id);
         });
         console.log(ids);
-        var excelout = "rest/pwkrain/excelout"
+        var excelout = "rest/pwksewage/excelout"
         $.ajax({
             url: excelout,
             type: "POST",
@@ -48,7 +48,7 @@ $(function () {
     $("#upload").click(function (e) {
         $.ajax({
             type: "POST",
-            url: "rest/upload/rainoutletexcel",
+            url: "rest/upload/pwksewageexcel",
             processData: false,
             contentType: false,
             data: new FormData($('#form1')[0]),
@@ -72,8 +72,11 @@ $(function () {
         });
     });
 
+    /**
+     * 新增数据
+     */
     $("#submitPwk").click(function () {
-        var addurl = "/rest/pwkrain/addpwk";
+        var addurl = "/rest/pwksewage/addpwk";
         var addpwkmsc = {};
         /*********************************************/
         var t = $("form").serializeArray();
@@ -82,9 +85,9 @@ $(function () {
         addpwkmsc.tjyear = t[0].value;
         addpwkmsc.tjmonth = t[1].value;
         addpwkmsc.tjday = t[2].value;
-        addpwkmsc.city = t[3].value;
-        addpwkmsc.pskName = t[4].value;
-        addpwkmsc.pskCode = t[5].value;
+        addpwkmsc.pskName = t[3].value;
+        addpwkmsc.pskCode = t[4].value;
+        addpwkmsc.city = t[5].value;
         addpwkmsc.county = t[6].value;
         addpwkmsc.village = t[7].value;
         addpwkmsc.address = t[8].value;
@@ -97,17 +100,18 @@ $(function () {
         addpwkmsc.riverLevel = t[15].value;
         addpwkmsc.seaMode = t[16].value;
         addpwkmsc.seaName = t[17].value;
-        addpwkmsc.pwkNjpsl =  parseFloat(t[18].value);
-        addpwkmsc.mcjypsl =  parseFloat(t[19].value);
-        addpwkmsc.njscs =  parseFloat(t[20].value);
-        addpwkmsc.rainName = t[21].value;
-        addpwkmsc.rainArea= parseFloat(t[22].value);
-        addpwkmsc.riverGnq = t[23].value;
-        addpwkmsc.riverSzmb = t[24].value;
-        addpwkmsc.hyGnq = t[25].value;
-        addpwkmsc.hySzmb = t[26].value;
-        addpwkmsc.hyseaGnq = t[27].value;
-        addpwkmsc.hyseaSzmb = t[28].value;
+        addpwkmsc.pwkRjpsl = parseFloat(t[18].value);
+        addpwkmsc.pwkNjpsl =  parseFloat(t[19].value);
+        addpwkmsc.mcjypsl =  parseFloat(t[20].value);
+        addpwkmsc.njscs =  parseFloat(t[21].value);
+        addpwkmsc.source = t[22].value;
+        addpwkmsc.standard = parseFloat(t[23].value);
+        addpwkmsc.riverGnq = t[24].value;
+        addpwkmsc.riverSzmb = t[25].value;
+        addpwkmsc.hyGnq = t[26].value;
+        addpwkmsc.hySzmb = t[27].value;
+        addpwkmsc.hyseaGnq = t[28].value;
+        addpwkmsc.hyseaSzmb = t[29].value;
         /*********************************************/
         console.log(addpwkmsc);
         $.ajax({
@@ -118,8 +122,9 @@ $(function () {
             contentType: "application/json",
             success: function (data) {
                 if (data.success) {
-                    $("#myModal").remove();
-                    $('.modal-backdrop').remove();
+                    // $("#myModal").remove();
+                    // $('.modal-backdrop').remove();
+                    $("#RainPwkInfoTable").bootstrapTable('refresh');
                     alert("数据添加成功！")
                 } else {
                     alert(data.errMsg);
@@ -143,12 +148,13 @@ $(function () {
         //获取到新添加的东西
         var selectpwkmsc = {};
         var a = $("#select0").val();
-        selectpwkmsc.tjyear = $("#select0").val()
+        selectpwkmsc.tjyear = $("#select0").val();
+        // console.log(selectpwkmsc);
         selectpwkmsc.tjmonth = $("#select1").val();
         selectpwkmsc.tjday = $("#select2").val();
-        selectpwkmsc.city = $("#select3").val();
-        selectpwkmsc.pskName = $("#select4").val();
-        selectpwkmsc.pskCode = $("#select5").val();
+        selectpwkmsc.pskName = $("#select3").val();
+        selectpwkmsc.pskCode = $("#select4").val();
+        selectpwkmsc.city = $("#select5").val();
         selectpwkmsc.county = $("#select6").val();
         selectpwkmsc.village = $("#select7").val();
         selectpwkmsc.address = $("#select8").val();
@@ -159,22 +165,24 @@ $(function () {
         selectpwkmsc.riverMode = $("#select13").val();
         selectpwkmsc.riverName = $("#select14").val();
         selectpwkmsc.riverLevel = $("#select15").val();
-        selectpwkmsc.seaMode = parseFloat($("#select16").val());
-        selectpwkmsc.seaName = parseFloat($("#select17").val());
-        selectpwkmsc.pwkNjpsl =  parseFloat($("#select18").val());
-        selectpwkmsc.mcjypsl =  parseFloat($("#select19").val());
-        selectpwkmsc.njscs =  parseFloat($("#select20").val());
-        selectpwkmsc.rainName = $("#select21").val();
-        selectpwkmsc.rainArea =  parseFloat($("#select22").val());
-        selectpwkmsc.riverSzmb = $("#select23").val();
-        selectpwkmsc.hyGnq = $("#select24").val();
-        selectpwkmsc.hySzmb = $("#select25").val();
-        selectpwkmsc.hyseaGnq = $("#select26").val();
-        selectpwkmsc.hyseaSzmb = $("#select27").val();
+        selectpwkmsc.seaMode = $("#select16").val();
+        selectpwkmsc.seaName = $("#select17").val();
+        selectpwkmsc.pwkRjpsl =  parseFloat($("#select18").val());
+        selectpwkmsc.pwkNjpsl =  parseFloat($("#select19").val());
+        selectpwkmsc.mcjypsl =  parseFloat($("#select20").val());
+        selectpwkmsc.njscs =  parseFloat($("#select21").val());
+        selectpwkmsc.source = $("#select22").val();
+        selectpwkmsc.standard =  $("#select23").val();
+        selectpwkmsc.riverGnq = $("#select24").val();
+        selectpwkmsc.riverSzmb = $("#select25").val();
+        selectpwkmsc.hyGnq = $("#select26").val();
+        selectpwkmsc.hySzmb = $("#select27").val();
+        selectpwkmsc.hyseaGnq = $("#select28").val();
+        selectpwkmsc.hyseaSzmb = $("#select29").val();
 
         console.log(selectpwkmsc)
 
-        var optionUrl = "/rest/pwkrain/optionpwk"
+        var optionUrl = "/rest/pwksewage/optionpwk"
 
         $.ajax({
             url: optionUrl,
@@ -183,6 +191,7 @@ $(function () {
             datatype: "json",
             contentType: "application/json",
             success: function (data) {
+                alert("查询成功！")
                 // $("#PwkInfoTable").bootstrapTable('destroy');
                 $("#RainPwkInfoTable").bootstrapTable('load', data);
 
@@ -201,7 +210,7 @@ $(function () {
      */
     $("#submitPwk1").click(function () {
 
-        var updateurl = "/rest/pwkrain/updatepwk"
+        var updateurl = "/rest/pwksewage/updatepwk"
         var t = $("form").serializeArray();
         var rows = $("#RainPwkInfoTable").bootstrapTable('getSelections');
         // alert(tjyear);
@@ -211,9 +220,9 @@ $(function () {
         updatepwkmsc.tjyear = $("#pwk0").val();
         updatepwkmsc.tjmonth = $("#pwk1").val();
         updatepwkmsc.tjday = $("#pwk2").val();
-        updatepwkmsc.city = $("#pwk3").val();
-        updatepwkmsc.pskName = $("#pwk4").val();
-        updatepwkmsc.pskCode = $("#pwk5").val();
+        updatepwkmsc.pskName = $("#pwk3").val();
+        updatepwkmsc.pskCode = $("#pwk4").val();
+        updatepwkmsc.city = $("#pwk5").val();
         updatepwkmsc.county = $("#pwk6").val();
         updatepwkmsc.village = $("#pwk7").val();
         updatepwkmsc.address = $("#pwk8").val();
@@ -226,16 +235,17 @@ $(function () {
         updatepwkmsc.riverLevel = $("#pwk15").val();
         updatepwkmsc.seaMode = $("#pwk16").val();
         updatepwkmsc.seaName =$("#pwk17").val();
-        updatepwkmsc.pwkNjpsl =  parseFloat($("#pwk18").val());
-        updatepwkmsc.mcjypsl =  parseFloat($("#pwk19").val());
-        updatepwkmsc.njscs =  parseFloat($("#pwk20").val());
-        updatepwkmsc.rainName = $("#pwk21").val();
-        updatepwkmsc.rainArea =  parseFloat($("#pwk22").val());
-        updatepwkmsc.riverSzmb = $("#pwk23").val();
-        updatepwkmsc.hyGnq = $("#pwk24").val();
-        updatepwkmsc.hySzmb = $("#pwk25").val();
-        updatepwkmsc.hyseaGnq = $("#pwk26").val();
-        updatepwkmsc.hyseaSzmb = $("#pwk27").val();
+        updatepwkmsc.pwkRjpsl =  parseFloat($("#pwk18").val());
+        updatepwkmsc.pwkNjpsl =  parseFloat($("#pwk19").val());
+        updatepwkmsc.mcjypsl =  parseFloat($("#pwk20").val());
+        updatepwkmsc.njscs =  parseFloat($("#pwk21").val());
+        updatepwkmsc.source = $("#pwk22").val();
+        updatepwkmsc.standard =  $("#pwk23").val();
+        updatepwkmsc.riverSzmb = $("#pwk24").val();
+        updatepwkmsc.hyGnq = $("#pwk25").val();
+        updatepwkmsc.hySzmb = $("#pwk26").val();
+        updatepwkmsc.hyseaGnq = $("#pwk27").val();
+        updatepwkmsc.hyseaSzmb = $("#pwk28").val();
 
         $.ajax({
             url: updateurl,
@@ -339,7 +349,7 @@ $(function () {
      * */
     function deletePwk(ids) {
         $.ajax({
-            url: "/rest/pwkrain/deletepwk",
+            url: "/rest/pwksewage/deletepwk",
             data: {"ids": ids},
             type: "POST",
             // dataType: "json",

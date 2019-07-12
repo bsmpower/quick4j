@@ -19,7 +19,11 @@ public class oil_field {
 
     private String address;
 
-    private String ytArea;
+    private Double longitude;
+
+    private Double latitude;
+
+    private Double ytArea;
 
     private String position;
 
@@ -123,12 +127,28 @@ public class oil_field {
         this.address = address == null ? null : address.trim();
     }
 
-    public String getYtArea() {
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getYtArea() {
         return ytArea;
     }
 
-    public void setYtArea(String ytArea) {
-        this.ytArea = ytArea == null ? null : ytArea.trim();
+    public void setYtArea(Double ytArea) {
+        this.ytArea = ytArea;
     }
 
     public String getPosition() {

@@ -1,6 +1,9 @@
 package com.eliteams.quick4j.web.dao;
 
+import com.eliteams.quick4j.web.model.oil_field;
 import com.eliteams.quick4j.web.model.port;
+
+import java.util.List;
 
 public interface portMapper {
     int deleteByPrimaryKey(Integer id);
@@ -8,6 +11,8 @@ public interface portMapper {
     int insert(port record);
 
     int insertSelective(port record);
+
+    List<port> selectport(port rot);
 
     port selectByPrimaryKey(Integer id);
 

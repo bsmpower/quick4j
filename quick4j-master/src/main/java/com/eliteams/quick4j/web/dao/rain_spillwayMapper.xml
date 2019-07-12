@@ -39,6 +39,96 @@
     xh_num, xh_times, standard, xh_gnq, xh_szmb, hy_gnq, hy_szmb, hysea_gnq, hysea_szmb, 
     spareone, sparetwo
   </sql>
+  <select id="selectRainSpillway" resultMap="BaseResultMap" parameterType="com.eliteams.quick4j.web.model.rain_spillway" resultType="com.eliteams.quick4j.web.model.rain_spillway">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM rain_spillway
+    <where>
+      <if test="tjyear != null and tjyear !=''">
+        AND tjyear = #{tjyear,jdbcType=VARCHAR}
+      </if>
+      <if test="tjmonth != null and tjmonth !=''" >
+        AND tjmonth = #{tjmonth,jdbcType=VARCHAR}
+      </if>
+      <if test="tjday != null and tjday !=''">
+        AND tjday = #{tjday,jdbcType=VARCHAR}
+      </if>
+      <if test="city != null and city !=''">
+        AND city = #{city,jdbcType=VARCHAR}
+      </if>
+      <if test="xhkName != null and xhkName !=''" >
+        AND xhk_name = #{xhkName,jdbcType=VARCHAR}
+      </if>
+      <if test="xhkCode != null and xhkCode !=''">
+        AND xhk_code = #{xhkCode,jdbcType=VARCHAR}
+      </if>
+      <if test="county != null and county !=''">
+        AND county = #{county,jdbcType=VARCHAR}
+      </if>
+      <if test="village != null and village !=''" >
+        AND village = #{village,jdbcType=VARCHAR}
+      </if>
+      <if test="address != null and address !=''">
+        AND address = #{address,jdbcType=VARCHAR}
+      </if>
+      <if test="xhkArea != null and xhkArea !=''">
+        AND xhk_area = #{xhkArea,jdbcType=DOUBLE}
+      </if>
+      <if test="longitude != null and longitude !=''">
+        AND longitude = #{longitude,jdbcType=DOUBLE}
+      </if>
+      <if test="latitude != null and latitude !=''">
+        AND latitude = #{latitude,jdbcType=DOUBLE}
+      </if>
+      <if test="xhQx != null and xhQx !=''" >
+        AND xh_qx = #{xhQx,jdbcType=VARCHAR}
+      </if>
+      <if test="riverMode != null and riverMode !=''">
+        AND river_mode = #{riverMode,jdbcType=VARCHAR}
+      </if>
+      <if test="riverName != null and riverName !=''" >
+        AND river_name = #{riverName,jdbcType=VARCHAR}
+      </if>
+      <if test="riverLevel != null and riverLevel !=''">
+        AND river_level = #{riverLevel,jdbcType=VARCHAR}
+      </if>
+      <if test="seaMode != null and seaMode !=''">
+        AND sea_mode = #{seaMode,jdbcType=VARCHAR}
+      </if>
+      <if test="seaName != null and seaName !=''" >
+        AND sea_name = #{seaName,jdbcType=VARCHAR}
+      </if>
+      <if test="xhNum != null and xhNum !=''">
+        AND xh_num = #{xhNum,jdbcType=DOUBLE}
+      </if>
+      <if test="xhTimes != null and xhTimes !=''">
+        AND xh_times = #{xhTimes,jdbcType=DOUBLE}
+      </if>
+      <if test="standard != null and standard !=''">
+        AND standard = #{standard,jdbcType=DOUBLE}
+      </if>
+      <if test="xhGnq != null and xhGnq !=''" >
+        AND xh_gnq = #{xhGnq,jdbcType=DOUBLE}
+      </if>
+      <if test="xhSzmb != null and xhSzmb !=''">
+        AND xh_szmb= #{xhSzmb,jdbcType=VARCHAR}
+      </if>
+      <if test="hyGnq != null and hyGnq !=''">
+        AND hy_gnq = #{standard,jdbcType=DOUBLE}
+      </if>
+      <if test="hySzmb != null and hySzmb !=''" >
+        AND hy_szmb = #{hySzmb,jdbcType=VARCHAR}
+      </if>
+
+      <if test="hyseaGnq != null and hyseaGnq !=''">
+        AND hysea_gnq = #{hyseaGnq,jdbcType=VARCHAR}
+      </if>
+      <if test="hyseaSzmb != null and hyseaSzmb !=''">
+        AND  hysea_szmb = #{ hyseaSzmb,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

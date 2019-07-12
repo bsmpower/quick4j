@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.eliteams.quick4j.web.dao.farmMapper" >
-  <resultMap id="BaseResultMap" type="com.eliteams.quick4j.web.model.farm" >
+<mapper namespace="com.eliteams.quick4j.web.dao.FarmMapper" >
+  <resultMap id="BaseResultMap" type="com.eliteams.quick4j.web.model.Farm" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="tjyear" property="tjyear" jdbcType="VARCHAR" />
     <result column="tjmonth" property="tjmonth" jdbcType="VARCHAR" />
@@ -30,6 +30,11 @@
     latitude, year_famount, pesticide_dosage, pesticide_concentration, year_ptimes, year_pamount, 
     outlet_season, outlet_times, outlet_amount, outlet_time, spareone, sparetwo
   </sql>
+  <select id="list" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from farm
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -40,7 +45,7 @@
     delete from farm
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.eliteams.quick4j.web.model.farm" >
+  <insert id="insert" parameterType="com.eliteams.quick4j.web.model.Farm" >
     insert into farm (id, tjyear, tjmonth, 
       tjday, farmer_name, city, 
       county, village, address, 
@@ -58,7 +63,7 @@
       #{outletTimes,jdbcType=INTEGER}, #{outletAmount,jdbcType=DOUBLE}, #{outletTime,jdbcType=INTEGER}, 
       #{spareone,jdbcType=VARCHAR}, #{sparetwo,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.eliteams.quick4j.web.model.farm" >
+  <insert id="insertSelective" parameterType="com.eliteams.quick4j.web.model.Farm" >
     insert into farm
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -197,7 +202,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.eliteams.quick4j.web.model.farm" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.eliteams.quick4j.web.model.Farm" >
     update farm
     <set >
       <if test="tjyear != null" >
@@ -266,7 +271,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.eliteams.quick4j.web.model.farm" >
+  <update id="updateByPrimaryKey" parameterType="com.eliteams.quick4j.web.model.Farm" >
     update farm
     set tjyear = #{tjyear,jdbcType=VARCHAR},
       tjmonth = #{tjmonth,jdbcType=VARCHAR},
@@ -291,4 +296,68 @@
       sparetwo = #{sparetwo,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="searchAllFarm" resultMap="BaseResultMap" parameterType="com.eliteams.quick4j.web.model.Farm">
+    select
+    <include refid="Base_Column_List" />
+    from farm
+    <where>
+      <if test="tjyear!=null and tjyear!=''">
+        AND tjyear = #{tjyear,jdbcType=VARCHAR}
+      </if>
+      <if test="tjmonth!=null and tjmonth!=''">
+        AND tjmonth = #{tjmonth,jdbcType=VARCHAR}
+      </if>
+      <if test="tjday!=null and tjday!=''">
+        AND tjday = #{tjday,jdbcType=VARCHAR}
+      </if>
+      <if test="farmerName!=null and farmerName!=''">
+        AND farmer_name = #{farmerName,jdbcType=VARCHAR}
+      </if>
+      <if test="city!=null and city!=''">
+        AND city = #{city,jdbcType=VARCHAR}
+      </if>
+      <if test="county!=null and county!=''">
+        AND county = #{county,jdbcType=VARCHAR}
+      </if>
+      <if test="village!=null and village!=''">
+        AND village = #{village,jdbcType=VARCHAR}
+      </if>
+      <if test="address!=null and address!=''">
+        AND address = #{address,jdbcType=VARCHAR}
+      </if>
+      <if test="longitude!=null and longitude!=''">
+        AND longitude = #{longitude,jdbcType=DOUBLE}
+      </if>
+      <if test="latitude!=null and latitude!=''">
+        AND latitude = #{latitude,jdbcType=DOUBLE}
+      </if>
+      <if test="yearFamount!=null and yearFamount!=''">
+        AND year_famount = #{yearFamount,jdbcType=DOUBLE}
+      </if>
+      <if test="pesticideDosage!=null and pesticideDosage!=''">
+        AND pesticide_dosage = #{pesticideDosage,jdbcType=DOUBLE}
+      </if>
+      <if test="pesticideConcentration!=null and pesticideConcentration!=''">
+        AND pesticide_concentration = #{pesticideConcentration,jdbcType=DOUBLE}
+      </if>
+      <if test="yearPtimes!=null and yearPtimes!=''">
+        AND year_ptimes = #{yearPtimes,jdbcType=INTEGER}
+      </if>
+      <if test="yearPamount!=null and yearPamount!=''">
+        AND year_pamount = #{yearPamount,jdbcType=DOUBLE}
+      </if>
+      <if test="outletSeason!=null and outletSeason!=''">
+        AND outlet_season = #{outletSeason,jdbcType=VARCHAR}
+      </if>
+      <if test="outletTimes!=null and outletTimes!=''">
+        AND outlet_times = #{outletTimes,jdbcType=INTEGER}
+      </if>
+      <if test="outletAmount!=null and outletAmount!=''">
+        AND outlet_amount = #{outletAmount,jdbcType=DOUBLE}
+      </if>
+      <if test="outletTime!=null and outletTime!=''">
+        AND outlet_time = #{outletTime,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
 </mapper>

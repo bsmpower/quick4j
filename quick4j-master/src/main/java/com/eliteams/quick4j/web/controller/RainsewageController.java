@@ -1,11 +1,12 @@
 package com.eliteams.quick4j.web.controller;
 
 import com.eliteams.quick4j.core.util.ExcelUtil;
-import com.eliteams.quick4j.web.dao.rain_outletMapper;
+import com.eliteams.quick4j.web.dao.rainsewageMapper;
 import com.eliteams.quick4j.web.dao.rainsewageMapper;
 import com.eliteams.quick4j.web.model.outlet;
-import com.eliteams.quick4j.web.model.rain_outlet;
+import com.eliteams.quick4j.web.model.rainsewage;
 import com.eliteams.quick4j.web.service.RainoutletService;
+import com.eliteams.quick4j.web.service.RainsewageService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,23 +22,23 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/pwkrain")
+@RequestMapping("/pwksewage")
 public class RainsewageController {
     @Resource
     private rainsewageMapper rainsewagemapper;
 
     @Resource
-    private RainoutletService rainoutletService;
+    private RainsewageService rainsewageService;
 
     @RequestMapping("/pwkshowlist")
     @ResponseBody
-    public List<rain_outlet> pwklist(HttpServletRequest request, rain_outlet rot) {
+    public List<rainsewage> pwklist(HttpServletRequest request, rainsewage rot) {
         /**
          * 根据查询条进行返回
          */
 //        Map<String,Object> modelmap = new HashMap<>();
-//        rain_outlet rot = new rain_outlet();
-        List<rain_outlet> list = rainoutletService.selectRainoutlet(rot);
+//        rainsewage rot = new rainsewage();
+        List<rainsewage> list = rainsewageService.selectRainoutlet(rot);
         //下边这个是jsp的写法
         //        ModelAndView mav = new ModelAndView();
         //        mav.addObject("pwklist",list);
@@ -53,11 +54,11 @@ public class RainsewageController {
      * public static int getInt(HttpServletRequest request, String name)类似于这种
      * 前端传输数据的时候要进行参数拼接
      */
-    public Map<String, Object> addPwk(HttpServletRequest request, @RequestBody rain_outlet rot) {
+    public Map<String, Object> addPwk(HttpServletRequest request, @RequestBody rainsewage rot) {
         System.out.println("ada");
         System.out.println(rot.getPskName());
         Map<String, Object> modelmap = new HashMap<>();
-        int flag = rainOutletMapper.insert(rot);
+        int flag = rainsewagemapper.insert(rot);
         if (flag == 1) {
             modelmap.put("success", true);
 
@@ -75,7 +76,7 @@ public class RainsewageController {
     public Map<String, Object> deletePwk(HttpServletRequest request, final int[] ids) {
         Map<String, Object> modelmap = new HashMap<>();
 //        int flag=1;
-        int flag = rainoutletService.deleteByids(ids);
+        int flag = rainsewageService.deleteByids(ids);
         System.out.println(ids[0]);
         if (flag == 1) {
             modelmap.put("success", true);
@@ -91,12 +92,11 @@ public class RainsewageController {
 
     @RequestMapping("/updatepwk")
     @ResponseBody
-    public Map<String, Object> updatePwk(HttpServletRequest request, @RequestBody rain_outlet rot) {
+    public Map<String, Object> updatePwk(HttpServletRequest request, @RequestBody rainsewage rot) {
         Map<String, Object> modelmap = new HashMap<>();
-        int flag = rainOutletMapper.updateByPrimaryKeySelective(rot);
+        int flag = rainsewagemapper.updateByPrimaryKeySelective(rot);
         if (flag == 1) {
             modelmap.put("success", true);
-
             return modelmap;
         } else {
             modelmap.put("succeess", false);
@@ -108,11 +108,12 @@ public class RainsewageController {
 
     @RequestMapping("/optionpwk")
     @ResponseBody
-    public List<rain_outlet> optionPwk(HttpServletRequest request, @RequestBody rain_outlet rot){
+    public List<rainsewage> optionPwk(HttpServletRequest request, @RequestBody rainsewage rot){
         Map<String, Object> modelmap = new HashMap<>();
+        System.out.println("11111111111111111111111");
         System.out.println(rot.getTjyear());
-        List<rain_outlet> list = new ArrayList<>();
-        list = rainOutletMapper.selectRainoutlet(rot);
+        List<rainsewage> list = new ArrayList<>();
+        list = rainsewagemapper.selectRainsewage(rot);
         System.out.println(list.size());
         return list;
     }
@@ -123,8 +124,8 @@ public class RainsewageController {
 
         Map<String, Object> modelmap = new HashMap<>();
         System.out.println(ids.length);
-        List<rain_outlet> ots = new ArrayList<>();
-        ots = rainoutletService.selectByPrimaryKey(ids);
+        List<rainsewage> ots = new ArrayList<>();
+        ots = rainsewageService.selectByPrimaryKey(ids);
         Map<String, List<String>> pwkMap = getPwk(ots);
         String[] strArry = excelTitle();
         try{
@@ -139,7 +140,7 @@ public class RainsewageController {
         return modelmap;
     }
 
-    private static Map<String, List<String>> getPwk(List<rain_outlet> ots){
+    private static Map<String, List<String>> getPwk(List<rainsewage> ots){
         Map<String, List<String>> map = new HashMap<String, List<String>>();
 
         for(int i = 0; i < ots.size(); i++){
@@ -148,10 +149,10 @@ public class RainsewageController {
             members.add(ots.get(i).getTjyear() + "");
             members.add(ots.get(i).getTjmonth() + "");
             members.add(ots.get(i).getTjday() + "");
-            members.add(ots.get(i).getCity() + "");
             members.add(ots.get(i).getPskName() + "");
             members.add(ots.get(i).getPskCode() + "");
-            members.add(ots.get(i).getCounty() + "");
+            members.add(ots.get(i).getCity() + "");
+            members.add(ots.get(i).getcounty() + "");
             members.add(ots.get(i).getVillage() + "");
             members.add(ots.get(i).getAddress() + "");
             members.add(ots.get(i).getLongitude() + "");
@@ -163,11 +164,12 @@ public class RainsewageController {
             members.add(ots.get(i).getRiverLevel() + "");
             members.add(ots.get(i).getSeaMode() + "");
             members.add(ots.get(i).getSeaName() + "");
+            members.add(ots.get(i).getPwkRjpsl() + "");
             members.add(ots.get(i).getPwkNjpsl() + "");
             members.add(ots.get(i).getMcjypsl() + "");
             members.add(ots.get(i).getNjscs() + "");
-            members.add(ots.get(i).getRainName() + "");
-            members.add(ots.get(i).getRainArea() + "");
+            members.add(ots.get(i).getSource() + "");
+            members.add(ots.get(i).getStandard() + "");
             members.add(ots.get(i).getRiverGnq() + "");
             members.add(ots.get(i).getRiverSzmb() + "");
             members.add(ots.get(i).getHyGnq() + "");
@@ -182,10 +184,10 @@ public class RainsewageController {
     }
 
     public static String[] excelTitle() {
-        String[] strArray = { "序号", "统计年份", "统计月份", "统计日","所在市","排水口名称","排水口编码","所在县(市/区)","所在乡镇","详细地址",
+        String[] strArray = { "序号", "统计年份", "统计月份", "统计日","排水口名称","排水口编码","所在市","所在县(市/区)","所在乡镇","详细地址",
                 "排污口经度","排污口纬度",
-                "排污口靠河岸位置","排水去向","入河方式","排入河流名称","河流级别","入海方式","排入海域名称","年均排污口排水量(吨/年)",
-                "每次降雨排污口排水量(吨/次)","年降雨次数(次)","雨水收集区域名称","雨水收集区域面积(km2)","排入河流水功能区",
+                "排污口靠河岸位置","排水去向","入河方式","排入河流名称","河流级别","入海方式","排入海域名称","日均排污口排水量(吨/日)","年均排污口排水量(吨/年)",
+                "每次降雨排污口排水量(吨/次)","年降雨次数(次)","污水来源","排水标准","排入河流水功能区",
                 "排入河流水质目标","排入海域近岸海域环境功能区","排入海域水质目标","排入海域海洋功能区类别","排入海域海洋功能区水质目标"};
         return strArray;
     }

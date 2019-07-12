@@ -35,6 +35,86 @@
     village, address, longitude, latitude, sea_mode, sea_name, psl_td, psl_ty, emission_standard, 
     is_get, noget_items, hy_gnq, hy_szmb, hysea_gnq, hysea_szmb, spareone, sparetwo
   </sql>
+  <select id="selectisland" resultMap="BaseResultMap" parameterType="com.eliteams.quick4j.web.model.island" resultType="com.eliteams.quick4j.web.model.island">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM island
+    <where>
+      <if test="tjyear != null and tjyear !=''">
+        AND tjyear = #{tjyear,jdbcType=VARCHAR}
+      </if>
+      <if test="tjmonth != null and tjmonth !=''" >
+        AND tjmonth = #{tjmonth,jdbcType=VARCHAR}
+      </if>
+      <if test="tjday != null and tjday !=''">
+        AND tjday = #{tjday,jdbcType=VARCHAR}
+      </if>
+      <if test="hdpskName != null and hdpskName !=''" >
+        AND hdpsk_name = #{hdpskName,jdbcType=VARCHAR}
+      </if>
+      <if test="hdpskCode != null and hdpskCode !=''" >
+        AND hdpsk_code = #{hdpskCode,jdbcType=VARCHAR}
+      </if>
+      <if test="hdName != null and hdName !=''">
+        AND hd_name = #{hdName,jdbcType=VARCHAR}
+      </if>
+      <if test="hdArea != null and hdArea !=''">
+        AND hd_area = #{hdArea,jdbcType=DOUBLE}
+      </if>
+      <if test="city != null and city !=''">
+        AND city = #{city,jdbcType=VARCHAR}
+      </if>
+      <if test="country != null and country !=''">
+        AND country = #{country,jdbcType=VARCHAR}
+      </if>
+      <if test="village != null and village !=''" >
+        AND village = #{village,jdbcType=VARCHAR}
+      </if>
+      <if test="address != null and address !=''">
+        AND address = #{address,jdbcType=VARCHAR}
+      </if>
+      <if test="longitude != null and longitude !=''">
+        AND longitude = #{longitude,jdbcType=DOUBLE}
+      </if>
+      <if test="latitude != null and latitude !=''">
+        AND latitude = #{latitude,jdbcType=DOUBLE}
+      </if>
+      <if test="seaMode != null and seaMode !=''">
+        AND sea_mode = #{seaMode,jdbcType=VARCHAR}
+      </if>
+      <if test="seaName != null and seaName!=''">
+        AND sea_name = #{seaName,jdbcType=VARCHAR}
+      </if>
+      <if test="pslTd != null and pslTd !=''">
+        AND psl_td = #{pslTd,jdbcType=DOUBLE}
+      </if>
+      <if test="pslTy != null and pslTy !=''" >
+        AND psl_ty = #{pslTy,jdbcType=DOUBLE}
+      </if>
+      <if test="emissionStandard != null and emissionStandard !=''">
+        AND emission_standard = #{emissionStandard,jdbcType=VARCHAR}
+      </if>
+      <if test="isGet != null and isGet !=''">
+        AND is_get = #{isGet,jdbcType=VARCHAR}
+      </if>
+      <if test="nogetItems != null and nogetItems !=''">
+        AND noget_items = #{nogetItems,jdbcType=VARCHAR}
+      </if>
+      <if test="hyGnq != null and hyGnq !=''">
+        AND hy_gnq = #{hyGnq,jdbcType=VARCHAR}
+      </if>
+      <if test="hySzmb != null and hySzmb !=''">
+        AND hy_szmb = #{hySzmb,jdbcType=VARCHAR}
+      </if>
+      <if test="hyseaGnq != null and hyseaGnq !=''">
+        AND hysea_gnq = #{hyseaGnq,jdbcType=VARCHAR}
+      </if>
+      <if test="hyseaSzmb != null and hyseaSzmb !=''">
+        AND hysea_szmb = #{hyseaSzmb,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

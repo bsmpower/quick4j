@@ -11,7 +11,9 @@
     <result column="country" property="country" jdbcType="VARCHAR" />
     <result column="village" property="village" jdbcType="VARCHAR" />
     <result column="address" property="address" jdbcType="VARCHAR" />
-    <result column="yt_area" property="ytArea" jdbcType="VARCHAR" />
+    <result column="longitude" property="longitude" jdbcType="DOUBLE" />
+    <result column="latitude" property="latitude" jdbcType="DOUBLE" />
+    <result column="yt_area" property="ytArea" jdbcType="DOUBLE" />
     <result column="position" property="position" jdbcType="VARCHAR" />
     <result column="psqx" property="psqx" jdbcType="VARCHAR" />
     <result column="river_mode" property="riverMode" jdbcType="VARCHAR" />
@@ -29,10 +31,91 @@
     <result column="sparetwo" property="sparetwo" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, tjyear, tjmonth, tjday, city, yt_name, country, village, address, yt_area, position, 
-    psqx, river_mode, river_name, river_level, sea_mode, sea_name, river_func, river_goal, 
-    ja_function, sea_goal, sea_functiontype, sea_functiongoal, spareone, sparetwo
+    id, tjyear, tjmonth, tjday, city, yt_name, country, village, address, longitude, 
+    latitude, yt_area, position, psqx, river_mode, river_name, river_level, sea_mode, 
+    sea_name, river_func, river_goal, ja_function, sea_goal, sea_functiontype, sea_functiongoal, 
+    spareone, sparetwo
   </sql>
+  <select id="selectoilfield" resultMap="BaseResultMap" parameterType="com.eliteams.quick4j.web.model.oil_field" resultType="com.eliteams.quick4j.web.model.oil_field">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM oil_field
+    <where>
+      <if test="tjyear != null and tjyear !=''">
+        AND tjyear = #{tjyear,jdbcType=VARCHAR}
+      </if>
+      <if test="tjmonth != null and tjmonth !=''" >
+        AND tjmonth = #{tjmonth,jdbcType=VARCHAR}
+      </if>
+      <if test="tjday != null and tjday !=''">
+        AND tjday = #{tjday,jdbcType=VARCHAR}
+      </if>
+      <if test="city != null and city !=''">
+        AND city = #{city,jdbcType=VARCHAR}
+      </if>
+      <if test="ytName != null and ytName !=''" >
+        AND yt_name = #{ytName,jdbcType=VARCHAR}
+      </if>
+      <if test="country != null and country !=''">
+        AND country = #{country,jdbcType=VARCHAR}
+      </if>
+      <if test="village != null and village !=''" >
+        AND village = #{village,jdbcType=VARCHAR}
+      </if>
+      <if test="address != null and address !=''">
+        AND address = #{address,jdbcType=VARCHAR}
+      </if>
+      <if test="longitude != null and longitude !=''">
+        AND longitude = #{longitude,jdbcType=DOUBLE}
+      </if>
+      <if test="latitude != null and latitude !=''">
+        AND latitude = #{latitude,jdbcType=DOUBLE}
+      </if>
+      <if test="ytArea != null and ytArea !=''">
+        AND yt_area = #{ytArea,jdbcType=DOUBLE}
+      </if>
+      <if test="position != null and position !=''" >
+        AND `position` = #{position,jdbcType=VARCHAR}
+      </if>
+      <if test="psqx != null and psqx !=''" >
+        AND psqx = #{psqx,jdbcType=VARCHAR}
+      </if>
+      <if test="riverMode != null and riverMode !=''">
+        AND river_mode = #{riverMode,jdbcType=VARCHAR}
+      </if>
+      <if test="riverName != null and riverName !=''" >
+        AND river_name = #{riverName,jdbcType=VARCHAR}
+      </if>
+      <if test="riverLevel != null and riverLevel !=''">
+        AND river_level = #{riverLevel,jdbcType=VARCHAR}
+      </if>
+      <if test="seaMode != null and seaMode !=''">
+        AND sea_mode = #{seaMode,jdbcType=VARCHAR}
+      </if>
+      <if test="seaName != null and seaName !=''" >
+        AND sea_name = #{seaName,jdbcType=VARCHAR}
+      </if>
+      <if test="riverFunc != null and riverFunc !=''">
+        AND river_func = #{riverFunc,jdbcType=VARCHAR}
+      </if>
+      <if test="riverGoal != null and riverGoal!=''">
+        AND river_goal = #{riverGoal,jdbcType=VARCHAR}
+      </if>
+      <if test="jaFunction != null and jaFunction !=''">
+        AND ja_function = #{jaFunction,jdbcType=DOUBLE}
+      </if>
+      <if test="seaGoal != null and seaGoal !=''" >
+        AND sea_goal = #{seaGoal,jdbcType=DOUBLE}
+      </if>
+      <if test="seaFunctiontype != null and seaFunctiontype !=''">
+        AND sea_functiontype = #{seaFunctiontype,jdbcType=VARCHAR}
+      </if>
+      <if test="seaFunctiongoal != null and seaFunctiongoal !=''">
+        AND sea_functiongoal = #{seaFunctiongoal,jdbcType=DOUBLE}
+      </if>
+    </where>
+  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -47,21 +130,23 @@
     insert into oil_field (id, tjyear, tjmonth, 
       tjday, city, yt_name, 
       country, village, address, 
-      yt_area, position, psqx, 
-      river_mode, river_name, river_level, 
-      sea_mode, sea_name, river_func, 
-      river_goal, ja_function, sea_goal, 
-      sea_functiontype, sea_functiongoal, spareone, 
-      sparetwo)
+      longitude, latitude, yt_area, 
+      position, psqx, river_mode, 
+      river_name, river_level, sea_mode, 
+      sea_name, river_func, river_goal, 
+      ja_function, sea_goal, sea_functiontype, 
+      sea_functiongoal, spareone, sparetwo
+      )
     values (#{id,jdbcType=INTEGER}, #{tjyear,jdbcType=VARCHAR}, #{tjmonth,jdbcType=VARCHAR}, 
       #{tjday,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{ytName,jdbcType=VARCHAR}, 
       #{country,jdbcType=VARCHAR}, #{village,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
-      #{ytArea,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, #{psqx,jdbcType=VARCHAR}, 
-      #{riverMode,jdbcType=VARCHAR}, #{riverName,jdbcType=VARCHAR}, #{riverLevel,jdbcType=VARCHAR}, 
-      #{seaMode,jdbcType=VARCHAR}, #{seaName,jdbcType=VARCHAR}, #{riverFunc,jdbcType=VARCHAR}, 
-      #{riverGoal,jdbcType=VARCHAR}, #{jaFunction,jdbcType=VARCHAR}, #{seaGoal,jdbcType=VARCHAR}, 
-      #{seaFunctiontype,jdbcType=VARCHAR}, #{seaFunctiongoal,jdbcType=VARCHAR}, #{spareone,jdbcType=VARCHAR}, 
-      #{sparetwo,jdbcType=VARCHAR})
+      #{longitude,jdbcType=DOUBLE}, #{latitude,jdbcType=DOUBLE}, #{ytArea,jdbcType=DOUBLE}, 
+      #{position,jdbcType=VARCHAR}, #{psqx,jdbcType=VARCHAR}, #{riverMode,jdbcType=VARCHAR}, 
+      #{riverName,jdbcType=VARCHAR}, #{riverLevel,jdbcType=VARCHAR}, #{seaMode,jdbcType=VARCHAR}, 
+      #{seaName,jdbcType=VARCHAR}, #{riverFunc,jdbcType=VARCHAR}, #{riverGoal,jdbcType=VARCHAR}, 
+      #{jaFunction,jdbcType=VARCHAR}, #{seaGoal,jdbcType=VARCHAR}, #{seaFunctiontype,jdbcType=VARCHAR}, 
+      #{seaFunctiongoal,jdbcType=VARCHAR}, #{spareone,jdbcType=VARCHAR}, #{sparetwo,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.eliteams.quick4j.web.model.oil_field" >
     insert into oil_field
@@ -92,6 +177,12 @@
       </if>
       <if test="address != null" >
         address,
+      </if>
+      <if test="longitude != null" >
+        longitude,
+      </if>
+      <if test="latitude != null" >
+        latitude,
       </if>
       <if test="ytArea != null" >
         yt_area,
@@ -170,8 +261,14 @@
       <if test="address != null" >
         #{address,jdbcType=VARCHAR},
       </if>
+      <if test="longitude != null" >
+        #{longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="latitude != null" >
+        #{latitude,jdbcType=DOUBLE},
+      </if>
       <if test="ytArea != null" >
-        #{ytArea,jdbcType=VARCHAR},
+        #{ytArea,jdbcType=DOUBLE},
       </if>
       <if test="position != null" >
         #{position,jdbcType=VARCHAR},
@@ -247,8 +344,14 @@
       <if test="address != null" >
         address = #{address,jdbcType=VARCHAR},
       </if>
+      <if test="longitude != null" >
+        longitude = #{longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="latitude != null" >
+        latitude = #{latitude,jdbcType=DOUBLE},
+      </if>
       <if test="ytArea != null" >
-        yt_area = #{ytArea,jdbcType=VARCHAR},
+        yt_area = #{ytArea,jdbcType=DOUBLE},
       </if>
       <if test="position != null" >
         position = #{position,jdbcType=VARCHAR},
@@ -308,7 +411,9 @@
       country = #{country,jdbcType=VARCHAR},
       village = #{village,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
-      yt_area = #{ytArea,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=DOUBLE},
+      latitude = #{latitude,jdbcType=DOUBLE},
+      yt_area = #{ytArea,jdbcType=DOUBLE},
       position = #{position,jdbcType=VARCHAR},
       psqx = #{psqx,jdbcType=VARCHAR},
       river_mode = #{riverMode,jdbcType=VARCHAR},

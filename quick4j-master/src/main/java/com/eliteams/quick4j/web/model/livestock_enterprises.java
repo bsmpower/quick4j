@@ -1,6 +1,6 @@
 package com.eliteams.quick4j.web.model;
 
-public class livestock_enterprises {
+public class Livestock_enterprises {
     private Integer id;
 
     private String tjyear;

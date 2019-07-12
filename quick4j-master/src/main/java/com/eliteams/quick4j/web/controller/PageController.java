@@ -3,6 +3,8 @@ package com.eliteams.quick4j.web.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.annotation.Resource;
+
 /**
  * 视图控制器,返回jsp视图给前端
  * 
@@ -52,7 +54,77 @@ public class PageController {
         return "pwk/pwkraintable";
     }
 
+    /**
+     * 雨污混合口功能界面
+     */
+    @RequestMapping("/pwkrainsewage")
+    public String pwkrainsewage(){
+        return "pwk/pwkrainsewage";
+    }
 
+    /**
+     *雨水泄洪口功能界面
+     */
+    @RequestMapping("/pwkrainxhk")
+    public String pwkrainxhk(){
+        return "pwk/pwkrainxhk";
+    }
+
+    /**
+     *油田信息功能界面
+     */
+    @RequestMapping("/pwkoilfield")
+    public String pwkoilfield(){
+        return "pwk/pwkoilfield";
+    }
+
+    /**
+     * 港口码头
+     */
+    @RequestMapping("/pwkport")
+    public String pwkport(){
+        return "pwk/pwkport";
+    }
+
+    /**
+     * 海岛名录
+     */
+    @RequestMapping("/pwkisland")
+    public String pwkisland(){
+        return "pwk/pwkisland";
+    }
+
+    /**
+     * 企业信息管理
+     * */
+    @RequestMapping("/industryLife")
+    public String industryLife(){
+        return "enterprise/industryLife";
+    }
+    @RequestMapping("/municipal")
+    public String municipal(){
+        return "enterprise/municipal";
+    }
+    @RequestMapping("/livestock")
+    public String livestock(){
+        return "enterprise/livestock";
+    }
+    @RequestMapping("/farm")
+    public String farm(){
+        return "enterprise/farm";
+    }
+    @RequestMapping("/aquaculture")
+    public String aquaculture(){
+        return "enterprise/aquaculture";
+    }
+    @RequestMapping("/industryPark")
+    public String industryPark(){
+        return "enterprise/industryPark";
+    }
+    @RequestMapping("/industryTrash")
+    public String industryTrash(){
+        return "enterprise/industryTrash";
+    }
     /**
      * 404页
      */

@@ -32,6 +32,77 @@
     latitude, gk_area, river_name, river_level, gk_func, gk_goal, sea_name, ja_function, 
     ja_goal, sea_functiontype, sea_functiongoal, spareone, sparetwo
   </sql>
+  <select id="selectport" resultMap="BaseResultMap" parameterType="com.eliteams.quick4j.web.model.port" resultType="com.eliteams.quick4j.web.model.port">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM port
+    <where>
+      <if test="tjyear != null and tjyear !=''">
+        AND tjyear = #{tjyear,jdbcType=VARCHAR}
+      </if>
+      <if test="tjmonth != null and tjmonth !=''" >
+        AND tjmonth = #{tjmonth,jdbcType=VARCHAR}
+      </if>
+      <if test="tjday != null and tjday !=''">
+        AND tjday = #{tjday,jdbcType=VARCHAR}
+      </if>
+      <if test="gkGame != null and gkGame !=''" >
+        AND gk_game = #{gkGame,jdbcType=VARCHAR}
+      </if>
+      <if test="gkCode != null and gkCode !=''" >
+        AND gk_code = #{gkCode,jdbcType=VARCHAR}
+      </if>
+      <if test="city != null and city !=''">
+        AND city = #{city,jdbcType=VARCHAR}
+      </if>
+      <if test="country != null and country !=''">
+        AND country = #{country,jdbcType=VARCHAR}
+      </if>
+      <if test="village != null and village !=''" >
+        AND village = #{village,jdbcType=VARCHAR}
+      </if>
+      <if test="address != null and address !=''">
+        AND address = #{address,jdbcType=VARCHAR}
+      </if>
+      <if test="longitude != null and longitude !=''">
+        AND longitude = #{longitude,jdbcType=DOUBLE}
+      </if>
+      <if test="latitude != null and latitude !=''">
+        AND latitude = #{latitude,jdbcType=DOUBLE}
+      </if>
+      <if test="gkArea != null and gkArea !=''">
+        AND gk_area = #{gkArea,jdbcType=VARCHAR}
+      </if>
+      <if test="riverName != null and riverName !=''" >
+        AND river_name = #{riverName,jdbcType=VARCHAR}
+      </if>
+      <if test="riverLevel != null and riverLevel !=''">
+        AND river_level = #{riverLevel,jdbcType=VARCHAR}
+      </if>
+      <if test="gkFunc != null and gkFunc !=''">
+        AND gk_func = #{gkFunc,jdbcType=VARCHAR}
+      </if>
+      <if test="gkGoal != null and gkGoal!=''">
+        AND river_goal = #{riverGoal,jdbcType=VARCHAR}
+      </if>
+      <if test="seaName != null and seaName!=''">
+        AND sea_name = #{seaName,jdbcType=VARCHAR}
+      </if>
+      <if test="jaFunction != null and jaFunction !=''">
+        AND ja_function = #{jaFunction,jdbcType=DOUBLE}
+      </if>
+      <if test="jaGoal != null and jaGoal !=''" >
+        AND ja_goal = #{jaGoal,jdbcType=DOUBLE}
+      </if>
+      <if test="seaFunctiontype != null and seaFunctiontype !=''">
+        AND sea_functiontype = #{seaFunctiontype,jdbcType=VARCHAR}
+      </if>
+      <if test="seaFunctiongoal != null and seaFunctiongoal !=''">
+        AND sea_functiongoal = #{seaFunctiongoal,jdbcType=DOUBLE}
+      </if>
+    </where>
+  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

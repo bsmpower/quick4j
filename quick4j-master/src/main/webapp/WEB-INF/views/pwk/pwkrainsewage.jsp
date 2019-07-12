@@ -24,7 +24,7 @@
     <%--<script src="bsmassets/bootstrap-3.3.7-dist/js/xlsx.core.min.js"></script>--%>
     <%--<script src="bsmassets/bootstrap-3.3.7-dist/js/FileSaver.min.js"></script>--%>
 
-    <script src="bsmassets/js/pwkraintable.js"></script>
+    <script src="bsmassets/js/pwkrainsewage.js"></script>
 </head>
 <body>
 <div class="container">
@@ -98,12 +98,6 @@
                         </div>
                         <br>
                         <div class="input-group">
-                            <span class="input-group-addon">所在市</span>
-                            <input name="city" type="text" class="form-control" placeholder="">
-                            <span class="input-group-addon">注释</span>
-                        </div>
-                        <br>
-                        <div class="input-group">
                             <span class="input-group-addon">排水口名称</span>
                             <input name="pskName" type="text" class="form-control" placeholder="">
                             <span class="input-group-addon">注释</span>
@@ -112,6 +106,12 @@
                         <div class="input-group">
                             <span class="input-group-addon">排水口编码</span>
                             <input name="pskCode" type="text" class="form-control" placeholder="">
+                            <span class="input-group-addon">注释</span>
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <span class="input-group-addon">所在市</span>
+                            <input name="city" type="text" class="form-control" placeholder="">
                             <span class="input-group-addon">注释</span>
                         </div>
                         <br>
@@ -188,6 +188,12 @@
                         </div>
                         <br>
                         <div class="input-group">
+                            <span class="input-group-addon">日均排污口排水量(吨/日)</span>
+                            <input name="pwkRjpsl" type="text" class="form-control" placeholder="">
+                            <span class="input-group-addon">注释</span>
+                        </div>
+                        <br>
+                        <div class="input-group">
                             <span class="input-group-addon">年均排污口排水量(吨/年)</span>
                             <input name="pwkNjpsl" type="text" class="form-control" placeholder="">
                             <span class="input-group-addon">注释</span>
@@ -206,18 +212,17 @@
                         </div>
                         <br>
                         <div class="input-group">
-                            <span class="input-group-addon">雨水收集区域名称</span>
-                            <input name="rainName" type="text" class="form-control" placeholder="">
+                            <span class="input-group-addon">污水来源</span>
+                            <input name="source" type="text" class="form-control" placeholder="">
                             <span class="input-group-addon">注释</span>
                         </div>
                         <br>
                         <div class="input-group">
-                            <span class="input-group-addon">雨水收集区域面积(km2)</span>
-                            <input name="rainArea" type="text" class="form-control" placeholder="">
+                            <span class="input-group-addon">排水标准</span>
+                            <input name="standard" type="text" class="form-control" placeholder="">
                             <span class="input-group-addon">注释</span>
                         </div>
                         <br>
-
                         <div class="input-group">
                             <span class="input-group-addon">排入河流水功能区</span>
                             <input name="riverGnq" type="text" class="form-control" placeholder="">
@@ -342,8 +347,7 @@
                                     <br>
                                     <div class="input-group">
                                         <span class="input-group-addon">排污口经度(E)</span>
-                                        <input id="pwk9" name="longitude" type="text" class="form-control"
-                                               placeholder="">
+                                        <input id="pwk9" name="longitude" type="text" class="form-control" placeholder="">
                                         <span class="input-group-addon">注释</span>
                                     </div>
                                     <br>
@@ -363,7 +367,7 @@
                                     <br>
 
                                     <div class="input-group">
-                                        <span class="input-group-addon">排排水去向</span>
+                                        <span class="input-group-addon">排水去向</span>
                                         <input id="pwk12" name="psqx" type="text" class="form-control"
                                                placeholder="">
                                         <span class="input-group-addon">注释</span>
@@ -376,16 +380,14 @@
                                         <span class="input-group-addon">注释</span>
                                     </div>
                                     <br>
-
-                                </div>
-                                <div class="col-lg-6">
                                     <div class="input-group">
                                         <span class="input-group-addon">排入河流名称</span>
-                                        <input id="pwk14" name="riverName" type="text" class="form-control"
-                                               placeholder="">
+                                        <input id="pwk14" name="riverName" type="text" class="form-control" placeholder="">
                                         <span class="input-group-addon">注释</span>
                                     </div>
                                     <br>
+                                </div>
+                                <div class="col-lg-6">
                                     <div class="input-group">
                                         <span class="input-group-addon">河流级别</span>
                                         <input id="pwk15" name="riverLevel" type="text" class="form-control"
@@ -408,77 +410,83 @@
                                     </div>
                                     <br>
                                     <div class="input-group">
-                                        <span class="input-group-addon">年均排污口排水量(吨/年)</span>
-                                        <input id="pwk18" name="pwkNjpsl" type="text" class="form-control"
+                                        <span class="input-group-addon">日均排污口排水量(吨/日)</span>
+                                        <input id="pwk18" name="pwkRjpsl" type="text" class="form-control"
                                                placeholder="">
                                         <span class="input-group-addon">注释</span>
                                     </div>
                                     <br>
                                     <div class="input-group">
+                                        <span class="input-group-addon">年均排污口排水量(吨/年)</span>
+                                        <input id="pwk19" name="pwkNjpsl" type="text" class="form-control" placeholder="">
+                                        <span class="input-group-addon">注释</span>
+                                    </div>
+                                    <br>
+                                    <div class="input-group">
                                         <span class="input-group-addon">每次降雨排污口排水量(吨/次)</span>
-                                        <input id="pwk19" name="mcjypsl" type="text" class="form-control"
+                                        <input id="pwk20" name="mcjypsl" type="text" class="form-control"
                                                placeholder="">
                                         <span class="input-group-addon">注释</span>
                                     </div>
                                     <br>
                                     <div class="input-group">
                                         <span class="input-group-addon">年降雨次数(次)</span>
-                                        <input id="pwk20" name="njscs" type="text" class="form-control"
+                                        <input id="pwk21" name="njscs" type="text" class="form-control"
                                                placeholder="">
                                         <span class="input-group-addon">注释</span>
                                     </div>
                                     <br>
                                     <div class="input-group">
-                                        <span class="input-group-addon">雨水收集区域名称</span>
-                                        <input id="pwk21" name="rainName" type="text" class="form-control"
+                                        <span class="input-group-addon">污水来源</span>
+                                        <input id="pwk22" name="source" type="text" class="form-control"
                                                placeholder="">
                                         <span class="input-group-addon">注释</span>
                                     </div>
                                     <br>
                                     <div class="input-group">
-                                        <span class="input-group-addon">雨水收集区域面积(km2)</span>
-                                        <input id="pwk22" name="rainArea" type="text" class="form-control"
+                                        <span class="input-group-addon">排水标准</span>
+                                        <input id="pwk23" name="standard" type="text" class="form-control"
                                                placeholder="">
                                         <span class="input-group-addon">注释</span>
                                     </div>
                                     <br>
-
                                     <div class="input-group">
                                         <span class="input-group-addon">排入河流水功能区</span>
-                                        <input id="pwk23" name="riverGnq" type="text" class="form-control"
+                                        <input id="pwk24" name="riverGnq" type="text" class="form-control"
                                                placeholder="">
                                         <span class="input-group-addon">注释</span>
                                     </div>
                                     <br>
                                     <div class="input-group">
                                         <span class="input-group-addon">排入河流水质目标</span>
-                                        <input id="pwk24" name="riverSzmb" type="text" class="form-control"
+                                        <input id="pwk25" name="riverSzmb" type="text" class="form-control"
                                                placeholder="">
                                         <span class="input-group-addon">注释</span>
                                     </div>
                                     <br>
                                     <div class="input-group">
                                         <span class="input-group-addon">排入海域近岸海域环境功能区</span>
-                                        <input id="pwk25" name="hyGnq" type="text" class="form-control" placeholder="">
+                                        <input id="pwk26" name="hyGnq" type="text" class="form-control" placeholder="">
                                         <span class="input-group-addon">注释</span>
                                     </div>
                                     <br>
                                     <div class="input-group">
                                         <span class="input-group-addon">排入海域水质目标</span>
-                                        <input id="pwk26" name="hySzmb" type="text" class="form-control" placeholder="">
+                                        <input id="pwk27" name="hySzmb" type="text" class="form-control"
+                                               placeholder="">
                                         <span class="input-group-addon">注释</span>
                                     </div>
                                     <br>
                                     <div class="input-group">
                                         <span class="input-group-addon">排入海域海洋功能区类别</span>
-                                        <input id="pwk27" name="hyseaGnq" type="text" class="form-control"
+                                        <input id="pwk28" name="hyseaGnq" type="text" class="form-control"
                                                placeholder="">
                                         <span class="input-group-addon">注释</span>
                                     </div>
                                     <br>
                                     <div class="input-group">
                                         <span class="input-group-addon">排入海域海洋功能区水质目标</span>
-                                        <input id="pwk28" name="hyseaSzmb" type="text" class="form-control"
+                                        <input id="pwk29" name="hyseaSzmb" type="text" class="form-control"
                                                placeholder="">
                                         <span class="input-group-addon">注释</span>
                                     </div>
@@ -577,46 +585,47 @@
                     <br>
                     <div>
                         <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox19" value="option19" onclick="exe()"> 年均排污口排水量(吨/年)
+                            <input type="checkbox" id="inlineCheckbox19" value="option19" onclick="exe()"> 日均排污口排水量(吨/日)
                         </label>
                         <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox20" value="option20" onclick="exe()"> 每次降雨排污口排水量(吨/次)
+                            <input type="checkbox" id="inlineCheckbox20" value="option20" onclick="exe()"> 年均排污口排水量(吨/年)
                         </label>
                         <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox21" value="option21" onclick="exe()"> 年降雨次数(次)
+                            <input type="checkbox" id="inlineCheckbox21" value="option21" onclick="exe()"> 每次降雨排污口排水量(吨/次)
                         </label>
                         <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox22" value="option22" onclick="exe()"> 雨水收集区域名称
+                            <input type="checkbox" id="inlineCheckbox22" value="option22" onclick="exe()"> 年降雨次数(次)
                         </label>
                         <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox23" value="option23" onclick="exe()"> 雨水收集区域面积(km2)
+                            <input type="checkbox" id="inlineCheckbox23" value="option23" onclick="exe()"> 污水来源
                         </label>
                         <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox24" value="option24" onclick="exe()"> 排入河流水功能区
+                            <input type="checkbox" id="inlineCheckbox24" value="option24" onclick="exe()"> 排水标准
                         </label>
                     </div>
                     <br>
-
                     <div>
-                        <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox25" value="option25" onclick="exe()"> 排入河流水质目标
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox26" value="option26" onclick="exe()"> 排入海域近岸海域环境功能区
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox27" value="option27" onclick="exe()"> 排入海域水质目标
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox28" value="option28" onclick="exe()"> 排入海域海洋功能区类别
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox29" value="option29" onclick="exe()"> 排入海域海洋功能区水质目标
-                        </label>
+                        <div>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox25" value="option25" onclick="exe()"> 排入河流水功能区
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox26" value="option26" onclick="exe()"> 排入河流水质目标
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox27" value="option27" onclick="exe()"> 排入海域近岸海域环境功能区
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox28" value="option28" onclick="exe()"> 排入海域水质目标
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox29" value="option29" onclick="exe()"> 排入海域海洋功能区类别
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox30" value="option30" onclick="exe()"> 排入海域海洋功能区水质目标
+                            </label>
+                        </div>
                     </div>
-
-
-
                     <br>
                     <div id="div_0"></div>
                     <div id="div_1"></div>
@@ -647,6 +656,7 @@
                     <div id="div_26"></div>
                     <div id="div_27"></div>
                     <div id="div_28"></div>
+                    <div id="div_29"></div>
                 </div>
                 <div class="modal-footer">
                     <button id="closeMod2" type="button" class="btn btn-default" data-dismiss="modal">关闭
@@ -659,8 +669,6 @@
         </div><!-- /.modal -->
     </div>
 </div>
-
-文件上传
 <div>
     <div class="modal fade" id="myModalExcelin" tabindex="-1" role="dialog" data-backdrop="static"
          aria-labelledby="myModalLabel" aria-hidden="true">
@@ -679,9 +687,9 @@
                            class="tableBasic">
                         <tr>
                             <td width="30%" align="center">文档模板</td>
-                            <td width="55%" align="center">雨水排放口信息表.xls</td>
+                            <td width="55%" align="center">雨污混和口信息表.xls</td>
                             <td width="15%" align="center">
-                                <a type="button" class="btnz btnz-info" id="download" href="download/雨水排放口信息表.xls"
+                                <a type="button" class="btnz btnz-info" id="download" href="download/雨污混合口信息表.xls"
                                    readonly=""><i class='glyphicon glyphicon-download'></i> 下载</a>
                             </td>
                         </tr>
@@ -713,7 +721,7 @@
 <script type="text/javascript">
     $(function () {
         $('#RainPwkInfoTable').bootstrapTable({
-            url: '/rest/pwkrain/pwkshowlist', // 请求后台的URL（*）
+            url: '/rest/pwksewage/pwkshowlist', // 请求后台的URL（*）
             method: 'get', // 请求方式（*）
             toolbar: "#toolbar", // 工具按钮用哪个容器
 
@@ -762,11 +770,6 @@
                     align: 'center',
                     valign: 'middle'
                 }, {
-                    field: 'city',
-                    title: '所在市',
-                    align: 'center',
-                    valign: 'middle'
-                }, {
                     field: 'pskName',
                     title: '排水口名称',
                     align: 'center',
@@ -777,13 +780,13 @@
                     align: 'center',
                     valign: 'middle'
                 }, {
-                    field: 'pwkType',
-                    title: '排放口类型',
+                    field: 'city',
+                    title: '所在市',
                     align: 'center',
                     valign: 'middle'
                 }, {
                     field: 'county',
-                    title: '所在县（市区）',
+                    title: '所在县(市/区)',
                     align: 'center',
                     valign: 'middle'
                 }, {
@@ -798,12 +801,12 @@
                     valign: 'middle'
                 }, {
                     field: 'longitude',
-                    title: '排污口经度',
+                    title: '排放口经度(E)',
                     align: 'center',
                     valign: 'middle'
                 }, {
                     field: 'latitude',
-                    title: '排污口纬度',
+                    title: '排放口纬度(N)',
                     align: 'center',
                     valign: 'middle'
                 }, {
@@ -842,6 +845,11 @@
                     align: 'center',
                     valign: 'middle'
                 }, {
+                    field: 'pwkRjpsl',
+                    title: '日均排污口排水量(吨/日)',
+                    align: 'center',
+                    valign: 'middle'
+                }, {
                     field: 'pwkNjpsl',
                     title: '年均排污口排水量(吨/年)',
                     align: 'center',
@@ -857,13 +865,13 @@
                     align: 'center',
                     valign: 'middle'
                 }, {
-                    field: 'rainName',
-                    title: '雨水收集区域名称',
+                    field: 'source',
+                    title: '污水来源',
                     align: 'center',
                     valign: 'middle'
                 }, {
-                    field: 'rainArea',
-                    title: '雨水收集区域面积(km2)',
+                    field: 'standard',
+                    title: '排水标准',
                     align: 'center',
                     valign: 'middle'
                 }, {
@@ -931,7 +939,7 @@
         var val27 = document.getElementById("inlineCheckbox27").checked;
         var val28 = document.getElementById("inlineCheckbox28").checked;
         var val29 = document.getElementById("inlineCheckbox29").checked;
-
+        var val30 = document.getElementById("inlineCheckbox30").checked;
 
         if (val1 == true) {
             var temp1 = "<div class=\"input-group\">\n" +
@@ -1158,7 +1166,7 @@
         }
         if (val19 == true) {
             var temp19 = "<div class=\"input-group\">\n" +
-                "                                        <span class=\"input-group-addon\">年均排污口排水量(吨/年)</span>\n" +
+                "                                        <span class=\"input-group-addon\">日均排污口排水量(吨/年)</span>\n" +
                 "                                        <input id=\"select18\" name=\"isPermit\" type=\"text\" class=\"form-control\"\n" +
                 "                                               placeholder=\"\">\n" +
                 "                                        <span class=\"input-group-addon\">注释</span>\n" +
@@ -1166,13 +1174,14 @@
             $("#div_18").html(temp19);
             $("#div_18").show();
         }
-        if (val19 == false) {
-            $("#div_18").hide();
+        if (val20 == false) {
+            $("#div_19").hide();
         }
         if (val20 == true) {
             var temp20 = "<div class=\"input-group\">\n" +
-                "                                        <span class=\"input-group-addon\">每次降雨排污口排水量(吨/次)</span>\n" +
-                "                                        <input id=\"select19\" name=\"pwCode\" type=\"text\" class=\"form-control\" placeholder=\"\">\n" +
+                "                                        <span class=\"input-group-addon\">年均排污口排水量(吨/年)</span>\n" +
+                "                                        <input id=\"select19\" name=\"isPermit\" type=\"text\" class=\"form-control\"\n" +
+                "                                               placeholder=\"\">\n" +
                 "                                        <span class=\"input-group-addon\">注释</span>\n" +
                 "                                    </div>"
             $("#div_19").html(temp20);
@@ -1183,9 +1192,8 @@
         }
         if (val21 == true) {
             var temp21 = "<div class=\"input-group\">\n" +
-                "                                        <span class=\"input-group-addon\">年降雨次数(次)</span>\n" +
-                "                                        <input id=\"select20\" name=\"usetime\" type=\"text\" class=\"form-control\"\n" +
-                "                                               placeholder=\"\">\n" +
+                "                                        <span class=\"input-group-addon\">每次降雨排污口排水量(吨/次)</span>\n" +
+                "                                        <input id=\"select20\" name=\"pwCode\" type=\"text\" class=\"form-control\" placeholder=\"\">\n" +
                 "                                        <span class=\"input-group-addon\">注释</span>\n" +
                 "                                    </div>"
             $("#div_20").html(temp21);
@@ -1196,8 +1204,8 @@
         }
         if (val22 == true) {
             var temp22 = "<div class=\"input-group\">\n" +
-                "                                        <span class=\"input-group-addon\">雨水收集区域名称</span>\n" +
-                "                                        <input id=\"select21\" name=\"isInlaw\" type=\"text\" class=\"form-control\"\n" +
+                "                                        <span class=\"input-group-addon\">年降雨次数(次)</span>\n" +
+                "                                        <input id=\"select21\" name=\"usetime\" type=\"text\" class=\"form-control\"\n" +
                 "                                               placeholder=\"\">\n" +
                 "                                        <span class=\"input-group-addon\">注释</span>\n" +
                 "                                    </div>"
@@ -1209,8 +1217,8 @@
         }
         if (val23 == true) {
             var temp23 = "<div class=\"input-group\">\n" +
-                "                                        <span class=\"input-group-addon\">雨水收集区域面积(km2)</span>\n" +
-                "                                        <input id=\"select22\" name=\"isResonable\" type=\"text\" class=\"form-control\"\n" +
+                "                                        <span class=\"input-group-addon\">雨水收集区域名称</span>\n" +
+                "                                        <input id=\"select22\" name=\"isInlaw\" type=\"text\" class=\"form-control\"\n" +
                 "                                               placeholder=\"\">\n" +
                 "                                        <span class=\"input-group-addon\">注释</span>\n" +
                 "                                    </div>"
@@ -1222,8 +1230,8 @@
         }
         if (val24 == true) {
             var temp24 = "<div class=\"input-group\">\n" +
-                "                                        <span class=\"input-group-addon\">排入河流水功能区</span>\n" +
-                "                                        <input id=\"select23\" name=\"position\" type=\"text\" class=\"form-control\"\n" +
+                "                                        <span class=\"input-group-addon\">雨水收集区域面积(km2)</span>\n" +
+                "                                        <input id=\"select23\" name=\"isResonable\" type=\"text\" class=\"form-control\"\n" +
                 "                                               placeholder=\"\">\n" +
                 "                                        <span class=\"input-group-addon\">注释</span>\n" +
                 "                                    </div>"
@@ -1235,8 +1243,8 @@
         }
         if (val25 == true) {
             var temp25 = "<div class=\"input-group\">\n" +
-                "                                        <span class=\"input-group-addon\">排入河流水质目标</span>\n" +
-                "                                        <input id=\"select24\" name=\"processTech\" type=\"text\" class=\"form-control\"\n" +
+                "                                        <span class=\"input-group-addon\">排入河流水功能区</span>\n" +
+                "                                        <input id=\"select24\" name=\"position\" type=\"text\" class=\"form-control\"\n" +
                 "                                               placeholder=\"\">\n" +
                 "                                        <span class=\"input-group-addon\">注释</span>\n" +
                 "                                    </div>"
@@ -1248,8 +1256,8 @@
         }
         if (val26 == true) {
             var temp26 = "<div class=\"input-group\">\n" +
-                "                                        <span class=\"input-group-addon\">排入海域近岸海域环境功能区</span>\n" +
-                "                                        <input id=\"select25\" name=\"emissionMode\" type=\"text\" class=\"form-control\"\n" +
+                "                                        <span class=\"input-group-addon\">排入河流水质目标</span>\n" +
+                "                                        <input id=\"select25\" name=\"processTech\" type=\"text\" class=\"form-control\"\n" +
                 "                                               placeholder=\"\">\n" +
                 "                                        <span class=\"input-group-addon\">注释</span>\n" +
                 "                                    </div>"
@@ -1260,9 +1268,10 @@
             $("#div_25").hide();
         }
         if (val27 == true) {
-            var temp27 = " <div class=\"input-group\">\n" +
-                "                                        <span class=\"input-group-addon\">排入海域水质目标</span>\n" +
-                "                                        <input id=\"select26\" name=\"pwqx\" type=\"text\" class=\"form-control\" placeholder=\"\">\n" +
+            var temp27 = "<div class=\"input-group\">\n" +
+                "                                        <span class=\"input-group-addon\">排入海域近岸海域环境功能区</span>\n" +
+                "                                        <input id=\"select26\" name=\"emissionMode\" type=\"text\" class=\"form-control\"\n" +
+                "                                               placeholder=\"\">\n" +
                 "                                        <span class=\"input-group-addon\">注释</span>\n" +
                 "                                    </div>"
             $("#div_26").html(temp27);
@@ -1272,10 +1281,9 @@
             $("#div_26").hide();
         }
         if (val28 == true) {
-            var temp28 = "<div class=\"input-group\">\n" +
-                "                                        <span class=\"input-group-addon\">排入海域海洋功能区类别</span>\n" +
-                "                                        <input id=\"select27\" name=\"riverMode\" type=\"text\" class=\"form-control\"\n" +
-                "                                               placeholder=\"\">\n" +
+            var temp28 = " <div class=\"input-group\">\n" +
+                "                                        <span class=\"input-group-addon\">排入海域水质目标</span>\n" +
+                "                                        <input id=\"select27\" name=\"pwqx\" type=\"text\" class=\"form-control\" placeholder=\"\">\n" +
                 "                                        <span class=\"input-group-addon\">注释</span>\n" +
                 "                                    </div>"
             $("#div_27").html(temp28);
@@ -1286,8 +1294,8 @@
         }
         if (val29 == true) {
             var temp29 = "<div class=\"input-group\">\n" +
-                "                                        <span class=\"input-group-addon\">排入海域海洋功能区水质目标</span>\n" +
-                "                                        <input id=\"select28\" name=\"riverName\" type=\"text\" class=\"form-control\"\n" +
+                "                                        <span class=\"input-group-addon\">排入海域海洋功能区类别</span>\n" +
+                "                                        <input id=\"select28\" name=\"riverMode\" type=\"text\" class=\"form-control\"\n" +
                 "                                               placeholder=\"\">\n" +
                 "                                        <span class=\"input-group-addon\">注释</span>\n" +
                 "                                    </div>"
@@ -1296,6 +1304,19 @@
         }
         if (val29 == false) {
             $("#div_28").hide();
+        }
+        if (val30 == true) {
+            var temp30 = "<div class=\"input-group\">\n" +
+                "                                        <span class=\"input-group-addon\">排入海域海洋功能区水质目标</span>\n" +
+                "                                        <input id=\"select29\" name=\"riverName\" type=\"text\" class=\"form-control\"\n" +
+                "                                               placeholder=\"\">\n" +
+                "                                        <span class=\"input-group-addon\">注释</span>\n" +
+                "                                    </div>"
+            $("#div_29").html(temp30);
+            $("#div_29").show();
+        }
+        if (val30 == false) {
+            $("#div_29").hide();
         }
     }
 </script>

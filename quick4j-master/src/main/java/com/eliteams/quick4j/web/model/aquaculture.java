@@ -1,6 +1,6 @@
 package com.eliteams.quick4j.web.model;
 
-public class aquaculture {
+public class Aquaculture {
     private Integer id;
 
     private String tjyear;

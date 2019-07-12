@@ -3,10 +3,8 @@ package com.eliteams.quick4j.web.controller;
 import com.eliteams.quick4j.core.util.ExcelUtil;
 import com.eliteams.quick4j.core.util.ImageUtil;
 import com.eliteams.quick4j.core.util.POIUtil;
-import com.eliteams.quick4j.web.model.outlet;
-import com.eliteams.quick4j.web.model.rain_outlet;
-import com.eliteams.quick4j.web.service.OutletService;
-import com.eliteams.quick4j.web.service.RainoutletService;
+import com.eliteams.quick4j.web.model.*;
+import com.eliteams.quick4j.web.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,6 +28,21 @@ public class UploadController {
 
     @Resource
     private RainoutletService rainoutletService;
+
+    @Resource
+    private RainsewageService rainsewageService;
+
+    @Resource
+    private RainxhkService rainxhkService;
+
+    @Resource
+    private OilfieldService oilfieldService;
+
+    @Resource
+    private PortService portService;
+
+    @Resource
+    private  IslandService islandService;
 
     @RequestMapping("uploadexcel")
     @ResponseBody
@@ -261,4 +274,369 @@ public class UploadController {
 //        return modelmap;
     }
 
+    @RequestMapping("/pwksewageexcel")
+    @ResponseBody
+    public Map<String, Object> uploadsewagelet(HttpServletRequest request, @RequestParam(value = "excelfile") MultipartFile excelfile) throws IOException {
+        String realFileName = excelfile.getOriginalFilename();
+        String imgPath;
+        //第一步做存储
+        imgPath = ImageUtil.upload(request, excelfile);
+        System.out.println(imgPath);
+        //第二步进行读取
+        String url = request.getSession().getServletContext().getRealPath("/upload");
+        System.out.println("zheshio" + url + "/" + realFileName);
+        System.out.println("-----------------------------------");
+        File file = new File(url + "/" + realFileName);
+        Map<String, Object> modelmap = new HashMap<>();
+        try {
+            //得到所有数据
+            List<List<String>> allData = ExcelUtil.readExcel(file);
+            System.out.println(allData.size());
+            List<rainsewage> allOutlet = new ArrayList<>();
+            for (int i = 0; i < allData.size(); i++) {
+                List<String> excels = allData.get(i);
+                rainsewage ot = new rainsewage();
+                ot.setTjyear(excels.get(1));
+                ot.setTjmonth(excels.get(2));
+                ot.setTjday(excels.get(3));
+                ot.setPskName(excels.get(4));
+                ot.setPskCode(excels.get(5));
+                ot.setCity(excels.get(6));
+                ot.setcounty(excels.get(7));
+                ot.setVillage(excels.get(8));
+                ot.setAddress(excels.get(9));
+                if (excels.get(10) != "") {
+                    ot.setLongitude(Double.parseDouble(excels.get(10)));
+                }
+                if (excels.get(11) != "") {
+                    ot.setLatitude(Double.parseDouble(excels.get(11)));
+                }
+                ot.setPosition(excels.get(12));
+                ot.setPsqx(excels.get(13));
+                ot.setRiverMode(excels.get(14));
+                ot.setRiverName(excels.get(15));
+                ot.setRiverLevel(excels.get(16));
+                ot.setSeaMode(excels.get(17));
+                ot.setSeaName(excels.get(18));
+                if (excels.get(19) != "") {
+                    ot.setPwkRjpsl(Double.parseDouble(excels.get(19)));
+                }
+                if (excels.get(20) != "") {
+                    ot.setPwkNjpsl(Double.parseDouble(excels.get(20)));
+                }
+                if (excels.get(21) != "") {
+                    ot.setMcjypsl(Double.parseDouble(excels.get(21)));
+                }
+                if (excels.get(22) != "") {
+                    ot.setNjscs(Double.parseDouble(excels.get(22)));
+                }
+                ot.setSource(excels.get(23));
+
+                ot.setStandard(excels.get(24));
+
+                ot.setRiverGnq(excels.get(25));
+                ot.setRiverSzmb(excels.get(26));
+                ot.setHyGnq(excels.get(27));
+                ot.setHySzmb(excels.get(28));
+                ot.setHyseaGnq(excels.get(29));
+                ot.setHyseaSzmb(excels.get(30));
+                allOutlet.add(ot);
+            }
+            int flag = rainsewageService.insertall(allOutlet);
+            if (flag == 1) {
+//                imgPath = ImageUtil.upload(request,excelfile);
+//                System.out.println(imgPath);
+                modelmap.put("success", true);
+                return modelmap;
+            }
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        modelmap.put("success", false);
+        return modelmap;
+    }
+
+    @RequestMapping("/pwkrainxhk")
+    @ResponseBody
+    public Map<String, Object> uploadrainxhk(HttpServletRequest request, @RequestParam(value = "excelfile") MultipartFile excelfile) throws IOException {
+        String realFileName = excelfile.getOriginalFilename();
+        String imgPath;
+        //第一步做存储
+        imgPath = ImageUtil.upload(request, excelfile);
+        System.out.println(imgPath);
+        //第二步进行读取
+        String url = request.getSession().getServletContext().getRealPath("/upload");
+        System.out.println("zheshio" + url + "/" + realFileName);
+        System.out.println("-----------------------------------");
+        File file = new File(url + "/" + realFileName);
+        Map<String, Object> modelmap = new HashMap<>();
+        try {
+            //得到所有数据
+            List<List<String>> allData = ExcelUtil.readExcel(file);
+            System.out.println(allData.size());
+            List<rain_spillway> allOutlet = new ArrayList<>();
+            for (int i = 0; i < allData.size(); i++) {
+                List<String> excels = allData.get(i);
+                rain_spillway ot = new rain_spillway();
+                ot.setTjyear(excels.get(1));
+                ot.setTjmonth(excels.get(2));
+                ot.setTjday(excels.get(3));
+                ot.setCity(excels.get(4));
+                ot.setXhkName(excels.get(5));
+                ot.setXhkCode(excels.get(6));
+                ot.setCounty(excels.get(7));
+                ot.setVillage(excels.get(8));
+                ot.setAddress(excels.get(9));
+                if (excels.get(10) != "") {
+                    ot.setXhkArea(Double.parseDouble(excels.get(10)));
+                }
+                if (excels.get(11) != "") {
+                    ot.setLongitude(Double.parseDouble(excels.get(11)));
+                }
+                if (excels.get(12) != "") {
+                    ot.setLatitude(Double.parseDouble(excels.get(12)));
+                }
+                ot.setXhQx(excels.get(13));
+                ot.setRiverMode(excels.get(14));
+                ot.setRiverName(excels.get(15));
+                ot.setRiverLevel(excels.get(16));
+                ot.setSeaMode(excels.get(17));
+                ot.setSeaName(excels.get(18));
+                if (excels.get(19) != "") {
+                    ot.setXhNum(Double.parseDouble(excels.get(19)));
+                }
+                if (excels.get(20) != "") {
+                    ot.setXhTimes(Double.parseDouble(excels.get(20)));
+                }
+                ot.setStandard(excels.get(21));
+                ot.setXhGnq(excels.get(22));
+                ot.setXhSzmb(excels.get(23));
+                ot.setHyGnq(excels.get(24));
+                ot.setHySzmb(excels.get(25));
+                ot.setHyseaGnq(excels.get(26));
+                ot.setHyseaSzmb(excels.get(27));
+                allOutlet.add(ot);
+            }
+            int flag =  rainxhkService.insertall(allOutlet);
+            if (flag == 1) {
+//                imgPath = ImageUtil.upload(request,excelfile);
+//                System.out.println(imgPath);
+                modelmap.put("success", true);
+                return modelmap;
+            }
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        modelmap.put("success", false);
+        return modelmap;
+    }
+
+    @RequestMapping("/pwkoilfield")
+    @ResponseBody
+    public Map<String, Object> uploadoilfield(HttpServletRequest request, @RequestParam(value = "excelfile") MultipartFile excelfile) throws IOException {
+        String realFileName = excelfile.getOriginalFilename();
+        String imgPath;
+        //第一步做存储
+        imgPath = ImageUtil.upload(request, excelfile);
+        System.out.println(imgPath);
+        //第二步进行读取
+        String url = request.getSession().getServletContext().getRealPath("/upload");
+        System.out.println("zheshio" + url + "/" + realFileName);
+        System.out.println("-----------------------------------");
+        File file = new File(url + "/" + realFileName);
+        Map<String, Object> modelmap = new HashMap<>();
+        try {
+            //得到所有数据
+            List<List<String>> allData = ExcelUtil.readExcel(file);
+            System.out.println(allData.size());
+            List<oil_field> allOutlet = new ArrayList<>();
+            for (int i = 0; i < allData.size(); i++) {
+                List<String> excels = allData.get(i);
+                oil_field ot = new oil_field();
+                ot.setTjyear(excels.get(1));
+                ot.setTjmonth(excels.get(2));
+                ot.setTjday(excels.get(3));
+                ot.setCity(excels.get(4));
+                ot.setYtName(excels.get(5));
+                ot.setCountry(excels.get(6));
+                ot.setVillage(excels.get(7));
+                ot.setAddress(excels.get(8));
+                if (excels.get(9) != "") {
+                    ot.setLongitude(Double.parseDouble(excels.get(11)));
+                }
+                if (excels.get(10) != "") {
+                    ot.setLatitude(Double.parseDouble(excels.get(12)));
+                }
+                if (excels.get(11) != "") {
+                    ot.setYtArea(Double.parseDouble(excels.get(10)));
+                }
+                ot.setPosition(excels.get(12));
+                ot.setPsqx(excels.get(13));
+                ot.setRiverMode(excels.get(14));
+                ot.setRiverName(excels.get(15));
+                ot.setRiverLevel(excels.get(16));
+                ot.setSeaMode(excels.get(17));
+                ot.setSeaName(excels.get(18));
+                ot.setRiverFunc(excels.get(19));
+                ot.setRiverGoal(excels.get(20));
+                ot.setJaFunction(excels.get(21));
+                ot.setSeaGoal(excels.get(22));
+                ot.setSeaFunctiontype(excels.get(23));
+                ot.setSeaFunctiongoal(excels.get(24));
+                allOutlet.add(ot);
+            }
+            int flag =  oilfieldService.insertall(allOutlet);
+            if (flag == 1) {
+//                imgPath = ImageUtil.upload(request,excelfile);
+//                System.out.println(imgPath);
+                modelmap.put("success", true);
+                return modelmap;
+            }
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        modelmap.put("success", false);
+        return modelmap;
+    }
+
+    @RequestMapping("/pwkport")
+    @ResponseBody
+    public Map<String, Object> uploadport(HttpServletRequest request, @RequestParam(value = "excelfile") MultipartFile excelfile) throws IOException {
+        String realFileName = excelfile.getOriginalFilename();
+        String imgPath;
+        //第一步做存储
+        imgPath = ImageUtil.upload(request, excelfile);
+        System.out.println(imgPath);
+        //第二步进行读取
+        String url = request.getSession().getServletContext().getRealPath("/upload");
+        System.out.println("zheshio" + url + "/" + realFileName);
+        System.out.println("-----------------------------------");
+        File file = new File(url + "/" + realFileName);
+        Map<String, Object> modelmap = new HashMap<>();
+        try {
+            //得到所有数据
+            List<List<String>> allData = ExcelUtil.readExcel(file);
+            System.out.println(allData.size());
+            List<port> allOutlet = new ArrayList<>();
+            for (int i = 0; i < allData.size(); i++) {
+                List<String> excels = allData.get(i);
+                port ot = new port();
+                ot.setTjyear(excels.get(1));
+                ot.setTjmonth(excels.get(2));
+                ot.setTjday(excels.get(3));
+                ot.setGkGame(excels.get(4));
+                ot.setGkCode(excels.get(5));
+                ot.setCity(excels.get(6));
+                ot.setCountry(excels.get(7));
+                ot.setVillage(excels.get(8));
+                ot.setAddress(excels.get(9));
+                if (excels.get(10) != "") {
+                    ot.setLongitude(Double.parseDouble(excels.get(10)));
+                }
+                if (excels.get(11) != "") {
+                    ot.setLatitude(Double.parseDouble(excels.get(11)));
+                }
+                ot.setGkArea(excels.get(12));
+                ot.setRiverName(excels.get(13));
+                ot.setRiverLevel(excels.get(14));
+                ot.setGkFunc(excels.get(15));
+                ot.setGkGoal(excels.get(16));
+                ot.setSeaName(excels.get(17));
+                ot.setJaFunction(excels.get(18));
+                ot.setJaGoal(excels.get(19));
+                ot.setSeaFunctiontype(excels.get(20));
+                ot.setSeaFunctiongoal(excels.get(21));
+                allOutlet.add(ot);
+            }
+            int flag =  portService.insertall(allOutlet);
+            if (flag == 1) {
+//                imgPath = ImageUtil.upload(request,excelfile);
+//                System.out.println(imgPath);
+                modelmap.put("success", true);
+                return modelmap;
+            }
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        modelmap.put("success", false);
+        return modelmap;
+    }
+
+    @RequestMapping("/pwkisland")
+    @ResponseBody
+    public Map<String, Object> uploadisland(HttpServletRequest request, @RequestParam(value = "excelfile") MultipartFile excelfile) throws IOException {
+        String realFileName = excelfile.getOriginalFilename();
+        String imgPath;
+        //第一步做存储
+        imgPath = ImageUtil.upload(request, excelfile);
+        System.out.println(imgPath);
+        //第二步进行读取
+        String url = request.getSession().getServletContext().getRealPath("/upload");
+        System.out.println("zheshio" + url + "/" + realFileName);
+        System.out.println("-----------------------------------");
+        File file = new File(url + "/" + realFileName);
+        Map<String, Object> modelmap = new HashMap<>();
+        try {
+            //得到所有数据
+            List<List<String>> allData = ExcelUtil.readExcel(file);
+            System.out.println(allData.size());
+            List<island> allOutlet = new ArrayList<>();
+            for (int i = 0; i < allData.size(); i++) {
+                List<String> excels = allData.get(i);
+                island ot = new island();
+                ot.setTjyear(excels.get(1));
+                ot.setTjmonth(excels.get(2));
+                ot.setTjday(excels.get(3));
+                ot.setHdpskName(excels.get(4));
+                ot.setHdpskCode(excels.get(5));
+                ot.setHdName(excels.get(6));
+                if(excels.get(7) != ""){
+                    ot.setHdArea(Double.parseDouble(excels.get(7)));
+                }
+                ot.setCity(excels.get(8));
+                ot.setCountry(excels.get(9));
+                ot.setVillage(excels.get(10));
+                ot.setAddress(excels.get(11));
+                if (excels.get(12) != "") {
+                    ot.setLongitude(Double.parseDouble(excels.get(12)));
+                }
+                if (excels.get(13) != "") {
+                    ot.setLatitude(Double.parseDouble(excels.get(13)));
+                }
+                ot.setSeaMode(excels.get(14));
+                ot.setSeaName(excels.get(15));
+                if(excels.get(16) !=""){
+                    ot.setPslTd(Double.parseDouble(excels.get(16)));
+                }
+                if(excels.get(17) !=""){
+                    ot.setPslTy(Double.parseDouble(excels.get(17)));
+                }
+
+                ot.setEmissionStandard(excels.get(18));
+                ot.setIsGet(excels.get(19));
+                ot.setNogetItems(excels.get(20));
+                ot.setHyGnq(excels.get(21));
+                ot.setHySzmb(excels.get(22));
+                ot.setHyseaGnq(excels.get(23));
+                ot.setHyseaSzmb(excels.get(24));
+                allOutlet.add(ot);
+            }
+            int flag =  islandService.insertall(allOutlet);
+            if (flag == 1) {
+//                imgPath = ImageUtil.upload(request,excelfile);
+//                System.out.println(imgPath);
+                modelmap.put("success", true);
+                return modelmap;
+            }
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        modelmap.put("success", false);
+        return modelmap;
+    }
 }

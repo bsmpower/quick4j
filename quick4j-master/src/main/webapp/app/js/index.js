@@ -130,9 +130,37 @@ $(function() {
             $('#first').text(pagetitle);
             $('#second').text(subpagetitle);
         })
+        $('#pfkxhk').click(function(e){
+            var pagetitle = $('#pfkparent').text();
+            var subpagetitle = $('#pfkxhk').text();
+
+            $('#first').text(pagetitle);
+            $('#second').text(subpagetitle);
+        })
         $('#pfkwh').click(function (e) {
             var pagetitle = $('#pfkparent').text();
             var subpagetitle = $('#pfkwh').text();
+
+            $('#first').text(pagetitle);
+            $('#second').text(subpagetitle);
+        })
+        $('#pfkyt').click(function (e) {
+            var pagetitle = $('#pfkparent').text();
+            var subpagetitle = $('#pfkyt').text();
+
+            $('#first').text(pagetitle);
+            $('#second').text(subpagetitle);
+        })
+        $('#pfkgkmt').click(function (e) {
+            var pagetitle = $('#pfkparent').text();
+            var subpagetitle = $('#pfkgkmt').text();
+
+            $('#first').text(pagetitle);
+            $('#second').text(subpagetitle);
+        })
+        $('#pfkhdml').click(function (e) {
+            var pagetitle = $('#pfkparent').text();
+            var subpagetitle = $('#pfkhdml').text();
 
             $('#first').text(pagetitle);
             $('#second').text(subpagetitle);
