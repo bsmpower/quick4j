@@ -1,26 +1,17 @@
 package com.eliteams.quick4j.web.model;
 
-public class product {
+public class Product {
     private Integer id;
-
     private String tjyear;
-
     private String tjmonth;
-
     private String tjday;
-
-    private String usccCode;
-
+    private String USCCCode;
+    private String name;
     private String cpType;
-
     private String cpUnit;
-
     private Double cpSum;
-
     private String scTech;
-
     private String spareone;
-
     private String sparetwo;
 
     public Integer getId() {
@@ -36,7 +27,7 @@ public class product {
     }
 
     public void setTjyear(String tjyear) {
-        this.tjyear = tjyear == null ? null : tjyear.trim();
+        this.tjyear = tjyear;
     }
 
     public String getTjmonth() {
@@ -44,7 +35,7 @@ public class product {
     }
 
     public void setTjmonth(String tjmonth) {
-        this.tjmonth = tjmonth == null ? null : tjmonth.trim();
+        this.tjmonth = tjmonth;
     }
 
     public String getTjday() {
@@ -52,15 +43,23 @@ public class product {
     }
 
     public void setTjday(String tjday) {
-        this.tjday = tjday == null ? null : tjday.trim();
+        this.tjday = tjday;
     }
 
-    public String getUsccCode() {
-        return usccCode;
+    public String getUSCCCode() {
+        return USCCCode;
     }
 
-    public void setUsccCode(String usccCode) {
-        this.usccCode = usccCode == null ? null : usccCode.trim();
+    public void setUSCCCode(String USCCCode) {
+        this.USCCCode = USCCCode;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCpType() {
@@ -68,7 +67,7 @@ public class product {
     }
 
     public void setCpType(String cpType) {
-        this.cpType = cpType == null ? null : cpType.trim();
+        this.cpType = cpType;
     }
 
     public String getCpUnit() {
@@ -76,7 +75,7 @@ public class product {
     }
 
     public void setCpUnit(String cpUnit) {
-        this.cpUnit = cpUnit == null ? null : cpUnit.trim();
+        this.cpUnit = cpUnit;
     }
 
     public Double getCpSum() {
@@ -92,7 +91,7 @@ public class product {
     }
 
     public void setScTech(String scTech) {
-        this.scTech = scTech == null ? null : scTech.trim();
+        this.scTech = scTech;
     }
 
     public String getSpareone() {
@@ -100,7 +99,7 @@ public class product {
     }
 
     public void setSpareone(String spareone) {
-        this.spareone = spareone == null ? null : spareone.trim();
+        this.spareone = spareone;
     }
 
     public String getSparetwo() {
@@ -108,6 +107,6 @@ public class product {
     }
 
     public void setSparetwo(String sparetwo) {
-        this.sparetwo = sparetwo == null ? null : sparetwo.trim();
+        this.sparetwo = sparetwo;
     }
 }

@@ -42,7 +42,10 @@ public class UploadController {
     private PortService portService;
 
     @Resource
-    private  IslandService islandService;
+    private IslandService islandService;
+
+    @Resource
+    private SectionMessageService sectionMessageService;
 
     @RequestMapping("uploadexcel")
     @ResponseBody
@@ -626,6 +629,69 @@ public class UploadController {
                 allOutlet.add(ot);
             }
             int flag =  islandService.insertall(allOutlet);
+            if (flag == 1) {
+//                imgPath = ImageUtil.upload(request,excelfile);
+//                System.out.println(imgPath);
+                modelmap.put("success", true);
+                return modelmap;
+            }
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        modelmap.put("success", false);
+        return modelmap;
+    }
+
+    @RequestMapping("/pwksection")
+    @ResponseBody
+    public Map<String, Object> uploadSection(HttpServletRequest request, @RequestParam(value = "excelfile") MultipartFile excelfile) throws IOException {
+        String realFileName = excelfile.getOriginalFilename();
+        String imgPath;
+        //第一步做存储
+        imgPath = ImageUtil.upload(request, excelfile);
+        System.out.println(imgPath);
+        //第二步进行读取
+        String url = request.getSession().getServletContext().getRealPath("/upload");
+        System.out.println("zheshio" + url + "/" + realFileName);
+        System.out.println("-----------------------------------");
+        File file = new File(url + "/" + realFileName);
+        Map<String, Object> modelmap = new HashMap<>();
+        try {
+            //得到所有数据
+            List<List<String>> allData = ExcelUtil.readExcel(file);
+            System.out.println(allData.size());
+            List<section_message> allOutlet = new ArrayList<>();
+            for (int i = 0; i < allData.size(); i++) {
+                List<String> excels = allData.get(i);
+                section_message ot = new section_message();
+                ot.setTjyear(excels.get(1));
+                ot.setTjmonth(excels.get(2));
+                ot.setTjday(excels.get(3));
+                ot.setDmName(excels.get(4));
+                ot.setDmCode(excels.get(5));
+                ot.setDmType(excels.get(6));
+                ot.setCity(excels.get(7));
+                ot.setCounty(excels.get(8));
+                ot.setVillage(excels.get(9));
+                ot.setAddress(excels.get(10));
+                if (excels.get(11) != "") {
+                    ot.setLongitude(Double.parseDouble(excels.get(11)));
+                }
+                if (excels.get(12) != "") {
+                    ot.setLaititude(Double.parseDouble(excels.get(12)));
+                }
+                ot.setSssx(excels.get(13));
+                ot.setRiverName(excels.get(14));
+                ot.setSzType(excels.get(15));
+                ot.setDmGoal(excels.get(16));
+                ot.setHlsGnq(excels.get(17));
+                ot.setIsGet(excels.get(18));
+                System.out.println(excels.get(18));
+                ot.setNogetItems(excels.get(19));
+                allOutlet.add(ot);
+            }
+            int flag =  sectionMessageService.insertall(allOutlet);
             if (flag == 1) {
 //                imgPath = ImageUtil.upload(request,excelfile);
 //                System.out.println(imgPath);

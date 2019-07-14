@@ -76,7 +76,7 @@ $(function () {
      * 新增数据
      */
     $("#submitPwk").click(function () {
-        var addurl = "/rest/pwkport/addpwk";
+        var addurl = "rest/pwkport/addpwk";
         var addpwkmsc = {};
         /*********************************************/
         var t = $("form").serializeArray();
@@ -115,6 +115,7 @@ $(function () {
                     // $("#myModal").remove();
                     // $('.modal-backdrop').remove();
                     $("#RainPwkInfoTable").bootstrapTable('refresh');
+                    document.getElementById("contentForm").reset();
                     alert("数据添加成功！")
                 } else {
                     alert(data.errMsg);
@@ -163,7 +164,7 @@ $(function () {
 
         console.log(selectpwkmsc)
 
-        var optionUrl = "/rest/pwkport/optionpwk"
+        var optionUrl = "rest/pwkport/optionpwk"
 
         $.ajax({
             url: optionUrl,
@@ -191,7 +192,7 @@ $(function () {
      */
     $("#submitPwk1").click(function () {
 
-        var updateurl = "/rest/pwkport/updatepwk"
+        var updateurl = "rest/pwkport/updatepwk"
         var t = $("form").serializeArray();
         var rows = $("#RainPwkInfoTable").bootstrapTable('getSelections');
         // alert(tjyear);
@@ -315,7 +316,7 @@ $(function () {
      * */
     function deletePwk(ids) {
         $.ajax({
-            url: "/rest/pwkport/deletepwk",
+            url: "rest/pwkport/deletepwk",
             data: {"ids": ids},
             type: "POST",
             // dataType: "json",

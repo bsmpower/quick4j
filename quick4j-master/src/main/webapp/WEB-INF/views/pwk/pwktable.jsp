@@ -15,7 +15,7 @@
 <table id="table"></table>
 <script type ="text/javascript">
     $(document).ready(function(){
-        var pwlurl = "/rest/pwk/pwkshowlist"
+        var pwlurl = "rest/pwk/pwkshowlist"
         name = "沈阳";
         var pwkmessage = {};
         pwkmessage.name = name;
@@ -48,7 +48,7 @@
             }
         });
     })
-//    var pwlurl = "/rest/pwk/pwkshowlist"
+//    var pwlurl = "rest/pwk/pwkshowlist"
 //    $("#button").click(function () {
 //        name = "沈阳";
 //        var pwkmessage = {};

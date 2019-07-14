@@ -94,6 +94,12 @@ public class PageController {
         return "pwk/pwkisland";
     }
 
+
+
+    @RequestMapping("/pwksection")
+    public String pwksection(){
+        return "pwk/pwksection";
+    }
     /**
      * 企业信息管理
      * */
@@ -127,7 +133,13 @@ public class PageController {
     }
 
     /**
-     * 断面信息管理
+     * 企业产品信息管理
+     */
+    @RequestMapping("/productlist")
+    public String productlist(){return "emis/listProduct";}
+
+    /**
+     * 排放物质信息管理
      */
     @RequestMapping("/emissionlist")
     public String emissionlist(){return "emis/listEmission";}

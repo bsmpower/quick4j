@@ -1,17 +1,13 @@
 package com.eliteams.quick4j.web.dao;
 
-import com.eliteams.quick4j.web.model.product;
+import java.util.List;
+import com.eliteams.quick4j.web.model.Product;
 
-public interface productMapper {
-    int deleteByPrimaryKey(Integer id);
-
-    int insert(product record);
-
-    int insertSelective(product record);
-
-    product selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(product record);
-
-    int updateByPrimaryKey(product record);
+public interface ProductMapper{
+    List<Product> select(Product product);
+    List<Product> list();
+    Product get(int id);
+    void add(Product product);
+    void delete(int id);
+    void update(Product product);
 }

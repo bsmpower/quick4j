@@ -21,20 +21,20 @@
         .table>thead>.success>th {background-color:#ffffff}
         .table thead tr th{font-size:14px;font-weight:400;text-align: center;vertical-align: middle;height: 50px}
     </style>
-    <script type="text/javascript" src="app/js/emis/selectemission.js"></script>
     <script src="app/js/emis/jquery.sliderBar.js"></script>
-    <script type="text/javascript">
-        $(function(){
-            $('.sliderbar-container').sliderBar({
-                open : true,           // 默认是否打开，true打开，false关闭
-                top : 125,             // 距离顶部多高
-                width : 360,           // body内容宽度
-                height : 330,          // body内容高度
-                theme : '#3d3d3d',       // 主题颜色
-                position : 'right'      // 显示位置，有left和right两种
-            });
-        });
-    </script>
+    <script type="text/javascript" src="app/js/emis/selectemission.js"></script>
+    <%--<script type="text/javascript">--%>
+        <%--$(function(){--%>
+            <%--$('.sliderbar-container').sliderBar({--%>
+                <%--open : true,           // 默认是否打开，true打开，false关闭--%>
+                <%--top : 125,             // 距离顶部多高--%>
+                <%--width : 360,           // body内容宽度--%>
+                <%--height : 330,          // body内容高度--%>
+                <%--theme : '#3d3d3d',       // 主题颜色--%>
+                <%--position : 'right'      // 显示位置，有left和right两种--%>
+            <%--});--%>
+        <%--});--%>
+    <%--</script>--%>
     <script type="text/javascript" src="app/js/emis/table2excel.js"></script>
 
 </head>
@@ -77,7 +77,10 @@
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-default" onclick="selectemis()">查询</button>
+                    <div>
+                        <button type="button" class="btn btn-default" onclick="selectemis()">查询</button>
+                        <button type="button" class="btn btn-default" onclick="selall()" style="margin-left: 20px">查看全部</button>
+                    </div>
                 </form>
             </div>
         </div>

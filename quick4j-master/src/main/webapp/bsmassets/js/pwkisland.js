@@ -12,7 +12,7 @@ $(function () {
             ids.push(this.id);
         });
         console.log(ids);
-        var excelout = "rest/pwkisland/excelout"
+        var excelout = "rest/pwksection/excelout"
         $.ajax({
             url: excelout,
             type: "POST",
@@ -48,7 +48,7 @@ $(function () {
     $("#upload").click(function (e) {
         $.ajax({
             type: "POST",
-            url: "rest/upload/pwkisland",
+            url: "rest/upload/pwksection",
             processData: false,
             contentType: false,
             data: new FormData($('#form1')[0]),
@@ -76,7 +76,7 @@ $(function () {
      * 新增数据
      */
     $("#submitPwk").click(function () {
-        var addurl = "/rest/pwkisland/addpwk";
+        var addurl = "rest/pwksection/addpwk";
         var addpwkmsc = {};
         /*********************************************/
         var t = $("form").serializeArray();
@@ -118,6 +118,7 @@ $(function () {
                     $("#RainPwkInfoTable").bootstrapTable('refresh');
                     // $("#myModal").remove();
                     $('.modal-backdrop').remove();
+                    document.getElementById("contentForm").reset();
                     alert("数据添加成功！")
                 } else {
                     alert(data.errMsg);
@@ -170,7 +171,7 @@ $(function () {
 
         console.log(selectpwkmsc)
 
-        var optionUrl = "/rest/pwkisland/optionpwk"
+        var optionUrl = "rest/pwksection/optionpwk"
 
         $.ajax({
             url: optionUrl,
@@ -198,7 +199,7 @@ $(function () {
      */
     $("#submitPwk1").click(function () {
 
-        var updateurl = "/rest/pwkisland/updatepwk"
+        var updateurl = "rest/pwksection/updatepwk"
         var t = $("form").serializeArray();
         var rows = $("#RainPwkInfoTable").bootstrapTable('getSelections');
         // alert(tjyear);
@@ -330,7 +331,7 @@ $(function () {
      * */
     function deletePwk(ids) {
         $.ajax({
-            url: "/rest/pwkisland/deletepwk",
+            url: "rest/pwksection/deletepwk",
             data: {"ids": ids},
             type: "POST",
             // dataType: "json",

@@ -36,13 +36,9 @@
         <div id="gisMap" class="col-lg-8">map地图</div>
     </div>
 </div>
-<%--加上这个样式就能够保证bootstrap中的table不换行--%>
-<div id="tablecontrol" class="table-responsive">
-    <table id="RainPwkInfoTable" class="table table-striped text-nowrap">
 
+<table id="RainPwkInfoTable" class="table table-striped text-nowrap table-responsive"></table>
 
-    </table>
-</div>
 <div id="toolbar" class="btn-group">
     <button id="btn_show" type="button" class="btn btn btn-primary">
         <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>
@@ -78,7 +74,7 @@
                     </h4>
                 </div>
                 <div class="modal-body">
-                    <form class="bs-example bs-example-form" role="form">
+                    <form class="bs-example bs-example-form" role="form" id="contentForm">
                         <div class="input-group">
                             <span class="input-group-addon">统计年份</span>
                             <input name="tjyear" type="text" class="form-control" placeholder="">
@@ -622,10 +618,13 @@
 </div>
 <script type="text/javascript">
     $(function () {
-        $('#RainPwkInfoTable').bootstrapTable({
-            url: '/rest/pwkisland/pwkshowlist', // 请求后台的URL（*）
+
+       $('#RainPwkInfoTable').bootstrapTable({
+            //url: '/rest/pwkisland/pwkshowlist', // 请求后台的URL（*）
+           url: 'rest/pwkisland/pwkshowlist', // 请求后台的URL（*）
             method: 'get', // 请求方式（*）
             toolbar: "#toolbar", // 工具按钮用哪个容器
+            height: 500, //设置height属性后,达到冻结标题的目的
 
             striped: true, // 是否显示行间隔色
             cache: false, // 是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
@@ -779,7 +778,24 @@
                 }],
             silent: true, // 刷新事件必须设置
         });
-    });
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     function exe() {
         var val1 = document.getElementById("inlineCheckbox1").checked;

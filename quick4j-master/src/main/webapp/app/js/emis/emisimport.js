@@ -34,7 +34,7 @@ function upload1(){
                 type:'post',
                 processData : false,
                 contentType:false,
-                url : "/rest/emis/uploadfile",
+                url : "rest/emis/uploadfile",
                 data:formData,
                 success : function(data) {
                     document.getElementById("warning1").innerHTML=data;
@@ -55,7 +55,7 @@ function upload2(){
         var fileType = getFileType(filePath);
         if ("xls" != fileType ) {
             $("#excelimport2").val("");
-            alert("请上传.xls表格文件");
+            alert("请下载模板，或另存为.xls文件再重新上传");
         }
         else {
             $("#photo2").show();
@@ -68,7 +68,7 @@ function upload2(){
                 type:'post',
                 processData : false,
                 contentType:false,
-                url : "/rest/sec/upload",
+                url : "rest/sec/upload",
                 data:formData,
                 success : function(data) {
                     document.getElementById("warning2").innerHTML=data;

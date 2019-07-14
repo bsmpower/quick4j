@@ -30,6 +30,71 @@
     longitude, laititude, sssx, river_name, sz_type, dm_goal, hls_gnq, is_get, noget_items, 
     spareone, sparetwo
   </sql>
+  <select id="selectsection" resultMap="BaseResultMap" parameterType="com.eliteams.quick4j.web.model.section_message" resultType="com.eliteams.quick4j.web.model.section_message">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM section_message
+    <where>
+      <if test="tjyear != null and tjyear !=''">
+        AND tjyear = #{tjyear,jdbcType=VARCHAR}
+      </if>
+      <if test="tjmonth != null and tjmonth !=''" >
+        AND tjmonth = #{tjmonth,jdbcType=VARCHAR}
+      </if>
+      <if test="tjday != null and tjday !=''">
+        AND tjday = #{tjday,jdbcType=VARCHAR}
+      </if>
+      <if test="dmName != null and dmName !=''" >
+        AND dm_name = #{dmName,jdbcType=VARCHAR}
+      </if>
+      <if test="dmCode != null and dmCode !=''" >
+        AND dm_code = #{dmCode,jdbcType=VARCHAR}
+      </if>
+      <if test="dmType != null and dmType !=''">
+        AND dm_type = #{dmType,jdbcType=VARCHAR}
+      </if>
+      <if test="city != null and city !=''">
+        AND city = #{city,jdbcType=VARCHAR}
+      </if>
+      <if test="county != null and county !=''">
+        AND county = #{county,jdbcType=VARCHAR}
+      </if>
+      <if test="village != null and village !=''" >
+        AND village = #{village,jdbcType=VARCHAR}
+      </if>
+      <if test="address != null and address !=''">
+        AND address = #{address,jdbcType=VARCHAR}
+      </if>
+      <if test="longitude != null and longitude !=''">
+        AND longitude = #{longitude,jdbcType=DOUBLE}
+      </if>
+      <if test="laititude != null and laititude !=''">
+        AND laititude = #{laititude,jdbcType=DOUBLE}
+      </if>
+      <if test="sssx != null and sssx !=''">
+        AND sssx = #{sssx,jdbcType=VARCHAR}
+      </if>
+      <if test="riverName!= null and riverName !=''">
+        AND riverName = #{riverName,jdbcType=VARCHAR}
+      </if>
+      <if test="szType != null and szType !=''">
+        AND szType = #{szType,jdbcType=VARCHAR}
+      </if>
+      <if test="dmGoal != null and dmGoal !=''" >
+        AND dmGoal = #{dmGoal,jdbcType=VARCHAR}
+      </if>
+      <if test="hlsGnq != null and hlsGnq !=''">
+        AND hlsGnq = #{hlsGnq,jdbcType=VARCHAR}
+      </if>
+      <if test="isGet != null and isGet !=''">
+        AND is_get = #{isGet,jdbcType=VARCHAR}
+      </if>
+      <if test="nogetItems != null and nogetItems !=''">
+        AND noget_items = #{nogetItems,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

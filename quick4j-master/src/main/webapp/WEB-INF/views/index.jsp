@@ -198,26 +198,30 @@
                             </a>
                         </li>
                         <li>
-                            <a href="rest/page/pwktable;" id="pfkwh">
+                            <a href="rest/page/pwktable" id="pfkwh">
                                 排放口基本信息
                             </a>
                         </li>
                         <li>
-                            <a href="rest/page/pwkoilfield;" id="pfkyt">
+                            <a href="rest/page/pwkoilfield" id="pfkyt">
                                 油田信息
                             </a>
                         </li>
                         <li>
-                            <a href="rest/page/pwkport;" id="pfkgkmt">
+                            <a href="rest/page/pwkport" id="pfkgkmt">
                                 港口码头信息
                             </a>
                         </li>
                         <li>
-                            <a href="rest/page/pwkisland;" id="pfkhdml">
-                                海岛名录
+                            <a href="rest/page/pwkisland" id="pfkhdml">
+                                海岛名录13
                             </a>
                         </li>
-
+                        <li>
+                            <a href="rest/page/pwksection" id="pfkdm">
+                                断面信息
+                            </a>
+                        </li>
 
                     </ul>
                 </li>
@@ -255,6 +259,9 @@
                                     <a href="rest/page/aquaculture">水产单位</a>
                                 </li>
                             </ul>
+                        </li>
+                        <li>
+                            <a href="rest/page/productlist">企业产品信息查询与维护</a>
                         </li>
                     </ul>
                 </li>

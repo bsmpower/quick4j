@@ -78,7 +78,7 @@
                     </h4>
                 </div>
                 <div class="modal-body">
-                    <form class="bs-example bs-example-form" role="form">
+                    <form class="bs-example bs-example-form" role="form" id="contentForm">
                         <div class="input-group">
                             <span class="input-group-addon">统计年份</span>
                             <input name="tjyear" type="text" class="form-control" placeholder="">
@@ -681,7 +681,7 @@
 <script type="text/javascript">
     $(function () {
         $('#RainPwkInfoTable').bootstrapTable({
-            url: '/rest/pwkrainxhk/pwkshowlist', // 请求后台的URL（*）
+            url: 'rest/pwkrainxhk/pwkshowlist', // 请求后台的URL（*）
             method: 'get', // 请求方式（*）
             toolbar: "#toolbar", // 工具按钮用哪个容器
 

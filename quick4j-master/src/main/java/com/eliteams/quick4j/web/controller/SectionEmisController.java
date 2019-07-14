@@ -56,7 +56,6 @@ public class SectionEmisController {
     @ResponseBody
     public String alldelete(HttpServletRequest request){
         String[] checkarrs  = request.getParameterValues("params");
-        System.out.println(checkarrs);
         for(int i=0;i<checkarrs.length;i++){
             int id = Integer.parseInt(checkarrs[i]);
             sectionemisService.delete(id);
@@ -118,7 +117,7 @@ public class SectionEmisController {
                 wb = new HSSFWorkbook(in);
             }
             else {
-                return  "请上传xls格式模板";
+                return  "请下载模板，或另存为.xls文件再上传";
 //                wb = new HSSFWorkbook(in);
             }
 //            else {
@@ -175,8 +174,8 @@ public class SectionEmisController {
                 else {existlist+=e.getDmCode()+"   ，";continue;}
             }
         }catch (Exception e){
-            if((e.getMessage()).indexOf("Invalid header signature")!=-1) return "文件格式存在问题，请尝试将文件重新另存为.xls或.xlsx";
-            else return "后台错误，插入失败，检查格式";
+            if((e.getMessage()).indexOf("Invalid header signature")!=-1) return "文件格式存在问题，请尝试将文件重新另存为.xls";
+            else return "后台错误，插入失败，检查文件格式，请尝试将文件重新另存为.xls";
         }
         String warning="<strong>!插入成功</strong><br><br>";
         if(!errlist.equals("")||!errformatlist.equals("")||!existlist.equals("")) warning+="有部分数据存在问题未插入成功，请根据提示检查并重新上传这部分数据<br><br>";

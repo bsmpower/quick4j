@@ -58,7 +58,7 @@
             </div>
             <div class="panel-body">
                 <div style="padding-top:20px;padding-bottom: 20px">
-                    <a type="button"class="button button-primary button-rounded" style="color:#ffffff" href="download/监测断面监测数据模板.xls">模板下载</a>
+                    <a type="button"class="button button-primary button-rounded" style="color:#ffffff" href="download/断面监测数据模板.xls">模板下载</a>
                 </div>
                 <div style="padding-top:20px;padding-bottom: 20px">
                     <form method="post" id="addForm2" enctype="multipart/form-data">

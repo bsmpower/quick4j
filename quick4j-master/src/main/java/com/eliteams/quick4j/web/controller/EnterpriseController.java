@@ -109,6 +109,7 @@ public class EnterpriseController {
         List<Farm> allFarm=farmService.list();
         return allFarm;
     }
+
     //工业园区
     @RequestMapping(value = "/getAllIndustryPark",method = RequestMethod.GET)
     @ResponseBody

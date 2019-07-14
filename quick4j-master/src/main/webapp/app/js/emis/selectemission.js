@@ -52,6 +52,14 @@ function sechtml(index,item){
 
 
 $(document).ready(function(){
+    $('.sliderbar-container').sliderBar({
+        open : true,           // 默认是否打开，true打开，false关闭
+        top : 125,             // 距离顶部多高
+        width : 360,           // body内容宽度
+        height : 330,          // body内容高度
+        theme : '#3d3d3d',       // 主题颜色
+        position : 'right'      // 显示位置，有left和right两种
+    });
         $("#bntgroup .btn:first").addClass("active")       //按钮
         // var time = new Date();                             //设置默认时间
         // var day = ("0" + time.getDate()).slice(-2);
@@ -59,7 +67,7 @@ $(document).ready(function(){
         // var today = time.getFullYear() + "-" + (month) + "-" + (day);
         var today = gettoday();
         $('#endd').val(today);
-        var url = "/rest/emis/emissionlist"
+        var url = "rest/emis/emissionlist"
         $.ajax({
             url:url,
             type:"POST",
@@ -72,7 +80,7 @@ $(document).ready(function(){
                 nullto();
             },
             error: function (e) {
-                alert("接口异常，请联系管理员");
+
             }
         });
     });
@@ -96,14 +104,14 @@ $(document).ready(function(){
      data.tjyear = t[4].value;
      data.tjmonth = t[5].value;
      if($("#bntgroup .btn:first").attr("class").search("active")!=-1){
-         // aurl="/rest/emis/selectemission?startdate="+startdate+"&enddate="+enddate;
-         aurl="/rest/emis/selectemission";
+         // aurl="rest/emis/selectemission?startdate="+startdate+"&enddate="+enddate;
+         aurl="rest/emis/selectemission";
          data.pwkCode = t[0].value;
          data.pwkName = t[1].value;
      }else{
          if($("#bntgroup .btn:last").attr("class").search("active")!=-1){
-             // aurl="/rest/sec/emisselect?startdate="+startdate+"&enddate="+enddate;
-             aurl="/rest/sec/emisselect";
+             // aurl="rest/sec/emisselect?startdate="+startdate+"&enddate="+enddate;
+             aurl="rest/sec/emisselect";
              data.dmCode = t[0].value;
              data.dmName = t[1].value;
          }
@@ -137,6 +145,15 @@ $(document).ready(function(){
      });
 
 
+ }
+
+ function selall() {
+     if($("#bntgroup .btn:first").attr("class").search("active")!=-1){
+         pwkfunc()
+     }
+     else{
+         dmfunc()
+     }
  }
 function dmfunc(){
     var today = gettoday();
@@ -182,7 +199,7 @@ function dmfunc(){
     document.getElementById('editdzwyinput').name="flow"
     // document.getElementById('startd').value="1991-10-07";
     // document.getElementById('endd').value=today;
-    var url = "/rest/sec/emislist";
+    var url = "rest/sec/emislist";
     $.ajax({
         url:url,
         type:"POST",
@@ -237,7 +254,7 @@ function pwkfunc(){
     document.getElementById('editdzwyinput').name="dzwy";
     // document.getElementById('startd').value="1991-10-07";
     // document.getElementById('endd').value=today;
-    var url = "/rest/emis/emissionlist"
+    var url = "rest/emis/emissionlist"
     $.ajax({
         url:url,
         type:"POST",
@@ -265,9 +282,9 @@ function deletefunc(self) {
      con=confirm("确定删除此条记录吗");
      if(con==true){
          if($("#bntgroup .btn:first").attr("class").search("active")!=-1){
-             url = "/rest/emis/deleteemission?id="+id;
+             url = "rest/emis/deleteemission?id="+id;
          }else{
-             url = "/rest/sec/emisdelete?id="+id;
+             url = "rest/sec/emisdelete?id="+id;
          }
          $.ajax({
             url:url,
@@ -310,9 +327,9 @@ function alldelete() {
     con=confirm("确定删除多条记录吗");
     if(con==true) {
         if ($("#bntgroup .btn:first").attr("class").search("active") != -1) {
-            url = "/rest/emis/deleteall";
+            url = "rest/emis/deleteall";
         } else {
-            url = "/rest/sec/alldelete";
+            url = "rest/sec/alldelete";
         }
         $.ajax({
             url: url,
@@ -377,9 +394,9 @@ function addemis() {
      }
      console.log(JSON.stringify(data));
     if($("#bntgroup .btn:first").attr("class").search("active")!=-1){
-        url = "/rest/emis/addemission";
+        url = "rest/emis/addemission";
     }else{
-        url = "/rest/sec/emisadd";
+        url = "rest/sec/emisadd";
     }
     $.ajax({
         url:url,
@@ -432,9 +449,9 @@ function editemis() {
     }
     console.log(JSON.stringify(data));
     if($("#bntgroup .btn:first").attr("class").search("active")!=-1){
-        url = "/rest/emis/editemission";
+        url = "rest/emis/editemission";
     }else{
-        url = "/rest/sec/emisedit";
+        url = "rest/sec/emisedit";
     }
     $.ajax({
         url:url,

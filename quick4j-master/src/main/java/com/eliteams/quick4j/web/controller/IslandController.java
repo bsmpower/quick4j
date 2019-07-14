@@ -1,13 +1,19 @@
 package com.eliteams.quick4j.web.controller;
 
 import com.eliteams.quick4j.core.util.ExcelUtil;
+import com.eliteams.quick4j.web.common.ResponseData;
 import com.eliteams.quick4j.web.dao.islandMapper;
+import com.eliteams.quick4j.web.model.Industry_life;
+import com.eliteams.quick4j.web.model.Industry_trash;
 import com.eliteams.quick4j.web.model.island;
+import com.eliteams.quick4j.web.service.IndustryLifeService;
+import com.eliteams.quick4j.web.service.IndustryTrashService;
 import com.eliteams.quick4j.web.service.IslandService;
 import com.eliteams.quick4j.web.service.OilfieldService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -28,23 +34,15 @@ public class IslandController {
     @Resource
     private IslandService islandService;
 
+
+
     @RequestMapping("/pwkshowlist")
     @ResponseBody
-    public List<island> pwklist(HttpServletRequest request, island rot) {
-        /**
-         * 根据查询条进行返回
-         */
-//        Map<String,Object> modelmap = new HashMap<>();
-//        island rot = new island();
-        List<island> list = islandService.selectisland(rot);
-        //下边这个是jsp的写法
-        //        ModelAndView mav = new ModelAndView();
-        //        mav.addObject("pwklist",list);
-        //          mav.setViewName("/pwk/pwktable");
-//        modelmap.put("pwklist",list);
-
+    public List<island> pwklist(HttpServletRequest request,island a) {
+        List<island> list = islandService.selectisland(a);
         return list;
     }
+
 
     @RequestMapping("/addpwk")
     @ResponseBody
@@ -53,7 +51,7 @@ public class IslandController {
      * public static int getInt(HttpServletRequest request, String name)类似于这种
      * 前端传输数据的时候要进行参数拼接
      */
-    public Map<String, Object> addPwk(HttpServletRequest request, @RequestBody island rot) {
+    public Map<String, Object> addPwk(@RequestBody island rot) {
         System.out.println("adadasdas");
         System.out.println(rot.getTjyear());
         Map<String, Object> modelmap = new HashMap<>();
