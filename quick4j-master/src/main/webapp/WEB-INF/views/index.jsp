@@ -214,7 +214,7 @@
                         </li>
                         <li>
                             <a href="rest/page/pwkisland" id="pfkhdml">
-                                海岛名录13
+                                海岛名录
                             </a>
                         </li>
                         <li>
@@ -486,8 +486,14 @@
 <script type="text/javascript" src="assets/plugins/select2/select2.min.js"></script>
 
 <script src="assets/scripts/app.js" type="text/javascript"></script>
+<script type="text/javascript" src="app/js/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript" src="app/js/index.js"></script>
+<script type="text/javascript" src="app/js/init-arcgis.js"></script>
+<script type="text/javascript" src="app/js/tipso.js"></script>
 
+
+
+<%--<script type="text/javascript" src="app/js/tipso.js"></script>--%>
 
 <!-- <script data-main="app/js/main" src="app/lib/requirejs/require.js"></script> -->
 </body>

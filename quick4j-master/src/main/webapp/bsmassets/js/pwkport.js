@@ -1,4 +1,40 @@
+function nullto() {
+    var tlist = $("#tbodyone").find("td")
+    for (var i = 0; i < tlist.length; i++) {
+        if (tlist.eq(i).html() == "null") {
+            tlist.eq(i).empty();
+            tlist.eq(i).append(" ")
+        }
+    }
+}
+
+function showlist(index, item) {
+    var showlist = "<tr id=\"t" + item.id + "\" class='noExl'><td><input type=\"checkbox\" name=\"piliang\" value=\"" + item.id + "\"/></td><td>" + item.id + "</td><td><a href=\"" + item.id + "\" onclick=\"editfunc(this);return false;\"><span class=\"glyphicon glyphicon-edit\"></span></a>" +
+        "</td><td><a href=\"" + item.id + "\" onclick=\"deletefunc(this);return false;\"><span class=\"glyphicon glyphicon-trash\"></span></a>" + "</td><td>" + item.tjyear + "</td><td>" + item.tjmonth + "</td><td>" + item.tjday + "</td><td>" + item.gkGame +
+        "</td><td>" + item.gkCode + "</td><td>" + item.city + "</td><td>" + item.country + "</td><td>" + item.village +
+        "</td><td>" + item.address + "</td><td>" + item.longitude + "</td><td>" + item.latitude + "</td><td>" + item.gkArea +
+        "</td><td>" + item.riverName + "</td><td>" + item.riverLevel + "</td><td>" + item.gkFunc + "</td><td>" + item.gkGoal + "</td><td>" + item.seaName + "</td><td>" + item.jaFunction + "</td><td>" + item.jaGoal + "</td><td>" + item.seaFunctiontype + "</td><td>" + item.seaFunctiongoal + "</td></tr>";
+    return showlist;
+}
+
 $(function () {
+    /**
+     *显示整个列表
+     */
+    var url = 'rest/pwkport/pwkshowlist';
+    $.ajax({
+        url: url,
+        type: "POST",
+        dataType: "json",
+        success: function (data) {
+            var html;
+            $.each(data, function (index, item) {
+                html = showlist(index, item);
+                $('#tbodyone').append(html);
+            })
+            nullto();
+        },
+    });
     /**
      * 新增一条记录触发模态框
      */

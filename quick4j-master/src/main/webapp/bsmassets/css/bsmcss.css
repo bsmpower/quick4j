@@ -6,3 +6,15 @@
     border: 1px solid #4bb1cf;
     height: 400px;
 }
+#tablediv{
+
+}
+#tbodyone{
+
+}
+.listDataTableDiv table td{white-space: nowrap}
+.listDataTableDiv table th{white-space: nowrap}
+.table-condensed tbody tr td{padding: 10px}
+.table-condensed tbody tr th{padding: 10px}
+.table>thead>.success>th {background-color:#ffffff}
+.table thead tr th{font-size:14px;font-weight:400;text-align: center;vertical-align: middle;height: 50px;}

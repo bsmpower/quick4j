@@ -147,6 +147,30 @@ public class PageController {
     @RequestMapping("/emisimport")
     public String emisimport(){return "emis/emisimport";}
 
+
+    /**
+     * Arcgis地图
+     */
+    @RequestMapping("/mapdemo")
+    public String mapdemo(){
+        return "map/mapdemo";
+    }
+
+    @RequestMapping("/qmpTestData")
+    public String qmpTestData(){
+        return "pwk/qmpTestData";
+    }
+
+    @RequestMapping("/test")
+    public String test(){
+        return "pwk/test";
+    }
+
+    @RequestMapping("/pwkislandsearch")
+    public String pwkislandSearch(){
+        return "pwk/pwkislandsearch";
+    }
+
     /**
      * 404页
      */

@@ -21,21 +21,22 @@
         .table>thead>.success>th {background-color:#ffffff}
         .table thead tr th{font-size:14px;font-weight:400;text-align: center;vertical-align: middle;height: 50px}
     </style>
+
+    <%--<link href="bsmassets/css/bsmcss.css" rel="stylesheet">--%>
+    <%--<link href="app/css/qmp/public.css" rel="stylesheet">--%>
+    <link rel="stylesheet" href="http://js.arcgis.com/3.20/dijit/themes/claro/claro.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/themes/calcite/dijit/calcite.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/themes/calcite/esri/esri.css">
+    <link href="app/css/qmp/fileinput.css" type="text/css" rel="stylesheet" />
+
+
     <script src="app/js/emis/jquery.sliderBar.js"></script>
     <script type="text/javascript" src="app/js/emis/selectemission.js"></script>
-    <%--<script type="text/javascript">--%>
-        <%--$(function(){--%>
-            <%--$('.sliderbar-container').sliderBar({--%>
-                <%--open : true,           // 默认是否打开，true打开，false关闭--%>
-                <%--top : 125,             // 距离顶部多高--%>
-                <%--width : 360,           // body内容宽度--%>
-                <%--height : 330,          // body内容高度--%>
-                <%--theme : '#3d3d3d',       // 主题颜色--%>
-                <%--position : 'right'      // 显示位置，有left和right两种--%>
-            <%--});--%>
-        <%--});--%>
-    <%--</script>--%>
     <script type="text/javascript" src="app/js/emis/table2excel.js"></script>
+
+    <script type="text/javascript" src="app/js/init-arcgis.js"></script>
+    <script type="text/javascript" src='bsmassets/js/qmpTestData.js'></script>
+    <%--<script type="text/javascript" src="app/js/init-arcgis.js"></script>--%>
 
 </head>
 <body>
@@ -84,13 +85,27 @@
                 </form>
             </div>
         </div>
-        <div class="row clearfix">
-            <div class="col-md-12 column" style="padding-left:20px;height: 350px;">
-                辽宁地图
+        <div class="container">
+            <div class="row">
+                <!-- col-md-4 表示每一个div占了多少份 -->
+
+
+                <div id="map222" data-dojo-type="dijit/layout/ContentPane"
+                     data-dojo-props="region:'center'"
+                     style="overflow:hidden;height:470px;width:100%">
+                    <%--<div id="qmpBilichi" class="box"--%>
+                         <%--style="width:80px !important;height:20px !important;position:absolute;left:31px;top:400px">--%>
+
+                    <%--</div>--%>
+
+                </div>
+
+
+
             </div>
         </div>
-    </div>
 
+    </div>
     <br>
     <br>
     <div class="listDataTableDiv" style="height:320px;">
@@ -446,6 +461,5 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
-
 </body>
 </html>

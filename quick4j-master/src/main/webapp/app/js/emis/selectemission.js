@@ -56,7 +56,7 @@ $(document).ready(function(){
         open : true,           // 默认是否打开，true打开，false关闭
         top : 125,             // 距离顶部多高
         width : 360,           // body内容宽度
-        height : 330,          // body内容高度
+        height : 345,          // body内容高度
         theme : '#3d3d3d',       // 主题颜色
         position : 'right'      // 显示位置，有left和right两种
     });
@@ -372,7 +372,7 @@ function editfunc(self){
     var inlist = $("#myModal2").find("input")
     for(var i=0;i<26;i++){
         html=tlist.eq(i+4).html();
-        if(html=="null") html="";
+        if(html=="null"||html=="-") html="";
         inlist.eq(i).val(html);
     }
 }

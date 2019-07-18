@@ -94,7 +94,7 @@
 
             var titleCss = {
                 'width':'25px',
-                'height':'105px',
+                'height':'115px',
                 'position':'absolute',
                 'top':'-1px',
                 'display':'block',

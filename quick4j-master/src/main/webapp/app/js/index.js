@@ -20,9 +20,11 @@ $(function() {
             $('#page-sidebar-menu li a').click(function(e) {
                 e.preventDefault();
                 var url = this.href;
+                var url1 = "rest/page/showlistTest"
                 if (url != null && url != 'javascript:;') {
                     $.get(url, function(data) {
-                        $('#main-content').html(data);
+                        //alert(data);
+                        $('#main-content').html("").html(data);
                     });
                 }
             });

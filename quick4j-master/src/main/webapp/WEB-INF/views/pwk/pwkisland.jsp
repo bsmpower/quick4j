@@ -4,36 +4,50 @@
     <meta charset="utf-8">
     <title>雨水排放口信息</title>
     <link href="bsmassets/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
-    <!-- 引入bootstrap-table样式 -->
     <link href="bsmassets/bootstrap-3.3.7-dist/css/bootstrap-table.css" rel="stylesheet">
+
     <link href="bsmassets/css/bsmcss.css" rel="stylesheet">
     <link href="app/css/qmp/public.css" rel="stylesheet">
-    <!-- jquery -->
+    <link rel="stylesheet" href="http://js.arcgis.com/3.20/dijit/themes/claro/claro.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/themes/calcite/dijit/calcite.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/themes/calcite/esri/esri.css">
+    <link href="app/css/qmp/fileinput.css" type="text/css" rel="stylesheet" />
+
+
     <script src="bsmassets/bootstrap-3.3.7-dist/js/jquery-3.3.1.min.js"></script>
+    <!-- jquery -->
     <script src="bsmassets/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     <!-- bootstrap-table.min.js -->
     <script src="bsmassets/bootstrap-3.3.7-dist/js/bootstrap-table.js"></script>
     <!-- 引入中文语言包 -->
     <script src="bsmassets/bootstrap-3.3.7-dist/js/bootstrap-table-zh-CN.js"></script>
-    <script src="app/js/fileinput.js" type="text/javascript" ></script>
-    <link href="app/css/qmp/fileinput.css" type="text/css" rel="stylesheet" />
-    <link href="app/css/qmp/public.css" rel="stylesheet" type="text/css">
-    <%--<script src="bsmassets/bootstrap-3.3.7-dist/js/tableExport.js"></script>--%>
-    <%--<script src="bsmassets/bootstrap-3.3.7-dist/js/bootstrap-table-export.js"></script>--%>
+    <script src="app/js/init-arcgis.js"></script>
 
-    <%--<script src="bsmassets/bootstrap-3.3.7-dist/js/xlsx.core.min.js"></script>--%>
-    <%--<script src="bsmassets/bootstrap-3.3.7-dist/js/FileSaver.min.js"></script>--%>
+    <script src="app/js/fileinput.js" type="text/javascript" ></script>
 
     <script src="bsmassets/js/pwkisland.js"></script>
+
+    <script type="text/javascript" src='bsmassets/js/qmpTestData.js'></script>
+
 </head>
 <body>
 <div class="container">
     <div class="row">
         <!-- col-md-4 表示每一个div占了多少份 -->
-        <div id="funcFence" class="col-lg-4">
+
+
+        <div id="map222" data-dojo-type="dijit/layout/ContentPane"
+             data-dojo-props="region:'center'"
+             style="overflow:hidden;height:470px;width:100%">
+            <%--<div id="qmpBilichi" class="box"--%>
+                 <%--style="width:80px !important;height:20px !important;position:absolute;left:31px;top:400px">--%>
+
+            <%--</div>--%>
+
         </div>
 
-        <div id="gisMap" class="col-lg-8">map地图</div>
+
+
     </div>
 </div>
 
@@ -780,22 +794,6 @@
         });
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     function exe() {
         var val1 = document.getElementById("inlineCheckbox1").checked;

@@ -3,66 +3,77 @@
 <head>
     <meta charset="utf-8">
     <title>layui</title>
-    <link href="bsmassets/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
-    <!-- 引入bootstrap-table样式 -->
-    <link href="bsmassets/bootstrap-3.3.7-dist/css/bootstrap-table.css" rel="stylesheet">
-    <link href="bsmassets/css/bsmcss.css" rel="stylesheet">
-    <link href="app/css/qmp/public.css" rel="stylesheet">
-    <!-- jquery -->
-    <script src="bsmassets/bootstrap-3.3.7-dist/js/jquery-3.3.1.min.js"></script>
-    <script src="bsmassets/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <!-- bootstrap-table.min.js -->
-    <script src="bsmassets/bootstrap-3.3.7-dist/js/bootstrap-table.js"></script>
-    <!-- 引入中文语言包 -->
-    <script src="bsmassets/bootstrap-3.3.7-dist/js/bootstrap-table-zh-CN.js"></script>
 
-    <%--<script src="bsmassets/bootstrap-3.3.7-dist/js/tableExport.js"></script>--%>
-    <%--<script src="bsmassets/bootstrap-3.3.7-dist/js/bootstrap-table-export.js"></script>--%>
+    <style type="text/css">
+        .listDataTableDiv table td{white-space: nowrap}
+        .listDataTableDiv table th{white-space: nowrap}
+        .table-condensed tbody tr td{padding: 10px}
+        .table-condensed tbody tr th{padding: 10px}
+        .table>thead>.success>th {background-color:#ffffff}
+        .table thead tr th{font-size:14px;font-weight:400;text-align: center;vertical-align: middle;height: 50px}
+    </style>
 
-    <%--<script src="bsmassets/bootstrap-3.3.7-dist/js/xlsx.core.min.js"></script>--%>
-    <%--<script src="bsmassets/bootstrap-3.3.7-dist/js/FileSaver.min.js"></script>--%>
+    <link rel="stylesheet" href="http://js.arcgis.com/3.20/dijit/themes/claro/claro.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/themes/calcite/dijit/calcite.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/themes/calcite/esri/esri.css">
+    <%--<link href="app/css/qmp/public.css" rel="stylesheet">--%>
 
+    <script src="app/js/fileinput.js" type="text/javascript" ></script>
     <script src="bsmassets/js/pwktabledemo.js"></script>
+    <script type="text/javascript" src='bsmassets/js/qmpTestData.js'></script>
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <!-- col-md-4 表示每一个div占了多少份 -->
-        <div id="funcFence" class="col-lg-4">
-        </div>
+<div id="left"></div>
+<div id="right">
+        <div id="map222" data-dojo-type="dijit/layout/ContentPane"
+             data-dojo-props="region:'center'"
+             style="overflow:hidden;height:470px;width:100%;margin-left: 12%;">
 
-        <div id="gisMap" class="col-lg-8">map地图</div>
+        </div>
+</div>
+
+<div class="listDataTableDiv" style="height:320px;">
+    <div style="padding-bottom: 10px">
+        <button id="btn_show" type="button" class="btn btn btn-primary">
+            <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>
+        </button>
+        <button id="btn_add" type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+        </button>
+        <button id="btn_edit" type="button" class="btn btn-default" data-toggle="modal" data-target="myModaledit">
+            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
+        </button>
+        <button id="btn_delete" type="button" class="btn btn-default" data-toggle="modal" data-target="myModalsearch">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
+        </button>
+        <button id="btn_search" type="button" class="btn btn-default">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>搜索
+        </button>
+        <button id="btn_excelout" type="button" class="btn btn btn-primary">
+            <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>数据导出
+        </button>
+        <button id="btn_excelin" type="button" class="btn btn btn-primary ">
+            <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>数据导入
+        </button>
+    </div>
+    <div style="text-align:center;height:300px;overflow:auto;">
+        <table class="table table-striped table-bordered table-hover  table-condensed" id="tablediv">
+            <thead>
+            <tr class="success">
+                <th>选择</th><th>ID</th><th>编辑</th><th>删除</th><th>统计年份</th><th>统计月份</th><th>统计日</th><th>排污口编号</th><th>单位名称</th><th>排放口名称</th><th>排放口类型</th><th>所在市</th><th>所在县（市区）</th><th>所在乡镇</th>
+                <th>详细地址</th><th>排放口经度</th><th>排放口纬度</th><th>是否取得审批手续</th><th>审批单位及审批文号</th><th>批复主要污染物种类</th><th>批复日允许排放量(吨/日)</th><th>批复年允许排放量(吨/年)</th><th>是否发放许可证</th>
+                <th>排污许可证号</th><th>投入使用时间</th><th>是否为非法排污口</th><th>是否为设置不合理排污口</th><th>排放口靠河岸位置</th><th>污水处理工艺</th><th>废水排放方式</th><th>排放去向</th><th>入河方式</th><th>排入河流名称</th><th>河流级别</th>
+                <th>河流所属水系</th><th>汇入海域</th><th>入海方式</th><th>排入海域名称</th><th>废水排放标准</th><th>排入河流水功能区</th><th>排入河流水质目标</th><th>排入海域近岸海域环境功能区</th><th>排入海域水质目标</th><th>排入海域海洋功能区类别</th>
+                <th>排入海域海洋功能区水质目标</th><th>是否达标</th><th>不达标指标</th>
+            </tr>
+            </thead>
+            <tbody id="tbodyone">
+            </tbody>
+        </table>
     </div>
 </div>
-<%--加上这个样式就能够保证bootstrap中的table不换行--%>
-<div id="tablecontrol" class="table-responsive">
-    <table id="PwkInfoTable" class="table table-striped text-nowrap">
 
-
-    </table>
-</div>
 <div id="toolbar" class="btn-group">
-    <button id="btn_show" type="button" class="btn btn btn-primary">
-        <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>
-    </button>
-    <button id="btn_add" type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
-        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
-    </button>
-    <button id="btn_edit" type="button" class="btn btn-default" data-toggle="modal" data-target="myModaledit">
-        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
-    </button>
-    <button id="btn_delete" type="button" class="btn btn-default" data-toggle="modal" data-target="myModalsearch">
-        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
-    </button>
-    <button id="btn_search" type="button" class="btn btn-default">
-        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>搜索
-    </button>
-    <button id="btn_excelout" type="button" class="btn btn btn-primary">
-        <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>数据导出
-    </button>
-    <button id="btn_excelin" type="button" class="btn btn btn-primary ">
-        <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>数据导入
-    </button>
 </div>
 <div>
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" data-backdrop="static"
@@ -370,7 +381,7 @@
                     </h4>
                 </div>
                 <div class="modal-body">
-                    <form class="bs-example bs-example-form" role="form">
+                    <form class="bs-example bs-example-form" role="form" id="updatecontentForm">
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-6">
@@ -950,260 +961,7 @@
     </div>
 </div>
 <script type="text/javascript">
-//    $(function () {
-//        $('#PwkInfoTable').bootstrapTable({
-//            url: 'rest/pwk/pwkshowlist', // 请求后台的URL（*）
-//            method: 'get', // 请求方式（*）
-//            toolbar: "#toolbar", // 工具按钮用哪个容器
-//
-//            striped: true, // 是否显示行间隔色
-//            cache: false, // 是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
-////	sortable : true, //用 是否启排序
-////	sortOrder : "asc", // 排序方式
-//            sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
-//            pagination: true, // 是否显示分页（*）
-//            pageNumber: 1,    //如果设置了分页，首页页码
-//            pageSize: 8,                       //每页的记录行数（*）
-//            pageList: [4, 5, 6],        //可供选择的每页的行数（*）
-////	onlyInfoPagination:false, //设置为 true 只显示总数据数，而不显示分页
-//            showRefresh: true, // 是否显示刷新按钮
-////		queryParamsType:'',
-//            locale: "zh-CN",
-//            clickToSelect: true, // 是否启用点击选中行
-////	uniqueId : "fileid", // 每一行的唯一标识，一般为主键列
-//            showToggle: true, // 是否显示详细视图和列表视图的切换按钮
-////	cardView : false, // 是否显示详细视图
-////	detailView : false, // 是否显示父子表
-//            search: true,   //是否启用搜索框
-//            columns: [
-//                {
-//                    checkbox: true
-//                }, {
-//                    field: 'id',
-//                    title: '记录号',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'tjyear',
-//                    title: '统计年份',
-//                    align: 'center',
-//                    valign: 'middle'
-//
-//                }, {
-//                    field: 'tjmonth',
-//                    title: '统计月份',
-//                    align: 'center',
-//                    valign: 'middle'
-//
-//                }, {
-//                    field: 'tjday',
-//                    title: '统计日',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'pwkCode',
-//                    title: '排污口编号',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'name',
-//                    title: '单位名称',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'pwkName',
-//                    title: '排放口名称',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'pwkType',
-//                    title: '排放口类型',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'city',
-//                    title: '所在市',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'county',
-//                    title: '所在县(市区)',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'village',
-//                    title: '所在乡镇',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'address',
-//                    title: '详细地址',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'longitude',
-//                    title: '排放口经度',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'latitude',
-//                    title: '排放口纬度',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'isShenpi',
-//                    title: '是否取得审批手续',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'shenpi',
-//                    title: '审批单位及审批文号',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'mainType',
-//                    title: '批复主要污染物种类',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'dayAllow',
-//                    title: '批复日允许排放量(吨/日)',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'yearAllow',
-//                    title: '批复年允许排放量(吨/年)',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'isPermit',
-//                    title: '是否发放许可证',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'pwCode',
-//                    title: '排污许可证号',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'usetime',
-//                    title: '投入使用时间',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'isInlaw',
-//                    title: '是否为非法排污口',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'isReasonable',
-//                    title: '是否为设置不合理排污口',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'position',
-//                    title: '排放口靠河岸位置',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'processTech',
-//                    title: '污水处理工艺',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'emissionMode',
-//                    title: '废水排放方式',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'pwqx',
-//                    title: '排放去向',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'riverMode',
-//                    title: '入河方式',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'riverName',
-//                    title: '排入河流名称',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'riverLevel',
-//                    title: '河流级别',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'riverType',
-//                    title: '河流所属水系',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'tosea',
-//                    title: '汇入海域',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'seaMode',
-//                    title: '入海方式',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'sea_name',
-//                    title: '排入海域名称',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'emissionStandard',
-//                    title: '废水排放标准',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'riverGnq',
-//                    title: '排入河流水功能区',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'riverSzmb',
-//                    title: '排入河流水质目标',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'hyGnq',
-//                    title: '排入海域近岸海域环境功能区',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'hySzmb',
-//                    title: '排入海域水质目标',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'hyseaGnq',
-//                    title: '排入海域海洋功能区类别',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'hyseaSzmb',
-//                    title: '排入海域海洋功能区水质目标',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'isGet',
-//                    title: '是否达标',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }, {
-//                    field: 'nogetItems',
-//                    title: '不达标指标',
-//                    align: 'center',
-//                    valign: 'middle'
-//                }],
-//            silent: true, // 刷新事件必须设置
-//        });
-//    });
+
 
     function exe() {
         var val1 = document.getElementById("inlineCheckbox1").checked;
@@ -1794,6 +1552,5 @@
         }
     }
 </script>
-
 </body>
 </html>

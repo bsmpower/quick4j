@@ -63,19 +63,16 @@ public class OutletController {
      * public static int getInt(HttpServletRequest request, String name)类似于这种
      * 前端传输数据的时候要进行参数拼接
      */
-    public Map<String, Object> addPwk(HttpServletRequest request, @RequestBody outlet ot) {
+    public List<outlet> addPwk(HttpServletRequest request, @RequestBody outlet ot) {
         System.out.println(ot.getName());
-        Map<String, Object> modelmap = new HashMap<>();
         int flag = outletmapper.insert(ot);
         if (flag == 1) {
-            modelmap.put("success", true);
+                outlet ot_new = new outlet();
+                List<outlet> list = outletService.selectPwk(ot_new);
+                return list;
 
-            return modelmap;
         } else {
-            modelmap.put("succeess", false);
-            modelmap.put("errMsg", "添加失败");
-
-            return modelmap;
+            return null;
         }
     }
 
@@ -100,18 +97,14 @@ public class OutletController {
 
     @RequestMapping("/updatepwk")
     @ResponseBody
-    public Map<String, Object> updatePwk(HttpServletRequest request, @RequestBody outlet ot) {
-        Map<String, Object> modelmap = new HashMap<>();
+    public List<outlet> updatePwk(HttpServletRequest request, @RequestBody outlet ot) {
         int flag = outletmapper.updateByPrimaryKeySelective(ot);
         if (flag == 1) {
-            modelmap.put("success", true);
-
-            return modelmap;
+            outlet ot_new = new outlet();
+            List<outlet> list = outletService.selectPwk(ot_new);
+            return list;
         } else {
-            modelmap.put("succeess", false);
-            modelmap.put("errMsg", "添加失败");
-
-            return modelmap;
+            return null;
         }
     }
 

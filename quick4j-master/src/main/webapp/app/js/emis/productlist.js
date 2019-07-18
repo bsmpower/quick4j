@@ -194,9 +194,9 @@ function editfunc(self){
     $('#myModal2').modal('show')
     var tlist = $('#t'+id).find("td")
     var inlist = $("#myModal2").find("input")
-    for(var i=0;i<26;i++){
+    for(var i=0;i<9;i++){
         html=tlist.eq(i+4).html();
-        if(html=="null") html="";
+        if(html=="null"||html=="-") html="";
         inlist.eq(i).val(html);
     }
 }
