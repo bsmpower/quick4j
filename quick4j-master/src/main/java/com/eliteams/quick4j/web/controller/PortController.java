@@ -54,20 +54,16 @@ public class PortController {
      * public static int getInt(HttpServletRequest request, String name)类似于这种
      * 前端传输数据的时候要进行参数拼接
      */
-    public Map<String, Object> addPwk(HttpServletRequest request, @RequestBody port rot) {
+    public List<port> addPwk(HttpServletRequest request, @RequestBody port rot) {
         System.out.println("adadasdas");
         System.out.println(rot.getTjyear());
-        Map<String, Object> modelmap = new HashMap<>();
         int flag = portmapper.insert(rot);
         if (flag == 1) {
-            modelmap.put("success", true);
-
-            return modelmap;
+            port port_new = new port();
+            List<port> list = portService.selectPort(port_new);
+            return list;
         } else {
-            modelmap.put("succeess", false);
-            modelmap.put("errMsg", "添加失败");
-
-            return modelmap;
+            return null;
         }
     }
 
@@ -92,17 +88,15 @@ public class PortController {
 
     @RequestMapping("/updatepwk")
     @ResponseBody
-    public Map<String, Object> updatePwk(HttpServletRequest request, @RequestBody port rot) {
-        Map<String, Object> modelmap = new HashMap<>();
+    public List<port> updatePwk(HttpServletRequest request, @RequestBody port rot) {
+
         int flag = portmapper.updateByPrimaryKeySelective(rot);
         if (flag == 1) {
-            modelmap.put("success", true);
-            return modelmap;
+            port ot_new = new port();
+            List<port> list = portService.selectPort(ot_new);
+            return list;
         } else {
-            modelmap.put("succeess", false);
-            modelmap.put("errMsg", "添加失败");
-
-            return modelmap;
+            return null;
         }
     }
 
@@ -175,9 +169,8 @@ public class PortController {
     }
 
     public static String[] excelTitle() {
-        String[] strArray = { "序号", "统计年份", "统计月份", "统计日","港口码头名称","港口码头编号","所在市","所在县(市/区)","所在乡镇","详细地址",
-                "港口码头经度","港口码头纬度", "港口码头范围", "所在河流名称","河流级别","港口码头所在河流水功能区",
-                "港口码头所在河流水质目标","所在海域名称","近岸海域环境功能区","近岸海域水质目标","海洋功能区类别","海洋功能区水质目标"};
+        String[] strArray = {"序号","统计年份","统计月份","统计日","港口/码头名称","港口/码头编号","所在市","所在县(市/区)","所在乡镇","详细地址","港口/码头经度(E)","港口/码头纬度(N)",
+                "港口/码头范围","所在河流名称","河流级别","港口/码头所在河流水功能区","港口/码头所在河流水质目标类","所在海域名称","近岸海域环境功能区","近岸海域水质目标","海洋功能区类别","海洋功能区水质目标"};
         return strArray;
     }
 }

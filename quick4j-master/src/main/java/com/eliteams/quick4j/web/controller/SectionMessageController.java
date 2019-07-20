@@ -52,20 +52,17 @@ public class SectionMessageController {
      * public static int getInt(HttpServletRequest request, String name)类似于这种
      * 前端传输数据的时候要进行参数拼接
      */
-    public Map<String, Object> addPwk(HttpServletRequest request, @RequestBody section_message rot) {
+    public List<section_message> addPwk(HttpServletRequest request, @RequestBody section_message rot) {
         System.out.println("adadasdas");
         System.out.println(rot.getTjyear());
         Map<String, Object> modelmap = new HashMap<>();
         int flag = sectionMessageMapper.insert(rot);
         if (flag == 1) {
-            modelmap.put("success", true);
-
-            return modelmap;
+            section_message ot_new = new section_message();
+            List<section_message> list = sectionMessageService.selectSection(ot_new);
+            return list;
         } else {
-            modelmap.put("succeess", false);
-            modelmap.put("errMsg", "添加失败");
-
-            return modelmap;
+           return null;
         }
     }
 
@@ -90,17 +87,14 @@ public class SectionMessageController {
 
     @RequestMapping("/updatepwk")
     @ResponseBody
-    public Map<String, Object> updatePwk(HttpServletRequest request, @RequestBody section_message rot) {
-        Map<String, Object> modelmap = new HashMap<>();
+    public List<section_message> updatePwk(HttpServletRequest request, @RequestBody section_message rot) {
         int flag = sectionMessageMapper.updateByPrimaryKeySelective(rot);
         if (flag == 1) {
-            modelmap.put("success", true);
-            return modelmap;
+            section_message ot_new = new section_message();
+            List<section_message> list = sectionMessageService.selectSection(ot_new);
+            return list;
         } else {
-            modelmap.put("succeess", false);
-            modelmap.put("errMsg", "添加失败");
-
-            return modelmap;
+           return null;
         }
     }
 

@@ -5,12 +5,27 @@
     <title>layui</title>
 
     <style type="text/css">
-        .listDataTableDiv table td{white-space: nowrap}
-        .listDataTableDiv table th{white-space: nowrap}
-        .table-condensed tbody tr td{padding: 10px}
-        .table-condensed tbody tr th{padding: 10px}
-        .table>thead>.success>th {background-color:#ffffff}
-        .table thead tr th{font-size:14px;font-weight:400;text-align: center;vertical-align: middle;height: 50px}
+        .table-cont {
+            max-height: 300px;
+            overflow: auto;
+        }
+        .table>tbody>tr>td,
+        .table>tbody>tr>th,
+        .table>thead>tr>td,
+        .table>thead>tr>th{
+            border: 1px solid #C1C1C1;
+            white-space: nowrap;
+            font-weight:400;
+            text-align: center;
+            vertical-align: middle;
+            padding: 8px
+        }
+        .table {
+            border-top:0px;
+        }
+
+        .table>thead>.success>th {background-color:#eee; position: relative}
+        .table thead tr th{height: 50px;z-index: 998}
     </style>
 
     <link rel="stylesheet" href="http://js.arcgis.com/3.20/dijit/themes/claro/claro.css">
@@ -27,36 +42,35 @@
 <div id="right">
         <div id="map222" data-dojo-type="dijit/layout/ContentPane"
              data-dojo-props="region:'center'"
-             style="overflow:hidden;height:470px;width:100%;margin-left: 12%;">
+             style="overflow:hidden;height:430px;width:100%;margin-left: 12%;">
 
         </div>
 </div>
-
 <div class="listDataTableDiv" style="height:320px;">
     <div style="padding-bottom: 10px">
-        <button id="btn_show" type="button" class="btn btn btn-primary">
+        <button id="btn_show" type="button" class="btn btn btn-primary btn-sm">
             <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>
         </button>
-        <button id="btn_add" type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+        <button id="btn_add" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
         </button>
-        <button id="btn_edit" type="button" class="btn btn-default" data-toggle="modal" data-target="myModaledit">
+        <button id="btn_edit" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="myModaledit">
             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
         </button>
-        <button id="btn_delete" type="button" class="btn btn-default" data-toggle="modal" data-target="myModalsearch">
+        <button id="btn_delete" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="myModalsearch">
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
         </button>
-        <button id="btn_search" type="button" class="btn btn-default">
+        <button id="btn_search" type="button" class="btn btn-primary btn-sm">
             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>搜索
         </button>
-        <button id="btn_excelout" type="button" class="btn btn btn-primary">
+        <button id="btn_excelout" type="button" class="btn btn btn-primary btn-sm">
             <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>数据导出
         </button>
-        <button id="btn_excelin" type="button" class="btn btn btn-primary ">
+        <button id="btn_excelin" type="button" class="btn btn btn-primary btn-sm">
             <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>数据导入
         </button>
     </div>
-    <div style="text-align:center;height:300px;overflow:auto;">
+    <div id="table-cont" class="table-cont">
         <table class="table table-striped table-bordered table-hover  table-condensed" id="tablediv">
             <thead>
             <tr class="success">
@@ -73,8 +87,6 @@
     </div>
 </div>
 
-<div id="toolbar" class="btn-group">
-</div>
 <div>
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" data-backdrop="static"
          aria-labelledby="myModalLabel" aria-hidden="true">

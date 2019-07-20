@@ -39,6 +39,7 @@ public class IslandController {
     @RequestMapping("/pwkshowlist")
     @ResponseBody
     public List<island> pwklist(HttpServletRequest request,island a) {
+        System.out.println("111111111");
         List<island> list = islandService.selectisland(a);
         return list;
     }
@@ -51,20 +52,14 @@ public class IslandController {
      * public static int getInt(HttpServletRequest request, String name)类似于这种
      * 前端传输数据的时候要进行参数拼接
      */
-    public Map<String, Object> addPwk(@RequestBody island rot) {
-        System.out.println("adadasdas");
-        System.out.println(rot.getTjyear());
-        Map<String, Object> modelmap = new HashMap<>();
+    public List<island> addPwk(@RequestBody island rot) {
         int flag = islandmapper.insert(rot);
         if (flag == 1) {
-            modelmap.put("success", true);
-
-            return modelmap;
+            island ot_new = new island();
+            List<island> list = islandService.selectisland(ot_new);
+            return list;
         } else {
-            modelmap.put("succeess", false);
-            modelmap.put("errMsg", "添加失败");
-
-            return modelmap;
+          return null;
         }
     }
 
@@ -89,17 +84,14 @@ public class IslandController {
 
     @RequestMapping("/updatepwk")
     @ResponseBody
-    public Map<String, Object> updatePwk(HttpServletRequest request, @RequestBody island rot) {
-        Map<String, Object> modelmap = new HashMap<>();
+    public  List<island> updatePwk(HttpServletRequest request, @RequestBody island rot) {
         int flag = islandmapper.updateByPrimaryKeySelective(rot);
         if (flag == 1) {
-            modelmap.put("success", true);
-            return modelmap;
+            island ot_new = new island();
+            List<island> list = islandService.selectisland(ot_new);
+            return list;
         } else {
-            modelmap.put("succeess", false);
-            modelmap.put("errMsg", "添加失败");
-
-            return modelmap;
+          return null;
         }
     }
 

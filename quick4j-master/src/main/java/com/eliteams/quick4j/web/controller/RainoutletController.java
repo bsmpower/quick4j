@@ -52,20 +52,14 @@ public class RainoutletController {
      * public static int getInt(HttpServletRequest request, String name)类似于这种
      * 前端传输数据的时候要进行参数拼接
      */
-    public Map<String, Object> addPwk(HttpServletRequest request, @RequestBody rain_outlet rot) {
-        System.out.println("ada");
-        System.out.println(rot.getPskName());
-        Map<String, Object> modelmap = new HashMap<>();
+    public List<rain_outlet> addPwk(HttpServletRequest request, @RequestBody rain_outlet rot) {
         int flag = rainOutletMapper.insert(rot);
         if (flag == 1) {
-            modelmap.put("success", true);
-
-            return modelmap;
+            rain_outlet ro = new rain_outlet();
+            List<rain_outlet> list = rainoutletService.selectRainoutlet(ro);
+            return list;
         } else {
-            modelmap.put("succeess", false);
-            modelmap.put("errMsg", "添加失败");
-
-            return modelmap;
+            return null;
         }
     }
 
@@ -90,18 +84,14 @@ public class RainoutletController {
 
     @RequestMapping("/updatepwk")
     @ResponseBody
-    public Map<String, Object> updatePwk(HttpServletRequest request, @RequestBody rain_outlet rot) {
-        Map<String, Object> modelmap = new HashMap<>();
+    public List<rain_outlet> updatePwk(HttpServletRequest request, @RequestBody rain_outlet rot) {
         int flag = rainOutletMapper.updateByPrimaryKeySelective(rot);
         if (flag == 1) {
-            modelmap.put("success", true);
-
-            return modelmap;
+            rain_outlet ro = new rain_outlet();
+            List<rain_outlet> list = rainoutletService.selectRainoutlet(ro);
+            return list;
         } else {
-            modelmap.put("succeess", false);
-            modelmap.put("errMsg", "添加失败");
-
-            return modelmap;
+            return null;
         }
     }
 

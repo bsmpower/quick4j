@@ -52,20 +52,14 @@ public class OilfieldController {
      * public static int getInt(HttpServletRequest request, String name)类似于这种
      * 前端传输数据的时候要进行参数拼接
      */
-    public Map<String, Object> addPwk(HttpServletRequest request, @RequestBody oil_field rot) {
-        System.out.println("adadasdas");
-        System.out.println(rot.getTjyear());
-        Map<String, Object> modelmap = new HashMap<>();
+    public List<oil_field> addPwk(HttpServletRequest request, @RequestBody oil_field rot) {
         int flag = oil_fieldmapper.insert(rot);
         if (flag == 1) {
-            modelmap.put("success", true);
-
-            return modelmap;
+            oil_field ot_new = new oil_field();
+            List<oil_field> list = oilfieldService.selectOilfield(ot_new);
+            return list;
         } else {
-            modelmap.put("succeess", false);
-            modelmap.put("errMsg", "添加失败");
-
-            return modelmap;
+             return null;
         }
     }
 
@@ -90,24 +84,20 @@ public class OilfieldController {
 
     @RequestMapping("/updatepwk")
     @ResponseBody
-    public Map<String, Object> updatePwk(HttpServletRequest request, @RequestBody oil_field rot) {
-        Map<String, Object> modelmap = new HashMap<>();
+    public  List<oil_field> updatePwk(HttpServletRequest request, @RequestBody oil_field rot) {
         int flag = oil_fieldmapper.updateByPrimaryKeySelective(rot);
         if (flag == 1) {
-            modelmap.put("success", true);
-            return modelmap;
+            oil_field ot_new = new oil_field();
+            List<oil_field> list = oilfieldService.selectOilfield(ot_new);
+            return list;
         } else {
-            modelmap.put("succeess", false);
-            modelmap.put("errMsg", "添加失败");
-
-            return modelmap;
+           return null;
         }
     }
 
     @RequestMapping("/optionpwk")
     @ResponseBody
     public List<oil_field> optionPwk(HttpServletRequest request, @RequestBody oil_field rot){
-        Map<String, Object> modelmap = new HashMap<>();
         System.out.println("11111111111111111111111");
         System.out.println(rot.getTjyear());
         List<oil_field> list = new ArrayList<>();

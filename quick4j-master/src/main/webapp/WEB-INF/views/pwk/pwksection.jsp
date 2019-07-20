@@ -3,68 +3,95 @@
 <head>
     <meta charset="utf-8">
     <title>雨水排放口信息</title>
-    <link href="bsmassets/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
-    <!-- 引入bootstrap-table样式 -->
-    <link href="bsmassets/bootstrap-3.3.7-dist/css/bootstrap-table.css" rel="stylesheet">
-    <link href="bsmassets/css/bsmcss.css" rel="stylesheet">
-    <link href="app/css/qmp/public.css" rel="stylesheet">
-    <!-- jquery -->
-    <script src="bsmassets/bootstrap-3.3.7-dist/js/jquery-3.3.1.min.js"></script>
-    <script src="bsmassets/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <!-- bootstrap-table.min.js -->
-    <script src="bsmassets/bootstrap-3.3.7-dist/js/bootstrap-table.js"></script>
-    <!-- 引入中文语言包 -->
-    <script src="bsmassets/bootstrap-3.3.7-dist/js/bootstrap-table-zh-CN.js"></script>
+    <style type="text/css">
+        .table-cont {
+            max-height: 300px;
+            overflow: auto;
+        }
+
+        .table > tbody > tr > td,
+        .table > tbody > tr > th,
+        .table > thead > tr > td,
+        .table > thead > tr > th {
+            border: 1px solid #C1C1C1;
+            white-space: nowrap;
+            font-weight: 400;
+            text-align: center;
+            vertical-align: middle;
+            padding: 8px
+        }
+
+        .table {
+            border-top: 0px;
+        }
+
+        .table > thead > .success > th {
+            background-color: #eee;
+            position: relative
+        }
+
+        .table thead tr th {
+            height: 50px;
+            z-index: 998
+        }
+    </style>
+
+    <link rel="stylesheet" href="http://js.arcgis.com/3.20/dijit/themes/claro/claro.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/themes/calcite/dijit/calcite.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/themes/calcite/esri/esri.css">
+
     <script src="app/js/fileinput.js" type="text/javascript" ></script>
-    <link href="app/css/qmp/fileinput.css" type="text/css" rel="stylesheet" />
-    <link href="app/css/qmp/public.css" rel="stylesheet" type="text/css">
-    <%--<script src="bsmassets/bootstrap-3.3.7-dist/js/tableExport.js"></script>--%>
-    <%--<script src="bsmassets/bootstrap-3.3.7-dist/js/bootstrap-table-export.js"></script>--%>
-
-    <%--<script src="bsmassets/bootstrap-3.3.7-dist/js/xlsx.core.min.js"></script>--%>
-    <%--<script src="bsmassets/bootstrap-3.3.7-dist/js/FileSaver.min.js"></script>--%>
-
     <script src="bsmassets/js/pwksection.js"></script>
+    <script type="text/javascript" src='bsmassets/js/qmpTestData.js'></script>
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <!-- col-md-4 表示每一个div占了多少份 -->
-        <div id="funcFence" class="col-lg-4">
-        </div>
 
-        <div id="gisMap" class="col-lg-8">map地图</div>
+<div id="left"></div>
+<div id="right">
+    <div id="map222" data-dojo-type="dijit/layout/ContentPane"
+         data-dojo-props="region:'center'"
+         style="overflow:hidden;height:430px;width:100%;margin-left: 12%;">
+
     </div>
 </div>
-<%--加上这个样式就能够保证bootstrap中的table不换行--%>
-<div id="tablecontrol" class="table-responsive">
-    <table id="RainPwkInfoTable" class="table table-striped text-nowrap">
-
-
-    </table>
-</div>
-<div id="toolbar" class="btn-group">
-    <button id="btn_show" type="button" class="btn btn btn-primary">
-        <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>
-    </button>
-    <button id="btn_add" type="button" class="btn btn-default"  data-toggle="modal" data-target="#myModal">
-        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
-    </button>
-    <button id="btn_edit" type="button" class="btn btn-default" data-toggle="modal" data-target="myModaledit">
-        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
-    </button>
-    <button id="btn_delete" type="button" class="btn btn-default" data-toggle="modal" data-target="myModalsearch">
-        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
-    </button>
-    <button id="btn_search" type="button" class="btn btn-default">
-        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>搜索
-    </button>
-    <button id="btn_excelout" type="button" class="btn btn btn-primary">
-        <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>数据导出
-    </button>
-    <button id="btn_excelin" type="button" class="btn btn btn-primary ">
-        <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>数据导入
-    </button>
+<div class="listDataTableDiv" style="height:320px;">
+    <div style="padding-bottom: 10px">
+        <button id="btn_show" type="button" class="btn btn btn-primary btn-sm">
+            <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>
+        </button>
+        <button id="btn_add" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+        </button>
+        <button id="btn_edit" type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                data-target="myModaledit">
+            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
+        </button>
+        <button id="btn_delete" type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                data-target="myModalsearch">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
+        </button>
+        <button id="btn_search" type="button" class="btn btn-primary btn-sm">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>搜索
+        </button>
+        <button id="btn_excelout" type="button" class="btn btn btn-primary btn-sm">
+            <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>数据导出
+        </button>
+        <button id="btn_excelin" type="button" class="btn btn btn-primary btn-sm">
+            <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>数据导入
+        </button>
+    </div>
+    <div class="table-cont" id="table-cont">
+        <table class="table table-striped table-bordered table-hover  table-condensed" id="tablediv">
+            <thead>
+            <tr class="success">
+                <th>选择</th><th>ID</th><th>编辑</th><th>删除</th><th>统计年份</th><th>统计月份</th><th>统计日</th><th>断面名称</th><th>断面编码</th><th>断面类型</th><th>所在市</th><th>所在县(市/区)</th><th>所在乡镇</th><th>单位详细地址</th>
+                <th>经度E</th><th>纬度N</th><th>所属水系</th><th>所在河流</th><th>现状水质类别</th><th>断面水质目标</th><th>河流功能区</th><th>是否达标</th><th>不达标指标</th>
+            </tr>
+            </thead>
+            <tbody id="tbodyone">
+            </tbody>
+        </table>
+    </div>
 </div>
 <%--新增排放口--%>
 <div>
@@ -532,139 +559,6 @@
     </div>
 </div>
 <script type="text/javascript">
-    $(function () {
-        $('#RainPwkInfoTable').bootstrapTable({
-            url: 'rest/pwksection/pwkshowlist', // 请求后台的URL（*）
-            method: 'get', // 请求方式（*）
-            toolbar: "#toolbar", // 工具按钮用哪个容器
-
-            striped: true, // 是否显示行间隔色
-            cache: false, // 是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
-//	sortable : true, //用 是否启排序
-//	sortOrder : "asc", // 排序方式
-            sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
-            pagination: true, // 是否显示分页（*）
-            pageNumber: 1,    //如果设置了分页，首页页码
-            pageSize: 8,                       //每页的记录行数（*）
-            pageList: [4, 5, 6],        //可供选择的每页的行数（*）
-//	onlyInfoPagination:false, //设置为 true 只显示总数据数，而不显示分页
-            showRefresh: true, // 是否显示刷新按钮
-//		queryParamsType:'',
-            locale: "zh-CN",
-            clickToSelect: true, // 是否启用点击选中行
-//	uniqueId : "fileid", // 每一行的唯一标识，一般为主键列
-            showToggle: true, // 是否显示详细视图和列表视图的切换按钮
-//	cardView : false, // 是否显示详细视图
-//	detailView : false, // 是否显示父子表
-            search: true,   //是否启用搜索框
-            columns: [
-                {
-                    checkbox: true
-                }, {
-                    field: 'id',
-                    title: '记录号',
-                    align: 'center',
-                    valign: 'middle'
-                }, {
-                    field: 'tjyear',
-                    title: '统计年份',
-                    align: 'center',
-                    valign: 'middle'
-                }, {
-                    field: 'tjmonth',
-                    title: '统计月份',
-                    align: 'center',
-                    valign: 'middle'
-                }, {
-                    field: 'tjday',
-                    title: '统计日',
-                    align: 'center',
-                    valign: 'middle'
-                }, {
-                    field: 'dmName',
-                    title: '断面名称',
-                    align: 'center',
-                    valign: 'middle'
-                }, {
-                    field: 'dmCode',
-                    title: '断面编码',
-                    align: 'center',
-                    valign: 'middle'
-                }, {
-                    field: 'dmType',
-                    title: '断面类型',
-                    align: 'center',
-                    valign: 'middle'
-                }, {
-                    field: 'city',
-                    title: '所在市',
-                    align: 'center',
-                    valign: 'middle'
-                }, {
-                    field: 'county',
-                    title: '所在县(市/区)',
-                    align: 'center',
-                    valign: 'middle'
-                }, {
-                    field: 'village',
-                    title: '所在乡镇',
-                    align: 'center',
-                    valign: 'middle'
-                }, {
-                    field: 'address',
-                    title: '单位详细地址',
-                    align: 'center',
-                    valign: 'middle'
-                }, {
-                    field: 'longitude',
-                    title: '经度E',
-                    align: 'center',
-                    valign: 'middle'
-                }, {
-                    field: 'laititude',
-                    title: '纬度N',
-                    align: 'center',
-                    valign: 'middle'
-                }, {
-                    field: 'sssx',
-                    title: '所属水系',
-                    align: 'center',
-                    valign: 'middle'
-                }, {
-                    field: 'riverName',
-                    title: '所在河流',
-                    align: 'center',
-                    valign: 'middle'
-                }, {
-                    field: 'szType',
-                    title: '现状水质类别',
-                    align: 'center',
-                    valign: 'middle'
-                }, {
-                    field: 'dmGoal',
-                    title: '断面水质目标',
-                    align: 'center',
-                    valign: 'middle'
-                }, {
-                    field: 'hlsGnq',
-                    title: '河流功能区',
-                    align: 'center',
-                    valign: 'middle'
-                }, {
-                    field: 'isGet',
-                    title: '是否达标',
-                    align: 'center',
-                    valign: 'middle'
-                }, {
-                    field: 'nogetItems',
-                    title: '不达标指标',
-                    align: 'center',
-                    valign: 'middle'
-                }],
-            silent: true, // 刷新事件必须设置
-        });
-    });
-
     function exe() {
         var val1 = document.getElementById("inlineCheckbox1").checked;
         var val2 = document.getElementById("inlineCheckbox2").checked;

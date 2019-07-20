@@ -20,6 +20,15 @@ function showlist(index, item) {
 }
 
 $(function () {
+    var tableCont = document.querySelector('#table-cont')
+    function scrollHandle (e){
+        var scrollTop = this.scrollTop;
+        var a = this.querySelector('thead').getElementsByTagName("th");
+        for(var i=0;i<a.length;i++)
+            a[i].style.transform = 'translateY(' + scrollTop + 'px)';
+        //this.querySelector('thead').style.transform = 'translateY(' + scrollTop + 'px)';
+    }
+    tableCont.addEventListener('scroll',scrollHandle)
     /**
      *显示整个列表
      */
@@ -383,7 +392,7 @@ $(function () {
             contentType: "application/json",
             success: function (data) {
                 if (data == "") {
-                    ("更新失败，或因网络错误")
+                    alert("更新失败，或因网络错误");
                     // $("#myModal").remove();
                 } else {
                     $('#tbodyone').empty();
@@ -495,7 +504,10 @@ $(function () {
         $("#btn_excelout").fadeToggle();
         $("#btn_excelin").fadeToggle();
         $("#tabletablediv").fadeToggle();
-
+        $("#table-cont").fadeToggle();
+        $("#map222").css("height","1200px");
+        $("#right").css("height", "1200px");
+        $("#map222_layers").css("top","70px");
 
         // alert(div.style.width);
     });

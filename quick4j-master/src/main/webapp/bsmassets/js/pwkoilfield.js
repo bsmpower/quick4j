@@ -1,22 +1,63 @@
+function nullto() {
+    var tlist = $("#tbodyone").find("td")
+    for (var i = 0; i < tlist.length; i++) {
+        if (tlist.eq(i).html() == "null") {
+            tlist.eq(i).empty();
+            tlist.eq(i).append(" ")
+        }
+    }
+}
+function showlist(index, item) {
+    var showlist = "<tr id=\"t" + item.id + "\" class='noExl'><td><input type=\"checkbox\" name=\"piliang\" value=\"" + item.id + "\"/></td><td>" + item.id + "</td><td><a href=\"" + item.id + "\" onclick=\"editfunc(this);return false;\"><span class=\"glyphicon glyphicon-edit\"></span></a>" +
+        "</td><td><a href=\"" + item.id + "\" onclick=\"deletefunc(this);return false;\"><span class=\"glyphicon glyphicon-trash\"></span></a>" + "</td><td>" + item.tjyear + "</td><td>" + item.tjmonth + "</td><td>" + item.tjday + "</td><td>" + item.city +
+        "</td><td>" + item.ytName + "</td><td>" + item.country + "</td><td>" + item.village +
+        "</td><td>" + item.address + "</td><td>" + item.longitude + "</td><td>" + item.latitude + "</td><td>" + item.ytArea + "</td><td>" + item.position + "</td><td>" + item.psqx + "</td><td>" + item.riverMode +
+        "</td><td>" + item.riverName + "</td><td>" + item.riverLevel + "</td><td>" + item.seaMode + "</td><td>" + item.seaName + "</td><td>" + item.riverFunc + "</td><td>" + item.riverGoal + "</td><td>" + item.jaFunction + "</td><td>" + item.seaGoal + "</td><td>" + item.seaFunctiontype + "</td><td>" + item.seaFunctiongoal + "</td></tr>";
+    return showlist;
+}
 $(function () {
+    var tableCont = document.querySelector('#table-cont')
+    function scrollHandle (e){
+        var scrollTop = this.scrollTop;
+        var a = this.querySelector('thead').getElementsByTagName("th");
+        for(var i=0;i<a.length;i++)
+            a[i].style.transform = 'translateY(' + scrollTop + 'px)';
+        //this.querySelector('thead').style.transform = 'translateY(' + scrollTop + 'px)';
+    }
+    tableCont.addEventListener('scroll',scrollHandle)
+
+    /**
+     *显示整个列表
+     */
+    var url = 'rest/pwkoilfield/pwkshowlist';
+    $.ajax({
+        url: url,
+        type: "POST",
+        dataType: "json",
+        success: function (data) {
+            var html;
+            $.each(data, function (index, item) {
+                html = showlist(index, item);
+                $('#tbodyone').append(html);
+            })
+            nullto();
+        },
+    });
+
     /**
      * 新增一条记录触发模态框
      */
-    // $("#btn_add").click(function(){
-    //     $('#myModal').modal();
-    // });
     $("#btn_excelout").click(function () {
-        var allData = $("#RainPwkInfoTable").bootstrapTable('getData');
-        var ids = new Array();
-        $(allData).each(function () {
-            ids.push(this.id);
-        });
-        console.log(ids);
-        var excelout = "rest/pwkoilfield/excelout"
+        var excelout = "rest/pwkoilfield/excelout";
+        var ids = document.getElementsByName("piliang");
+        var check_val = new Array();
+        for (k in ids) {
+            check_val.push(ids[k].value);
+        }
         $.ajax({
             url: excelout,
             type: "POST",
-            data: {"ids": ids},
+            data: {"ids": check_val},
             type: "POST",
             // dataType: "json",
             traditional: true,
@@ -81,7 +122,6 @@ $(function () {
         /*********************************************/
         var t = $("form").serializeArray();
         // alert(tjyear);
-        console.log(t);
         addpwkmsc.tjyear = t[0].value;
         addpwkmsc.tjmonth = t[1].value;
         addpwkmsc.tjday = t[2].value;
@@ -114,16 +154,24 @@ $(function () {
             data: JSON.stringify(addpwkmsc),
             datatype: "json",
             contentType: "application/json",
-            success: function (data) {
-                if (data.success) {
-                    // $("#myModal").remove();
-                    // $('.modal-backdrop').remove();
-                    $("#RainPwkInfoTable").bootstrapTable('refresh');
-                    document.getElementById("contentForm").reset();
-                    alert("数据添加成功！")
+            success: function (res) {
+                if (res == "") {
+                    alert("添加失败，或因记录已存在");
                 } else {
-                    alert(data.errMsg);
+                    var html;
+                    $.each(res, function (index, item) {
+                        html = showlist(index, item);
+                        console.log(html);
+                        $('#tbodyone').append(html);
+                    })
+                    $('.modal-backdrop').remove();
+                    document.getElementById("contentForm").reset();
+                    nullto();
+                    alert("添加成功");
                 }
+            },
+            error: function (e) {
+                alert("接口异常，请联系管理员");
             }
         });
         // $.getJSON(addurl, function(data){
@@ -142,9 +190,7 @@ $(function () {
     $("#submitPwk2").click(function () {
         //获取到新添加的东西
         var selectpwkmsc = {};
-        var a = $("#select0").val();
         selectpwkmsc.tjyear = $("#select0").val();
-        // console.log(selectpwkmsc);
         selectpwkmsc.tjmonth = $("#select1").val();
         selectpwkmsc.tjday = $("#select2").val();
         selectpwkmsc.city = $("#select3").val();
@@ -154,7 +200,7 @@ $(function () {
         selectpwkmsc.address = $("#select7").val();
         selectpwkmsc.longitude =  parseFloat($("#select8").val());
         selectpwkmsc.latitude =  parseFloat($("#select9").val());
-        selectpwkmsc.yt_area =  parseFloat($("#select10").val());
+        selectpwkmsc.ytArea =  parseFloat($("#select10").val());
         selectpwkmsc.position = $("#select11").val();
         selectpwkmsc.psqx = $("#select12").val();
         selectpwkmsc.riverMode = $("#select13").val();
@@ -169,9 +215,9 @@ $(function () {
         selectpwkmsc.seaFunctiontype = $("#select22").val();
         selectpwkmsc.seaFunctiongoal = $("#select23").val();
 
-        console.log(selectpwkmsc)
+        console.log(selectpwkmsc);
 
-        var optionUrl = "rest/pwkoilfield/optionpwk"
+        var optionUrl = "rest/pwkoilfield/optionpwk";
 
         $.ajax({
             url: optionUrl,
@@ -180,9 +226,21 @@ $(function () {
             datatype: "json",
             contentType: "application/json",
             success: function (data) {
-                alert("查询成功！")
-                // $("#PwkInfoTable").bootstrapTable('destroy');
-                $("#RainPwkInfoTable").bootstrapTable('load', data);
+                if (data == "") {
+                    alert("查询失败，或因记录已存在");
+                    // $("#myModal").remove();
+                } else {
+                    $('#tbodyone').empty();
+                    var html;
+                    $.each(data, function (index, item) {
+                        html = showlist(index, item);
+                        console.log(html);
+                        $('#tbodyone').append(html);
+                    })
+                    $('.modal-backdrop').remove();
+                    nullto();
+                    alert("查询成功");
+                }
 
             }
         });
@@ -200,11 +258,16 @@ $(function () {
     $("#submitPwk1").click(function () {
 
         var updateurl = "rest/pwkoilfield/updatepwk"
-        var t = $("form").serializeArray();
-        var rows = $("#RainPwkInfoTable").bootstrapTable('getSelections');
-        // alert(tjyear);
+
+        var ids = document.getElementsByName("piliang");
+        check_val = [];
+        for (k in ids) {
+            if (ids[k].checked)
+                check_val.push(ids[k].value);
+        }
+
         var updatepwkmsc = {};
-        updatepwkmsc.id = rows[0].id;
+        updatepwkmsc.id = check_val[0];
         // updatepwkmsc.tjyear = t[0].value;
         updatepwkmsc.tjyear = $("#pwk0").val();
         updatepwkmsc.tjmonth = $("#pwk1").val();
@@ -238,12 +301,22 @@ $(function () {
             datatype: "json",
             contentType: "application/json",
             success: function (data) {
-                if (data.success) {
+                if (data == "") {
                     // $("#myModal").remove();
                     // $('.modal-backdrop').remove();
-                    alert("数据修改成功！")
+                    alert("更新失败，或因网络错误");
                 } else {
-                    alert(data.errMsg);
+                    $('#tbodyone').empty();
+                    var html;
+                    $.each(data, function (index, item) {
+                        html = showlist(index, item);
+                        console.log(html);
+                        $('#tbodyone').append(html);
+                    })
+                    $('.modal-backdrop').remove();
+                    document.getElementById("updatecontentForm").reset();
+                    nullto();
+                    alert("更新成功");
                 }
             }
         });
@@ -253,19 +326,21 @@ $(function () {
      * 删除一条或多条记录
      */
     $("#btn_delete").click(function () {
+        var ids = document.getElementsByName("piliang");
+        var check_val = new Array();
+        for (k in ids) {
+            if (ids[k].checked)
+                check_val.push(ids[k].value);
+        }
         if (!confirm("是否确认删除？"))
             return;
-        var rows = $("#RainPwkInfoTable").bootstrapTable('getSelections');
-        if (rows.length == 0) { //是为了判断是否选中
+
+        if (check_val.length == 0) { //是为了判断是否选中
             alert("请选择要删除的记录!");
             return;
         } else {
-            var ids = new Array();
-            $(rows).each(function () {
-                ids.push(this.id);
-            });
-            console.log(ids);
-            deletePwk(ids);
+
+            deletePwk(check_val);
         }
     });
 
@@ -273,53 +348,30 @@ $(function () {
      * 流程是这样的，选择好了一个记录，，将记录的内容传入一个新弹出来的模态框，更改完了传入到后台，完成更新。
      */
     $("#btn_edit").click(function () {
-
+        var ids = document.getElementsByName("piliang");
+        check_val = [];
+        for (k in ids) {
+            if (ids[k].checked)
+                check_val.push(ids[k].value);
+        }
         if (!confirm("是否确认修改？"))
             return;
-        var rows = $("#RainPwkInfoTable").bootstrapTable('getSelections');
-        console.log(rows);
-        if (rows.length == 0) {
+
+        if (check_val.length == 0) {
             alert("请选择要修改的记录！");
             return;
-        } else if (rows.length > 1) {
+        } else if (check_val.length > 1) {
             alert("请选择一个记录进行修改！")
             return;
         } else {
-            //把rows填入到模态框中
-            $("#pwk0").val(rows[0].tjyear);
-            $("#pwk1").val(rows[0].tjmonth);
-            $("#pwk2").val(rows[0].tjday);
-            $("#pwk3").val(rows[0].city);
-            $("#pwk4").val(rows[0].ytName);
-            $("#pwk6").val(rows[0].country);
-            $("#pwk7").val(rows[0].village);
-            $("#pwk8").val(rows[0].address);
-            $("#pwk9").val(rows[0].longitude);
-            $("#pwk10").val(rows[0].latitude);
-            $("#pwk11").val(rows[0].ytArea);
-            $("#pwk12").val(rows[0].position);
-            $("#pwk13").val(rows[0].psqx);
-            $("#pwk14").val(rows[0].riverMode);
-            $("#pwk15").val(rows[0].riverName);
-            $("#pwk16").val(rows[0].riverLevel);
-            $("#pwk17").val(rows[0].seaMode);
-            $("#pwk18").val(rows[0].seaName);
-            $("#pwk19").val(rows[0].riverFunc);
-            $("#pwk20").val(rows[0].riverGoal);
-            $("#pwk21").val(rows[0].jaFunction);
-            $("#pwk22").val(rows[0].seaFunctiontype);
-            $("#pwk23").val(rows[0].seaFunctiongoal);
-
-            // $("#pwk43").val();
-            // $("#pwk43").val();
+            var tlist = $('#t' + check_val).find("td")
+            var inlist = $("#myModaledit").find("input")
+            for (var i = 0; i < 23; i++) {
+                html = tlist.eq(i + 4).html();
+                if (html == "null") html = "";
+                inlist.eq(i).val(html);
+            }
             $('#myModaledit').modal();
-
-            //加载模态框
-            // var ids = new Array();
-            // $(rows).each(function () {
-            //     ids.push(this.id);
-            // });
-            // console.log(ids);
         }
     });
 
@@ -334,10 +386,11 @@ $(function () {
             // dataType: "json",
             traditional: true,
             success: function (data) {
-                alert("删除成功");
-                // $("#PwkInfoTable").bootstrapTable('refresh',{
-                //     url:"rest/page/pwktable" //要跳转到的url
-                // })
+                alert("删除成功！");
+                for(i=0;i<ids.length;i++){
+                    id=ids[i];
+                    document.getElementById("t"+id).remove();
+                }
             }
         });
     }
@@ -368,7 +421,10 @@ $(function () {
         $("#btn_excelout").fadeToggle();
         $("#btn_excelin").fadeToggle();
         $("#tablecontrol").fadeToggle();
-
+        $("#table-cont").fadeToggle();
+        $("#map222").css("height","1200px");
+        $("#right").css("height", "1200px");
+        $("#map222_layers").css("top","70px");
         // alert(div.style.width);
     });
 });

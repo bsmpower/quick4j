@@ -36,8 +36,6 @@ public class RainxhkController {
 //        Map<String,Object> modelmap = new HashMap<>();
 //        rain_spillway rot = new rain_spillway();
         List<rain_spillway> list =  rainxhkService.selectRainxhk(rot);
-        System.out.println("111111111111");
-        System.out.println(list.size());
         //下边这个是jsp的写法
         //        ModelAndView mav = new ModelAndView();
         //        mav.addObject("pwklist",list);
@@ -53,20 +51,15 @@ public class RainxhkController {
      * public static int getInt(HttpServletRequest request, String name)类似于这种
      * 前端传输数据的时候要进行参数拼接
      */
-    public Map<String, Object> addPwk(HttpServletRequest request, @RequestBody rain_spillway rot) {
-        System.out.println("ada");
-        System.out.println(rot.getXhkName());
-        Map<String, Object> modelmap = new HashMap<>();
+    public List<rain_spillway> addPwk(HttpServletRequest request, @RequestBody rain_spillway rot) {
+
         int flag = rainSpillwayMapper.insert(rot);
         if (flag == 1) {
-            modelmap.put("success", true);
-
-            return modelmap;
+            rain_spillway ot_new = new rain_spillway();
+            List<rain_spillway> list = rainxhkService.selectRainxhk(ot_new);
+            return list;
         } else {
-            modelmap.put("succeess", false);
-            modelmap.put("errMsg", "添加失败");
-
-            return modelmap;
+            return null;
         }
     }
 
@@ -91,17 +84,14 @@ public class RainxhkController {
 
     @RequestMapping("/updatepwk")
     @ResponseBody
-    public Map<String, Object> updatePwk(HttpServletRequest request, @RequestBody rain_spillway rot) {
-        Map<String, Object> modelmap = new HashMap<>();
+    public List<rain_spillway> updatePwk(HttpServletRequest request, @RequestBody rain_spillway rot) {
         int flag = rainSpillwayMapper.updateByPrimaryKeySelective(rot);
         if (flag == 1) {
-            modelmap.put("success", true);
-            return modelmap;
+            rain_spillway ot_new = new rain_spillway();
+            List<rain_spillway> list = rainxhkService.selectRainxhk(ot_new);
+            return list;
         } else {
-            modelmap.put("succeess", false);
-            modelmap.put("errMsg", "添加失败");
-
-            return modelmap;
+            return null;
         }
     }
 

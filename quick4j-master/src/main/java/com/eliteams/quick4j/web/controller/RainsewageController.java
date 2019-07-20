@@ -54,20 +54,14 @@ public class RainsewageController {
      * public static int getInt(HttpServletRequest request, String name)类似于这种
      * 前端传输数据的时候要进行参数拼接
      */
-    public Map<String, Object> addPwk(HttpServletRequest request, @RequestBody rainsewage rot) {
-        System.out.println("ada");
-        System.out.println(rot.getPskName());
-        Map<String, Object> modelmap = new HashMap<>();
+    public List<rainsewage> addPwk(HttpServletRequest request, @RequestBody rainsewage rot) {
         int flag = rainsewagemapper.insert(rot);
         if (flag == 1) {
-            modelmap.put("success", true);
-
-            return modelmap;
+            rainsewage ot_new = new rainsewage();
+            List<rainsewage> list = rainsewageService.selectRainoutlet(ot_new);
+            return list;
         } else {
-            modelmap.put("succeess", false);
-            modelmap.put("errMsg", "添加失败");
-
-            return modelmap;
+            return null;
         }
     }
 
@@ -92,17 +86,14 @@ public class RainsewageController {
 
     @RequestMapping("/updatepwk")
     @ResponseBody
-    public Map<String, Object> updatePwk(HttpServletRequest request, @RequestBody rainsewage rot) {
-        Map<String, Object> modelmap = new HashMap<>();
+    public List<rainsewage> updatePwk(HttpServletRequest request, @RequestBody rainsewage rot) {
         int flag = rainsewagemapper.updateByPrimaryKeySelective(rot);
         if (flag == 1) {
-            modelmap.put("success", true);
-            return modelmap;
+            rainsewage ot_new = new rainsewage();
+            List<rainsewage> list = rainsewageService.selectRainoutlet(ot_new);
+            return list;
         } else {
-            modelmap.put("succeess", false);
-            modelmap.put("errMsg", "添加失败");
-
-            return modelmap;
+            return null;
         }
     }
 
