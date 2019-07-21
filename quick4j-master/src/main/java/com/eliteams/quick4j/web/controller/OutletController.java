@@ -119,6 +119,15 @@ public class OutletController {
         return list;
     }
 
+    @RequestMapping("maptabledemo")
+    @ResponseBody
+    public List<outlet> maptabledemo(HttpServletRequest request, @RequestBody outlet ot){
+        List<outlet> list = new ArrayList<>();
+        list = outletmapper.selectPwk(ot);
+        System.out.println("11111111111111");
+        return list;
+    }
+
     @RequestMapping("/excelout")
     @ResponseBody
     public Map<String, Object> excelOut(HttpServletRequest request, final int[] ids ) throws FileNotFoundException, UnsupportedEncodingException {

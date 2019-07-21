@@ -1,7 +1,6 @@
 initMap();
 var map, layer, graphicLayer, graphic, featureLayer;
 var myrole = $("#myRole").val();
-
 var html = "";
 //html += "<button type='button' class='btnz btnz-info' id='xgCu' onclick='qmpToCu(\"${sectionName}\")'>相关单元</button>";
 //html += "<button type='button' class='btnz btnz-info' id='xgPo' onclick='qmpToPo(\"${sectionName}\")'>跳转至相关污染源</button>";

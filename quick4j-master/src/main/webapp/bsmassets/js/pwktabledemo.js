@@ -505,8 +505,10 @@ $(function () {
         $("#btn_excelin").fadeToggle();
         $("#tabletablediv").fadeToggle();
         $("#table-cont").fadeToggle();
+        $("#left").fadeToggle();
         $("#map222").css("height","1200px");
         $("#right").css("height", "1200px");
+        $("#right").css("margin-left", "0px");
         $("#map222_layers").css("top","70px");
 
         // alert(div.style.width);

@@ -9,42 +9,86 @@
             max-height: 300px;
             overflow: auto;
         }
-        .table>tbody>tr>td,
-        .table>tbody>tr>th,
-        .table>thead>tr>td,
-        .table>thead>tr>th{
+
+        .table > tbody > tr > td,
+        .table > tbody > tr > th,
+        .table > thead > tr > td,
+        .table > thead > tr > th {
             border: 1px solid #C1C1C1;
             white-space: nowrap;
-            font-weight:400;
+            font-weight: 400;
             text-align: center;
             vertical-align: middle;
             padding: 8px
         }
+
         .table {
-            border-top:0px;
+            border-top: 0px;
         }
 
-        .table>thead>.success>th {background-color:#eee; position: relative}
-        .table thead tr th{height: 50px;z-index: 998}
+        .table > thead > .success > th {
+            background-color: #eee;
+            position: relative
+        }
+
+        .table thead tr th {
+            height: 50px;
+            z-index: 998
+        }
     </style>
 
     <link rel="stylesheet" href="http://js.arcgis.com/3.20/dijit/themes/claro/claro.css">
     <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/themes/calcite/dijit/calcite.css">
     <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/themes/calcite/esri/esri.css">
     <%--<link href="app/css/qmp/public.css" rel="stylesheet">--%>
+    <link rel="stylesheet" href="bsmassets/css/bsmcss.css">
 
-    <script src="app/js/fileinput.js" type="text/javascript" ></script>
+    <script src="app/js/fileinput.js" type="text/javascript"></script>
     <script src="bsmassets/js/pwktabledemo.js"></script>
-    <script type="text/javascript" src='bsmassets/js/qmpTestData.js'></script>
+    <%--<script type="text/javascript" src='bsmassets/js/qmpTestData.js'></script>--%>
+    <script type="text/javascript" src='bsmassets/point/pollsource.js'></script>
 </head>
 <body>
-<div id="left"></div>
-<div id="right">
-        <div id="map222" data-dojo-type="dijit/layout/ContentPane"
-             data-dojo-props="region:'center'"
-             style="overflow:hidden;height:430px;width:100%;margin-left: 12%;">
-
+<div id="left">
+    <div class="row" id="cityoption">
+        <div class="col-lg-8 cityoption">
+            <br>
+            <br>
+            <br>
+            <br>
+            <select name="mapSelect" id="mapselect" width="100px" class="form-control" style="background: #F3F3F3">
+                <option value="辽宁省">辽宁省</option>
+                <option value="辽阳市">辽阳市</option>
+                <option value="沈阳市">沈阳市</option>
+                <option value="阜新市">阜新市</option>
+                <option value="鞍山市">鞍山市</option>
+                <option value="盘锦市">盘锦市</option>
+                <option value="锦州市">锦州市</option>
+                <option value="丹东市">丹东市</option>
+                <option value="本溪市">本溪市</option>
+                <option value="抚顺市">抚顺市</option>
+                <option value="朝阳市">朝阳市</option>
+            </select>
+            <br>
+            <select name="mapSecondSelect" id="mapsecondselect" width="100px" class="form-control" style="background: #F3F3F3">
+            </select>
         </div>
+        <div class="col-lg-4 cityoption">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <button id="citymap"  class="btn btn-primary">查询</button>
+        </div>
+    </div>
+</div>
+<div id="right">
+    <div id="map222" data-dojo-type="dijit/layout/ContentPane"
+         data-dojo-props="region:'center'"
+         style="overflow:hidden;height:430px;width:100%;margin-left: 0px;">
+
+    </div>
 </div>
 <div class="listDataTableDiv" style="height:320px;">
     <div style="padding-bottom: 10px">
@@ -54,10 +98,12 @@
         <button id="btn_add" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
         </button>
-        <button id="btn_edit" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="myModaledit">
+        <button id="btn_edit" type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                data-target="myModaledit">
             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
         </button>
-        <button id="btn_delete" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="myModalsearch">
+        <button id="btn_delete" type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                data-target="myModalsearch">
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
         </button>
         <button id="btn_search" type="button" class="btn btn-primary btn-sm">
@@ -74,11 +120,53 @@
         <table class="table table-striped table-bordered table-hover  table-condensed" id="tablediv">
             <thead>
             <tr class="success">
-                <th>选择</th><th>ID</th><th>编辑</th><th>删除</th><th>统计年份</th><th>统计月份</th><th>统计日</th><th>排污口编号</th><th>单位名称</th><th>排放口名称</th><th>排放口类型</th><th>所在市</th><th>所在县（市区）</th><th>所在乡镇</th>
-                <th>详细地址</th><th>排放口经度</th><th>排放口纬度</th><th>是否取得审批手续</th><th>审批单位及审批文号</th><th>批复主要污染物种类</th><th>批复日允许排放量(吨/日)</th><th>批复年允许排放量(吨/年)</th><th>是否发放许可证</th>
-                <th>排污许可证号</th><th>投入使用时间</th><th>是否为非法排污口</th><th>是否为设置不合理排污口</th><th>排放口靠河岸位置</th><th>污水处理工艺</th><th>废水排放方式</th><th>排放去向</th><th>入河方式</th><th>排入河流名称</th><th>河流级别</th>
-                <th>河流所属水系</th><th>汇入海域</th><th>入海方式</th><th>排入海域名称</th><th>废水排放标准</th><th>排入河流水功能区</th><th>排入河流水质目标</th><th>排入海域近岸海域环境功能区</th><th>排入海域水质目标</th><th>排入海域海洋功能区类别</th>
-                <th>排入海域海洋功能区水质目标</th><th>是否达标</th><th>不达标指标</th>
+                <th>选择</th>
+                <th>ID</th>
+                <th>编辑</th>
+                <th>删除</th>
+                <th>统计年份</th>
+                <th>统计月份</th>
+                <th>统计日</th>
+                <th>排污口编号</th>
+                <th>单位名称</th>
+                <th>排放口名称</th>
+                <th>排放口类型</th>
+                <th>所在市</th>
+                <th>所在县（市区）</th>
+                <th>所在乡镇</th>
+                <th>详细地址</th>
+                <th>排放口经度</th>
+                <th>排放口纬度</th>
+                <th>是否取得审批手续</th>
+                <th>审批单位及审批文号</th>
+                <th>批复主要污染物种类</th>
+                <th>批复日允许排放量(吨/日)</th>
+                <th>批复年允许排放量(吨/年)</th>
+                <th>是否发放许可证</th>
+                <th>排污许可证号</th>
+                <th>投入使用时间</th>
+                <th>是否为非法排污口</th>
+                <th>是否为设置不合理排污口</th>
+                <th>排放口靠河岸位置</th>
+                <th>污水处理工艺</th>
+                <th>废水排放方式</th>
+                <th>排放去向</th>
+                <th>入河方式</th>
+                <th>排入河流名称</th>
+                <th>河流级别</th>
+                <th>河流所属水系</th>
+                <th>汇入海域</th>
+                <th>入海方式</th>
+                <th>排入海域名称</th>
+                <th>废水排放标准</th>
+                <th>排入河流水功能区</th>
+                <th>排入河流水质目标</th>
+                <th>排入海域近岸海域环境功能区</th>
+                <th>排入海域水质目标</th>
+                <th>排入海域海洋功能区类别</th>
+                <th>排入海域海洋功能区水质目标</th>
+                <th>是否达标</th>
+                <th>不达标指标</th>
             </tr>
             </thead>
             <tbody id="tbodyone">
@@ -104,19 +192,22 @@
                                 <div class="col-lg-6">
                                     <div class="input-group">
                                         <span class="input-group-addon">统计年份</span>
-                                        <input name="tjyear" type="text" class="form-control" oninput="if(value.length>4)value=value.slice(0,4)" placeholder="">
+                                        <input name="tjyear" type="text" class="form-control"
+                                               oninput="if(value.length>4)value=value.slice(0,4)" placeholder="">
                                         <span class="input-group-addon">注释</span>
                                     </div>
                                     <br>
                                     <div class="input-group">
                                         <span class="input-group-addon">统计月份</span>
-                                        <input name="tjmonth" type="text" class="form-control" oninput="if(value>12) value=12" placeholder="">
+                                        <input name="tjmonth" type="text" class="form-control"
+                                               oninput="if(value>12) value=12" placeholder="">
                                         <span class="input-group-addon">注释</span>
                                     </div>
                                     <br>
                                     <div class="input-group">
                                         <span class="input-group-addon">统计日</span>
-                                        <input name="tjday" type="text" class="form-control" oninput="if(value>31) value=31" placeholder="">
+                                        <input name="tjday" type="text" class="form-control"
+                                               oninput="if(value>31) value=31" placeholder="">
                                         <span class="input-group-addon">注释</span>
                                     </div>
                                     <br>
