@@ -35,7 +35,7 @@ public class PageController {
      * document页
      */
     @RequestMapping("/document")
-    public String document(){return "document";}
+    public String document(){return "emis/document";}
 
     /**
      * pwkfuntion
@@ -169,6 +169,11 @@ public class PageController {
     @RequestMapping("/pwkislandsearch")
     public String pwkislandSearch(){
         return "pwk/pwkislandsearch";
+    }
+
+    @RequestMapping("/imageupload")
+    public String imageupload(){
+        return "wdsc/imageupload";
     }
 
     /**

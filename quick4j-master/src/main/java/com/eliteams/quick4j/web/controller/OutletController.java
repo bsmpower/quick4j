@@ -4,6 +4,7 @@ import com.eliteams.quick4j.core.feature.orm.mybatis.Page;
 import com.eliteams.quick4j.core.util.ExcelUtil;
 import com.eliteams.quick4j.core.util.PaginationResult;
 import com.eliteams.quick4j.web.dao.outletMapper;
+import com.eliteams.quick4j.web.model.User;
 import com.eliteams.quick4j.web.model.outlet;
 import com.eliteams.quick4j.web.service.OutletService;
 import com.github.opendevl.JFlat;
@@ -44,16 +45,24 @@ public class OutletController {
         /**
          * 根据查询条进行返回
          */
-//        Map<String,Object> modelmap = new HashMap<>();
+        User user = (User)request.getSession().getAttribute("userInfo");
+        System.out.println(user.getState());
+        if (user.getState().equals("沈阳市")){
+            ot.setCity("沈阳市");
+            List<outlet> list = outletmapper.selectPwk(ot);
+            System.out.println(list.size());
+            return list;
+        }else{
+            List<outlet> list = outletService.selectPwk(ot);
+            return list;
+        }
+        //        Map<String,Object> modelmap = new HashMap<>();
 //        System.out.println("33333333333333333333333333");
-        List<outlet> list = outletService.selectPwk(ot);
         //下边这个是jsp的写法
         //        ModelAndView mav = new ModelAndView();
         //        mav.addObject("pwklist",list);
         //          mav.setViewName("/pwk/pwktable");
 //        modelmap.put("pwklist",list);
-
-        return list;
     }
 
     @RequestMapping("/addpwk")
@@ -111,6 +120,11 @@ public class OutletController {
     @RequestMapping("optionpwk")
     @ResponseBody
     public List<outlet> optionPwk(HttpServletRequest request, @RequestBody outlet ot){
+        User user = (User)request.getSession().getAttribute("userInfo");
+        System.out.println(user.getState());
+        if (user.getState().equals("沈阳市")){
+            ot.setCity("沈阳市");
+        }
         Map<String, Object> modelmap = new HashMap<>();
         System.out.println(ot.getTjyear());
         List<outlet> list = new ArrayList<>();
@@ -122,8 +136,7 @@ public class OutletController {
     @RequestMapping("maptabledemo")
     @ResponseBody
     public List<outlet> maptabledemo(HttpServletRequest request, @RequestBody outlet ot){
-        List<outlet> list = new ArrayList<>();
-        list = outletmapper.selectPwk(ot);
+        List<outlet> list = outletService.selectPwk(ot);
         System.out.println("11111111111111");
         return list;
     }

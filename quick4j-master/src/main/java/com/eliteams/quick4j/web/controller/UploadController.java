@@ -2,7 +2,9 @@ package com.eliteams.quick4j.web.controller;
 
 import com.eliteams.quick4j.core.util.ExcelUtil;
 import com.eliteams.quick4j.core.util.ImageUtil;
+import com.eliteams.quick4j.core.util.ImageUtil2;
 import com.eliteams.quick4j.core.util.POIUtil;
+import com.eliteams.quick4j.web.dao.pictureMapper;
 import com.eliteams.quick4j.web.model.*;
 import com.eliteams.quick4j.web.service.*;
 import org.springframework.stereotype.Controller;
@@ -15,10 +17,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Controller
 @RequestMapping("/upload")
@@ -46,6 +46,11 @@ public class UploadController {
 
     @Resource
     private SectionMessageService sectionMessageService;
+
+    @Resource
+    private pictureMapper picturemapper;
+
+    private static final SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
 
     @RequestMapping("uploadexcel")
     @ResponseBody
@@ -705,4 +710,38 @@ public class UploadController {
         modelmap.put("success", false);
         return modelmap;
     }
+
+    @RequestMapping("/imageinit")
+    @ResponseBody
+    public List<picture> imageinit(picture pic){
+        List<picture> list = picturemapper.selectpicture(pic);
+        return list;
+    }
+
+
+    @RequestMapping("/uploadImage")
+    @ResponseBody
+    public List<picture> uploadImage(HttpServletRequest request, @RequestParam(value = "file") MultipartFile imagefile, String pwkid,String pwkname) throws IOException {
+        String realFileName = imagefile.getOriginalFilename();
+        String imgPath;
+        picture pic = new picture();
+        //第一步做存储
+        imgPath = ImageUtil2.upload(request, imagefile);
+        System.out.println(imgPath);
+        String nowTimeStr = sDateFormat.format(new Date());
+        pic.setPwkid(pwkid);
+        pic.setPwkname(pwkname);
+        pic.setImagename(pwkname);
+        pic.setPath(imgPath);
+        pic.setCreatetime(nowTimeStr);
+        picturemapper.insert(pic);
+        System.out.println(imgPath);
+        //第二步进行读取
+        picture piclist = new picture();
+        List<picture> list = new ArrayList<>();
+        list = picturemapper.selectpicture(piclist);
+        System.out.println(list.size());
+        return list;
+    }
+
 }

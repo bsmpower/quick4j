@@ -16,7 +16,7 @@
     float: left;
 }
 #right{
-    margin-left: 265px;
+    margin-left: 166px;
 }
 /*.cityoption{*/
     /*margin-top: 30px;*/
@@ -51,9 +51,25 @@
     background-color: #FFFFFF;
 }
 
-.contentPane{
-    margin-top: 390px;
-    margin-left: 73px;
-    overflow-y: scroll;
-    height:400px;
+/*.contentPane{*/
+/*    margin-top: 390px;*/
+/*    margin-left: 73px;*/
+/*    overflow-y: scroll;*/
+/*    height:400px;*/
+/*}*/
+#imagepart{
+    width:100%;
+    margin-left: 87px;
+    position: relative;
+}
+#warning1{
+    margin-left: 87px;
+}
+#pwkid{
+    height:50px;
+    line-height: 50px;
+}
+#pwkname{
+    height:50px;
+    line-height: 50px;
 }

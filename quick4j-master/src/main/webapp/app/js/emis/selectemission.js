@@ -60,11 +60,18 @@ $(document).ready(function(){
         theme : '#3d3d3d',       // 主题颜色
         position : 'right'      // 显示位置，有left和right两种
     });
+    var tableCont = document.querySelector('#table-cont')
+    function scrollHandle (e){
+        var scrollTop = this.scrollTop;
+        var a = this.querySelector('thead').getElementsByTagName("th");
+        for(var i=0;i<a.length;i++)
+            a[i].style.transform = 'translateY(' + scrollTop + 'px)';
+        //this.querySelector('thead').style.transform = 'translateY(' + scrollTop + 'px)';
+    }
+    tableCont.addEventListener('scroll',scrollHandle)
+
         $("#bntgroup .btn:first").addClass("active")       //按钮
-        // var time = new Date();                             //设置默认时间
-        // var day = ("0" + time.getDate()).slice(-2);
-        // var month = ("0" + (time.getMonth() + 1)).slice(-2);
-        // var today = time.getFullYear() + "-" + (month) + "-" + (day);
+
         var today = gettoday();
         $('#endd').val(today);
         var url = "rest/emis/emissionlist"

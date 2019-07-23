@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eliteams.quick4j.web.dao.pictureMapper" >
+  <resultMap id="BaseResultMap" type="com.eliteams.quick4j.web.model.picture" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="pwkid" property="pwkid" jdbcType="VARCHAR" />
+    <result column="pwkname" property="pwkname" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="VARCHAR" />
+    <result column="imagename" property="imagename" jdbcType="VARCHAR" />
+    <result column="path" property="path" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, pwkid, pwkname, createtime, imagename, path
+  </sql>
+  <select id="selectpicture" resultMap="BaseResultMap" parameterType="com.eliteams.quick4j.web.model.picture" resultType="com.eliteams.quick4j.web.model.picture">
+    SELECT *
+    FROM picture
+    <where>
+      <if test="pwkid != null and pwkid !=''">
+        AND pwkid = #{pwkid,jdbcType=VARCHAR}
+      </if>
+      <if test="pwkname != null and pwkname !=''">
+        AND pwkname = #{pwkname,jdbcType=VARCHAR}
+      </if>
+      <if test="createtime != null and createtime !=''" >
+        AND createtime = #{createtime,jdbcType=VARCHAR}
+      </if>
+      <if test="imagename != null and imagename !=''">
+        AND imagename = #{imagename,jdbcType=VARCHAR}
+      </if>
+      <if test="path != null and path !=''" >
+        AND path = #{path,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from picture
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from picture
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.eliteams.quick4j.web.model.picture" >
+    insert into picture (id, pwkid, pwkname, 
+      createtime, imagename, path
+      )
+    values (#{id,jdbcType=INTEGER}, #{pwkid,jdbcType=VARCHAR}, #{pwkname,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=VARCHAR}, #{imagename,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.eliteams.quick4j.web.model.picture" >
+    insert into picture
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="pwkid != null" >
+        pwkid,
+      </if>
+      <if test="pwkname != null" >
+        pwkname,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="imagename != null" >
+        imagename,
+      </if>
+      <if test="path != null" >
+        path,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="pwkid != null" >
+        #{pwkid,jdbcType=VARCHAR},
+      </if>
+      <if test="pwkname != null" >
+        #{pwkname,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="imagename != null" >
+        #{imagename,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        #{path,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.eliteams.quick4j.web.model.picture" >
+    update picture
+    <set >
+      <if test="pwkid != null" >
+        pwkid = #{pwkid,jdbcType=VARCHAR},
+      </if>
+      <if test="pwkname != null" >
+        pwkname = #{pwkname,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="imagename != null" >
+        imagename = #{imagename,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        path = #{path,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.eliteams.quick4j.web.model.picture" >
+    update picture
+    set pwkid = #{pwkid,jdbcType=VARCHAR},
+      pwkname = #{pwkname,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=VARCHAR},
+      imagename = #{imagename,jdbcType=VARCHAR},
+      path = #{path,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

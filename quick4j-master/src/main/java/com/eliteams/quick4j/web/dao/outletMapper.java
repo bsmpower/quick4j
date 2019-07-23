@@ -19,4 +19,5 @@ public interface outletMapper {
     int updateByPrimaryKeySelective(outlet record);
 
     int updateByPrimaryKey(outlet record);
+
 }

@@ -130,7 +130,7 @@ function initMap() {
             logo: false,
             extent: extent,
             //这个是表明地图上的地点
-            // showLabels: true,
+            showLabels: true,
             zoom: 12,
             maxZoom: 16
         });

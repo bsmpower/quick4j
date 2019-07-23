@@ -8,8 +8,20 @@ function allhtml(index,item) {
 }
 
 $(document).ready(function(){
+
          showall();
     $("#photo1").hide();
+    var tableCont = document.querySelector('#table-cont')
+    function scrollHandle (e){
+        var scrollTop = this.scrollTop;
+        var a = this.querySelector('thead').getElementsByTagName("th");
+        for(var i=0;i<a.length;i++)
+            a[i].style.transform = 'translateY(' + scrollTop + 'px)';
+        //this.querySelector('thead').style.transform = 'translateY(' + scrollTop + 'px)';
+    }
+    tableCont.addEventListener('scroll',scrollHandle)
+
+
 });
 
 function nullto() {

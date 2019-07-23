@@ -39,49 +39,50 @@
 
     <link rel="stylesheet" href="http://js.arcgis.com/3.20/dijit/themes/claro/claro.css">
     <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/themes/calcite/dijit/calcite.css">
-    <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/themes/calcite/esri/esri.css">
+<%--    <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/themes/calcite/esri/esri.css">--%>
+    <link rel="stylesheet" href="app/js/3.20/esri/css/esri.css">
     <%--<link href="app/css/qmp/public.css" rel="stylesheet">--%>
     <link rel="stylesheet" href="bsmassets/css/bsmcss.css">
 
     <script src="app/js/fileinput.js" type="text/javascript"></script>
     <script src="bsmassets/js/pwktabledemo.js"></script>
     <%--<script type="text/javascript" src='bsmassets/js/qmpTestData.js'></script>--%>
-    <script type="text/javascript" src='bsmassets/point/pollsource.js'></script>
+<%--    <script type="text/javascript" src='bsmassets/point/pollsource.js'></script>z--%>
 </head>
 <body>
 <div id="left">
-    <div class="row" id="cityoption">
-        <div class="col-lg-8 cityoption">
-            <br>
-            <br>
-            <br>
-            <br>
-            <select name="mapSelect" id="mapselect" width="100px" class="form-control" style="background: #F3F3F3">
-                <option value="辽宁省">辽宁省</option>
-                <option value="辽阳市">辽阳市</option>
-                <option value="沈阳市">沈阳市</option>
-                <option value="阜新市">阜新市</option>
-                <option value="鞍山市">鞍山市</option>
-                <option value="盘锦市">盘锦市</option>
-                <option value="锦州市">锦州市</option>
-                <option value="丹东市">丹东市</option>
-                <option value="本溪市">本溪市</option>
-                <option value="抚顺市">抚顺市</option>
-                <option value="朝阳市">朝阳市</option>
-            </select>
-            <br>
-            <select name="mapSecondSelect" id="mapsecondselect" width="100px" class="form-control" style="background: #F3F3F3">
-            </select>
-        </div>
-        <div class="col-lg-4 cityoption">
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <button id="citymap"  class="btn btn-primary">查询</button>
-        </div>
-    </div>
+<%--    <div class="row" id="cityoption">--%>
+<%--        <div class="col-lg-8 cityoption">--%>
+<%--            <br>--%>
+<%--            <br>--%>
+<%--            <br>--%>
+<%--            <br>--%>
+<%--            <select name="mapSelect" id="mapselect" width="100px" class="form-control" style="background: #F3F3F3">--%>
+<%--                <option value="辽宁省">辽宁省</option>--%>
+<%--                <option value="辽阳市">辽阳市</option>--%>
+<%--                <option value="沈阳市">沈阳市</option>--%>
+<%--                <option value="阜新市">阜新市</option>--%>
+<%--                <option value="鞍山市">鞍山市</option>--%>
+<%--                <option value="盘锦市">盘锦市</option>--%>
+<%--                <option value="锦州市">锦州市</option>--%>
+<%--                <option value="丹东市">丹东市</option>--%>
+<%--                <option value="本溪市">本溪市</option>--%>
+<%--                <option value="抚顺市">抚顺市</option>--%>
+<%--                <option value="朝阳市">朝阳市</option>--%>
+<%--            </select>--%>
+<%--            <br>--%>
+<%--            <select name="mapSecondSelect" id="mapsecondselect" width="100px" class="form-control" style="background: #F3F3F3">--%>
+<%--            </select>--%>
+<%--        </div>--%>
+<%--        <div class="col-lg-4 cityoption">--%>
+<%--            <br>--%>
+<%--            <br>--%>
+<%--            <br>--%>
+<%--            <br>--%>
+<%--            <br>--%>
+<%--            <button id="citymap"  class="btn btn-primary">查询</button>--%>
+<%--        </div>--%>
+<%--    </div>--%>
 </div>
 <div id="right">
     <div id="map222" data-dojo-type="dijit/layout/ContentPane"
@@ -1198,8 +1199,20 @@
         if (val8 == true) {
             var temp8 = "   <div class=\"input-group\">\n" +
                 "                                        <span class=\"input-group-addon\">所在市</span>\n" +
-                "                                        <input id=\"select7\" name=\"city\" type=\"text\" class=\"form-control\" placeholder=\"\">\n" +
-                "                                        <span class=\"input-group-addon\">注释</span>\n" +
+                "                                        <input id=\"select7\" list=\"citylist\" name=\"city\" type=\"text\" class=\"form-control\" placeholder=\"\">\n" +
+                "                                         <datalist id=\"citylist\">\n" +
+                "                                                <option value=\"辽宁省\">辽宁省</option>\n" +
+                "                                                <option value=\"辽阳市\">辽阳市</option>\n" +
+                "                                                <option value=\"沈阳市\">沈阳市</option>\n" +
+                "                                                <option value=\"阜新市\">阜新市</option>\n" +
+                "                                                <option value=\"鞍山市\">鞍山市</option>\n" +
+                "                                                <option value=\"盘锦市\">盘锦市</option>\n" +
+                "                                                <option value=\"锦州市\">锦州市</option>\n" +
+                "                                                <option value=\"丹东市\">丹东市</option>\n" +
+                "                                                <option value=\"本溪市\">本溪市</option>\n" +
+                "                                                <option value=\"抚顺市\">抚顺市</option>\n" +
+                "                                                <option value=\"朝阳市\">朝阳市</option>\n" +
+                "                            </datalist><span class=\"input-group-addon\">注释</span>\n" +
                 "                                    </div>"
             $("#div_7").html(temp8);
             $("#div_7").show();

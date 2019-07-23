@@ -12,12 +12,27 @@
     <script type="text/javascript" src="app/js/emis/productlist.js"></script>
     <script type="text/javascript" src="app/js/emis/table2excel.js"></script>
     <style type="text/css">
-        .listDataTableDiv table td{white-space: nowrap}
-        .listDataTableDiv table th{white-space: nowrap}
-        .table-condensed tbody tr td{padding: 10px}
-        .table-condensed tbody tr th{padding: 10px}
-        .table>thead>.success>th {background-color:#ffffff}
-        .table thead tr th{font-size:14px;font-weight:400;text-align: center;vertical-align: middle;height: 50px}
+        .table-cont {
+            max-height: 380px;
+            overflow: auto;
+        }
+        .table>tbody>tr>td,
+        .table>tbody>tr>th,
+        .table>thead>tr>td,
+        .table>thead>tr>th{
+            border: 1px solid #C1C1C1;
+            white-space: nowrap;
+            font-weight:400;
+            text-align: center;
+            vertical-align: middle;
+            padding: 8px
+        }
+        .table {
+            border-top:0px;
+        }
+
+        .table>thead>.success>th {background-color:#eee; position: relative}
+        .table thead tr th{height: 50px;z-index: 998}
         .panel-primary{border-color: #c1c1c1;margin-top: 30px;width: 700px}
         .panel-primary>.panel-heading{color:#000000;background-color:#eeeeee;border-color: #c1c1c1}
     </style>
@@ -67,7 +82,7 @@
         <button type="button"  onclick="add()" class="btn btn-default btn-xs" style="display: inline-block">增加记录</button>
         <button type="button" onclick="exportexcel()" class="btn btn-default btn-xs" style="display: inline-block">导出记录</button>
     </div>
-    <div style="text-align:center;height:380px;overflow:auto;">
+    <div class="table-cont" id="table-cont">
         <table class="table table-striped table-bordered table-hover  table-condensed" id="tablediv">
             <thead>
             <tr class="success">

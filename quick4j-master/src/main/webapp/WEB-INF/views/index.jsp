@@ -294,17 +294,12 @@
                     <ul class="sub-menu">
                         <li>
                             <a href="rest/page/document" class="btn-document" id="conutrylevel">
-                                国家级
+                                文档资料
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:;" id="provincelevel">
-                                省级
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;" id="citylevel">
-                                市级
+                            <a href="rest/page/imageupload" id="provincelevel">
+                                图片资料
                             </a>
                         </li>
                     </ul>

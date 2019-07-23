@@ -1,18 +1,11 @@
 package com.eliteams.quick4j.web.model;
 
-public class wdsc {
+
+public class Wdsc {
     private Integer id;
-
     private String name;
-
     private String generateDate;
-
-    private String content;
-
-    private String title;
-
-    private String publishDate;
-
+    private String generateTime;
     private String type;
 
     public Integer getId() {
@@ -28,7 +21,7 @@ public class wdsc {
     }
 
     public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+        this.name = name;
     }
 
     public String getGenerateDate() {
@@ -36,31 +29,15 @@ public class wdsc {
     }
 
     public void setGenerateDate(String generateDate) {
-        this.generateDate = generateDate == null ? null : generateDate.trim();
+        this.generateDate = generateDate;
     }
 
-    public String getContent() {
-        return content;
+    public String getGenerateTime() {
+        return generateTime;
     }
 
-    public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title == null ? null : title.trim();
-    }
-
-    public String getPublishDate() {
-        return publishDate;
-    }
-
-    public void setPublishDate(String publishDate) {
-        this.publishDate = publishDate == null ? null : publishDate.trim();
+    public void setGenerateTime(String generateTime) {
+        this.generateTime = generateTime;
     }
 
     public String getType() {
@@ -68,6 +45,6 @@ public class wdsc {
     }
 
     public void setType(String type) {
-        this.type = type == null ? null : type.trim();
+        this.type = type;
     }
 }
