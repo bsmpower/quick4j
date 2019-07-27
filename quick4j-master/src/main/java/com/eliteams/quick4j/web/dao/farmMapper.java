@@ -21,4 +21,6 @@ public interface FarmMapper extends GenericDao<Farm,Long> {
     List<Farm> list();
 
     List<Farm> searchAllFarm(Farm aquaculture);
+
+    List<Farm> searchExit(Farm record);
 }

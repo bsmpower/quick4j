@@ -32,6 +32,14 @@ public class PageController {
     }
 
     /**
+     * 用户基本信息管理
+     */
+    @RequestMapping("usermanage")
+    public String usermanage(){
+        return "user/usermanage";
+    }
+
+    /**
      * document页
      */
     @RequestMapping("/document")
@@ -147,6 +155,15 @@ public class PageController {
     @RequestMapping("/emisimport")
     public String emisimport(){return "emis/emisimport";}
 
+
+
+    /**
+     * 数据分析图表部分
+     */
+    @RequestMapping("analyze")
+    public String analyze(){
+        return "echart/analyze";
+    }
 
     /**
      * Arcgis地图

@@ -78,7 +78,7 @@
                 'border' : '1px solid '+opts.theme,
                 'position':'fixed',
                 'font-family':'Microsoft Yahei',
-                'z-index':'1'
+                'z-index':'99'
             }).find('.body').css({
                 'width': opts.width+'px',
                 'height' : opts.height+'px',

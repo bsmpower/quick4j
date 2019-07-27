@@ -26,6 +26,9 @@ public interface UserMapper extends GenericDao<User, Long> {
 
     List<User> selectByExample(UserExample example);
 
+    List<User> selectalluser(User user);
+
+
     User selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);

@@ -1,8 +1,6 @@
 package com.eliteams.quick4j.web.service.impl;
 
-import com.eliteams.quick4j.web.dao.EmissionMapper;
 import com.eliteams.quick4j.web.dao.ProductMapper;
-import com.eliteams.quick4j.web.model.Emission;
 import com.eliteams.quick4j.web.model.Product;
 import com.eliteams.quick4j.web.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;

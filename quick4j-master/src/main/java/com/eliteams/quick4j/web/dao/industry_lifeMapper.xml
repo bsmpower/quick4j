@@ -316,4 +316,26 @@
       </if>
     </where>
   </select>
+  <select id="searchExit" resultMap="BaseResultMap" parameterType="com.eliteams.quick4j.web.model.Industry_life">
+    select
+    <include refid="Base_Column_List" />
+    from industry_life
+    <where>
+      <if test="tjyear!=null and tjyear!=''">
+        AND tjyear = #{tjyear,jdbcType=VARCHAR}
+      </if>
+      <if test="tjmonth!=null and tjmonth!=''">
+        AND tjmonth = #{tjmonth,jdbcType=VARCHAR}
+      </if>
+      <if test="tjday!=null and tjday!=''">
+        AND tjday = #{tjday,jdbcType=VARCHAR}
+      </if>
+      <if test="name!=null and name!=''">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="id!=null and id!=''">
+        AND id != #{id,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
 </mapper>

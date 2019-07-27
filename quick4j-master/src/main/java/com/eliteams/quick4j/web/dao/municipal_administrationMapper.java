@@ -21,4 +21,6 @@ public interface Municipal_administrationMapper extends GenericDao<Municipal_adm
     List<Municipal_administration> list();
 
     List<Municipal_administration> listAll(Municipal_administration record);
+
+    List<Municipal_administration> searchExit(Municipal_administration record);
 }

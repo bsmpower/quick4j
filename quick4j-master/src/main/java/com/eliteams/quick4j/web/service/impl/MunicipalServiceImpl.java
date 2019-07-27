@@ -55,6 +55,10 @@ public class MunicipalServiceImpl extends GenericServiceImpl<Municipal_administr
         }
         return 1;
     }
+    public List<Municipal_administration> searchExit(Municipal_administration record){
+        return municipalAdministrationMapper.searchExit(record);
+    }
+
 
     public GenericDao<Municipal_administration,Long> getDao(){
         return municipalAdministrationMapper;

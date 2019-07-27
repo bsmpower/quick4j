@@ -21,4 +21,6 @@ public interface Industry_parkMapper extends GenericDao<Industry_park,Long> {
     List<Industry_park> list();
 
     List<Industry_park> searchAllIndustryPark(Industry_park record);
+
+    List<Industry_park> searchExit(Industry_park record);
 }

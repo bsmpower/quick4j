@@ -29,28 +29,34 @@
 .table>thead>.success>th {background-color:#ffffff}
 .table thead tr th{font-size:14px;font-weight:400;text-align: center;vertical-align: middle;height: 50px;}
 
+/*.tableBasic {*/
+    /*background-color: #F9F9F9;*/
+    /*color: #666666;*/
+    /*border-left: 1px dotted #CCCCCC;*/
+    /*border-top: 1px dotted #CCCCCC;*/
+    /*overflow-y: scroll;*/
+/*}*/
+/*.tableBasic select {*/
+    /*color: #8F8F8F;*/
+/*}*/
+/*.tableBasic td, .tableBasic th {*/
+    /*border-right: 1px dotted #CCCCCC;*/
+    /*border-bottom: 1px dotted #CCCCCC;*/
+/*}*/
+/*.tableBasic th {*/
+    /*background-color: #EEEEEE;*/
+    /*height: 16px;*/
+/*}*/
+/*.tableBasic .child {*/
+    /*background-color: #FFFFFF;*/
+/*}*/
 .tableBasic {
-    background-color: #F9F9F9;
-    color: #666666;
-    border-left: 1px dotted #CCCCCC;
-    border-top: 1px dotted #CCCCCC;
-    overflow-y: scroll;
+    white-space: nowrap;
 }
-.tableBasic select {
-    color: #8F8F8F;
+.table-striped > tbody > tr:nth-child(2n+1) > td,
+.table-striped > tbody > tr:nth-child(2n+1) > th {
+    background-color: #efefef99;
 }
-.tableBasic td, .tableBasic th {
-    border-right: 1px dotted #CCCCCC;
-    border-bottom: 1px dotted #CCCCCC;
-}
-.tableBasic th {
-    background-color: #EEEEEE;
-    height: 16px;
-}
-.tableBasic .child {
-    background-color: #FFFFFF;
-}
-
 /*.contentPane{*/
 /*    margin-top: 390px;*/
 /*    margin-left: 73px;*/

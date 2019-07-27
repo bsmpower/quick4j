@@ -10,6 +10,8 @@ public interface LivestockService extends GenericService<Livestock_enterprises,L
 
     int insert(Livestock_enterprises record);
 
+    List<Livestock_enterprises> searchExit(Livestock_enterprises record);
+
     int insertSelective(Livestock_enterprises record);
 
     Livestock_enterprises selectByPrimaryKey(Integer id);

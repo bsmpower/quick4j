@@ -3,7 +3,9 @@ package com.eliteams.quick4j.web.controller;
 import com.eliteams.quick4j.web.model.Emission;
 import com.eliteams.quick4j.core.util.Inspect;
 import com.eliteams.quick4j.web.model.Sectionemis;
+import com.eliteams.quick4j.web.model.section_message;
 import com.eliteams.quick4j.web.service.EmissionService;
+import com.eliteams.quick4j.web.service.SectionMessageService;
 import com.eliteams.quick4j.web.service.SectionemisService;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
@@ -17,31 +19,82 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("sec")
 public class SectionEmisController {
     @Autowired
     SectionemisService sectionemisService;
+    @Resource
+    private SectionMessageService sectionMessageService;
+
+    public Map<String,Object> getsection(String dmname){
+        Map<String, Object> modelmap = new HashMap<>();
+        section_message s = new section_message();
+        s.setDmName(dmname);
+        List<section_message> sl = sectionMessageService.selectSection(s);
+
+        if(!sl.isEmpty()){
+            double longtitude = sl.get(0).getLongitude();
+            double latitude = sl.get(0).getLaititude();
+            modelmap.put("lng",longtitude);
+            modelmap.put("lat",latitude);
+            return modelmap;
+        }
+        return null;
+    }
 
     @ResponseBody
     @RequestMapping(value = "/emislist")
-    public List<Sectionemis> list()  {     //根据条件查询，并列表展示
+    public List<Map<String, Object>> list()  {     //根据条件查询，并列表展示
+        List<Map<String, Object>> resultlist = new ArrayList<Map<String, Object>>();
         List<Sectionemis> elist = sectionemisService.list();
-        return elist;
+        for(Sectionemis e:elist){
+            Map<String,Object> result = new HashMap<String,Object>();
+            Map<String,Object> map = getsection(e.getDmName());
+            if(map!=null){
+                result.put("lng",map.get("lng"));
+                result.put("lat",map.get("lat"));
+            }
+            else{
+                result.put("lng",null);
+                result.put("lat",null);
+
+            }
+            result.put("emission",e);
+            resultlist.add(result);
+        }
+        return resultlist;
     }
 
     @RequestMapping(value = "/emisselect")
     @ResponseBody
-    public List<Sectionemis> selectEmission(@RequestBody Sectionemis sectionemis, HttpServletRequest request){
-//        String startdate=(String)request.getParameter("startdate");
-//        String enddate=(String)request.getParameter("enddate");
+    public  List<Map<String, Object>> selectEmission(@RequestBody Sectionemis sectionemis, HttpServletRequest request){
+        List<Map<String, Object>> resultlist = new ArrayList<Map<String, Object>>();
         List<Sectionemis> elist = sectionemisService.select(sectionemis);
-        return elist;
+        for(Sectionemis e:elist){
+            Map<String,Object> result = new HashMap<String,Object>();
+            Map<String,Object> map = getsection(e.getDmName());
+            if(map!=null){
+                result.put("lng",map.get("lng"));
+                result.put("lat",map.get("lat"));
+            }
+            else{
+                result.put("lng",null);
+                result.put("lat",null);
+
+            }
+            result.put("emission",e);
+            resultlist.add(result);
+        }
+        return resultlist;
     }
 
     @RequestMapping(value = "/emisdelete")
@@ -133,10 +186,11 @@ public class SectionEmisController {
                 row = sheet.getRow(i);
                 if (row != null) {
                     str[0]=inspect.getstr(row.getCell(0));str[1]=inspect.getstr(row.getCell(1));
-                    str[2]=inspect.gety(row.getCell(2));str[3]=inspect.getm(row.getCell(3));str[4]=inspect.getd(row.getCell(4));
-                    if(str[0]==null||str[1]==null||str[2]==null||str[3]==null||str[4]==null){errlist+=i+"  ，";continue;}
-                    if(str[2].equals("formaterror")||str[3].equals("formaterror")||str[4].equals("formaterror")){errformatlist+=i+"  ，";continue;}
-                    for(k =5;k<26;k++){
+                    str[2]=inspect.getstr(row.getCell(2));str[3]=inspect.getstr(row.getCell(3));
+                    str[4]=inspect.gety(row.getCell(4));str[5]=inspect.getm(row.getCell(5));str[6]=inspect.getd(row.getCell(6));
+                    if(str[0]==null||str[1]==null||str[2]==null||str[3]==null||str[4]==null||str[5]==null||str[6]==null){errlist+=i+"  ，";continue;}
+                    if(str[4].equals("formaterror")||str[5].equals("formaterror")||str[6].equals("formaterror")){errformatlist+=i+"  ，";continue;}
+                    for(k =7;k<28;k++){
                         String s = inspect.doubleval(row.getCell(k));
                         if(s!=null){
                             if(s.equals("formaterror")){errformatlist+=i+"  ，";break;}
@@ -146,16 +200,17 @@ public class SectionEmisController {
                             }
                         }
                     }
-                    str[26]=inspect.getstr(row.getCell(26));
-                    if(k!=26){continue;}
-                    we.setDmCode(str[0]);we.setDmName(str[1]);we.setTjyear(str[2]);we.setTjmonth(str[3]);we.setTjday(str[4]);
-                    if(str[5]!=null) we.setSalt(dou[5]);if(str[6]!=null) we.setCOD(dou[6]);if(str[7]!=null) we.setNH3(dou[7]);if(str[8]!=null) we.setP(dou[8]);
-                    if(str[9]!=null) we.setN(dou[9]);if(str[10]!=null) we.setCr6(dou[10]);if(str[11]!=null) we.setCN(dou[11]);if(str[12]!=null) we.setFdcjqs(dou[12]);
-                    if(str[13]!=null) we.setBOD5(dou[13]);if(str[14]!=null) we.setXfw(dou[14]);if(str[15]!=null) we.setOil(dou[15]);
-                    if(str[16]!=null) we.setFlow(dou[16]);if(str[17]!=null) we.setPhenol(dou[17]);if(str[18]!=null) we.setAs(dou[18]);
-                    if(str[19]!=null) we.setHg(dou[19]);if(str[20]!=null) we.setPb(dou[20]);if(str[21]!=null) we.setCd(dou[21]);
-                    if(str[22]!=null) we.setPH(dou[22]);if(str[23]!=null) we.setChloride(dou[23]);if(str[24]!=null) we.setSulfide(dou[24]);
-                    if(str[25]!=null) we.setYlzbmhxj(dou[25]);if(str[26]!=null) we.setOthers(str[26]);
+                    str[28]=inspect.getstr(row.getCell(28));
+                    if(k!=28){continue;}
+                    we.setDmCode(str[0]);we.setDmName(str[1]);we.setCity(str[2]);we.setCounty(str[3]);
+                    we.setTjyear(str[4]);we.setTjmonth(str[5]);we.setTjday(str[6]);
+                    if(str[7]!=null) we.setSalt(dou[7]);if(str[8]!=null) we.setCOD(dou[8]);if(str[9]!=null) we.setNH3(dou[9]);if(str[10]!=null) we.setP(dou[10]);
+                    if(str[11]!=null) we.setN(dou[11]);if(str[12]!=null) we.setCr6(dou[12]);if(str[13]!=null) we.setCN(dou[13]);if(str[14]!=null) we.setFdcjqs(dou[14]);
+                    if(str[15]!=null) we.setBOD5(dou[15]);if(str[16]!=null) we.setXfw(dou[16]);if(str[17]!=null) we.setOil(dou[17]);
+                    if(str[18]!=null) we.setFlow(dou[18]);if(str[19]!=null) we.setPhenol(dou[19]);if(str[20]!=null) we.setAs(dou[20]);
+                    if(str[21]!=null) we.setHg(dou[21]);if(str[22]!=null) we.setPb(dou[22]);if(str[23]!=null) we.setCd(dou[23]);
+                    if(str[24]!=null) we.setPH(dou[24]);if(str[25]!=null) we.setChloride(dou[25]);if(str[26]!=null) we.setSulfide(dou[26]);
+                    if(str[27]!=null) we.setYlzbmhxj(dou[27]);if(str[28]!=null) we.setOthers(str[28]);
                 } else {
                     continue;
                 }

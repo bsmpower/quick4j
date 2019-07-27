@@ -23,4 +23,6 @@ public interface MunicipalService extends GenericService<Municipal_administratio
     List<Municipal_administration> listAll(Municipal_administration record);
 
     int deleteByIds(int[] ids);
+
+    List<Municipal_administration> searchExit(Municipal_administration record);
 }

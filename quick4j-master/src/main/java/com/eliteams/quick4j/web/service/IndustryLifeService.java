@@ -24,4 +24,7 @@ public interface IndustryLifeService extends GenericService<Industry_life,Long>{
     int deleteByIds(int[] ids);
 
     List<Industry_life> searchAllIndustryLife(Industry_life record);
+
+    List<Industry_life> searchExit(Industry_life record);
+
 }

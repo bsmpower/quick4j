@@ -353,7 +353,31 @@
       sparetwo = #{sparetwo,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-    <select id="searchAllIndurTrash" resultMap="BaseResultMap" parameterType="com.eliteams.quick4j.web.model.Industry_trash">
+    <select id="searchExit" resultMap="BaseResultMap"
+            parameterType="com.eliteams.quick4j.web.model.Industry_trash">
+        select
+        <include refid="Base_Column_List"/>
+        from industry_trash
+        <where>
+            <if test="tjyear!=null and tjyear!=''">
+                AND tjyear = #{tjyear,jdbcType=VARCHAR}
+            </if>
+            <if test="tjmonth!=null and tjmonth!=''">
+                AND tjmonth = #{tjmonth,jdbcType=VARCHAR}
+            </if>
+            <if test="tjday!=null and tjday!=''">
+                AND tjday = #{tjday,jdbcType=VARCHAR}
+            </if>
+            <if test="gyname!=null and gyname!=''">
+                AND gyname = #{gyname,jdbcType=VARCHAR}
+            </if>
+            <if test="id!=null and id!=''">
+                AND id != #{id,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+    <select id="searchAllIndurTrash" resultMap="BaseResultMap"
+            parameterType="com.eliteams.quick4j.web.model.Industry_trash">
         select
         <include refid="Base_Column_List"/>
         from industry_trash

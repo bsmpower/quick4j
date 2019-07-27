@@ -15,11 +15,23 @@
             <if test="e.pwkName!=null">
                 and pwk_name like concat('%',#{e.pwkName},'%')
             </if>
+            <if test="e.city!=null">
+                and city like concat('%',#{e.city},'%')
+            </if>
+            <if test="e.county!=null">
+                and county like concat('%',#{e.county},'%')
+            </if>
+            <if test="e.type!=null">
+                and `type` like concat('%',#{e.type},'%')
+            </if>
             <if test="e.tjyear!=null">
                 and tjyear=#{e.tjyear}
             </if>
             <if test="e.tjmonth!=null">
                 and tjmonth=#{e.tjmonth}
+            </if>
+            <if test="e.tjday!=null">
+                and tjday=#{e.tjday}
             </if>
             <if test="e.salt!=null and e.salt!=0">
                 and salt>=#{e.salt}
@@ -95,8 +107,8 @@
     </select>
 
     <insert id="addEmission" parameterType="Emission" >
-        insert into emission (pwk_code,pwk_name,tjyear,tjmonth,tjday,salt,COD,NH3,P,N,Cr6,CN,fdcjqs,BOD5,xfw,oil,dzwy,phenol,`As`,Hg,Pb,Cd,PH,chloride,sulfide,ylzbmhxj,`others`,spareone,sparetwo)
-        values (#{pwkCode},#{pwkName},#{tjyear},#{tjmonth},#{tjday},#{salt},#{COD},#{NH3},#{P},#{N},#{Cr6},#{CN},#{fdcjqs},#{BOD5},#{xfw},#{oil},#{dzwy},#{phenol},#{As},#{Hg},#{Pb},#{Cd},#{PH},#{chloride},#{sulfide},#{ylzbmhxj},#{others},#{spareone},#{sparetwo})
+        insert into emission (pwk_code,pwk_name,city,county,`type`,tjyear,tjmonth,tjday,salt,COD,NH3,P,N,Cr6,CN,fdcjqs,BOD5,xfw,oil,dzwy,phenol,`As`,Hg,Pb,Cd,PH,chloride,sulfide,ylzbmhxj,`others`,spareone,sparetwo)
+        values (#{pwkCode},#{pwkName},#{city},#{county},#{type},#{tjyear},#{tjmonth},#{tjday},#{salt},#{COD},#{NH3},#{P},#{N},#{Cr6},#{CN},#{fdcjqs},#{BOD5},#{xfw},#{oil},#{dzwy},#{phenol},#{As},#{Hg},#{Pb},#{Cd},#{PH},#{chloride},#{sulfide},#{ylzbmhxj},#{others},#{spareone},#{sparetwo})
     </insert>
 
 
@@ -105,7 +117,7 @@
     </delete>
 
     <update id="updateEmission" parameterType="Emission" >
-        update emission set pwk_code=#{pwkCode},pwk_name=#{pwkName},tjyear=#{tjyear},tjmonth=#{tjmonth},tjday=#{tjday},salt=#{salt},COD=#{COD},NH3=#{NH3},P=#{P},N=#{N},Cr6=#{Cr6},CN=#{CN},fdcjqs=#{fdcjqs},BOD5=#{BOD5},xfw=#{xfw},oil=#{oil},
+        update emission set pwk_code=#{pwkCode},pwk_name=#{pwkName},city=#{city},county=#{county},`type`=#{type},tjyear=#{tjyear},tjmonth=#{tjmonth},tjday=#{tjday},salt=#{salt},COD=#{COD},NH3=#{NH3},P=#{P},N=#{N},Cr6=#{Cr6},CN=#{CN},fdcjqs=#{fdcjqs},BOD5=#{BOD5},xfw=#{xfw},oil=#{oil},
         dzwy=#{dzwy},phenol=#{phenol},`As`=#{As},Hg=#{Hg},Pb=#{Pb},Cd=#{Cd},PH=#{PH},chloride=#{chloride},sulfide=#{sulfide},ylzbmhxj=#{ylzbmhxj},`others`=#{others},spareone=#{spareone},sparetwo=#{sparetwo} where id=#{id}
     </update>
 </mapper>

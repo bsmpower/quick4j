@@ -15,6 +15,10 @@ public class AquacultureServiceImpl extends GenericServiceImpl<Aquaculture,Long>
     @Resource
     private AquacultureMapper aquacultureMapper;
 
+    public List<Aquaculture> searchExit(Aquaculture record){
+        return aquacultureMapper.searchExit(record);
+    }
+
     public GenericDao<Aquaculture,Long> getDao(){
         return aquacultureMapper;
     }

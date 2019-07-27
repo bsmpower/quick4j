@@ -97,27 +97,27 @@ $(function() {
             $('#first').text(pagetitle);
             $('#second').text(subpagetitle);
         })
-        $('#companydr').click(function(e){
+        /*$('#companydr').click(function(e){
             var pagetitle = $('#companyparent').text();
             var subpagetitle = $('#companydr').text();
 
             $('#first').text(pagetitle);
             $('#second').text(subpagetitle);
-        })
-        $('#companylr').click(function(e){
+        })*/
+       /* $('#companylr').click(function(e){
             var pagetitle = $('#companyparent').text();
             var subpagetitle = $('#companylr').text();
 
             $('#first').text(pagetitle);
             $('#second').text(subpagetitle);
-        })
-        $('#companywh').click(function (e) {
+        })*/
+        /*$('#companywh').click(function (e) {
             var pagetitle = $('#companyparent').text();
             var subpagetitle = $('#companywh').text();
 
             $('#first').text(pagetitle);
             $('#second').text(subpagetitle);
-        })
+        })*/
         $('#pfkdr').click(function (e) {
             var pagetitle = $('#pfkparent').text();
             var subpagetitle = $('#pfkdr').text();
@@ -166,6 +166,76 @@ $(function() {
 
             $('#first').text(pagetitle);
             $('#second').text(subpagetitle);
+        })
+        $('#industryTrash').click(function (e) {
+            var pagetitle = $('#companyparent').text();
+            var subpagetitle = $('#infomation').text();
+
+            $('#first').text(pagetitle);
+            $('#second').text(subpagetitle);
+        })
+        $("#industryTrash").click(function (e) {
+            var grandtext=$("#companyparent").text();
+            var parentext=$("#enterpise").text();
+            var childtext=$("#industryTrash").text();
+
+            $("#first").text(grandtext);
+            $("#second").text(parentext);
+            $("#third").text(childtext);
+        })
+        $("#industryTrash").click(function (e) {
+            var grandtext=$("#companyparent").text();
+            var parentext=$("#enterpise").text();
+            var childtext=$("#industryPark").text();
+
+            $("#first").text(grandtext);
+            $("#second").text(parentext);
+            $("#third").text(childtext);
+        })
+        $("#industryTrash").click(function (e) {
+            var grandtext=$("#companyparent").text();
+            var parentext=$("#enterpise").text();
+            var childtext=$("#industryLife").text();
+
+            $("#first").text(grandtext);
+            $("#second").text(parentext);
+            $("#third").text(childtext);
+        })
+        $("#industryTrash").click(function (e) {
+            var grandtext=$("#companyparent").text();
+            var parentext=$("#enterpise").text();
+            var childtext=$("#municipal").text();
+
+            $("#first").text(grandtext);
+            $("#second").text(parentext);
+            $("#third").text(childtext);
+        })
+        $("#industryTrash").click(function (e) {
+            var grandtext=$("#companyparent").text();
+            var parentext=$("#enterpise").text();
+            var childtext=$("#Livestock").text();
+
+            $("#first").text(grandtext);
+            $("#second").text(parentext);
+            $("#third").text(childtext);
+        })
+        $("#industryTrash").click(function (e) {
+            var grandtext=$("#companyparent").text();
+            var parentext=$("#enterpise").text();
+            var childtext=$("#farm").text();
+
+            $("#first").text(grandtext);
+            $("#second").text(parentext);
+            $("#third").text(childtext);
+        })
+        $("#industryTrash").click(function (e) {
+            var grandtext=$("#companyparent").text();
+            var parentext=$("#enterpise").text();
+            var childtext=$("#aquaculture").text();
+
+            $("#first").text(grandtext);
+            $("#second").text(parentext);
+            $("#third").text(childtext);
         })
     }
 });

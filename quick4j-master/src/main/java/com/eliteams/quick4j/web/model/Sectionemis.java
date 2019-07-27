@@ -7,6 +7,12 @@ public class Sectionemis {
 
     private String dmName;
 
+    private String city;
+
+    private String county;
+
+    private String type;
+
     private String tjyear;
 
     private String tjmonth;
@@ -299,6 +305,30 @@ public class Sectionemis {
 
     public void setDmName(String dmName) {
         this.dmName = dmName;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCounty() {
+        return county;
+    }
+
+    public void setCounty(String county) {
+        this.county = county;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
 

@@ -1,52 +1,52 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.eliteams.quick4j.web.dao.Industry_parkMapper" >
-  <resultMap id="BaseResultMap" type="com.eliteams.quick4j.web.model.Industry_park" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="tjyear" property="tjyear" jdbcType="VARCHAR" />
-    <result column="tjmonth" property="tjmonth" jdbcType="VARCHAR" />
-    <result column="tjday" property="tjday" jdbcType="VARCHAR" />
-    <result column="gyyq_name" property="gyyqName" jdbcType="VARCHAR" />
-    <result column="code" property="code" jdbcType="VARCHAR" />
-    <result column="city" property="city" jdbcType="VARCHAR" />
-    <result column="country" property="country" jdbcType="VARCHAR" />
-    <result column="address" property="address" jdbcType="VARCHAR" />
-    <result column="longitude" property="longitude" jdbcType="DOUBLE" />
-    <result column="latitude" property="latitude" jdbcType="DOUBLE" />
-    <result column="yq_area" property="yqArea" jdbcType="VARCHAR" />
-    <result column="cybj" property="cybj" jdbcType="VARCHAR" />
-    <result column="facility_name" property="facilityName" jdbcType="VARCHAR" />
-    <result column="facility_longitude" property="facilityLongitude" jdbcType="DOUBLE" />
-    <result column="facility_latitude" property="facilityLatitude" jdbcType="DOUBLE" />
-    <result column="is_collection" property="isCollection" jdbcType="VARCHAR" />
-    <result column="is_emission" property="isEmission" jdbcType="VARCHAR" />
-    <result column="sjgm" property="sjgm" jdbcType="DOUBLE" />
-    <result column="daily_emission" property="dailyEmission" jdbcType="DOUBLE" />
-    <result column="annual_emission" property="annualEmission" jdbcType="DOUBLE" />
-    <result column="emission_days" property="emissionDays" jdbcType="DOUBLE" />
-    <result column="process" property="process" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
+<mapper namespace="com.eliteams.quick4j.web.dao.Industry_parkMapper">
+    <resultMap id="BaseResultMap" type="com.eliteams.quick4j.web.model.Industry_park">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="tjyear" property="tjyear" jdbcType="VARCHAR"/>
+        <result column="tjmonth" property="tjmonth" jdbcType="VARCHAR"/>
+        <result column="tjday" property="tjday" jdbcType="VARCHAR"/>
+        <result column="gyyq_name" property="gyyqName" jdbcType="VARCHAR"/>
+        <result column="code" property="code" jdbcType="VARCHAR"/>
+        <result column="city" property="city" jdbcType="VARCHAR"/>
+        <result column="country" property="country" jdbcType="VARCHAR"/>
+        <result column="address" property="address" jdbcType="VARCHAR"/>
+        <result column="longitude" property="longitude" jdbcType="DOUBLE"/>
+        <result column="latitude" property="latitude" jdbcType="DOUBLE"/>
+        <result column="yq_area" property="yqArea" jdbcType="VARCHAR"/>
+        <result column="cybj" property="cybj" jdbcType="VARCHAR"/>
+        <result column="facility_name" property="facilityName" jdbcType="VARCHAR"/>
+        <result column="facility_longitude" property="facilityLongitude" jdbcType="DOUBLE"/>
+        <result column="facility_latitude" property="facilityLatitude" jdbcType="DOUBLE"/>
+        <result column="is_collection" property="isCollection" jdbcType="VARCHAR"/>
+        <result column="is_emission" property="isEmission" jdbcType="VARCHAR"/>
+        <result column="sjgm" property="sjgm" jdbcType="DOUBLE"/>
+        <result column="daily_emission" property="dailyEmission" jdbcType="DOUBLE"/>
+        <result column="annual_emission" property="annualEmission" jdbcType="DOUBLE"/>
+        <result column="emission_days" property="emissionDays" jdbcType="DOUBLE"/>
+        <result column="process" property="process" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     id, tjyear, tjmonth, tjday, gyyq_name, code, city, country, address, longitude, latitude, 
     yq_area, cybj, facility_name, facility_longitude, facility_latitude, is_collection, 
     is_emission, sjgm, daily_emission, annual_emission, emission_days, process
   </sql>
-  <select id="list" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from industry_park
-  </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from industry_park
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="list" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from industry_park
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from industry_park
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from industry_park
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.eliteams.quick4j.web.model.Industry_park" >
+    <insert id="insert" parameterType="com.eliteams.quick4j.web.model.Industry_park">
     insert into industry_park (id, tjyear, tjmonth, 
       tjday, gyyq_name, code, 
       city, country, address, 
@@ -64,224 +64,224 @@
       #{sjgm,jdbcType=DOUBLE}, #{dailyEmission,jdbcType=DOUBLE}, #{annualEmission,jdbcType=DOUBLE}, 
       #{emissionDays,jdbcType=DOUBLE}, #{process,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.eliteams.quick4j.web.model.Industry_park" >
-    insert into industry_park
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="tjyear != null" >
-        tjyear,
-      </if>
-      <if test="tjmonth != null" >
-        tjmonth,
-      </if>
-      <if test="tjday != null" >
-        tjday,
-      </if>
-      <if test="gyyqName != null" >
-        gyyq_name,
-      </if>
-      <if test="code != null" >
-        code,
-      </if>
-      <if test="city != null" >
-        city,
-      </if>
-      <if test="country != null" >
-        country,
-      </if>
-      <if test="address != null" >
-        address,
-      </if>
-      <if test="longitude != null" >
-        longitude,
-      </if>
-      <if test="latitude != null" >
-        latitude,
-      </if>
-      <if test="yqArea != null" >
-        yq_area,
-      </if>
-      <if test="cybj != null" >
-        cybj,
-      </if>
-      <if test="facilityName != null" >
-        facility_name,
-      </if>
-      <if test="facilityLongitude != null" >
-        facility_longitude,
-      </if>
-      <if test="facilityLatitude != null" >
-        facility_latitude,
-      </if>
-      <if test="isCollection != null" >
-        is_collection,
-      </if>
-      <if test="isEmission != null" >
-        is_emission,
-      </if>
-      <if test="sjgm != null" >
-        sjgm,
-      </if>
-      <if test="dailyEmission != null" >
-        daily_emission,
-      </if>
-      <if test="annualEmission != null" >
-        annual_emission,
-      </if>
-      <if test="emissionDays != null" >
-        emission_days,
-      </if>
-      <if test="process != null" >
-        process,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="tjyear != null" >
-        #{tjyear,jdbcType=VARCHAR},
-      </if>
-      <if test="tjmonth != null" >
-        #{tjmonth,jdbcType=VARCHAR},
-      </if>
-      <if test="tjday != null" >
-        #{tjday,jdbcType=VARCHAR},
-      </if>
-      <if test="gyyqName != null" >
-        #{gyyqName,jdbcType=VARCHAR},
-      </if>
-      <if test="code != null" >
-        #{code,jdbcType=VARCHAR},
-      </if>
-      <if test="city != null" >
-        #{city,jdbcType=VARCHAR},
-      </if>
-      <if test="country != null" >
-        #{country,jdbcType=VARCHAR},
-      </if>
-      <if test="address != null" >
-        #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="longitude != null" >
-        #{longitude,jdbcType=DOUBLE},
-      </if>
-      <if test="latitude != null" >
-        #{latitude,jdbcType=DOUBLE},
-      </if>
-      <if test="yqArea != null" >
-        #{yqArea,jdbcType=VARCHAR},
-      </if>
-      <if test="cybj != null" >
-        #{cybj,jdbcType=VARCHAR},
-      </if>
-      <if test="facilityName != null" >
-        #{facilityName,jdbcType=VARCHAR},
-      </if>
-      <if test="facilityLongitude != null" >
-        #{facilityLongitude,jdbcType=DOUBLE},
-      </if>
-      <if test="facilityLatitude != null" >
-        #{facilityLatitude,jdbcType=DOUBLE},
-      </if>
-      <if test="isCollection != null" >
-        #{isCollection,jdbcType=VARCHAR},
-      </if>
-      <if test="isEmission != null" >
-        #{isEmission,jdbcType=VARCHAR},
-      </if>
-      <if test="sjgm != null" >
-        #{sjgm,jdbcType=DOUBLE},
-      </if>
-      <if test="dailyEmission != null" >
-        #{dailyEmission,jdbcType=DOUBLE},
-      </if>
-      <if test="annualEmission != null" >
-        #{annualEmission,jdbcType=DOUBLE},
-      </if>
-      <if test="emissionDays != null" >
-        #{emissionDays,jdbcType=DOUBLE},
-      </if>
-      <if test="process != null" >
-        #{process,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.eliteams.quick4j.web.model.Industry_park" >
-    update industry_park
-    <set >
-      <if test="tjyear != null" >
-        tjyear = #{tjyear,jdbcType=VARCHAR},
-      </if>
-      <if test="tjmonth != null" >
-        tjmonth = #{tjmonth,jdbcType=VARCHAR},
-      </if>
-      <if test="tjday != null" >
-        tjday = #{tjday,jdbcType=VARCHAR},
-      </if>
-      <if test="gyyqName != null" >
-        gyyq_name = #{gyyqName,jdbcType=VARCHAR},
-      </if>
-      <if test="code != null" >
-        code = #{code,jdbcType=VARCHAR},
-      </if>
-      <if test="city != null" >
-        city = #{city,jdbcType=VARCHAR},
-      </if>
-      <if test="country != null" >
-        country = #{country,jdbcType=VARCHAR},
-      </if>
-      <if test="address != null" >
-        address = #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="longitude != null" >
-        longitude = #{longitude,jdbcType=DOUBLE},
-      </if>
-      <if test="latitude != null" >
-        latitude = #{latitude,jdbcType=DOUBLE},
-      </if>
-      <if test="yqArea != null" >
-        yq_area = #{yqArea,jdbcType=VARCHAR},
-      </if>
-      <if test="cybj != null" >
-        cybj = #{cybj,jdbcType=VARCHAR},
-      </if>
-      <if test="facilityName != null" >
-        facility_name = #{facilityName,jdbcType=VARCHAR},
-      </if>
-      <if test="facilityLongitude != null" >
-        facility_longitude = #{facilityLongitude,jdbcType=DOUBLE},
-      </if>
-      <if test="facilityLatitude != null" >
-        facility_latitude = #{facilityLatitude,jdbcType=DOUBLE},
-      </if>
-      <if test="isCollection != null" >
-        is_collection = #{isCollection,jdbcType=VARCHAR},
-      </if>
-      <if test="isEmission != null" >
-        is_emission = #{isEmission,jdbcType=VARCHAR},
-      </if>
-      <if test="sjgm != null" >
-        sjgm = #{sjgm,jdbcType=DOUBLE},
-      </if>
-      <if test="dailyEmission != null" >
-        daily_emission = #{dailyEmission,jdbcType=DOUBLE},
-      </if>
-      <if test="annualEmission != null" >
-        annual_emission = #{annualEmission,jdbcType=DOUBLE},
-      </if>
-      <if test="emissionDays != null" >
-        emission_days = #{emissionDays,jdbcType=DOUBLE},
-      </if>
-      <if test="process != null" >
-        process = #{process,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.eliteams.quick4j.web.model.Industry_park" >
+    <insert id="insertSelective" parameterType="com.eliteams.quick4j.web.model.Industry_park">
+        insert into industry_park
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="tjyear != null">
+                tjyear,
+            </if>
+            <if test="tjmonth != null">
+                tjmonth,
+            </if>
+            <if test="tjday != null">
+                tjday,
+            </if>
+            <if test="gyyqName != null">
+                gyyq_name,
+            </if>
+            <if test="code != null">
+                code,
+            </if>
+            <if test="city != null">
+                city,
+            </if>
+            <if test="country != null">
+                country,
+            </if>
+            <if test="address != null">
+                address,
+            </if>
+            <if test="longitude != null">
+                longitude,
+            </if>
+            <if test="latitude != null">
+                latitude,
+            </if>
+            <if test="yqArea != null">
+                yq_area,
+            </if>
+            <if test="cybj != null">
+                cybj,
+            </if>
+            <if test="facilityName != null">
+                facility_name,
+            </if>
+            <if test="facilityLongitude != null">
+                facility_longitude,
+            </if>
+            <if test="facilityLatitude != null">
+                facility_latitude,
+            </if>
+            <if test="isCollection != null">
+                is_collection,
+            </if>
+            <if test="isEmission != null">
+                is_emission,
+            </if>
+            <if test="sjgm != null">
+                sjgm,
+            </if>
+            <if test="dailyEmission != null">
+                daily_emission,
+            </if>
+            <if test="annualEmission != null">
+                annual_emission,
+            </if>
+            <if test="emissionDays != null">
+                emission_days,
+            </if>
+            <if test="process != null">
+                process,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="tjyear != null">
+                #{tjyear,jdbcType=VARCHAR},
+            </if>
+            <if test="tjmonth != null">
+                #{tjmonth,jdbcType=VARCHAR},
+            </if>
+            <if test="tjday != null">
+                #{tjday,jdbcType=VARCHAR},
+            </if>
+            <if test="gyyqName != null">
+                #{gyyqName,jdbcType=VARCHAR},
+            </if>
+            <if test="code != null">
+                #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="city != null">
+                #{city,jdbcType=VARCHAR},
+            </if>
+            <if test="country != null">
+                #{country,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="longitude != null">
+                #{longitude,jdbcType=DOUBLE},
+            </if>
+            <if test="latitude != null">
+                #{latitude,jdbcType=DOUBLE},
+            </if>
+            <if test="yqArea != null">
+                #{yqArea,jdbcType=VARCHAR},
+            </if>
+            <if test="cybj != null">
+                #{cybj,jdbcType=VARCHAR},
+            </if>
+            <if test="facilityName != null">
+                #{facilityName,jdbcType=VARCHAR},
+            </if>
+            <if test="facilityLongitude != null">
+                #{facilityLongitude,jdbcType=DOUBLE},
+            </if>
+            <if test="facilityLatitude != null">
+                #{facilityLatitude,jdbcType=DOUBLE},
+            </if>
+            <if test="isCollection != null">
+                #{isCollection,jdbcType=VARCHAR},
+            </if>
+            <if test="isEmission != null">
+                #{isEmission,jdbcType=VARCHAR},
+            </if>
+            <if test="sjgm != null">
+                #{sjgm,jdbcType=DOUBLE},
+            </if>
+            <if test="dailyEmission != null">
+                #{dailyEmission,jdbcType=DOUBLE},
+            </if>
+            <if test="annualEmission != null">
+                #{annualEmission,jdbcType=DOUBLE},
+            </if>
+            <if test="emissionDays != null">
+                #{emissionDays,jdbcType=DOUBLE},
+            </if>
+            <if test="process != null">
+                #{process,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.eliteams.quick4j.web.model.Industry_park">
+        update industry_park
+        <set>
+            <if test="tjyear != null">
+                tjyear = #{tjyear,jdbcType=VARCHAR},
+            </if>
+            <if test="tjmonth != null">
+                tjmonth = #{tjmonth,jdbcType=VARCHAR},
+            </if>
+            <if test="tjday != null">
+                tjday = #{tjday,jdbcType=VARCHAR},
+            </if>
+            <if test="gyyqName != null">
+                gyyq_name = #{gyyqName,jdbcType=VARCHAR},
+            </if>
+            <if test="code != null">
+                code = #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="city != null">
+                city = #{city,jdbcType=VARCHAR},
+            </if>
+            <if test="country != null">
+                country = #{country,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="longitude != null">
+                longitude = #{longitude,jdbcType=DOUBLE},
+            </if>
+            <if test="latitude != null">
+                latitude = #{latitude,jdbcType=DOUBLE},
+            </if>
+            <if test="yqArea != null">
+                yq_area = #{yqArea,jdbcType=VARCHAR},
+            </if>
+            <if test="cybj != null">
+                cybj = #{cybj,jdbcType=VARCHAR},
+            </if>
+            <if test="facilityName != null">
+                facility_name = #{facilityName,jdbcType=VARCHAR},
+            </if>
+            <if test="facilityLongitude != null">
+                facility_longitude = #{facilityLongitude,jdbcType=DOUBLE},
+            </if>
+            <if test="facilityLatitude != null">
+                facility_latitude = #{facilityLatitude,jdbcType=DOUBLE},
+            </if>
+            <if test="isCollection != null">
+                is_collection = #{isCollection,jdbcType=VARCHAR},
+            </if>
+            <if test="isEmission != null">
+                is_emission = #{isEmission,jdbcType=VARCHAR},
+            </if>
+            <if test="sjgm != null">
+                sjgm = #{sjgm,jdbcType=DOUBLE},
+            </if>
+            <if test="dailyEmission != null">
+                daily_emission = #{dailyEmission,jdbcType=DOUBLE},
+            </if>
+            <if test="annualEmission != null">
+                annual_emission = #{annualEmission,jdbcType=DOUBLE},
+            </if>
+            <if test="emissionDays != null">
+                emission_days = #{emissionDays,jdbcType=DOUBLE},
+            </if>
+            <if test="process != null">
+                process = #{process,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.eliteams.quick4j.web.model.Industry_park">
     update industry_park
     set tjyear = #{tjyear,jdbcType=VARCHAR},
       tjmonth = #{tjmonth,jdbcType=VARCHAR},
@@ -307,98 +307,121 @@
       process = #{process,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="searchAllIndustryPark" resultMap="BaseResultMap" parameterType="com.eliteams.quick4j.web.model.Industry_park">
-    select
-    <include refid="Base_Column_List" />
-    from industry_park
-    <where>
-      <if test="tjyear!=null and tjyear!=''">
-        AND tjyear = #{tjyear,jdbcType=VARCHAR}
-      </if>
-      <if test="tjmonth!=null and tjmonth!=''">
-        AND tjmonth = #{tjmonth,jdbcType=VARCHAR}
+    <select id="searchExit" resultMap="BaseResultMap" parameterType="com.eliteams.quick4j.web.model.Industry_park">
+        select
+        <include refid="Base_Column_List"/>
+        from industry_park
+        <where>
+            <if test="tjyear!=null and tjyear!=''">
+                AND tjyear = #{tjyear,jdbcType=VARCHAR}
+            </if>
+            <if test="tjmonth!=null and tjmonth!=''">
+                AND tjmonth = #{tjmonth,jdbcType=VARCHAR}
+            </if>
+            <if test="tjday!=null and tjday!=''">
+                AND tjday = #{tjday,jdbcType=VARCHAR}
+            </if>
+            <if test="gyyqName!=null and gyyqName!=''">
+                AND gyyq_name = #{gyyqName,jdbcType=VARCHAR}
+            </if>
+            <if test="id!=null and id!=''">
+                AND id != #{id,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+    <select id="searchAllIndustryPark" resultMap="BaseResultMap"
+            parameterType="com.eliteams.quick4j.web.model.Industry_park">
+        select
+        <include refid="Base_Column_List"/>
+        from industry_park
+        <where>
+            <if test="tjyear!=null and tjyear!=''">
+                AND tjyear = #{tjyear,jdbcType=VARCHAR}
+            </if>
+            <if test="tjmonth!=null and tjmonth!=''">
+                AND tjmonth = #{tjmonth,jdbcType=VARCHAR}
 
-      </if>
-      <if test="tjday!=null and tjday!=''">
-        AND tjday = #{tjday,jdbcType=VARCHAR}
+            </if>
+            <if test="tjday!=null and tjday!=''">
+                AND tjday = #{tjday,jdbcType=VARCHAR}
 
-      </if>
-      <if test="gyyqName!=null and gyyqName!=''">
-        AND gyyq_name = #{gyyqName,jdbcType=VARCHAR}
-      </if>
-      <if test="code!=null and code!=''">
-        AND code = #{code,jdbcType=VARCHAR}
+            </if>
+            <if test="gyyqName!=null and gyyqName!=''">
+                AND gyyq_name = #{gyyqName,jdbcType=VARCHAR}
+            </if>
+            <if test="code!=null and code!=''">
+                AND code = #{code,jdbcType=VARCHAR}
 
-      </if>
-      <if test="city!=null and city!=''">
-        AND city = #{city,jdbcType=VARCHAR}
+            </if>
+            <if test="city!=null and city!=''">
+                AND city = #{city,jdbcType=VARCHAR}
 
-      </if>
-      <if test="country!=null and country!=''">
-        AND country = #{country,jdbcType=VARCHAR}
+            </if>
+            <if test="country!=null and country!=''">
+                AND country = #{country,jdbcType=VARCHAR}
 
-      </if>
-      <if test="address!=null and address!=''">
-        AND address = #{address,jdbcType=VARCHAR}
+            </if>
+            <if test="address!=null and address!=''">
+                AND address = #{address,jdbcType=VARCHAR}
 
-      </if>
-      <if test="longitude!=null and longitude!=''">
-        AND longitude = #{longitude,jdbcType=DOUBLE}
+            </if>
+            <if test="longitude!=null and longitude!=''">
+                AND longitude = #{longitude,jdbcType=DOUBLE}
 
-      </if>
-      <if test="latitude!=null and latitude!=''">
-        AND latitude = #{latitude,jdbcType=DOUBLE}
+            </if>
+            <if test="latitude!=null and latitude!=''">
+                AND latitude = #{latitude,jdbcType=DOUBLE}
 
-      </if>
-      <if test="yqArea!=null and yqArea!=''">
-        AND yq_area = #{yqArea,jdbcType=VARCHAR}
+            </if>
+            <if test="yqArea!=null and yqArea!=''">
+                AND yq_area = #{yqArea,jdbcType=VARCHAR}
 
-      </if>
-      <if test="cybj!=null and cybj!=''">
-        AND cybj = #{cybj,jdbcType=VARCHAR}
+            </if>
+            <if test="cybj!=null and cybj!=''">
+                AND cybj = #{cybj,jdbcType=VARCHAR}
 
-      </if>
-      <if test="facilityName!=null and facilityName!=''">
-        AND facility_name = #{facilityName,jdbcType=VARCHAR}
+            </if>
+            <if test="facilityName!=null and facilityName!=''">
+                AND facility_name = #{facilityName,jdbcType=VARCHAR}
 
-      </if>
-      <if test="facilityLongitude!=null and facilityLongitude!=''">
-        AND facility_longitude = #{facilityLongitude,jdbcType=DOUBLE}
+            </if>
+            <if test="facilityLongitude!=null and facilityLongitude!=''">
+                AND facility_longitude = #{facilityLongitude,jdbcType=DOUBLE}
 
-      </if>
-      <if test="facilityLatitude!=null and facilityLatitude!=''">
-        AND facility_latitude = #{facilityLatitude,jdbcType=DOUBLE}
+            </if>
+            <if test="facilityLatitude!=null and facilityLatitude!=''">
+                AND facility_latitude = #{facilityLatitude,jdbcType=DOUBLE}
 
-      </if>
-      <if test="isCollection!=null and isCollection!=''">
-        AND is_collection = #{isCollection,jdbcType=VARCHAR}
+            </if>
+            <if test="isCollection!=null and isCollection!=''">
+                AND is_collection = #{isCollection,jdbcType=VARCHAR}
 
-      </if>
-      <if test="isEmission!=null and isEmission!=''">
-        AND is_emission = #{isEmission,jdbcType=VARCHAR}
-      </if>
-      <if test="sjgm!=null and sjgm!=''">
-        AND sjgm = #{sjgm,jdbcType=DOUBLE}
+            </if>
+            <if test="isEmission!=null and isEmission!=''">
+                AND is_emission = #{isEmission,jdbcType=VARCHAR}
+            </if>
+            <if test="sjgm!=null and sjgm!=''">
+                AND sjgm = #{sjgm,jdbcType=DOUBLE}
 
-      </if>
-      <if test="dailyEmission!=null and dailyEmission!=''">
-        AND daily_emission = #{dailyEmission,jdbcType=DOUBLE}
+            </if>
+            <if test="dailyEmission!=null and dailyEmission!=''">
+                AND daily_emission = #{dailyEmission,jdbcType=DOUBLE}
 
-      </if>
-      <if test="annualEmission!=null and annualEmission!=''">
-        AND annual_emission = #{annualEmission,jdbcType=DOUBLE}
-
-
-      </if>
-      <if test="emissionDays!=null and emissionDays!=''">
-        AND emission_days = #{emissionDays,jdbcType=DOUBLE}
+            </if>
+            <if test="annualEmission!=null and annualEmission!=''">
+                AND annual_emission = #{annualEmission,jdbcType=DOUBLE}
 
 
-      </if>
-      <if test="process!=null and process!=''">
-        AND process = #{process,jdbcType=VARCHAR}
+            </if>
+            <if test="emissionDays!=null and emissionDays!=''">
+                AND emission_days = #{emissionDays,jdbcType=DOUBLE}
 
-      </if>
-    </where>
-  </select>
+
+            </if>
+            <if test="process!=null and process!=''">
+                AND process = #{process,jdbcType=VARCHAR}
+
+            </if>
+        </where>
+    </select>
 </mapper>

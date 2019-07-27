@@ -21,4 +21,6 @@ public interface Industry_lifeMapper extends GenericDao<Industry_life,Long> {
     List<Industry_life> list();
 
     List<Industry_life> searchAllIndustryLife(Industry_life record);
+
+    List<Industry_life> searchExit(Industry_life record);
 }

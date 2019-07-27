@@ -14,6 +14,9 @@ import java.util.List;
 public class IndustryParkServiceImpl extends GenericServiceImpl<Industry_park,Long> implements IndustryParkService {
     @Resource
     private Industry_parkMapper industryParkMapper;
+    public List<Industry_park> searchExit(Industry_park record){
+        return industryParkMapper.searchExit(record);
+    }
 
     public int deleteByPrimaryKey(Integer id){
         return industryParkMapper.deleteByPrimaryKey(id);

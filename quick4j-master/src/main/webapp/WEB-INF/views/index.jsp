@@ -120,18 +120,8 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="javascript:;">
-                                用户管理
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                角色管理
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                权限管理
+                            <a href="rest/page/usermanage;">
+                                用户基本信息管理
                             </a>
                         </li>
                     </ul>
@@ -233,35 +223,35 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="javascript:;">
+                            <a href="javascript:;" id="enterpise">
                                 企业基本信息查询与维护
                             </a>
                             <ul class="sub-menu">
                                 <li>
-                                    <a href="rest/page/industryTrash">工业废水企业</a>
+                                    <a href="rest/page/industryTrash" id="industryTrash">工业废水企业</a>
                                 </li>
                                 <li>
-                                    <a href="rest/page/industryPark">工业园区</a>
+                                    <a href="rest/page/industryPark" id="industryPark">工业园区</a>
                                 </li>
                                 <li>
-                                    <a href="rest/page/industryLife">工业生活污水处理厂</a>
+                                    <a href="rest/page/industryLife" id="industryLife">工业生活污水处理厂</a>
                                 </li>
                                 <li>
-                                    <a href="rest/page/municipal">市政污水处理厂</a>
+                                    <a href="rest/page/municipal" id="municipal">市政污水处理厂</a>
                                 </li>
                                 <li>
-                                    <a href="rest/page/livestock">畜禽养殖企业</a>
+                                    <a href="rest/page/livestock" id="Livestock">畜禽养殖企业</a>
                                 </li>
                                 <li>
-                                    <a href="rest/page/farm">农田单位</a>
+                                    <a href="rest/page/farm" id="farm">农田单位</a>
                                 </li>
                                 <li>
-                                    <a href="rest/page/aquaculture">水产单位</a>
+                                    <a href="rest/page/aquaculture" id="aquaculture">水产单位</a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="rest/page/productlist">企业产品信息查询与维护</a>
+                            <a href="rest/page/productlist" id="infomation">企业产品信息查询与维护</a>
                         </li>
                     </ul>
                 </li>
@@ -312,7 +302,7 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="javascript:;">
+                            <a href="rest/page/analyze" id="analyzelist">
                                 排放口全指标达标情况
                             </a>
                         </li>
@@ -432,7 +422,11 @@
                         </li>
                         <li>
                             <a href="javascript:;" id="second">
-                                Dashboard
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" id="third">
                             </a>
                         </li>
                     </ul>

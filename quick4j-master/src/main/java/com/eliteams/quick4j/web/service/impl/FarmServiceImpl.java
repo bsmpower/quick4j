@@ -15,6 +15,9 @@ public class FarmServiceImpl extends GenericServiceImpl<Farm,Long> implements Fa
     @Resource
     private FarmMapper farmMapper;
 
+    public List<Farm> searchExit(Farm record){
+        return farmMapper.searchExit(record);
+    }
     public int deleteByPrimaryKey(Integer id){
         return farmMapper.deleteByPrimaryKey(id);
     }

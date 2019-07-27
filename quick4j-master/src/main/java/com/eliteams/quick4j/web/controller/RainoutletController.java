@@ -106,6 +106,14 @@ public class RainoutletController {
         return list;
     }
 
+    @RequestMapping("/maptabledemo")
+    @ResponseBody
+    public List<rain_outlet> maptabledemo(HttpServletRequest request, @RequestBody rain_outlet ot){
+        List<rain_outlet> list = rainoutletService.selectRainoutlet(ot);
+        System.out.println("11111111111111");
+        return list;
+    }
+
     @RequestMapping("/excelout")
     @ResponseBody
     public Map<String, Object> excelOut(HttpServletRequest request, final int[] ids ) throws FileNotFoundException, UnsupportedEncodingException {

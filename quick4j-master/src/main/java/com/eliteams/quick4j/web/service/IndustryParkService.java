@@ -10,6 +10,8 @@ public interface IndustryParkService extends GenericService<Industry_park,Long> 
 
     int insert(Industry_park record);
 
+    List<Industry_park> searchExit(Industry_park record);
+
     int insertSelective(Industry_park record);
 
     Industry_park selectByPrimaryKey(Integer id);

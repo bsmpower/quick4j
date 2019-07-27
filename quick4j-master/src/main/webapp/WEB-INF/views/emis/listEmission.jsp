@@ -35,24 +35,25 @@
 
         .table>thead>.success>th {background-color:#eee; position: relative}
         .table thead tr th{height: 50px;z-index: 998}
-
+        .tableBasic {
+            white-space: nowrap;
+        }
+        .table-striped > tbody > tr:nth-child(2n+1) > td,
+        .table-striped > tbody > tr:nth-child(2n+1) > th {
+            background-color: #efefef99;
+        }
     </style>
 
     <%--<link href="bsmassets/css/bsmcss.css" rel="stylesheet">--%>
     <%--<link href="app/css/qmp/public.css" rel="stylesheet">--%>
     <link rel="stylesheet" href="http://js.arcgis.com/3.20/dijit/themes/claro/claro.css">
     <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/themes/calcite/dijit/calcite.css">
-    <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/themes/calcite/esri/esri.css">
+    <link rel="stylesheet" href="app/js/3.20/esri/css/esri.css">
     <link href="app/css/qmp/fileinput.css" type="text/css" rel="stylesheet" />
-
 
     <script src="app/js/emis/jquery.sliderBar.js"></script>
     <script type="text/javascript" src="app/js/emis/selectemission.js"></script>
     <script type="text/javascript" src="app/js/emis/table2excel.js"></script>
-
-    <script type="text/javascript" src="app/js/init-arcgis.js"></script>
-    <script type="text/javascript" src='bsmassets/js/qmpTestData.js'></script>
-    <%--<script type="text/javascript" src="app/js/init-arcgis.js"></script>--%>
 
 </head>
 <body>
@@ -101,30 +102,21 @@
                 </form>
             </div>
         </div>
-        <div class="container">
+        <div class="container" style="width:1300px;">
             <div class="row">
-                <!-- col-md-4 表示每一个div占了多少份 -->
-
-
                 <div id="map222" data-dojo-type="dijit/layout/ContentPane"
                      data-dojo-props="region:'center'"
-                     style="overflow:hidden;height:470px;width:100%">
-                    <%--<div id="qmpBilichi" class="box"--%>
-                         <%--style="width:80px !important;height:20px !important;position:absolute;left:31px;top:400px">--%>
-
-                    <%--</div>--%>
-
+                     style="overflow:hidden;height:350px;width:100%">
                 </div>
-
-
-
             </div>
         </div>
-
     </div>
     <br>
     <br>
-    <div class="listDataTableDiv" style="height:320px;">
+    <div style="margin-bottom:10px ">
+        <button type="button" class="btn btn-default btn-xs " onclick="fadeout()" id="fadeout"><span class="glyphicon glyphicon-chevron-down" style="margin-right: 5px"></span>隐藏</button>
+    </div>
+    <div class="listDataTableDiv" style="height:320px;" id="alltable">
         <div style="padding-bottom: 10px">
             <button type="button"  onclick="allchoose()" class="btn btn-default btn-xs" style="display: inline-block">全选</button>
             <button type="button"  onclick="nochoose()" class="btn btn-default btn-xs" style="display: inline-block">取消全选</button>
@@ -136,7 +128,7 @@
         <table class="table table-striped table-bordered table-hover  table-condensed" id="tablediv">
             <thead>
             <tr class="success">
-                <th>选择</th><th>ID</th><th>编辑</th><th>删除</th><th id="codeth">排污口编号</th><th id="nameth">排污口名称</th><th>年</th><th>月</th><th>日</th><th>盐度(‰)</th><th>化学需氧量(mg/L)</th><th>氨氮(mg/L)</th><th>总磷(mg/L)</th><th>总氮(mg/L)</th>
+                <th>选择</th><th>ID</th><th>编辑</th><th>删除</th><th id="codeth">排污口编号</th><th id="nameth">排污口名称</th><th>所在市</th><th>所在县（市/区）</th><th id="typeth">排污口类型</th><th>年</th><th>月</th><th>日</th><th>盐度(‰)</th><th>化学需氧量(mg/L)</th><th>氨氮(mg/L)</th><th>总磷(mg/L)</th><th>总氮(mg/L)</th>
                 <th>六价铬(mg/L)</th><th>氰化物(mg/L)</th><th>粪大肠菌群数 (个/L)</th><th>五日生化需氧量(mg/L)</th><th>悬浮物 (mg/L)</th><th>石油类 (mg/L)</th><th id="flowth">动植物油(mg/L)</th><th>挥发酚(mg/L)</th><th>总砷(mg/L)</th>
                 <th>总汞(mg/L)</th><th>总铅(mg/L)</th><th>总镉(mg/L)</th><th>PH值</th><th>氯化物(mg/L)</th><th>硫化物(mg/L)</th><th>阴离子表面活性剂(mg/L)</th><th>其它监测指标</th>
             </tr>
@@ -171,6 +163,33 @@
                                 <div class="input-group">
                                     <span class="input-group-addon" id="addname">排污口名称</span>
                                     <input  name="pwkName" id="addnameinput" type="text" class="form-control" placeholder="" >
+                                </div>
+                                <br>
+                                <div class="input-group">
+                                    <span class="input-group-addon">所在市</span>
+                                    <%--<input  name="city"  type="text" class="form-control" placeholder="" >--%>
+                                    <select name="city" class="form-control">
+                                        <option value="" style="display: none"></option>
+                                        <option value ="沈阳市">沈阳市</option>
+                                        <option value ="大连市">大连市</option>
+                                        <option value="鞍山市">鞍山市</option>
+                                        <option value="抚顺市">抚顺市</option>
+                                        <option value="本溪市">本溪市</option>
+                                        <option value="丹东市">丹东市</option>
+                                        <option value="锦州市">锦州市</option>
+                                        <option value="营口市">营口市</option>
+                                        <option value="阜新市">阜新市</option>
+                                        <option value="辽阳市">辽阳市</option>
+                                        <option value="盘锦市">盘锦市</option>
+                                        <option value="铁岭市">铁岭市</option>
+                                        <option value="朝阳市">朝阳市</option>
+                                        <option value="葫芦岛市">葫芦岛市</option>
+                                    </select>
+                                </div>
+                                <br>
+                                <div class="input-group">
+                                    <span class="input-group-addon" >所在县（市/区）</span>
+                                    <input  name="county"  type="text" class="form-control" placeholder="" >
                                 </div>
                                 <br>
                                 <div class="input-group">
@@ -223,18 +242,18 @@
                                     <input  name="cn" type="number" class="form-control" placeholder="">
                                 </div>
                                 <br>
-
                                 <div class="input-group">
                                     <span class="input-group-addon">粪大肠菌群数 (个/L)</span>
                                     <input  name="fdcjqs" type="number" class="form-control" placeholder="">
                                 </div>
-                                <br>
+
+                            </div>
+                            <div class="col-lg-6" style="width:400px">
                                 <div class="input-group">
                                     <span class="input-group-addon">五日生化需氧量(mg/L)</span>
                                     <input  name="bod5" type="number" class="form-control" placeholder="">
                                 </div>
-                            </div>
-                            <div class="col-lg-6" style="width:400px">
+                                <br>
                                 <div class="input-group">
                                     <span class="input-group-addon">悬浮物 (mg/L)</span>
                                     <input  name="xfw" type="number" class="form-control" placeholder="">
@@ -299,6 +318,24 @@
                                     <span class="input-group-addon">其它监测指标</span>
                                     <input  name="others" type="text" class="form-control" placeholder="">
                                 </div>
+                                <br>
+                                <div class="input-group" id="pwktype">
+                                    <span class="input-group-addon">排污口类型</span>
+                                    <%--<input  name="type"  type="text" class="form-control" placeholder="" >--%>
+                                    <select name="type" class="form-control">
+                                        <option value="" style="display: none"></option>
+                                        <option value ="工业废水排污口">工业废水排污口</option>
+                                        <option value ="工业生活混合污水排污口">工业生活混合污水排污口</option>
+                                        <option value="生活污水排污口">生活污水排污口</option>
+                                        <option value="畜禽养殖排污口">畜禽养殖排污口</option>
+                                        <option value="农田退水入海口">农田退水入海口</option>
+                                        <option value="水产养殖排污口">水产养殖排污口</option>
+                                        <option value="雨污混合排污口">雨污混合排污口</option>
+                                        <option value="雨水排放口">雨水排放口</option>
+                                        <option value="泄洪口">泄洪口</option>
+                                        <option value="其他">其他</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -336,6 +373,33 @@
                                 <div class="input-group">
                                     <span class="input-group-addon" id="editname">排污口名称</span>
                                     <input  name="pwkName" id="editnameinput" type="text" class="form-control" placeholder="" >
+                                </div>
+                                <br>
+                                <div class="input-group">
+                                    <span class="input-group-addon">所在市</span>
+                                    <%--<input  name="city"  type="text" class="form-control" placeholder="" >--%>
+                                    <select name="city" class="form-control" id="city">
+                                        <option value="" style="display: none"></option>
+                                        <option value ="沈阳市">沈阳市</option>
+                                        <option value ="大连市">大连市</option>
+                                        <option value="鞍山市">鞍山市</option>
+                                        <option value="抚顺市">抚顺市</option>
+                                        <option value="本溪市">本溪市</option>
+                                        <option value="丹东市">丹东市</option>
+                                        <option value="锦州市">锦州市</option>
+                                        <option value="营口市">营口市</option>
+                                        <option value="阜新市">阜新市</option>
+                                        <option value="辽阳市">辽阳市</option>
+                                        <option value="盘锦市">盘锦市</option>
+                                        <option value="铁岭市">铁岭市</option>
+                                        <option value="朝阳市">朝阳市</option>
+                                        <option value="葫芦岛市">葫芦岛市</option>
+                                    </select>
+                                </div>
+                                <br>
+                                <div class="input-group">
+                                    <span class="input-group-addon" >所在县（市/区）</span>
+                                    <input  name="county"  type="text" class="form-control" placeholder="" >
                                 </div>
                                 <br>
                                 <div class="input-group">
@@ -393,13 +457,14 @@
                                     <span class="input-group-addon">粪大肠菌群数 (个/L)</span>
                                     <input  name="fdcjqs" type="number" class="form-control" placeholder="">
                                 </div>
-                                <br>
+
+                            </div>
+                            <div class="col-lg-6" style="width:400px">
                                 <div class="input-group">
                                     <span class="input-group-addon">五日生化需氧量(mg/L)</span>
                                     <input  name="bod5" type="number" class="form-control" placeholder="">
                                 </div>
-                            </div>
-                            <div class="col-lg-6" style="width:400px">
+                                <br>
                                 <div class="input-group">
                                     <span class="input-group-addon">悬浮物 (mg/L)</span>
                                     <input  name="xfw" type="number" class="form-control" placeholder="">
@@ -463,6 +528,24 @@
                                 <div class="input-group">
                                     <span class="input-group-addon">其它监测指标</span>
                                     <input  name="others" type="text" class="form-control" placeholder="">
+                                </div>
+                                <br>
+                                <div class="input-group" id="pwktypeedit">
+                                    <span class="input-group-addon">排污口类型</span>
+                                    <%--<input  name="type"  type="text" class="form-control" placeholder="" >--%>
+                                    <select name="type" class="form-control" id="type">
+                                        <option value="" style="display: none"></option>
+                                        <option value ="工业废水排污口">工业废水排污口</option>
+                                        <option value ="工业生活混合污水排污口">工业生活混合污水排污口</option>
+                                        <option value="生活污水排污口">生活污水排污口</option>
+                                        <option value="畜禽养殖排污口">畜禽养殖排污口</option>
+                                        <option value="农田退水入海口">农田退水入海口</option>
+                                        <option value="水产养殖排污口">水产养殖排污口</option>
+                                        <option value="雨污混合排污口">雨污混合排污口</option>
+                                        <option value="雨水排放口">雨水排放口</option>
+                                        <option value="泄洪口">泄洪口</option>
+                                        <option value="其他">其他</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>

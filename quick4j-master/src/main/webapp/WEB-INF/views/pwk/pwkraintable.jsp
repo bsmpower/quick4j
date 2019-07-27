@@ -38,11 +38,12 @@
 
     <link rel="stylesheet" href="http://js.arcgis.com/3.20/dijit/themes/claro/claro.css">
     <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/themes/calcite/dijit/calcite.css">
-    <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/themes/calcite/esri/esri.css">
+    <link rel="stylesheet" href="app/js/3.20/esri/css/esri.css">
+    <%--<link href="app/css/qmp/public.css" rel="stylesheet">--%>
+    <link rel="stylesheet" href="bsmassets/css/bsmcss.css">
 
     <script src="app/js/fileinput.js" type="text/javascript" ></script>
     <script src="bsmassets/js/pwkraintable.js"></script>
-    <script type="text/javascript" src='bsmassets/js/qmpTestData.js'></script>
 </head>
 <body>
 
@@ -553,13 +554,13 @@
                             <input type="checkbox" id="inlineCheckbox3" value="option3" onclick="exe()"> 统计日
                         </label>
                         <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox4" value="option4" onclick="exe()"> 排水口名称
+                            <input type="checkbox" id="inlineCheckbox4" value="option4" onclick="exe()"> 所在市
                         </label>
                         <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox5" value="option5" onclick="exe()"> 排水口编码
+                            <input type="checkbox" id="inlineCheckbox5" value="option5" onclick="exe()"> 排水口名称
                         </label>
                         <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox6" value="option6" onclick="exe()"> 所在市
+                            <input type="checkbox" id="inlineCheckbox6" value="option6" onclick="exe()"> 排水口编码
                         </label>
                     </div>
                     <br>

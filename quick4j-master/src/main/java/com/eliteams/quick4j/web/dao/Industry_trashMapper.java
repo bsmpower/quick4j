@@ -21,4 +21,6 @@ public interface Industry_trashMapper extends GenericDao<Industry_trash,Long> {
     List<Industry_trash> list();
 
     List<Industry_trash> searchAllIndurTrash(Industry_trash record);
+
+    List<Industry_trash> searchExit(Industry_trash record);
 }

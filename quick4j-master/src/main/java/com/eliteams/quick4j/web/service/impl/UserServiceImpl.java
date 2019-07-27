@@ -61,4 +61,15 @@ public class UserServiceImpl extends GenericServiceImpl<User, Long> implements U
         return list.get(0);
     }
 
+    @Override
+    public int deleteByids(Long[] ids){
+        for(int i = 0; i < ids.length; i++){
+            int flag = userMapper.deleteByPrimaryKey(ids[i]);
+            if(flag == 0){
+                return 0;
+            }
+        }
+        return 0;
+    }
+
 }

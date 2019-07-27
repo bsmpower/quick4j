@@ -23,5 +23,7 @@ public interface AquacultureService extends GenericService<Aquaculture,Long> {
 
     List<Aquaculture> searchAllAqua(Aquaculture aquaculture);
 
+    List<Aquaculture> searchExit(Aquaculture record);
+
     int deleteByIds(int[] ids);
 }

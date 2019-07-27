@@ -7,6 +7,12 @@ public class Emission {
 
     private String pwkName;
 
+    private String city;
+
+    private String county;
+
+    private String type;
+
     private String tjyear;
 
     private String tjmonth;
@@ -299,5 +305,29 @@ public class Emission {
 
     public void setPwkName(String pwkName) {
         this.pwkName = pwkName;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCounty() {
+        return county;
+    }
+
+    public void setCounty(String county) {
+        this.county = county;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.eliteams.quick4j.web.dao.Livestock_enterprisesMapper" >
-  <resultMap id="BaseResultMap" type="com.eliteams.quick4j.web.model.Livestock_enterprises" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="tjyear" property="tjyear" jdbcType="VARCHAR" />
-    <result column="tjmonth" property="tjmonth" jdbcType="VARCHAR" />
-    <result column="tjday" property="tjday" jdbcType="VARCHAR" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="USCC_Code" property="usccCode" jdbcType="VARCHAR" />
-    <result column="city" property="city" jdbcType="VARCHAR" />
-    <result column="county" property="county" jdbcType="VARCHAR" />
-    <result column="village" property="village" jdbcType="VARCHAR" />
-    <result column="address" property="address" jdbcType="VARCHAR" />
-    <result column="longitude" property="longitude" jdbcType="DOUBLE" />
-    <result column="latitude" property="latitude" jdbcType="DOUBLE" />
-    <result column="facilities_name" property="facilitiesName" jdbcType="VARCHAR" />
-    <result column="sjgm" property="sjgm" jdbcType="DOUBLE" />
-    <result column="daily_emission" property="dailyEmission" jdbcType="DOUBLE" />
-    <result column="annual_emission" property="annualEmission" jdbcType="DOUBLE" />
-    <result column="emission_days" property="emissionDays" jdbcType="DOUBLE" />
-    <result column="spareone" property="spareone" jdbcType="VARCHAR" />
-    <result column="sparetwo" property="sparetwo" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
+<mapper namespace="com.eliteams.quick4j.web.dao.Livestock_enterprisesMapper">
+    <resultMap id="BaseResultMap" type="com.eliteams.quick4j.web.model.Livestock_enterprises">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="tjyear" property="tjyear" jdbcType="VARCHAR"/>
+        <result column="tjmonth" property="tjmonth" jdbcType="VARCHAR"/>
+        <result column="tjday" property="tjday" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="USCC_Code" property="usccCode" jdbcType="VARCHAR"/>
+        <result column="city" property="city" jdbcType="VARCHAR"/>
+        <result column="county" property="county" jdbcType="VARCHAR"/>
+        <result column="village" property="village" jdbcType="VARCHAR"/>
+        <result column="address" property="address" jdbcType="VARCHAR"/>
+        <result column="longitude" property="longitude" jdbcType="DOUBLE"/>
+        <result column="latitude" property="latitude" jdbcType="DOUBLE"/>
+        <result column="facilities_name" property="facilitiesName" jdbcType="VARCHAR"/>
+        <result column="sjgm" property="sjgm" jdbcType="DOUBLE"/>
+        <result column="daily_emission" property="dailyEmission" jdbcType="DOUBLE"/>
+        <result column="annual_emission" property="annualEmission" jdbcType="DOUBLE"/>
+        <result column="emission_days" property="emissionDays" jdbcType="DOUBLE"/>
+        <result column="spareone" property="spareone" jdbcType="VARCHAR"/>
+        <result column="sparetwo" property="sparetwo" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     id, tjyear, tjmonth, tjday, name, USCC_Code, city, county, village, address, longitude, 
     latitude, facilities_name, sjgm, daily_emission, annual_emission, emission_days, 
     spareone, sparetwo
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from livestock_enterprises
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from livestock_enterprises
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from livestock_enterprises
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.eliteams.quick4j.web.model.Livestock_enterprises" >
+    <insert id="insert" parameterType="com.eliteams.quick4j.web.model.Livestock_enterprises">
     insert into livestock_enterprises (id, tjyear, tjmonth, 
       tjday, name, USCC_Code, 
       city, county, village, 
@@ -53,188 +53,188 @@
       #{annualEmission,jdbcType=DOUBLE}, #{emissionDays,jdbcType=DOUBLE}, #{spareone,jdbcType=VARCHAR}, 
       #{sparetwo,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.eliteams.quick4j.web.model.Livestock_enterprises" >
-    insert into livestock_enterprises
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="tjyear != null" >
-        tjyear,
-      </if>
-      <if test="tjmonth != null" >
-        tjmonth,
-      </if>
-      <if test="tjday != null" >
-        tjday,
-      </if>
-      <if test="name != null" >
-        name,
-      </if>
-      <if test="usccCode != null" >
-        USCC_Code,
-      </if>
-      <if test="city != null" >
-        city,
-      </if>
-      <if test="county != null" >
-        county,
-      </if>
-      <if test="village != null" >
-        village,
-      </if>
-      <if test="address != null" >
-        address,
-      </if>
-      <if test="longitude != null" >
-        longitude,
-      </if>
-      <if test="latitude != null" >
-        latitude,
-      </if>
-      <if test="facilitiesName != null" >
-        facilities_name,
-      </if>
-      <if test="sjgm != null" >
-        sjgm,
-      </if>
-      <if test="dailyEmission != null" >
-        daily_emission,
-      </if>
-      <if test="annualEmission != null" >
-        annual_emission,
-      </if>
-      <if test="emissionDays != null" >
-        emission_days,
-      </if>
-      <if test="spareone != null" >
-        spareone,
-      </if>
-      <if test="sparetwo != null" >
-        sparetwo,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="tjyear != null" >
-        #{tjyear,jdbcType=VARCHAR},
-      </if>
-      <if test="tjmonth != null" >
-        #{tjmonth,jdbcType=VARCHAR},
-      </if>
-      <if test="tjday != null" >
-        #{tjday,jdbcType=VARCHAR},
-      </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="usccCode != null" >
-        #{usccCode,jdbcType=VARCHAR},
-      </if>
-      <if test="city != null" >
-        #{city,jdbcType=VARCHAR},
-      </if>
-      <if test="county != null" >
-        #{county,jdbcType=VARCHAR},
-      </if>
-      <if test="village != null" >
-        #{village,jdbcType=VARCHAR},
-      </if>
-      <if test="address != null" >
-        #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="longitude != null" >
-        #{longitude,jdbcType=DOUBLE},
-      </if>
-      <if test="latitude != null" >
-        #{latitude,jdbcType=DOUBLE},
-      </if>
-      <if test="facilitiesName != null" >
-        #{facilitiesName,jdbcType=VARCHAR},
-      </if>
-      <if test="sjgm != null" >
-        #{sjgm,jdbcType=DOUBLE},
-      </if>
-      <if test="dailyEmission != null" >
-        #{dailyEmission,jdbcType=DOUBLE},
-      </if>
-      <if test="annualEmission != null" >
-        #{annualEmission,jdbcType=DOUBLE},
-      </if>
-      <if test="emissionDays != null" >
-        #{emissionDays,jdbcType=DOUBLE},
-      </if>
-      <if test="spareone != null" >
-        #{spareone,jdbcType=VARCHAR},
-      </if>
-      <if test="sparetwo != null" >
-        #{sparetwo,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.eliteams.quick4j.web.model.Livestock_enterprises" >
-    update livestock_enterprises
-    <set >
-      <if test="tjyear != null" >
-        tjyear = #{tjyear,jdbcType=VARCHAR},
-      </if>
-      <if test="tjmonth != null" >
-        tjmonth = #{tjmonth,jdbcType=VARCHAR},
-      </if>
-      <if test="tjday != null" >
-        tjday = #{tjday,jdbcType=VARCHAR},
-      </if>
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="usccCode != null" >
-        USCC_Code = #{usccCode,jdbcType=VARCHAR},
-      </if>
-      <if test="city != null" >
-        city = #{city,jdbcType=VARCHAR},
-      </if>
-      <if test="county != null" >
-        county = #{county,jdbcType=VARCHAR},
-      </if>
-      <if test="village != null" >
-        village = #{village,jdbcType=VARCHAR},
-      </if>
-      <if test="address != null" >
-        address = #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="longitude != null" >
-        longitude = #{longitude,jdbcType=DOUBLE},
-      </if>
-      <if test="latitude != null" >
-        latitude = #{latitude,jdbcType=DOUBLE},
-      </if>
-      <if test="facilitiesName != null" >
-        facilities_name = #{facilitiesName,jdbcType=VARCHAR},
-      </if>
-      <if test="sjgm != null" >
-        sjgm = #{sjgm,jdbcType=DOUBLE},
-      </if>
-      <if test="dailyEmission != null" >
-        daily_emission = #{dailyEmission,jdbcType=DOUBLE},
-      </if>
-      <if test="annualEmission != null" >
-        annual_emission = #{annualEmission,jdbcType=DOUBLE},
-      </if>
-      <if test="emissionDays != null" >
-        emission_days = #{emissionDays,jdbcType=DOUBLE},
-      </if>
-      <if test="spareone != null" >
-        spareone = #{spareone,jdbcType=VARCHAR},
-      </if>
-      <if test="sparetwo != null" >
-        sparetwo = #{sparetwo,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.eliteams.quick4j.web.model.Livestock_enterprises" >
+    <insert id="insertSelective" parameterType="com.eliteams.quick4j.web.model.Livestock_enterprises">
+        insert into livestock_enterprises
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="tjyear != null">
+                tjyear,
+            </if>
+            <if test="tjmonth != null">
+                tjmonth,
+            </if>
+            <if test="tjday != null">
+                tjday,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="usccCode != null">
+                USCC_Code,
+            </if>
+            <if test="city != null">
+                city,
+            </if>
+            <if test="county != null">
+                county,
+            </if>
+            <if test="village != null">
+                village,
+            </if>
+            <if test="address != null">
+                address,
+            </if>
+            <if test="longitude != null">
+                longitude,
+            </if>
+            <if test="latitude != null">
+                latitude,
+            </if>
+            <if test="facilitiesName != null">
+                facilities_name,
+            </if>
+            <if test="sjgm != null">
+                sjgm,
+            </if>
+            <if test="dailyEmission != null">
+                daily_emission,
+            </if>
+            <if test="annualEmission != null">
+                annual_emission,
+            </if>
+            <if test="emissionDays != null">
+                emission_days,
+            </if>
+            <if test="spareone != null">
+                spareone,
+            </if>
+            <if test="sparetwo != null">
+                sparetwo,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="tjyear != null">
+                #{tjyear,jdbcType=VARCHAR},
+            </if>
+            <if test="tjmonth != null">
+                #{tjmonth,jdbcType=VARCHAR},
+            </if>
+            <if test="tjday != null">
+                #{tjday,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="usccCode != null">
+                #{usccCode,jdbcType=VARCHAR},
+            </if>
+            <if test="city != null">
+                #{city,jdbcType=VARCHAR},
+            </if>
+            <if test="county != null">
+                #{county,jdbcType=VARCHAR},
+            </if>
+            <if test="village != null">
+                #{village,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="longitude != null">
+                #{longitude,jdbcType=DOUBLE},
+            </if>
+            <if test="latitude != null">
+                #{latitude,jdbcType=DOUBLE},
+            </if>
+            <if test="facilitiesName != null">
+                #{facilitiesName,jdbcType=VARCHAR},
+            </if>
+            <if test="sjgm != null">
+                #{sjgm,jdbcType=DOUBLE},
+            </if>
+            <if test="dailyEmission != null">
+                #{dailyEmission,jdbcType=DOUBLE},
+            </if>
+            <if test="annualEmission != null">
+                #{annualEmission,jdbcType=DOUBLE},
+            </if>
+            <if test="emissionDays != null">
+                #{emissionDays,jdbcType=DOUBLE},
+            </if>
+            <if test="spareone != null">
+                #{spareone,jdbcType=VARCHAR},
+            </if>
+            <if test="sparetwo != null">
+                #{sparetwo,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.eliteams.quick4j.web.model.Livestock_enterprises">
+        update livestock_enterprises
+        <set>
+            <if test="tjyear != null">
+                tjyear = #{tjyear,jdbcType=VARCHAR},
+            </if>
+            <if test="tjmonth != null">
+                tjmonth = #{tjmonth,jdbcType=VARCHAR},
+            </if>
+            <if test="tjday != null">
+                tjday = #{tjday,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="usccCode != null">
+                USCC_Code = #{usccCode,jdbcType=VARCHAR},
+            </if>
+            <if test="city != null">
+                city = #{city,jdbcType=VARCHAR},
+            </if>
+            <if test="county != null">
+                county = #{county,jdbcType=VARCHAR},
+            </if>
+            <if test="village != null">
+                village = #{village,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="longitude != null">
+                longitude = #{longitude,jdbcType=DOUBLE},
+            </if>
+            <if test="latitude != null">
+                latitude = #{latitude,jdbcType=DOUBLE},
+            </if>
+            <if test="facilitiesName != null">
+                facilities_name = #{facilitiesName,jdbcType=VARCHAR},
+            </if>
+            <if test="sjgm != null">
+                sjgm = #{sjgm,jdbcType=DOUBLE},
+            </if>
+            <if test="dailyEmission != null">
+                daily_emission = #{dailyEmission,jdbcType=DOUBLE},
+            </if>
+            <if test="annualEmission != null">
+                annual_emission = #{annualEmission,jdbcType=DOUBLE},
+            </if>
+            <if test="emissionDays != null">
+                emission_days = #{emissionDays,jdbcType=DOUBLE},
+            </if>
+            <if test="spareone != null">
+                spareone = #{spareone,jdbcType=VARCHAR},
+            </if>
+            <if test="sparetwo != null">
+                sparetwo = #{sparetwo,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.eliteams.quick4j.web.model.Livestock_enterprises">
     update livestock_enterprises
     set tjyear = #{tjyear,jdbcType=VARCHAR},
       tjmonth = #{tjmonth,jdbcType=VARCHAR},
@@ -256,64 +256,88 @@
       sparetwo = #{sparetwo,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="list" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from livestock_enterprises
-  </select>
-  <select id="searchAllLivestock" resultMap="BaseResultMap" parameterType="com.eliteams.quick4j.web.model.Livestock_enterprises">
-    select
-    <include refid="Base_Column_List" />
-    from livestock_enterprises
-    <where>
-      <if test="tjyear!=null and tjyear!=''">
-        AND tjyear = #{tjyear,jdbcType=VARCHAR}
-      </if>
-      <if test="tjmonth!=null and tjmonth!=''">
-        AND tjmonth = #{tjmonth,jdbcType=VARCHAR}
-      </if>
-      <if test="tjday!=null and tjday!=''">
-        AND tjday = #{tjday,jdbcType=VARCHAR}
-      </if>
-      <if test="name!=null and name!=''">
-        AND name = #{name,jdbcType=VARCHAR}
-      </if>
-      <if test="usccCode!=null and usccCode!=''">
-        AND USCC_Code = #{usccCode,jdbcType=VARCHAR}
-      </if>
-      <if test="city!=null and city!=''">
-        AND city = #{city,jdbcType=VARCHAR}
-      </if>
-      <if test="county!=null and county!=''">
-        AND county = #{county,jdbcType=VARCHAR}
-      </if>
-      <if test="village!=null and village!=''">
-        AND village = #{village,jdbcType=VARCHAR}
-      </if>
-      <if test="address!=null and address!=''">
-        AND address = #{address,jdbcType=VARCHAR}
-      </if>
-      <if test="longitude!=null and longitude!=''">
-        AND longitude = #{longitude,jdbcType=DOUBLE}
-      </if>
-      <if test="latitude!=null and latitude!=''">
-        AND latitude = #{latitude,jdbcType=DOUBLE}
-      </if>
-      <if test="facilitiesName!=null and facilitiesName!=''">
-        AND facilities_name = #{facilitiesName,jdbcType=VARCHAR}
-      </if>
-      <if test="sjgm!=null and sjgm!=''">
-        AND sjgm = #{sjgm,jdbcType=DOUBLE}
-      </if>
-      <if test="dailyEmission!=null and dailyEmission!=''">
-        AND daily_emission = #{dailyEmission,jdbcType=DOUBLE}
-      </if>
-      <if test="annualEmission!=null and annualEmission!=''">
-        AND annual_emission = #{annualEmission,jdbcType=DOUBLE}
-      </if>
-      <if test="emissionDays!=null and emissionDays!=''">
-        AND emission_days = #{emissionDays,jdbcType=DOUBLE}
-      </if>
-    </where>
-  </select>
+    <select id="list" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from livestock_enterprises
+    </select>
+    <select id="searchExit" resultMap="BaseResultMap"
+            parameterType="com.eliteams.quick4j.web.model.Livestock_enterprises">
+        select
+        <include refid="Base_Column_List"/>
+        from livestock_enterprises
+        <where>
+            <if test="tjyear!=null and tjyear!=''">
+                AND tjyear = #{tjyear,jdbcType=VARCHAR}
+            </if>
+            <if test="tjmonth!=null and tjmonth!=''">
+                AND tjmonth = #{tjmonth,jdbcType=VARCHAR}
+            </if>
+            <if test="tjday!=null and tjday!=''">
+                AND tjday = #{tjday,jdbcType=VARCHAR}
+            </if>
+            <if test="name!=null and name!=''">
+                AND name = #{name,jdbcType=VARCHAR}
+            </if>
+            <if test="id!=null and id!=''">
+                AND id != #{id,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+    <select id="searchAllLivestock" resultMap="BaseResultMap"
+            parameterType="com.eliteams.quick4j.web.model.Livestock_enterprises">
+        select
+        <include refid="Base_Column_List"/>
+        from livestock_enterprises
+        <where>
+            <if test="tjyear!=null and tjyear!=''">
+                AND tjyear = #{tjyear,jdbcType=VARCHAR}
+            </if>
+            <if test="tjmonth!=null and tjmonth!=''">
+                AND tjmonth = #{tjmonth,jdbcType=VARCHAR}
+            </if>
+            <if test="tjday!=null and tjday!=''">
+                AND tjday = #{tjday,jdbcType=VARCHAR}
+            </if>
+            <if test="name!=null and name!=''">
+                AND name = #{name,jdbcType=VARCHAR}
+            </if>
+            <if test="usccCode!=null and usccCode!=''">
+                AND USCC_Code = #{usccCode,jdbcType=VARCHAR}
+            </if>
+            <if test="city!=null and city!=''">
+                AND city = #{city,jdbcType=VARCHAR}
+            </if>
+            <if test="county!=null and county!=''">
+                AND county = #{county,jdbcType=VARCHAR}
+            </if>
+            <if test="village!=null and village!=''">
+                AND village = #{village,jdbcType=VARCHAR}
+            </if>
+            <if test="address!=null and address!=''">
+                AND address = #{address,jdbcType=VARCHAR}
+            </if>
+            <if test="longitude!=null and longitude!=''">
+                AND longitude = #{longitude,jdbcType=DOUBLE}
+            </if>
+            <if test="latitude!=null and latitude!=''">
+                AND latitude = #{latitude,jdbcType=DOUBLE}
+            </if>
+            <if test="facilitiesName!=null and facilitiesName!=''">
+                AND facilities_name = #{facilitiesName,jdbcType=VARCHAR}
+            </if>
+            <if test="sjgm!=null and sjgm!=''">
+                AND sjgm = #{sjgm,jdbcType=DOUBLE}
+            </if>
+            <if test="dailyEmission!=null and dailyEmission!=''">
+                AND daily_emission = #{dailyEmission,jdbcType=DOUBLE}
+            </if>
+            <if test="annualEmission!=null and annualEmission!=''">
+                AND annual_emission = #{annualEmission,jdbcType=DOUBLE}
+            </if>
+            <if test="emissionDays!=null and emissionDays!=''">
+                AND emission_days = #{emissionDays,jdbcType=DOUBLE}
+            </if>
+        </where>
+    </select>
 </mapper>

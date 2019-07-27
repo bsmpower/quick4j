@@ -8,6 +8,8 @@ import java.util.List;
 public interface IndustryTrashService extends GenericService<Industry_trash,Long> {
     int deleteByPrimaryKey(Integer id);
 
+    List<Industry_trash> searchExit(Industry_trash record);
+
     int insert(Industry_trash record);
 
     int insertSelective(Industry_trash record);

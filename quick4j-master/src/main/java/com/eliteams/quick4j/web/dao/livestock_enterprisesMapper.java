@@ -22,4 +22,6 @@ public interface Livestock_enterprisesMapper extends GenericDao<Livestock_enterp
     List<Livestock_enterprises> list();
 
     List<Livestock_enterprises> searchAllLivestock(Livestock_enterprises record);
+
+    List<Livestock_enterprises> searchExit(Livestock_enterprises record);
 }

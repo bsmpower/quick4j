@@ -10,6 +10,8 @@ public interface FarmService extends GenericService<Farm,Long>{
 
     int insert(Farm record);
 
+    List<Farm> searchExit(Farm record);
+
     int insertSelective(Farm record);
 
     Farm selectByPrimaryKey(Integer id);

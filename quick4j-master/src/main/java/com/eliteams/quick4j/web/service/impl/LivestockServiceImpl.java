@@ -15,6 +15,10 @@ public class LivestockServiceImpl extends GenericServiceImpl<Livestock_enterpris
     @Resource
     private Livestock_enterprisesMapper livestockEnterprisesMapper;
 
+    public List<Livestock_enterprises> searchExit(Livestock_enterprises record){
+        return livestockEnterprisesMapper.searchExit(record);
+    }
+
     public int deleteByPrimaryKey(Integer id){
         return livestockEnterprisesMapper.deleteByPrimaryKey(id);
     }

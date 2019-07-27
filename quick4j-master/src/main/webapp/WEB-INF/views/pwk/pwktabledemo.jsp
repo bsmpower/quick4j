@@ -46,6 +46,7 @@
 
     <script src="app/js/fileinput.js" type="text/javascript"></script>
     <script src="bsmassets/js/pwktabledemo.js"></script>
+    <script type="text/javascript" src="app/js/echart/echarts-all.js"></script>
     <%--<script type="text/javascript" src='bsmassets/js/qmpTestData.js'></script>--%>
 <%--    <script type="text/javascript" src='bsmassets/point/pollsource.js'></script>z--%>
 </head>

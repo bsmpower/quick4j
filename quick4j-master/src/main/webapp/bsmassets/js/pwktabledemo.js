@@ -17,7 +17,7 @@ initMap();
 var map, layer, graphicLayer;
 var html = "";
 
-html += "<table border='0' class='tableBasic'>";
+html += "<table class='table-striped table-hover table-bordered'>";
 html += "<tr><td>统计年份</td><td>${tjyear}</td></tr>";
 html += "<tr><td>统计月份</td><td>${tjmonth}</td></tr>";
 html += "<tr><td>统计日</td><td>${tjday}</td></tr>";

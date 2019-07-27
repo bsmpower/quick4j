@@ -15,6 +15,10 @@ public class IndustryTrashServiceImpl extends GenericServiceImpl<Industry_trash,
     @Resource
     private Industry_trashMapper industryTrashMapper;
 
+    public List<Industry_trash> searchExit(Industry_trash record){
+        return industryTrashMapper.searchExit(record);
+    }
+
     public int deleteByPrimaryKey(Integer id){
         return industryTrashMapper.deleteByPrimaryKey(id);
     }

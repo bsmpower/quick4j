@@ -60,4 +60,8 @@ public class IndustryLifeServiceImpl extends GenericServiceImpl<Industry_life,Lo
     public List<Industry_life> searchAllIndustryLife(Industry_life industryLife){
         return industryLifeMapper.searchAllIndustryLife(industryLife);
     }
+
+    public List<Industry_life> searchExit(Industry_life record){
+        return industryLifeMapper.searchExit(record);
+    }
 }

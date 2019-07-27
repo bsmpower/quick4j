@@ -8,29 +8,54 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta charset="utf-8">
-    <link href="bsmassets/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
-    <!-- 引入bootstrap-table样式 -->
-    <link href="bsmassets/bootstrap-3.3.7-dist/css/bootstrap-table.css" rel="stylesheet">
-    <link href="bsmassets/css/bsmcss.css" rel="stylesheet">
-    <link href="app/css/qmp/public.css" rel="stylesheet" type="text/css">
-    <!-- jquery -->
-    <script src="bsmassets/bootstrap-3.3.7-dist/js/jquery-3.3.1.min.js"></script>
-    <script src="bsmassets/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <!-- bootstrap-table.min.js -->
-    <script src="bsmassets/bootstrap-3.3.7-dist/js/bootstrap-table.js"></script>
-    <!-- 引入中文语言包 -->
-    <script src="bsmassets/bootstrap-3.3.7-dist/js/bootstrap-table-zh-CN.js"></script>
-    <script src="bsmassets/js/enterprise.js"></script>
-</head>
+    <style type="text/css">
+        .table-cont {
+            max-height: 300px;
+            overflow: auto;
+        }
 
+        .table > tbody > tr > td,
+        .table > tbody > tr > th,
+        .table > thead > tr > td,
+        .table > thead > tr > th {
+            border: 1px solid #C1C1C1;
+            white-space: nowrap;
+            font-weight: 400;
+            text-align: center;
+            vertical-align: middle;
+            padding: 8px
+        }
+
+        .table {
+            border-top: 0px;
+        }
+
+        .table > thead > .success > th {
+            background-color: #eee;
+            position: relative
+        }
+
+        .table thead tr th {
+            height: 50px;
+            z-index: 998
+        }
+    </style>
+
+    <link rel="stylesheet" href="http://js.arcgis.com/3.20/dijit/themes/claro/claro.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/themes/calcite/dijit/calcite.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/themes/calcite/esri/esri.css">
+
+    <script src="bsmassets/js/enterprise/industryTrash.js"></script>
+    <script type="text/javascript" src='bsmassets/js/qmpTestData.js'></script>
+</head>
 <body>
-<!--上边还没完成的区域：地图框-->
-<div class="container">
-    <div class="row">
-        <div id="funcFence" class="col-lg-4">
-        </div>
-        <div id="gisMap" class="col-lg-8">map地图</div>
+<!--地图区域-->
+<div id="left"></div>
+<div id="right">
+    <div id="map222" data-dojo-type="dijit/layout/ContentPane"
+         data-dojo-props="region:'center'"
+         style="overflow:hidden;height:470px;width:100%;margin-left: 12%;">
+
     </div>
 </div>
 <!--具体操作区域-->
@@ -41,10 +66,10 @@
     <button id="btn_add" type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal3">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
     </button>
-    <button id="btn_edit3" type="button" class="btn btn-default" data-toggle="modal" data-target="editIndustryTrashModel">
+    <button id="btn_edit" type="button" class="btn btn-default" data-toggle="modal" data-target="editModel">
         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
     </button>
-    <button id="btn_delete3" type="button" class="btn btn-default" data-toggle="modal" data-target="myModalsearch">
+    <button id="btn_delete" type="button" class="btn btn-default" data-toggle="modal" data-target="myModalsearch">
         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
     </button>
     <button id="btn_search" type="button" class="btn btn-default">
@@ -58,9 +83,17 @@
     </button>
 </div>
 <!--数据显示区域-->
-<div>
-    <table id="IndustryTrashTable" class="table table-striped">
-
+<div id="table-cont" class="table-cont">
+    <table class="table table-striped table-bordered table-hover  table-condensed" id="tablediv">
+        <thead>
+        <tr class="success">
+            <th>选择</th><th>ID</th><th>编辑</th><th>删除</th><th>统计年份</th><th>统计月份</th><th>统计日</th><th>单位名称</th><th>单位统一社会信用代码</th><th>园区编号</th><th>所在市</th><th>所在县(市/区)</th><th>所在乡镇</th><th>详细地址</th><th>经度(E)</th>
+            <th>纬度(N)</th><th>企业规模</th><th>企业生产状态</th><th>年生产时间(天)</th><th>所属行业类别代码</th><th>所属行业类别</th><th>工业用水量(吨/日)</th><th>取水量(吨/日)</th><th>重复用水量(吨/日)</th>
+            <th>污水处理设施设计规模(万/吨)</th><th>日均废水排放量(吨/日)</th><th>年均废水排放量(吨/年)</th><th>年废水排放时间(天)</th>
+        </tr>
+        </thead>
+        <tbody id="tbodyone">
+        </tbody>
     </table>
 </div>
 <!--添加新的数据-->
@@ -228,7 +261,7 @@
                 <div class="modal-footer">
                     <button id="closeMod" type="button" class="btn btn-default" data-dismiss="modal">关闭
                     </button>
-                    <button id="submitIndustryTrash" type="button" class="btn btn-primary">
+                    <button id="submitIndustryTrash" type="button" class="btn btn-primary" data-dismiss="modal">
                         提交
                     </button>
                 </div>
@@ -239,7 +272,7 @@
 
 <!--修改数据信息-->
 <div>
-    <div class="modal fade" id="editIndustryTrashModel" tabindex="-1" role="dialog" data-backdrop="static"
+    <div class="modal fade" id="editModel" tabindex="-1" role="dialog" data-backdrop="static"
          aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -436,7 +469,7 @@
                 <div class="modal-footer">
                     <button id="closeMod" type="button" class="btn btn-default" data-dismiss="modal">关闭
                     </button>
-                    <button id="editIndustryTrash" type="button" class="btn btn-primary">
+                    <button id="editIndustryTrash" type="button" class="btn btn-primary" data-dismiss="modal">
                         提交更改
                     </button>
                 </div>
@@ -578,7 +611,7 @@
                 <div class="modal-footer">
                     <button id="closeMod" type="button" class="btn btn-default" data-dismiss="modal">关闭
                     </button>
-                    <button id="searchIndustryTrash" type="button" class="btn btn-primary">
+                    <button id="searchIndustryTrash" type="button" class="btn btn-primary" data-dismiss="modal">
                         提交更改
                     </button>
                 </div>

@@ -22,5 +22,5 @@ public interface AquacultureMapper extends GenericDao<Aquaculture,Long> {
 
     List<Aquaculture> searchAllAqua(Aquaculture aquaculture);
 
-
+    List<Aquaculture> searchExit(Aquaculture record);
 }
