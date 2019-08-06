@@ -166,6 +166,24 @@ public class PageController {
     }
 
     /**
+     * 数据分析，调整标准线
+     */
+    @RequestMapping("norm")
+    public String norm(){
+        return "echart/norm";
+    }
+
+    /**
+     * 溯源分析
+     * @return
+     */
+    @RequestMapping("suyuan")
+    public String suyuan(){
+        return "echart/suyuan";
+    }
+
+
+    /**
      * Arcgis地图
      */
     @RequestMapping("/mapdemo")

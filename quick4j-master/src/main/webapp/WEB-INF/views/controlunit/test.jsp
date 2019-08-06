@@ -6,22 +6,6 @@
     <title>Insert title here</title>
 </head>
 <body>
-<br><p>通过index点击事件加载的jsp</p><br>
-<%--<table width="100%" border="0" cellpadding="7" cellspacing="0"--%>
-       <%--class="tableBasic" id="list_t">--%>
-    <%--<tr>--%>
-        <%--<th align="center" style="white-space: nowrap;text-align: center;background:#99A4AF;color:white">操作</th>--%>
-        <%--<th align="center" style="white-space: nowrap;text-align: center;background:#99A4AF;color:white">控制单元名称</th>--%>
-        <%--<th align="center" style="white-space: nowrap;text-align: center;background:#99A4AF;color:white">所含控制断面名称</th>--%>
-        <%--<th align="center" style="white-space: nowrap;text-align: center;background:#99A4AF;color:white">流域</th>--%>
-        <%--<th align="center" style="white-space: nowrap;text-align: center;background:#99A4AF;color:white">涉及地市</th>--%>
-        <%--<th align="center" style="white-space: nowrap;text-align: center;background:#99A4AF;color:white">涉及区（县）名称</th>--%>
-        <%--<th align="center" style="white-space: nowrap;text-align: center;background:#99A4AF;color:white">乡镇个数</th>--%>
-        <%--<th align="center" style="white-space: nowrap;text-align: center;background:#99A4AF;color:white">涉及河流名称</th>--%>
-        <%--<th align="center" style="white-space: nowrap;text-align: center;background:#99A4AF;color:white">水资源区</th>--%>
-        <%--<th align="center" style="white-space: nowrap;text-align: center;background:#99A4AF;color:white">汇入河流</th>--%>
-    <%--</tr>--%>
-    <%--&lt;%&ndash;这部分写入jsp语句，将test的url返回的值一一对应&ndash;%&gt;--%>
-<%--</table>--%>
+
 </body>
 </html>

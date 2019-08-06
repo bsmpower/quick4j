@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eliteams.quick4j.web.dao.StandardMapper">
+    <select id="list" resultType="com.eliteams.quick4j.web.model.Standard">
+        select * FROM standard
+    </select>
+    <select id="select" resultType="com.eliteams.quick4j.web.model.Standard" >
+        SELECT * FROM standard
+        <where>
+            <if test="pwkType!=null">
+                and pwk_type=#{pwkType}
+            </if>
+        </where>
+    </select>
+    <update id="update" parameterType="Standard" >
+        update standard set salt=#{salt},COD=#{COD},NH3=#{NH3},P=#{P},N=#{N},Cr6=#{Cr6},CN=#{CN},fdcjqs=#{fdcjqs},BOD5=#{BOD5},xfw=#{xfw},oil=#{oil},
+        dzwy=#{dzwy},phenol=#{phenol},`As`=#{As},Hg=#{Hg},Pb=#{Pb},Cd=#{Cd},PH1=#{PH1},PH2=#{PH2},chloride=#{chloride},sulfide=#{sulfide},ylzbmhxj=#{ylzbmhxj} where pwk_type=#{pwkType}
+    </update>
+</mapper>

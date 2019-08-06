@@ -237,5 +237,19 @@ $(function() {
             $("#second").text(parentext);
             $("#third").text(childtext);
         })
+        $("#analyzelist").click(function(e){
+            var parentext=$("#dataanalyze").text();
+            var childtext=$("#analyzelist").text();
+
+            $("#first").text(parentext);
+            $("#second").text(childtext);
+        })
+        $("#suyuanlist").click(function(e){
+            var parentext=$("#dataanalyze").text();
+            var childtext=$("#suyuanlist").text();
+
+            $("#first").text(parentext);
+            $("#second").text(childtext);
+        })
     }
 });

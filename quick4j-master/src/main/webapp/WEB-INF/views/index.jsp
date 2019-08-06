@@ -296,7 +296,7 @@
                 </li>
 
                 <li class="">
-                    <a href="javascript:;">
+                    <a href="javascript:;" id="dataanalyze">
                         <i class="fa fa-thumbs-up"></i><span class="title"> 数据分析 </span><span
                             class="arrow "> </span>
                     </a>
@@ -307,12 +307,12 @@
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:;">
-                                排放口全指标变化趋势分析
+                            <a href="rest/page/norm" id="norm">
+                                全指标分析
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:;">
+                            <a href="rest/page/suyuan" id="suyuanlist">
                                 溯源分析
                             </a>
                         </li>

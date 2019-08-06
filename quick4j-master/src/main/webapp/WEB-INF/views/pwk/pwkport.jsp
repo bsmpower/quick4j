@@ -128,6 +128,9 @@
                 </div>
                 <div class="modal-body">
                     <form class="bs-example bs-example-form" role="form" id="contentForm">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-6">
                         <div class="input-group">
                             <span class="input-group-addon">统计年份</span>
                             <input name="tjyear" type="text" class="form-control" placeholder="">
@@ -160,7 +163,20 @@
                         <br>
                         <div class="input-group">
                             <span class="input-group-addon">所在市</span>
-                            <input name="city" type="text" class="form-control" placeholder="">
+                            <input name="city" list="citylist2" type="text" class="form-control" placeholder="">
+							<datalist id="citylist2">
+                                <option value="辽宁省">辽宁省</option>
+                                <option value="辽阳市">辽阳市</option>
+                                <option value="沈阳市">沈阳市</option>
+                                <option value="阜新市">阜新市</option>
+                                <option value="鞍山市">鞍山市</option>
+                                <option value="盘锦市">盘锦市</option>
+                                <option value="锦州市">锦州市</option>
+                                <option value="丹东市">丹东市</option>
+                                <option value="本溪市">本溪市</option>
+                                <option value="抚顺市">抚顺市</option>
+                                <option value="朝阳市">朝阳市</option>
+                            </datalist>
                             <span class="input-group-addon">注释</span>
                         </div>
                         <br>
@@ -194,6 +210,8 @@
                             <span class="input-group-addon">注释</span>
                         </div>
                         <br>
+                                </div>
+                                <div class="col-lg-6">
                         <div class="input-group">
                             <span class="input-group-addon">港口/码头范围</span>
                             <input name="gkArea" type="text" class="form-control" placeholder="">
@@ -208,52 +226,111 @@
                         <br>
                         <div class="input-group">
                             <span class="input-group-addon">河流级别</span>
-                            <input name="riverLevel" type="text" class="form-control" placeholder="">
+                            <input name="riverLevel" list="hljb2" type="text" class="form-control" placeholder="">
+							<datalist id="hljb2">
+                                <option value="干流">干流</option>
+                                <option value="一级支流">一级支流</option>
+                                <option value="二级支流">二级支流</option>
+                                <option value="三级支流">三级支流</option>
+                                <option value="四级支流">四级支流</option>
+                            </datalist>
                             <span class="input-group-addon">注释</span>
                         </div>
                         <br>
                         <div class="input-group">
                             <span class="input-group-addon">港口/码头所在河流水功能区</span>
-                            <input name="gkFunc" type="text" class="form-control" placeholder="">
+                            <input name="gkFunc" list="sgnq2" type="text" class="form-control" placeholder="">
+							<datalist id="sgnq2">
+                             <option value="饮用水源区">饮用水源区</option>
+                             <option value="工业用水区">工业用水区</option>
+                             <option value="农业用水区">农业用水区</option>
+                             <option value="渔业用水区">渔业用水区</option>
+                             <option value="景观娱乐用水区">景观娱乐用水区</option>
+                             <option value="过渡区">过渡区</option>
+                             <option value="排污控制区">排污控制区</option>
+                           </datalist>
                             <span class="input-group-addon">注释</span>
                         </div>
                         <br>
                         <div class="input-group">
                             <span class="input-group-addon">港口/码头所在河流水质目标</span>
-                            <input name="gkGoal" type="text" class="form-control" placeholder="">
+                            <input name="gkGoal" list="hlszmb2" type="text" class="form-control" placeholder="">
+							<datalist id="hlszmb2">
+                                <option value="Ⅰ类">Ⅰ类</option>
+                                <option value="Ⅱ类">Ⅱ类</option>
+                                <option value="Ⅲ类">Ⅲ类</option>
+                                <option value="Ⅳ类">Ⅳ类</option>
+                                <option value="Ⅴ类">Ⅴ类</option>
+                                <option value="其它">其它</option>
+                            </datalist>
                             <span class="input-group-addon">注释</span>
                         </div>
                         <br>
                         <div class="input-group">
                             <span class="input-group-addon">所在海域名称</span>
-                            <input name="seaName" type="text" class="form-control" placeholder="">
+                            <input name="seaName" list="haiyu2" type="text" class="form-control" placeholder="">
+							<datalist id="haiyu2">
+                                <option value="渤海">渤海</option>
+                                <option value="黄海">黄海</option>                                           
+                            </datalist>
                             <span class="input-group-addon">注释</span>
                         </div>
                         <br>
                         <div class="input-group">
                             <span class="input-group-addon">近岸海域环境功能区</span>
-                            <input name="jaFunction" type="text" class="form-control" placeholder="">
+                            <input name="jaFunction" list="gnq2" type="text" class="form-control" placeholder="">
+							<datalist id="gnq2">
+                                <option value="一类">一类</option>
+                                <option value="二类">二类</option>
+                                <option value="三类">三类</option>
+                                <option value="四类">四类</option>
+                            </datalist>
                             <span class="input-group-addon">注释</span>
                         </div>
                         <br>
                         <div class="input-group">
                             <span class="input-group-addon">近岸海域水质目标</span>
-                            <input name="jaGoal" type="text" class="form-control" placeholder="">
+                            <input name="jaGoal" list="mb2" type="text" class="form-control" placeholder="">
+							
+							<datalist id="mb2">
+                                <option value="第一类">第一类</option>
+                                <option value="不低于第二类">不低于第二类</option>
+                                <option value="不低于第三类">不低于第三类</option>
+                                <option value="不低于第四类">不低于第四类</option>
+                            </datalist>
                             <span class="input-group-addon">注释</span>
                         </div>
                         <br>
                         <div class="input-group">
                             <span class="input-group-addon">海洋功能区类别</span>
-                            <input name="seaFunctiontype" type="text" class="form-control" placeholder="">
+                            <input name="seaFunctiontype" list="gnqtype2" type="text" class="form-control" placeholder="">
+							<datalist id="gnqtype2">
+                                <option value="农渔业区">农渔业区</option>
+                                <option value="港口航运区">港口航运区</option>
+                                <option value="工业与城镇用海区">工业与城镇用海区</option>
+                                <option value="矿产与能源区">矿产与能源区</option>
+                                <option value="旅游休闲娱乐区">旅游休闲娱乐区</option>
+                                <option value="海洋保护区">海洋保护区</option>
+                                <option value="特殊利用区">特殊利用区</option>
+                                <option value="保留区">保留区</option>
+                            </datalist>
                             <span class="input-group-addon">注释</span>
                         </div>
                         <br>
                         <div class="input-group">
                             <span class="input-group-addon">海洋功能区水质目标</span>
-                            <input name="seaFunctiongoal" type="text" class="form-control" placeholder="">
+                            <input name="seaFunctiongoal" list="szmb2" type="text" class="form-control" placeholder="">
+							<datalist id="szmb2">
+                                <option value="不劣于第一类">不劣于第一类</option>
+                                <option value="不劣于第二类">不劣于第二类</option>
+                                <option value="不劣于第三类">不劣于第三类</option>
+                                <option value="不劣于第四类">不劣于第四类</option>
+                            </datalist>
                             <span class="input-group-addon">注释</span>
                         </div>
-
+                                </div>
+                            </div>
+                        </div>
 
                     </form>
                 </div>
@@ -320,7 +397,20 @@
                                     <br>
                                     <div class="input-group">
                                         <span class="input-group-addon">所在市</span>
-                                        <input id="pwk5" name="city" type="text" class="form-control" placeholder="">
+                                        <input id="pwk5" list="citylist3" name="city" type="text" class="form-control" placeholder="">
+										<datalist id="citylist3">
+                                <option value="辽宁省">辽宁省</option>
+                                <option value="辽阳市">辽阳市</option>
+                                <option value="沈阳市">沈阳市</option>
+                                <option value="阜新市">阜新市</option>
+                                <option value="鞍山市">鞍山市</option>
+                                <option value="盘锦市">盘锦市</option>
+                                <option value="锦州市">锦州市</option>
+                                <option value="丹东市">丹东市</option>
+                                <option value="本溪市">本溪市</option>
+                                <option value="抚顺市">抚顺市</option>
+                                <option value="朝阳市">朝阳市</option>
+                            </datalist>
                                         <span class="input-group-addon">注释</span>
                                     </div>
                                     <br>
@@ -377,56 +467,112 @@
                                     <br>
                                     <div class="input-group">
                                         <span class="input-group-addon">河流级别</span>
-                                        <input id="pwk13" name="riverLevel" type="text" class="form-control"
+                                        <input id="pwk13" list="hljb3" name="riverLevel" type="text" class="form-control"
                                                placeholder="">
+											   <datalist id="hljb3">
+                                <option value="干流">干流</option>
+                                <option value="一级支流">一级支流</option>
+                                <option value="二级支流">二级支流</option>
+                                <option value="三级支流">三级支流</option>
+                                <option value="四级支流">四级支流</option>
+                            </datalist>
                                         <span class="input-group-addon">注释</span>
                                     </div>
                                     <br>
                                     <div class="input-group">
                                         <span class="input-group-addon">港口/码头所在河流水功能区</span>
-                                        <input id="pwk14" name="gkFunc" type="text" class="form-control" placeholder="">
+                                        <input id="pwk14" list="sgnq3" name="gkFunc" type="text" class="form-control" placeholder="">
+										<datalist id="sgnq3">
+                             <option value="饮用水源区">饮用水源区</option>
+                             <option value="工业用水区">工业用水区</option>
+                             <option value="农业用水区">农业用水区</option>
+                             <option value="渔业用水区">渔业用水区</option>
+                             <option value="景观娱乐用水区">景观娱乐用水区</option>
+                             <option value="过渡区">过渡区</option>
+                             <option value="排污控制区">排污控制区</option>
+                           </datalist>
                                         <span class="input-group-addon">注释</span>
                                     </div>
                                     <br>
                                     <div class="input-group">
                                         <span class="input-group-addon">港口/码头所在河流水质目标类</span>
-                                        <input id="pwk15" name="gkGoal" type="text" class="form-control"
+                                        <input id="pwk15" list="hlszmb3" name="gkGoal" type="text" class="form-control"
                                                placeholder="">
+											   <datalist id="hlszmb3">
+                                <option value="Ⅰ类">Ⅰ类</option>
+                                <option value="Ⅱ类">Ⅱ类</option>
+                                <option value="Ⅲ类">Ⅲ类</option>
+                                <option value="Ⅳ类">Ⅳ类</option>
+                                <option value="Ⅴ类">Ⅴ类</option>
+                                <option value="其它">其它</option>
+                            </datalist>
                                         <span class="input-group-addon">注释</span>
                                     </div>
                                     <br>
                                     <div class="input-group">
                                         <span class="input-group-addon">所在海域名称</span>
-                                        <input id="pwk16" name="seaName" type="text" class="form-control"
+                                        <input id="pwk16" list="haiyu3" name="seaName" type="text" class="form-control"
                                                placeholder="">
+											   <datalist id="haiyu3">
+                                <option value="渤海">渤海</option>
+                                <option value="黄海">黄海</option>                                           
+                            </datalist>
                                         <span class="input-group-addon">注释</span>
                                     </div>
                                     <br>
                                     <div class="input-group">
                                         <span class="input-group-addon">近岸海域环境功能区</span>
-                                        <input id="pwk17" name="jaFunction" type="text" class="form-control"
+                                        <input id="pwk17" list="gnq3" name="jaFunction" type="text" class="form-control"
                                                placeholder="">
+											   <datalist id="gnq3">
+                                <option value="一类">一类</option>
+                                <option value="二类">二类</option>
+                                <option value="三类">三类</option>
+                                <option value="四类">四类</option>
+                            </datalist>
                                         <span class="input-group-addon">注释</span>
                                     </div>
                                     <br>
                                     <div class="input-group">
                                         <span class="input-group-addon">近岸海域水质目标</span>
-                                        <input id="pwk18" name="jaGoal" type="text" class="form-control"
+                                        <input id="pwk18" list="mb3" name="jaGoal" type="text" class="form-control"
                                                placeholder="">
+											   <datalist id="mb3">
+                                <option value="第一类">第一类</option>
+                                <option value="不低于第二类">不低于第二类</option>
+                                <option value="不低于第三类">不低于第三类</option>
+                                <option value="不低于第四类">不低于第四类</option>
+                            </datalist>
                                         <span class="input-group-addon">注释</span>
                                     </div>
                                     <br>
                                     <div class="input-group">
                                         <span class="input-group-addon">海洋功能区类别</span>
-                                        <input id="pwk19" name="seaFunctiontype" type="text" class="form-control"
+                                        <input id="pwk19" list="gnqtype3" name="seaFunctiontype" type="text" class="form-control"
                                                placeholder="">
+											   <datalist id="gnqtype3">
+                                <option value="农渔业区">农渔业区</option>
+                                <option value="港口航运区">港口航运区</option>
+                                <option value="工业与城镇用海区">工业与城镇用海区</option>
+                                <option value="矿产与能源区">矿产与能源区</option>
+                                <option value="旅游休闲娱乐区">旅游休闲娱乐区</option>
+                                <option value="海洋保护区">海洋保护区</option>
+                                <option value="特殊利用区">特殊利用区</option>
+                                <option value="保留区">保留区</option>
+                            </datalist>
                                         <span class="input-group-addon">注释</span>
                                     </div>
                                     <br>
                                     <div class="input-group">
                                         <span class="input-group-addon">海洋功能区水质目标间</span>
-                                        <input id="pwk20" name="seaFunctiongoal" type="text" class="form-control"
+                                        <input id="pwk20" list="szmb3" name="seaFunctiongoal" type="text" class="form-control"
                                                placeholder="">
+											    <datalist id="szmb3">
+                                <option value="不劣于第一类">不劣于第一类</option>
+                                <option value="不劣于第二类">不劣于第二类</option>
+                                <option value="不劣于第三类">不劣于第三类</option>
+                                <option value="不劣于第四类">不劣于第四类</option>
+                            </datalist>
                                         <span class="input-group-addon">注释</span>
                                     </div>
                                     <br>
@@ -712,7 +858,20 @@
         if (val6 == true) {
             var temp6 = "<div class=\"input-group\">\n" +
                 "                                        <span class=\"input-group-addon\">所在市</span>\n" +
-                "                                        <input id=\"select5\" name=\"pwkName\" type=\"text\" class=\"form-control\" placeholder=\"\">\n" +
+                "                                        <input id=\"select5\" list=\"citylist1\" name=\"pwkName\" type=\"text\" class=\"form-control\" placeholder=\"\">\n" +
+				"                                        <datalist id=\"citylist1\">\n" +
+                "                                                <option value=\"辽宁省\">辽宁省</option>\n" +
+                "                                                <option value=\"辽阳市\">辽阳市</option>\n" +
+                "                                                <option value=\"沈阳市\">沈阳市</option>\n" +
+                "                                                <option value=\"阜新市\">阜新市</option>\n" +
+                "                                                <option value=\"鞍山市\">鞍山市</option>\n" +
+                "                                                <option value=\"盘锦市\">盘锦市</option>\n" +
+                "                                                <option value=\"锦州市\">锦州市</option>\n" +
+                "                                                <option value=\"丹东市\">丹东市</option>\n" +
+                "                                                <option value=\"本溪市\">本溪市</option>\n" +
+                "                                                <option value=\"抚顺市\">抚顺市</option>\n" +
+                "                                                <option value=\"朝阳市\">朝阳市</option>\n" +
+                "                                        </datalist>"+
                 "                                        <span class=\"input-group-addon\">注释</span>\n" +
                 "                                    </div>"
             $("#div_5").html(temp6);
@@ -811,8 +970,15 @@
         if (val14 == true) {
             var temp14 = "<div class=\"input-group\">\n" +
                 "                                        <span class=\"input-group-addon\">河流级别</span>\n" +
-                "                                        <input id=\"select13\" name=\"isShenpi\" type=\"text\" class=\"form-control\"\n" +
+                "                                        <input id=\"select13\" list=\"hljb1\" name=\"isShenpi\" type=\"text\" class=\"form-control\"\n" +
                 "                                               placeholder=\"\">\n" +
+				"                                        <datalist id=\"hljb1\">\n" +
+                "                                                <option value=\"干流\">干流</option>\n" +
+                "                                                <option value=\"一级支流\">一级支流</option>\n" +
+                "                                                <option value=\"二级支流\">二级支流</option>\n" +
+                "                                                <option value=\"三级支流\">三级支流</option>\n" +
+                "                                                <option value=\"四级支流\">四级支流</option>\n" +
+                "                                        </datalist>"+
                 "                                        <span class=\"input-group-addon\">注释</span>\n" +
                 "                                    </div>"
             $("#div_13").html(temp14);
@@ -824,7 +990,16 @@
         if (val15 == true) {
             var temp15 = "<div class=\"input-group\">\n" +
                 "                                        <span class=\"input-group-addon\">港口码头所在河流水功能区</span>\n" +
-                "                                        <input id=\"select14\" name=\"shenpi\" type=\"text\" class=\"form-control\" placeholder=\"\">\n" +
+                "                                        <input id=\"select14\" list=\"sgnq1\" name=\"shenpi\" type=\"text\" class=\"form-control\" placeholder=\"\">\n" +
+				"                                        <datalist id=\"sgnq1\">\n" +
+                "                                                <option value=\"饮用水源区\">饮用水源区</option>\n" +
+                "                                                <option value=\"工业用水区\">工业用水区</option>\n" +
+                "                                                <option value=\"农业用水区\">农业用水区</option>\n" +
+                "                                                <option value=\"渔业用水区\">渔业用水区</option>\n" +
+                "                                                <option value=\"景观娱乐用水区\">景观娱乐用水区</option>\n" +
+                "                                                <option value=\"过渡区\">过渡区</option>\n" +
+                "                                                <option value=\"排污控制区\">排污控制区</option>\n" +
+                "                                        </datalist>"+
                 "                                        <span class=\"input-group-addon\">注释</span>\n" +
                 "                                    </div>"
             $("#div_14").html(temp15);
@@ -836,8 +1011,16 @@
         if (val16 == true) {
             var temp16 = "<div class=\"input-group\">\n" +
                 "                                        <span class=\"input-group-addon\">港口码头所在河流水质目标</span>\n" +
-                "                                        <input id=\"select15\" name=\"mainType\" type=\"text\" class=\"form-control\"\n" +
+                "                                        <input id=\"select15\" list=\"hlszmb1\" name=\"mainType\" type=\"text\" class=\"form-control\"\n" +
                 "                                               placeholder=\"\">\n" +
+				"                                        <datalist id=\"hlszmb1\">\n" +
+                "                                                <option value=\"Ⅰ类\">Ⅰ类</option>\n" +
+                "                                                <option value=\"Ⅱ类\">Ⅱ类</option>\n" +
+                "                                                <option value=\"Ⅲ类\">Ⅲ类</option>\n" +
+                "                                                <option value=\"Ⅳ类\">Ⅳ类</option>\n" +
+                "                                                <option value=\"Ⅴ类\">Ⅴ类</option>\n" +
+                "                                                <option value=\"其它\">其它</option>\n" +
+                "                                        </datalist>"+
                 "                                        <span class=\"input-group-addon\">注释</span>\n" +
                 "                                    </div>"
             $("#div_15").html(temp16);
@@ -849,8 +1032,12 @@
         if (val17 == true) {
             var temp17 = "<div class=\"input-group\">\n" +
                 "                                        <span class=\"input-group-addon\">所在海域名称</span>\n" +
-                "                                        <input id=\"select16\" name=\"dayAllow\" type=\"text\" class=\"form-control\"\n" +
+                "                                        <input id=\"select16\" id=\"haiyu1\" name=\"dayAllow\" type=\"text\" class=\"form-control\"\n" +
                 "                                               placeholder=\"\">\n" +
+				"                                        <datalist id=\"haiyu1\">\n" +
+                "                                                <option value=\"渤海\">渤海</option>\n" +
+                "                                                <option value=\"黄海\">黄海</option>\n" +                                             
+                "                                        </datalist>"+
                 "                                        <span class=\"input-group-addon\">注释</span>\n" +
                 "                                    </div>"
             $("#div_16").html(temp17);
@@ -862,8 +1049,14 @@
         if (val18 == true) {
             var temp18 = "<div class=\"input-group\">\n" +
                 "                                        <span class=\"input-group-addon\">近岸海域环境功能区</span>\n" +
-                "                                        <input id=\"select17\" name=\"yearAllow\" type=\"text\" class=\"form-control\"\n" +
+                "                                        <input id=\"select17\" list=\"gnq1\" name=\"yearAllow\" type=\"text\" class=\"form-control\"\n" +
                 "                                               placeholder=\"\">\n" +
+				"                                        <datalist id=\"gnq1\">\n" +
+                "                                                <option value=\"一类\">一类</option>\n" +
+                "                                                <option value=\"二类\">二类</option>\n" +
+                "                                                <option value=\"三类\">三类</option>\n" +
+                "                                                <option value=\"四类\">四类</option>\n" +
+                "                                        </datalist>"+
                 "                                        <span class=\"input-group-addon\">注释</span>\n" +
                 "                                    </div>"
             $("#div_17").html(temp18);
@@ -875,8 +1068,14 @@
         if (val19 == true) {
             var temp19 = "<div class=\"input-group\">\n" +
                 "                                        <span class=\"input-group-addon\">近岸海域水质目标</span>\n" +
-                "                                        <input id=\"select18\" name=\"isPermit\" type=\"text\" class=\"form-control\"\n" +
+                "                                        <input id=\"select18\" list=\"mb1\" name=\"isPermit\" type=\"text\" class=\"form-control\"\n" +
                 "                                               placeholder=\"\">\n" +
+				"                                        <datalist id=\"mb1\">\n" +
+                "                                                <option value=\"第一类\">第一类</option>\n" +
+                "                                                <option value=\"不低于第二类\">不低于第二类</option>\n" +
+                "                                                <option value=\"不低于第三类\">不低于第三类</option>\n" +
+                "                                                <option value=\"不低于第四类\">不低于第四类</option>\n" +
+                "                                        </datalist>"+
                 "                                        <span class=\"input-group-addon\">注释</span>\n" +
                 "                                    </div>"
             $("#div_18").html(temp19);
@@ -888,8 +1087,18 @@
         if (val20 == true) {
             var temp20 = "<div class=\"input-group\">\n" +
                 "                                        <span class=\"input-group-addon\">海洋功能区类别</span>\n" +
-                "                                        <input id=\"select19\" name=\"isPermit\" type=\"text\" class=\"form-control\"\n" +
+                "                                        <input id=\"select19\" list=\"gnqtype1\" name=\"isPermit\" type=\"text\" class=\"form-control\"\n" +
                 "                                               placeholder=\"\">\n" +
+				"                                        <datalist id=\"gnqtype1\">\n" +
+                "                                                <option value=\"农渔业区\">农渔业区</option>\n" +
+                "                                                <option value=\"港口航运区\">港口航运区</option>\n" +
+                "                                                <option value=\"工业与城镇用海区\">工业与城镇用海区</option>\n" +
+                "                                                <option value=\"矿产与能源区\">矿产与能源区</option>\n" +
+                "                                                <option value=\"旅游休闲娱乐区\">旅游休闲娱乐区</option>\n" +
+                "                                                <option value=\"海洋保护区\">海洋保护区</option>\n" +
+                "                                                <option value=\"特殊利用区\">特殊利用区</option>\n" +
+                "                                                <option value=\"保留区\">保留区</option>\n" +
+                "                                        </datalist>"+
                 "                                        <span class=\"input-group-addon\">注释</span>\n" +
                 "                                    </div>"
             $("#div_19").html(temp20);
@@ -901,7 +1110,13 @@
         if (val21 == true) {
             var temp21 = "<div class=\"input-group\">\n" +
                 "                                        <span class=\"input-group-addon\">海洋功能区水质目标</span>\n" +
-                "                                        <input id=\"select20\" name=\"pwCode\" type=\"text\" class=\"form-control\" placeholder=\"\">\n" +
+                "                                        <input id=\"select20\" list=\"szmb1\" name=\"pwCode\" type=\"text\" class=\"form-control\" placeholder=\"\">\n" +
+				"                                        <datalist id=\"szmb1\">\n" +
+                "                                                <option value=\"不劣于第一类\">不劣于第一类</option>\n" +
+                "                                                <option value=\"不劣于第二类\">不劣于第二类</option>\n" +
+                "                                                <option value=\"不劣于第三类\">不劣于第三类</option>\n" +
+                "                                                <option value=\"不劣于第四类\">不劣于第四类</option>\n" +
+                "                                        </datalist>"+
                 "                                        <span class=\"input-group-addon\">注释</span>\n" +
                 "                                    </div>"
             $("#div_20").html(temp21);

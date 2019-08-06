@@ -1,28 +1,71 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Deity
+  Date: 2019/7/30
+  Time: 11:20
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>layui</title>
-    <%--<style type="text/css">--%>
-    <%--#echartGen{--%>
-    <%--width:26%;--%>
-    <%--}--%>
-    <%--</style>--%>
-    <script type="text/javascript" src="app/js/echart/echarts-all.js"></script>
-    <script type="text/javascript" src="bsmassets/js/echart/analyze.js"></script>
+    <title>溯源分析</title>
+    <style type="text/css">
+        .table-cont {
+            max-height: 300px;
+            overflow: auto;
+        }
+
+        .table > tbody > tr > td,
+        .table > tbody > tr > th,
+        .table > thead > tr > td,
+        .table > thead > tr > th {
+            border: 1px solid #C1C1C1;
+            white-space: nowrap;
+            font-weight: 400;
+            text-align: center;
+            vertical-align: middle;
+            padding: 8px
+        }
+
+        .table {
+            border-top: 0px;
+        }
+
+        .table > thead > .success > th {
+            background-color: #eee;
+            position: relative
+        }
+
+        .table thead tr th {
+            height: 50px;
+            z-index: 998
+        }
+    </style>
+
+    <link rel="stylesheet" href="http://js.arcgis.com/3.20/dijit/themes/claro/claro.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/themes/calcite/dijit/calcite.css">
+    <link rel="stylesheet" href="app/js/3.20/esri/css/esri.css">
+    <%--<link href="app/css/qmp/public.css" rel="stylesheet">--%>
+    <link rel="stylesheet" href="bsmassets/css/bsmcss.css">
+    <script src="bsmassets/js/echart/suyuan.js"></script>
 </head>
 <body>
+<div id="left"></div>
+<div id="right">
+    <div id="map222" data-dojo-type="dijit/layout/ContentPane"
+         data-dojo-props="region:'center'"
+         style="overflow:hidden;height:430px;width:100%;margin-left: 12%;">
+
+    </div>
+</div>
+<br>
 <div class="row">
     <div class="col-lg-6">
         <form class="bs-example bs-example-form" role="form" id="echartGen">
-            <div class="input-group">
-                <span class="input-group-addon">排放口</span>
-                <input id="pwk0" name="tjyear" type="text" class="form-control" placeholder="请输入要统计的排放口名称">
-            </div>
             <br>
             <div class="input-group">
                 <span class="input-group-addon">监测年份</span>
-                <input id="pwk1" name="tjmonth" list="yearlist" type="text" class="form-control" placeholder="请选择监测年份">
+                <input id="pwk0" name="tjmonth" list="yearlist" type="text" class="form-control" placeholder="请选择监测年份">
                 <datalist id="yearlist">
                     <option value="2019">2019</option>
                     <option value="2018">2018</option>
@@ -42,7 +85,7 @@
             <br>
             <div class="input-group">
                 <span class="input-group-addon">达标类型</span>
-                <input id="pwk2" name="tjday" list="jctype" type="text" class="form-control" placeholder="请选择要进行分析的类型">
+                <input id="pwk1" name="tjday" list="jctype" type="text" class="form-control" placeholder="请选择要进行分析的类型">
                 <datalist id="jctype">
                     <option value="salt">盐度(‰)</option>
                     <option value="COD">化学需氧量(mg/L)</option>
@@ -71,47 +114,27 @@
             <br>
             <div class="input-group">
                 <span class="input-group-addon">设置达标线</span>
-                <input id="pwk3" name="tjday" type="text" class="form-control" placeholder="请设置达标元素的值">
+                <input id="pwk2" name="tjday" type="text" class="form-control" placeholder="请设置达标元素的值">
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">排放口类型</span>
+                <input id="pwk3" list="pwktype" name="tjday" type="text" class="form-control" placeholder="请设置达标元素的值">
+                <datalist id="pwktype">
+                    <option value="rain_outlet">雨水排放口</option>
+                    <option value="rainsewage">雨污混合口信息</option>
+                    <option value="rain_spillway">雨水泄洪口</option>
+                    <option value="outlet">排放口基本信息</option>
+                </datalist>
             </div>
         </form>
     </div>
     <div class="col-lg-6">
         <div class="btn-group" role="group" aria-label="...">
-            <button id="submitemi" type="button" class="btn btn-primary">开始分析</button>
+            <button id="suyuanStart" type="button" class="btn btn-primary">开始溯源</button>
             <button id="reset" type="button" class="btn btn-primary">重置</button>
-            <button id="yearAnalyze" type="button" class="btn btn-primary">全指标年度平均值分析</button>
-            <button id="sameCompare" type="button" class="btn btn-primary">全指标同比分析</button>
-            <button id="linkCompare" type="button" class="btn btn-primary">全指标环比分析</button>
         </div>
     </div>
 </div>
-<div id="main" style="width: 600px;height:400px;margin-left: 381px;"></div>
-<script type="text/javascript">
-    // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('main'));
-
-    // 指定图表的配置项和数据
-    var option = {
-        title: {
-            text: '排放口全指标达标情况'
-        },
-        tooltip: {},
-        legend: {
-            data: ['销量']
-        },
-        xAxis: {
-            data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
-        },
-        yAxis: {},
-        series: [{
-            name: '销量',
-            type: 'bar',
-            data: [5, 20, 36, 10, 10, 20]
-        }]
-    };
-
-    // 使用刚指定的配置项和数据显示图表。
-    myChart.setOption(option);
-</script>
 </body>
 </html>

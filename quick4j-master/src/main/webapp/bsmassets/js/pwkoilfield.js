@@ -24,7 +24,7 @@ $(function () {
             a[i].style.transform = 'translateY(' + scrollTop + 'px)';
         //this.querySelector('thead').style.transform = 'translateY(' + scrollTop + 'px)';
     }
-    tableCont.addEventListener('scroll',scrollHandle)
+    tableCont.addEventListener('scroll',scrollHandle);
 
     /**
      *显示整个列表
