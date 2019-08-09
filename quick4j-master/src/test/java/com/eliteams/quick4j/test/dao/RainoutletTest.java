@@ -12,6 +12,7 @@ import com.eliteams.quick4j.web.model.section_message;
 import org.junit.Test;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 public class RainoutletTest extends TestSupport {
     @Resource
@@ -29,9 +30,9 @@ public class RainoutletTest extends TestSupport {
     @Test
     public void rainoutlettest(){
         rain_outlet  ro = new rain_outlet();
-        ro.setAddress("沈阳");
-        int flag = rainOutletMapper.insertSelective(ro);
-        System.out.println(flag);
+        ro.setRiverName("浑河");
+        List<rain_outlet> list= rainOutletMapper.selectRainoutlet(ro);
+        System.out.println(list.size());
     }
 
     @Test

@@ -38,7 +38,6 @@
 
     <link rel="stylesheet" href="http://js.arcgis.com/3.20/dijit/themes/claro/claro.css">
     <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/themes/calcite/dijit/calcite.css">
-    <
     <link rel="stylesheet" href="app/js/3.20/esri/css/esri.css">
     <%--<link href="app/css/qmp/public.css" rel="stylesheet">--%>
     <%--<link rel="stylesheet" href="bsmassets/css/bsmcss.css">--%>

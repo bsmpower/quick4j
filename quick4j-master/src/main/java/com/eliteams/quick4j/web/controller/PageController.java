@@ -174,12 +174,20 @@ public class PageController {
     }
 
     /**
-     * 溯源分析
+     * 单点排污口查询
      * @return
      */
     @RequestMapping("suyuan")
     public String suyuan(){
         return "echart/suyuan";
+    }
+
+    /**
+     *溯源分析
+     */
+    @RequestMapping("syfx")
+    public String syfx(){
+        return "echart/syfx";
     }
 
 

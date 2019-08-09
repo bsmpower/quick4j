@@ -244,6 +244,20 @@ $(function() {
             $("#first").text(parentext);
             $("#second").text(childtext);
         })
+        $("#norm").click(function(e){
+            var parentext=$("#dataanalyze").text();
+            var childtext=$("#norm").text();
+
+            $("#first").text(parentext);
+            $("#second").text(childtext);
+        })
+        $("#syfx").click(function(e){
+            var parentext=$("#dataanalyze").text();
+            var childtext=$("#syfx").text();
+
+            $("#first").text(parentext);
+            $("#second").text(childtext);
+        })
         $("#suyuanlist").click(function(e){
             var parentext=$("#dataanalyze").text();
             var childtext=$("#suyuanlist").text();

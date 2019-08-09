@@ -301,19 +301,24 @@
                             class="arrow "> </span>
                     </a>
                     <ul class="sub-menu">
-                        <li>
-                            <a href="rest/page/analyze" id="analyzelist">
-                                排放口全指标达标情况
-                            </a>
-                        </li>
+                        <%--<li>--%>
+                            <%--<a href="rest/page/analyze" id="analyzelist">--%>
+                                <%--排放口全指标达标情况--%>
+                            <%--</a>--%>
+                        <%--</li>--%>
                         <li>
                             <a href="rest/page/norm" id="norm">
                                 全指标分析
                             </a>
                         </li>
                         <li>
-                            <a href="rest/page/suyuan" id="suyuanlist">
+                            <a href="rest/page/syfx" id="syfx">
                                 溯源分析
+                            </a>
+                        </li>
+                        <li>
+                            <a href="rest/page/suyuan" id="suyuanlist">
+                                排污口单点地图展示
                             </a>
                         </li>
                     </ul>

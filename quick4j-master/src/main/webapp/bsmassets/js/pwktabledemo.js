@@ -995,6 +995,7 @@ function updatePoint(data){
             var point = new Point(lon, lat, map.spatialReference);
             var infoTemplate = new InfoTemplate("排放口基本信息", html);
             var symbol1 = new PictureMarkerSymbol("app/img/location.png", 16, 16);
+
             var graphic = new Graphic(point, symbol1, attr, infoTemplate);
             graphicLayer.add(graphic);
         }

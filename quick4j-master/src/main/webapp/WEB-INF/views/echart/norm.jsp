@@ -159,7 +159,7 @@
                 <br>
                 <div class="input-group">
                     <span class="input-group-addon">达标类型</span>
-                    <select name="pwk6" class="form-control" onchange="editpre()">
+                    <select id="pwk6" name="pwk6" class="form-control" onchange="editpre()">
                         <option value="">全指标</option>
                         <option value="salt">盐度(‰)</option>
                         <option value="COD">化学需氧量(mg/L)</option>
@@ -256,6 +256,17 @@
             </tbody>
         </table>
     </div>
+    <div class="table-cont" id="table-cont1" style="display: none;">
+        <table class="table table-striped table-bordered table-hover  table-condensed" id="tablediv1">
+            <thead>
+            <tr class="success">
+                <th>选择</th><th>ID</th><th>编辑</th><th>删除</th><th>排污口名称</th><th>排污口类型</th><th>年</th><th>月</th><th>指标</th><th>数值</th>
+            </thead>
+            <tbody id="tbodytwo">
+            </tbody>
+        </table>
+    </div>
+</div>
 </div>
 <div class="modal fade" id="mulModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" style="width:900px">
@@ -264,7 +275,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <div>
-                        <h4 class="modal-title" id="myModalLabel3" style="display:inline-block">修改标准</h4>
+                        <h4 class="modal-title" id="myModalLabel3" style="display:inline-block">多排放口分析</h4>
                     </div>
                 </div>
                 <div class="modal-body">
@@ -273,7 +284,7 @@
                         <input id="pwkname" name="tjyear" type="text" class="form-control" placeholder="请输入指定的排放口名称">
                         <span class="input-group-addon">所属排放口类别</span>
 
-                        <select name="pwkType" class="form-control" onchange="editpre()">
+                        <select id="mulpwkType" name="pwkType" class="form-control" onchange="editpre()">
                             <option value=""></option>
                             <option value="工业废水排污口">工业废水排污口</option>
                             <option value="工业生活混合污水排污口">工业生活混合污水排污口</option>
@@ -350,7 +361,7 @@
                     <br>
                     <div class="input-group">
                         <span class="input-group-addon">达标类型</span>
-                        <select name="pwk9" class="form-control" onchange="editpre()">
+                        <select id="pwk9" name="pwk9" class="form-control" onchange="editpre()">
                             <option value="">全指标</option>
                             <option value="salt">盐度(‰)</option>
                             <option value="COD">化学需氧量(mg/L)</option>
@@ -379,7 +390,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-primary" onclick="add()">提交</button>
+                    <button type="button" class="btn btn-primary"  id="mulpwkfx">提交</button>
                 </div>
             </form>
         </div><!-- /.modal-content -->

@@ -1,14 +1,16 @@
-var flag=0;
-$(function(){
+var flag = 0;
+$(function () {
     var tableCont = document.querySelector('#table-cont')
-    function scrollHandle (e){
+
+    function scrollHandle(e) {
         var scrollTop = this.scrollTop;
         var a = this.querySelector('thead').getElementsByTagName("th");
-        for(var i=0;i<a.length;i++)
+        for (var i = 0; i < a.length; i++)
             a[i].style.transform = 'translateY(' + scrollTop + 'px)';
         //this.querySelector('thead').style.transform = 'translateY(' + scrollTop + 'px)';
     }
-    tableCont.addEventListener('scroll',scrollHandle);
+
+    tableCont.addEventListener('scroll', scrollHandle);
 
     $("#mulpwkanalyze").click(function () {
         $('#mulModal').modal('show');
@@ -27,12 +29,15 @@ $(function(){
     //若无闲事挂心头，便是人生好时节
 
     //多指标现值分析
-    $("#xzanalyze").click(function() {
+    $("#xzanalyze").click(function () {
+        $('#table-cont1').css("display", "none");
+        $('#table-cont').css("display", "block");
+
         var url = "rest/statistics/multarget"
         //排放口名字
         var pwkname = $("#pwk0").val();
         //排放口类型
-        var pwkselect =$("#pwk1").val();
+        var pwkselect = $("#pwk1").val();
         //统计开始年份
         var tjstart = $("#pwk2").val();
         //统计结束年份
@@ -42,55 +47,55 @@ $(function(){
         //监测月份
         var monitormonth = $("#pwk5").val();
         //达标类型
-        var zbtype =$("#pwk6").val();
+        var zbtype = $("#pwk6").val();
 
-        var data={
-            "pkwname":pwkname,
-            "pwkselect":pwkselect,
-            "tjstart":tjstart,
-            "tjend":tjend,
-            "monitoryear":monitoryear,
-            "monitormonth":monitormonth,
-            "zbtype":zbtype,
+        var data = {
+            "pkwname": pwkname,
+            "pwkselect": pwkselect,
+            "tjstart": tjstart,
+            "tjend": tjend,
+            "monitoryear": monitoryear,
+            "monitormonth": monitormonth,
+            "zbtype": zbtype,
         };
 
         console.log(data);
         $.ajax({
-            url:url,
-            type:"POST",
-            data:data,
-            datatype:"json",
-            success:function(data){
+            url: url,
+            type: "POST",
+            data: data,
+            datatype: "json",
+            success: function (data) {
                 console.log(data[0]);
                 //下方列表
                 console.log(data.pkwname);
-                var attrlist={
-                    "id":1,
-                    "pwkName":pwkname,
-                    "type":pwkselect,
-                    "tjyear":monitoryear,
-                    "tjmonth":monitormonth,
-                    "salt":data[0],
-                    "cod":data[1],
-                    "nh3":data[2],
-                    "p":data[3],
-                    "n":data[4],
-                    "cr6":data[5],
-                    "cn":data[6],
-                    "fdcjqs":data[7],
-                    "bod5":data[8],
-                    "xfw":data[9],
-                    "oil":data[10],
-                    "dzwy":data[11],
-                    "phenol":data[12],
-                    "as":data[13],
-                    "hg":data[14],
-                    "pb":data[15],
-                    "cd":data[16],
-                    "ph":data[17],
-                    "chloride":data[18],
-                    "sulfide":data[19],
-                    "ylzbmhxj":data[20],
+                var attrlist = {
+                    "id": 1,
+                    "pwkName": pwkname,
+                    "type": pwkselect,
+                    "tjyear": monitoryear,
+                    "tjmonth": monitormonth,
+                    "salt": data[0],
+                    "cod": data[1],
+                    "nh3": data[2],
+                    "p": data[3],
+                    "n": data[4],
+                    "cr6": data[5],
+                    "cn": data[6],
+                    "fdcjqs": data[7],
+                    "bod5": data[8],
+                    "xfw": data[9],
+                    "oil": data[10],
+                    "dzwy": data[11],
+                    "phenol": data[12],
+                    "as": data[13],
+                    "hg": data[14],
+                    "pb": data[15],
+                    "cd": data[16],
+                    "ph": data[17],
+                    "chloride": data[18],
+                    "sulfide": data[19],
+                    "ylzbmhxj": data[20],
                 };
                 html = allhtml(attrlist);
                 $('#tbodyone').empty();
@@ -109,9 +114,9 @@ $(function(){
                     },
                     xAxis: {
                         data: ["盐度", "化学需氧量", "氨氮", "总磷", "总氮", "六价铬",
-                            "氰化物","粪大肠菌群数","五日生化需氧量","悬浮物","石油类",
-                            "动植物油","挥发酚","总砷","总汞","总铅","总镉","PH值",
-                            "氯化物","硫化物","阴离子表面活性剂"]
+                            "氰化物", "粪大肠菌群数", "五日生化需氧量", "悬浮物", "石油类",
+                            "动植物油", "挥发酚", "总砷", "总汞", "总铅", "总镉", "PH值",
+                            "氯化物", "硫化物", "阴离子表面活性剂"]
                     },
                     yAxis: {},
                     series: [{
@@ -133,12 +138,15 @@ $(function(){
     });
 
     //多指标倍数分析
-    $("#bsanalyze").click(function(){
+    $("#bsanalyze").click(function () {
+        $('#table-cont1').css("display", "none");
+        $('#table-cont').css("display", "block");
+
         var url = "rest/statistics/multargetbs"
         //排放口名字
         var pwkname = $("#pwk0").val();
         //排放口类型
-        var pwkselect =$("#pwk1").val();
+        var pwkselect = $("#pwk1").val();
         //统计开始年份
         var tjstart = $("#pwk2").val();
         //统计结束年份
@@ -148,53 +156,54 @@ $(function(){
         //监测月份
         var monitormonth = $("#pwk5").val();
         //达标类型
-        var zbtype =$("#pwk6").val();
+        var zbtype = $("#pwk6").val();
 
-        var data={
-            "pkwname":pwkname,
-            "pwkselect":pwkselect,
-            "tjstart":tjstart,
-            "tjend":tjend,
-            "monitoryear":monitoryear,
-            "monitormonth":monitormonth,
-            "zbtype":zbtype,
+        var data = {
+            "pkwname": pwkname,
+            "pwkselect": pwkselect,
+            "tjstart": tjstart,
+            "tjend": tjend,
+            "monitoryear": monitoryear,
+            "monitormonth": monitormonth,
+            "zbtype": zbtype,
         };
 
         $.ajax({
-            url:url,
-            type:"POST",
-            data:data,
-            datatype:"json",
-            success:function(data){
-                var attrlist={
-                    "id":1,
-                    "pwkName":pwkname,
-                    "type":pwkselect,
-                    "tjyear":monitoryear,
-                    "tjmonth":monitormonth,
-                    "salt":data[0],
-                    "cod":data[1],
-                    "nh3":data[2],
-                    "p":data[3],
-                    "n":data[4],
-                    "cr6":data[5],
-                    "cn":data[6],
-                    "fdcjqs":data[7],
-                    "bod5":data[8],
-                    "xfw":data[9],
-                    "oil":data[10],
-                    "dzwy":data[11],
-                    "phenol":data[12],
-                    "as":data[13],
-                    "hg":data[14],
-                    "pb":data[15],
-                    "cd":data[16],
-                    "ph":data[17],
-                    "chloride":data[18],
-                    "sulfide":data[19],
-                    "ylzbmhxj":data[20],
+            url: url,
+            type: "POST",
+            data: data,
+            datatype: "json",
+            success: function (data) {
+                var attrlist = {
+                    "id": 1,
+                    "pwkName": pwkname,
+                    "type": pwkselect,
+                    "tjyear": monitoryear,
+                    "tjmonth": monitormonth,
+                    "salt": data[0],
+                    "cod": data[1],
+                    "nh3": data[2],
+                    "p": data[3],
+                    "n": data[4],
+                    "cr6": data[5],
+                    "cn": data[6],
+                    "fdcjqs": data[7],
+                    "bod5": data[8],
+                    "xfw": data[9],
+                    "oil": data[10],
+                    "dzwy": data[11],
+                    "phenol": data[12],
+                    "as": data[13],
+                    "hg": data[14],
+                    "pb": data[15],
+                    "cd": data[16],
+                    "ph": data[17],
+                    "chloride": data[18],
+                    "sulfide": data[19],
+                    "ylzbmhxj": data[20],
                 };
-                html = allhtml(attrlist);;
+                html = allhtml(attrlist);
+                ;
                 $('#tbodyone').empty();
                 $('#tbodyone').append(html);
                 var myChart = echarts.init(document.getElementById('main'));
@@ -210,9 +219,9 @@ $(function(){
                     },
                     xAxis: {
                         data: ["盐度", "化学需氧量", "氨氮", "总磷", "总氮", "六价铬",
-                            "氰化物","粪大肠菌群数","五日生化需氧量","悬浮物","石油类",
-                            "动植物油","挥发酚","总砷","总汞","总铅","总镉","PH值",
-                            "氯化物","硫化物","阴离子表面活性剂"]
+                            "氰化物", "粪大肠菌群数", "五日生化需氧量", "悬浮物", "石油类",
+                            "动植物油", "挥发酚", "总砷", "总汞", "总铅", "总镉", "PH值",
+                            "氯化物", "硫化物", "阴离子表面活性剂"]
                     },
                     yAxis: {},
                     series: [{
@@ -240,7 +249,7 @@ $(function(){
         //排放口名字
         var pwkname = $("#pwk0").val();
         //排放口类型
-        var pwkselect =$("#pwk1").val();
+        var pwkselect = $("#pwk1").val();
         //统计开始年份
         var tjstart = $("#pwk2").val();
         //统计结束年份
@@ -250,64 +259,46 @@ $(function(){
         //监测月份
         var monitormonth = $("#pwk5").val();
         //达标类型
-        var zbtype =$("#pwk6").val();
+        var zbtype = $("#pwk6").val();
 
-        var data={
-            "pwkname":pwkname,
-            "pwkselect":pwkselect,
-            "tjstart":tjstart,
-            "tjend":tjend,
-            "monitoryear":monitoryear,
-            "monitormonth":monitormonth,
-            "zbtype":zbtype,
+        var data = {
+            "pwkname": pwkname,
+            "pwkselect": pwkselect,
+            "tjstart": tjstart,
+            "tjend": tjend,
+            "monitoryear": monitoryear,
+            "monitormonth": monitormonth,
+            "zbtype": zbtype,
         };
-
+        var dnlist = new Array();
+        for (i = parseInt(tjstart); i <= parseInt(tjend); i++) {
+            dnlist.push(i);
+        }
         $.ajax({
-            url:url,
-            type:"POST",
-            data:data,
-            datatype:"json",
-            success:function(data){
-                var attrlist={
-                    "id":1,
-                    "pwkName":pwkname,
-                    "type":pwkselect,
-                    "tjstart":tjstart,
-                    "tjend":tjend,
-                    "tjmonth":monitormonth,
-                    "salt":data[0],
-                    "cod":data[1],
-                    "nh3":data[2],
-                    "p":data[3],
-                    "n":data[4],
-                    "cr6":data[5],
-                    "cn":data[6],
-                    "fdcjqs":data[7],
-                    "bod5":data[8],
-                    "xfw":data[9],
-                    "oil":data[10],
-                    "dzwy":data[11],
-                    "phenol":data[12],
-                    "as":data[13],
-                    "hg":data[14],
-                    "pb":data[15],
-                    "cd":data[16],
-                    "ph":data[17],
-                    "chloride":data[18],
-                    "sulfide":data[19],
-                    "ylzbmhxj":data[20],
-                };
-                html = dndyallhtml(attrlist);;
+            url: url,
+            type: "POST",
+            data: data,
+            datatype: "json",
+            success: function (data) {
                 $('#tbodyone').empty();
-                $('#tbodyone').append(html);
-
+                for (i = 0; i < dnlist.length; i++) {
+                    var attrlist = {
+                        "id": 1,
+                        "pwkName": pwkname,
+                        "type": pwkselect,
+                        "tjyear": dnlist[i],
+                        "tjmonth": monitormonth,
+                        "zbtype": zbtype,
+                        "xz": data[i]
+                    };
+                    html = dndyallhtml(attrlist);
+                    ;
+                    $('#tbodytwo').append(html);
+                    $('#table-cont1').css("display", "block");
+                    $('#table-cont').css("display", "none");
+                }
                 var myChart = echarts.init(document.getElementById('main'));
 
-                var dnlist = new Array();
-                for(i = parseInt(tjstart); i <= parseInt(tjend); i++){
-                    dnlist.push(i);
-                }
-                console.log(dnlist);
                 // 指定图表的配置项和数据
                 var option = {
                     title: {
@@ -318,10 +309,186 @@ $(function(){
                         data: ['折线图', '柱状图']
                     },
                     xAxis: {
-                        data: ["盐度", "化学需氧量", "氨氮", "总磷", "总氮", "六价铬",
-                            "氰化物","粪大肠菌群数","五日生化需氧量","悬浮物","石油类",
-                            "动植物油","挥发酚","总砷","总汞","总铅","总镉","PH值",
-                            "氯化物","硫化物","阴离子表面活性剂"]
+                        data: dnlist
+                    },
+                    yAxis: {},
+                    series: [{
+                        name: '折线图',
+                        type: 'line',
+                        data: data
+                    }, {
+                        type: 'bar',
+                        data: data,
+                        name: '柱状图',
+                        // barWidth: 20,
+                    }]
+                };
+
+                // 使用刚指定的配置项和数据显示图表。
+                myChart.setOption(option);
+            }
+        });
+
+    });
+
+    //多年单月单指标倍数分析
+    $("#dndybsanalyze").click(function () {
+        $('#table-cont1').css("display", "block");
+        $('#table-cont').css("display", "none");
+
+        var url = "rest/statistics/dndydtargetbs";
+        //排放口名字
+        var pwkname = $("#pwk0").val();
+        //排放口类型
+        var pwkselect = $("#pwk1").val();
+        //统计开始年份
+        var tjstart = $("#pwk2").val();
+        //统计结束年份
+        var tjend = $("#pwk3").val();
+        //监测年份
+        var monitoryear = $("#pwk4").val();
+        //监测月份
+        var monitormonth = $("#pwk5").val();
+        //达标类型
+        var zbtype = $("#pwk6").val();
+
+        var data = {
+            "pwkname": pwkname,
+            "pwkselect": pwkselect,
+            "tjstart": tjstart,
+            "tjend": tjend,
+            "monitoryear": monitoryear,
+            "monitormonth": monitormonth,
+            "zbtype": zbtype,
+        };
+
+        var dnlist = new Array();
+        for (i = parseInt(tjstart); i <= parseInt(tjend); i++) {
+            dnlist.push(i);
+        }
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: data,
+            datatype: "json",
+            success: function (data) {
+                $('#tbodytwo').empty();
+                for (i = 0; i < dnlist.length; i++) {
+                    var attrlist = {
+                        "id": 1,
+                        "pwkName": pwkname,
+                        "type": pwkselect,
+                        "tjyear": dnlist[i],
+                        "tjmonth": monitormonth,
+                        "zbtype": zbtype,
+                        "xz": data[i]
+                    };
+                    html = dndyallhtml(attrlist);
+                    ;
+                    $('#tbodytwo').append(html);
+                }
+                var myChart = echarts.init(document.getElementById('main'));
+
+                // 指定图表的配置项和数据
+                var option = {
+                    title: {
+                        text: '排放口全指标达标情况'
+                    },
+                    tooltip: {},
+                    legend: {
+                        data: ['折线图', '柱状图']
+                    },
+                    xAxis: {
+                        data: dnlist
+                    },
+                    yAxis: {},
+                    series: [{
+                        name: '折线图',
+                        type: 'line',
+                        data: data
+                    }, {
+                        type: 'bar',
+                        data: data,
+                        name: '柱状图',
+                        // barWidth: 20,
+                    }]
+                };
+
+                // 使用刚指定的配置项和数据显示图表。
+                myChart.setOption(option);
+            }
+        });
+
+
+    });
+
+    //多月单指标现值分析
+    $("#dyxzanalyze").click(function () {
+        $('#table-cont1').css("display", "block");
+        $('#table-cont').css("display", "none");
+
+        //扎啤配烧烤，还有热水澡
+
+        var url = "rest/statistics/dydtarget";
+        //排放口名字
+        var pwkname = $("#pwk0").val();
+        //排放口类型
+        var pwkselect = $("#pwk1").val();
+        //统计开始年份
+        var tjstart = $("#pwk2").val();
+        //统计结束年份
+        var tjend = $("#pwk3").val();
+        //监测年份
+        var monitoryear = $("#pwk4").val();
+        //监测月份
+        var monitormonth = $("#pwk5").val();
+        //达标类型
+        var zbtype = $("#pwk6").val();
+
+        var data = {
+            "pwkname": pwkname,
+            "pwkselect": pwkselect,
+            "monitoryear": monitoryear,
+            "zbtype": zbtype,
+        };
+        var dnlist = new Array();
+        for (i = 1; i <= 12; i++) {
+            dnlist.push(i);
+        }
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: data,
+            datatype: "json",
+            success: function (data) {
+                $('#tbodytwo').empty();
+                for (i = 0; i < dnlist.length; i++) {
+                    var attrlist = {
+                        "id": 1,
+                        "pwkName": pwkname,
+                        "type": pwkselect,
+                        "tjyear": monitoryear,
+                        "tjmonth": dnlist[i],
+                        "zbtype": zbtype,
+                        "xz": data[i]
+                    };
+                    html = dndyallhtml(attrlist);
+                    ;
+                    $('#tbodytwo').append(html);
+                }
+                var myChart = echarts.init(document.getElementById('main'));
+
+                // 指定图表的配置项和数据
+                var option = {
+                    title: {
+                        text: '排放口全指标达标情况'
+                    },
+                    tooltip: {},
+                    legend: {
+                        data: ['折线图', '柱状图']
+                    },
+                    xAxis: {
+                        data: dnlist
                     },
                     yAxis: {},
                     series: [{
@@ -343,9 +510,184 @@ $(function(){
 
     })
 
-    //多年单月单指标倍数分析
+    //多月单指标倍数分析
+    $("#dybsanalyze").click(function () {
+        $('#table-cont1').css("display", "block");
+        $('#table-cont').css("display", "none");
+
+        //扎啤配烧烤，还有热水澡
+
+        var url = "rest/statistics/dydtargetbs";
+        //排放口名字
+        var pwkname = $("#pwk0").val();
+        //排放口类型
+        var pwkselect = $("#pwk1").val();
+        //统计开始年份
+        var tjstart = $("#pwk2").val();
+        //统计结束年份
+        var tjend = $("#pwk3").val();
+        //监测年份
+        var monitoryear = $("#pwk4").val();
+        //监测月份
+        var monitormonth = $("#pwk5").val();
+        //达标类型
+        var zbtype = $("#pwk6").val();
+
+        var data = {
+            "pwkname": pwkname,
+            "pwkselect": pwkselect,
+            "monitoryear": monitoryear,
+            "zbtype": zbtype,
+        };
+        var dnlist = new Array();
+        for (i = 1; i <= 12; i++) {
+            dnlist.push(i);
+        }
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: data,
+            datatype: "json",
+            success: function (data) {
+                $('#tbodytwo').empty();
+                for (i = 0; i < dnlist.length; i++) {
+                    var attrlist = {
+                        "id": 1,
+                        "pwkName": pwkname,
+                        "type": pwkselect,
+                        "tjyear": monitoryear,
+                        "tjmonth": dnlist[i],
+                        "zbtype": zbtype,
+                        "xz": data[i]
+                    };
+                    html = dndyallhtml(attrlist);
+                    ;
+                    $('#tbodytwo').append(html);
+                }
+                var myChart = echarts.init(document.getElementById('main'));
+
+                // 指定图表的配置项和数据
+                var option = {
+                    title: {
+                        text: '排放口全指标达标情况'
+                    },
+                    tooltip: {},
+                    legend: {
+                        data: ['折线图', '柱状图']
+                    },
+                    xAxis: {
+                        data: dnlist
+                    },
+                    yAxis: {},
+                    series: [{
+                        name: '折线图',
+                        type: 'line',
+                        data: data
+                    }, {
+                        type: 'bar',
+                        data: data,
+                        name: '柱状图',
+                        // barWidth: 20,
+                    }]
+                };
+
+                // 使用刚指定的配置项和数据显示图表。
+                myChart.setOption(option);
+            }
+        });
+
+    })
+    //多排放口分析
+
+    $("#mulpwkfx").click(function () {
+        //获取到每个表格的东西
+        count = count * 2;
+        var pwktypelist = new Array();
+        var pwknamelist = new Array();
+        var t = $('#addform3').serializeArray();
+        for (i = 0; i < count; i++) {
+            var pwkname = t[i].value;
+            var mulpwkType = t[i + 1].value;
+            pwknamelist.push(pwkname);
+            pwktypelist.push(mulpwkType);
+            i = i + 1;
+        }
+        var jcyear = $("#pwk7").val();
+        var jcmonth = $("#pwk8").val();
+        var dbtype = $("#pwk9").val();
+
+
+        var data={
+            "pwknamelist":JSON.stringify(pwknamelist),
+            "pwktypelist":JSON.stringify(pwktypelist),
+            "jcyear":jcyear,
+            "jcmonth":jcmonth,
+            "dbtype":dbtype
+        };
+
+        console.log(data);
+        var url = "rest/statistics/mulpwkfx";
+        $.ajax({
+            url:url,
+            type:"POST",
+            data:data,
+            datatype:"json",
+            success:function(data){
+                $('#table-cont1').css("display", "block");
+                $('#table-cont').css("display", "none");
+                $('#tbodytwo').empty();
+                for(i = 0; i < pwknamelist.length; i++){
+                    var attrlist={
+                        "id":1,
+                        "pwkName":pwknamelist[i],
+                        "type":pwktypelist[i],
+                        "tjyear":jcyear,
+                        "tjmonth":jcmonth,
+                        "zbtype":dbtype,
+                        "xz":data[i]
+                    };
+                    html = dndyallhtml(attrlist);;
+                    console.log(html);
+                    $('#tbodytwo').append(html);
+                }
+                var myChart = echarts.init(document.getElementById('main'));
+
+                // 指定图表的配置项和数据
+                var option = {
+                    title: {
+                        text: '排放口全指标达标情况'
+                    },
+                    tooltip: {},
+                    legend: {
+                        data: ['折线图', '柱状图']
+                    },
+                    xAxis: {
+                        data: pwknamelist
+                    },
+                    yAxis: {},
+                    series: [{
+                        name: '折线图',
+                        type: 'line',
+                        data: data
+                    }, {
+                        type: 'bar',
+                        data: data,
+                        name: '柱状图',
+                        // barWidth: 20,
+                    }]
+                };
+
+                // 使用刚指定的配置项和数据显示图表。
+                myChart.setOption(option);
+            }
+        });
+
+    });
 });
+var count = 1;
+
 function addmessage() {
+    count = count + 1;
     var temp1 = "<div class=\"input-group\">\n" +
         "                        <span class=\"input-group-addon\">排污口名称</span>\n" +
         "                        <input id=\"pwkname\" name=\"tjyear\" type=\"text\" class=\"form-control\" placeholder=\"请输入指定的排放口名称\">\n" +
@@ -368,72 +710,71 @@ function addmessage() {
         "\n" +
         "                        </span>\n" +
         "                    </div>";
-    if(flag == 0){
+    if (flag == 0) {
         $("#div_0").html(temp1);
         $("#div_0").show();
-        flag=flag+1;
-    }else if(flag == 1){
+        flag = flag + 1;
+    } else if (flag == 1) {
         $("#div_1").html(temp1);
-         $("#div_1").show();
-        flag=flag+1;
-    }else if(flag == 2){
+        $("#div_1").show();
+        flag = flag + 1;
+    } else if (flag == 2) {
         $("#div_2").html(temp1);
         $("#div_2").show();
-        flag=flag+1;
-    }else if(flag == 3){
+        flag = flag + 1;
+    } else if (flag == 3) {
         $("#div_3").html(temp1);
         $("#div_3").show();
-        flag=flag+1;
-    }else if(flag == 4){
+        flag = flag + 1;
+    } else if (flag == 4) {
         $("#div_4").html(temp1);
         $("#div_4").show();
-        flag=flag+1;
-    }else if(flag == 5){
+        flag = flag + 1;
+    } else if (flag == 5) {
         $("#div_5").html(temp1);
         $("#div_5").show();
-        flag=flag+1;
-    }else if(flag == 6){
+        flag = flag + 1;
+    } else if (flag == 6) {
         $("#div_6").html(temp1);
         $("#div_6").show();
-        flag=flag+1;
-    }else if(flag == 7){
+        flag = flag + 1;
+    } else if (flag == 7) {
         $("#div_7").html(temp1);
         $("#div_7").show();
-        flag=flag+1;
-    }else if(flag == 8){
+        flag = flag + 1;
+    } else if (flag == 8) {
         $("#div_8").html(temp1);
         $("#div_8").show();
-        flag=flag+1;
-    }else if(flag == 9){
+        flag = flag + 1;
+    } else if (flag == 9) {
         $("#div_9").html(temp1);
         $("#div_9").show();
-        flag=flag+1;
-    }else if(flag == 10){
+        flag = flag + 1;
+    } else if (flag == 10) {
         $("#div_10").html(temp1);
         $("#div_10").show();
-        flag=flag+1;
+        flag = flag + 1;
     }
 }
 
 function allhtml(item) {
-    var allhtml= "<tr id=\"t"+item.id+"\" class='noExl'><td><input type=\"checkbox\" name=\"piliang\" value=\""+item.id+"\"/></td><td>"+item.id+
-        "</td><td><a href=\""+item.id+"\" onclick=\"editfunc(this);return false;\"><span class=\"glyphicon glyphicon-edit\"></span></a>"+
-        "</td><td><a href=\""+item.id+"\" onclick=\"deletefunc(this);return false;\"><span class=\"glyphicon glyphicon-trash\"></span></a>"+
-        "</td><td>"+item.pwkName+"</td><td>"+item.type+"</td><td>"+item.tjyear+"</td><td>"+item.tjmonth+
-        "</td><td>"+item.salt+"</td><td>"+item.cod+"</td><td>"+item.nh3+"</td><td>"+item.p+"</td><td>"+item.n+
-        "</td><td>"+item.cr6+"</td><td>"+item.cn+"</td><td>"+item.fdcjqs+"</td><td>"+item.bod5+"</td><td>"+item.xfw+"</td><td>"+item.oil+"</td><td>"+item.dzwy+"</td><td>"+item.phenol+
-        "</td><td>"+item.as+"</td><td>"+item.hg+"</td><td>"+item.pb+"</td><td>"+item.cd+"</td><td>"+item.ph+"</td><td>"+item.chloride+"</td><td>"+item.sulfide+"</td><td>"+item.ylzbmhxj+
+    var allhtml = "<tr id=\"t" + item.id + "\" class='noExl'><td><input type=\"checkbox\" name=\"piliang\" value=\"" + item.id + "\"/></td><td>" + item.id +
+        "</td><td><a href=\"" + item.id + "\" onclick=\"editfunc(this);return false;\"><span class=\"glyphicon glyphicon-edit\"></span></a>" +
+        "</td><td><a href=\"" + item.id + "\" onclick=\"deletefunc(this);return false;\"><span class=\"glyphicon glyphicon-trash\"></span></a>" +
+        "</td><td>" + item.pwkName + "</td><td>" + item.type + "</td><td>" + item.tjyear + "</td><td>" + item.tjmonth +
+        "</td><td>" + item.salt + "</td><td>" + item.cod + "</td><td>" + item.nh3 + "</td><td>" + item.p + "</td><td>" + item.n +
+        "</td><td>" + item.cr6 + "</td><td>" + item.cn + "</td><td>" + item.fdcjqs + "</td><td>" + item.bod5 + "</td><td>" + item.xfw + "</td><td>" + item.oil + "</td><td>" + item.dzwy + "</td><td>" + item.phenol +
+        "</td><td>" + item.as + "</td><td>" + item.hg + "</td><td>" + item.pb + "</td><td>" + item.cd + "</td><td>" + item.ph + "</td><td>" + item.chloride + "</td><td>" + item.sulfide + "</td><td>" + item.ylzbmhxj +
         "</td></tr>";
     return allhtml;
 }
-function  dndyallhtml(item) {
-    var allhtml= "<tr id=\"t"+item.id+"\" class='noExl'><td><input type=\"checkbox\" name=\"piliang\" value=\""+item.id+"\"/></td><td>"+item.id+
-        "</td><td><a href=\""+item.id+"\" onclick=\"editfunc(this);return false;\"><span class=\"glyphicon glyphicon-edit\"></span></a>"+
-        "</td><td><a href=\""+item.id+"\" onclick=\"deletefunc(this);return false;\"><span class=\"glyphicon glyphicon-trash\"></span></a>"+
-        "</td><td>"+item.pwkName+"</td><td>"+item.type+"</td><td>"+item.tjstart+"</td><td>"+item.tjend+"</td><td>"+item.tjmonth+
-        "</td><td>"+item.salt+"</td><td>"+item.cod+"</td><td>"+item.nh3+"</td><td>"+item.p+"</td><td>"+item.n+
-        "</td><td>"+item.cr6+"</td><td>"+item.cn+"</td><td>"+item.fdcjqs+"</td><td>"+item.bod5+"</td><td>"+item.xfw+"</td><td>"+item.oil+"</td><td>"+item.dzwy+"</td><td>"+item.phenol+
-        "</td><td>"+item.as+"</td><td>"+item.hg+"</td><td>"+item.pb+"</td><td>"+item.cd+"</td><td>"+item.ph+"</td><td>"+item.chloride+"</td><td>"+item.sulfide+"</td><td>"+item.ylzbmhxj+
+
+function dndyallhtml(item) {
+    var allhtml = "<tr id=\"t" + item.id + "\" class='noExl'><td><input type=\"checkbox\" name=\"piliang\" value=\"" + item.id + "\"/></td><td>" + item.id +
+        "</td><td><a href=\"" + item.id + "\" onclick=\"editfunc(this);return false;\"><span class=\"glyphicon glyphicon-edit\"></span></a>" +
+        "</td><td><a href=\"" + item.id + "\" onclick=\"deletefunc(this);return false;\"><span class=\"glyphicon glyphicon-trash\"></span></a>" +
+        "</td><td>" + item.pwkName + "</td><td>" + item.type + "</td><td>" + item.tjyear + "</td><td>" + item.tjmonth + "</td><td>" + item.zbtype +
+        "</td><td>" + item.xz +
         "</td></tr>";
     return allhtml;
 }
