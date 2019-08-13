@@ -23,14 +23,14 @@ html += "<tr><td>统计月份</td><td>${tjmonth}</td></tr>";
 html += "<tr><td>统计日</td><td>${tjday}</td></tr>";
 html += "<tr><td>排污口编号</td><td>${pwkCode}</td></tr>";
 html += "<tr><td>单位名称</td><td>${name}</td></tr>";
-html += "<tr><td>排放口名称</td><td>${pwkName}</td></tr>";
-html += "<tr><td>排放口类型</td><td>${pwkType}</td></tr>";
+html += "<tr><td>排污口名称</td><td>${pwkName}</td></tr>";
+html += "<tr><td>排污口类型</td><td>${pwkType}</td></tr>";
 html += "<tr><td>所在市</td><td>${city}</td></tr>";
 html += "<tr><td>所在县</td><td>${county}</td></tr>";
 html += "<tr><td>所在乡镇</td><td>${village}</td></tr>";
 html += "<tr><td>详细地址</td><td>${address}</td></tr>";
-html += "<tr><td>排放口经度</td><td>${longitude}</td></tr>";
-html += "<tr><td>排放口纬度</td><td>${latitude}</td></tr>";
+html += "<tr><td>排污口经度</td><td>${longitude}</td></tr>";
+html += "<tr><td>排污口纬度</td><td>${latitude}</td></tr>";
 html += "<tr><td>是否取得审批手续</td><td>${isShenpi}</td></tr>";
 html += "<tr><td>审批单位及审批文号</td><td>${shenpi}</td></tr>";
 html += "<tr><td>批复主要污染物种类</td><td>${mainType}</td></tr>";
@@ -41,7 +41,7 @@ html += "<tr><td>排污许可证号</td><td>${pwCode}</td></tr>";
 html += "<tr><td>投入使用时间</td><td>${usetime}</td></tr>";
 html += "<tr><td>是否为非法排污口</td><td>${isInlaw}</td></tr>";
 html += "<tr><td>是否为设置不合理排污口</td><td>${isResonable}</td></tr>";
-html += "<tr><td>排放口靠河岸位置</td><td>${position}</td></tr>";
+html += "<tr><td>排污口靠河岸位置</td><td>${position}</td></tr>";
 html += "<tr><td>污水处理工艺</td><td>${processTech}</td></tr>";
 html += "<tr><td>废水排放方式</td><td>${emissionMode}</td></tr>";
 html += "<tr><td>排放去向</td><td>${pwqx}</td></tr>";
@@ -708,7 +708,7 @@ function initMap() {
                             "nogetItems":data[i].nogetItems,
                         };
                         var point = new Point(lon, lat, map.spatialReference);
-                        var infoTemplate = new InfoTemplate("排放口基本信息", html);
+                        var infoTemplate = new InfoTemplate("排污口基本信息", html);
                         var symbol1 = new PictureMarkerSymbol("app/img/location.png", 16, 16);
                         var graphic = new Graphic(point, symbol1, attr, infoTemplate);
                         graphicLayer.add(graphic);
@@ -993,7 +993,7 @@ function updatePoint(data){
             };
             console.log(lon);
             var point = new Point(lon, lat, map.spatialReference);
-            var infoTemplate = new InfoTemplate("排放口基本信息", html);
+            var infoTemplate = new InfoTemplate("排污口基本信息", html);
             var symbol1 = new PictureMarkerSymbol("app/img/location.png", 16, 16);
 
             var graphic = new Graphic(point, symbol1, attr, infoTemplate);

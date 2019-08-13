@@ -924,7 +924,7 @@ function updatePoint(data){
                 "others": item.others
             };
             var point = new Point(lon, lat, map.spatialReference);
-            var infoTemplate = new InfoTemplate("排放口最新调查数据", gishtml);
+            var infoTemplate = new InfoTemplate("排污口最新调查数据", gishtml);
             var symbol1 = new PictureMarkerSymbol("app/img/location.png", 16, 16);
             var graphic = new Graphic(point, symbol1, attr, infoTemplate);
             graphicLayer.add(graphic);
@@ -986,7 +986,7 @@ function updatePointsec(data){
                 "others": item.others
             };
             var point = new Point(lon, lat, map.spatialReference);
-            var infoTemplate = new InfoTemplate("排放口最新调查数据", gishtmlsec);
+            var infoTemplate = new InfoTemplate("排污口最新调查数据", gishtmlsec);
             var symbol1 = new PictureMarkerSymbol("app/img/location.png", 16, 16);
             var graphic = new Graphic(point, symbol1, attr, infoTemplate);
             graphicLayer.add(graphic);

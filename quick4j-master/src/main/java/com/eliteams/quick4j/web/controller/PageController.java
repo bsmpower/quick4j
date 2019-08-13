@@ -183,6 +183,15 @@ public class PageController {
     }
 
     /**
+     * 多排污口分析
+     */
+
+    @RequestMapping("mulpwkanalyze")
+    public String mulpwkanalyze(){
+        return "echart/mulpwkanalyze";
+    }
+
+    /**
      *溯源分析
      */
     @RequestMapping("syfx")

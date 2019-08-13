@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>雨水排放口信息</title>
+    <title>雨水排污口信息</title>
 
     <style type="text/css">
         .table-cont {
@@ -119,7 +119,7 @@
         </table>
     </div>
 </div>
-<%--新增排放口--%>
+<%--新增排污口--%>
 <div>
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" data-backdrop="static"
          aria-labelledby="myModalLabel" aria-hidden="true">
@@ -127,7 +127,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="myModalLabel">
-                        新增排放口信息
+                        新增排污口信息
                     </h4>
                 </div>
                 <div class="modal-body">
@@ -358,7 +358,7 @@
     </div>
 </div>
 
-<%--更新排放口--%>
+<%--更新排污口--%>
 <div>
     <div class="modal fade" id="myModaledit" tabindex="-1" role="dialog" data-backdrop="static"
          aria-labelledby="myModalLabel" aria-hidden="true">
@@ -369,7 +369,7 @@
                     <%--&times;--%>
                     <%--</button>--%>
                     <h4 class="modal-title" id="myModalLabel1">
-                        更新排放口信息
+                        更新排污口信息
                     </h4>
                 </div>
                 <div class="modal-body">
@@ -619,7 +619,7 @@
     </div>
 </div>
 
-<%--搜索排放口--%>
+<%--搜索排污口--%>
 <div>
     <div class="modal fade" id="myModalsearch" tabindex="-1" role="dialog" data-backdrop="static"
          aria-labelledby="myModalLabel" aria-hidden="true">

@@ -131,14 +131,14 @@
                 <th>统计日</th>
                 <th>排污口编号</th>
                 <th>单位名称</th>
-                <th>排放口名称</th>
-                <th>排放口类型</th>
+                <th>排污口名称</th>
+                <th>排污口类型</th>
                 <th>所在市</th>
                 <th>所在县（市区）</th>
                 <th>所在乡镇</th>
                 <th>详细地址</th>
-                <th>排放口经度</th>
-                <th>排放口纬度</th>
+                <th>排污口经度</th>
+                <th>排污口纬度</th>
                 <th>是否取得审批手续</th>
                 <th>审批单位及审批文号</th>
                 <th>批复主要污染物种类</th>
@@ -149,7 +149,7 @@
                 <th>投入使用时间</th>
                 <th>是否为非法排污口</th>
                 <th>是否为设置不合理排污口</th>
-                <th>排放口靠河岸位置</th>
+                <th>排污口靠河岸位置</th>
                 <th>污水处理工艺</th>
                 <th>废水排放方式</th>
                 <th>排放去向</th>
@@ -184,7 +184,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="myModalLabel">
-                        新增排放口信息
+                        新增排污口信息
                     </h4>
                 </div>
                 <div class="modal-body">
@@ -226,13 +226,13 @@
                                     </div>
                                     <br>
                                     <div class="input-group">
-                                        <span class="input-group-addon">排放口名称</span>
+                                        <span class="input-group-addon">排污口名称</span>
                                         <input name="pwkName" type="text" class="form-control" placeholder="">						
                                         <span class="input-group-addon">注释</span>
                                     </div>
                                     <br>
                                     <div class="input-group">
-                                        <span class="input-group-addon">排放口类型</span>
+                                        <span class="input-group-addon">排污口类型</span>
                                         <input name="pwkType" list="pwktype2" type="text" class="form-control" placeholder=" ">
 										<datalist id="pwktype2">
                                             <option value="工业废水排污口">工业废水排污口</option>
@@ -242,7 +242,7 @@
                                             <option value="农田退水入海口">农田退水入海口</option>
                                             <option value="水产养殖排污口">水产养殖排污口</option>
                                             <option value="雨污混合排污口">雨污混合排污口</option>
-				                            <option value="雨水排放口">雨水排放口</option>
+				                            <option value="雨水排污口">雨水排污口</option>
 				                            <option value="泄洪口">泄洪口</option>
 				                            <option value="其它">其它</option>
                                         </datalist>
@@ -288,13 +288,13 @@
                                     </div>
                                     <br>
                                     <div class="input-group">
-                                        <span class="input-group-addon">排放口经度</span>
+                                        <span class="input-group-addon">排污口经度</span>
                                         <input name="longitude" type="text" class="form-control" placeholder=" ">
                                         <span class="input-group-addon">注释</span>
                                     </div>
                                     <br>
                                     <div class="input-group">
-                                        <span class="input-group-addon">排放口纬度</span>
+                                        <span class="input-group-addon">排污口纬度</span>
                                         <input name="latitude" type="text" class="form-control" placeholder=" ">
                                         <span class="input-group-addon">注释</span>
                                     </div>
@@ -378,7 +378,7 @@
                                     </div>
                                     <br>
                                     <div class="input-group">
-                                        <span class="input-group-addon">排放口靠河岸位置</span>
+                                        <span class="input-group-addon">排污口靠河岸位置</span>
                                         <input name="position" list="khwz2" type="text" class="form-control" placeholder=" ">
 										<datalist id="khwz2">
                                 <option value="左岸">左岸</option>
@@ -632,7 +632,7 @@
                     <%--&times;--%>
                     <%--</button>--%>
                     <h4 class="modal-title" id="myModalLabel1">
-                        更新排放口信息
+                        更新排污口信息
                     </h4>
                 </div>
                 <div class="modal-body">
@@ -671,13 +671,13 @@
                                     </div>
                                     <br>
                                     <div class="input-group">
-                                        <span class="input-group-addon">排放口名称</span>
+                                        <span class="input-group-addon">排污口名称</span>
                                         <input id="pwk5" name="pwkName" type="text" class="form-control" placeholder="">
                                         <span class="input-group-addon">注释</span>
                                     </div>
                                     <br>
                                     <div class="input-group">
-                                        <span class="input-group-addon">排放口类型</span>
+                                        <span class="input-group-addon">排污口类型</span>
                                         <input id="pwk6" name="pwkType" list="pwktype3" type="text" class="form-control" placeholder="">
 										<datalist id="pwktype3">
                                             <option value="工业废水排污口">工业废水排污口</option>
@@ -687,7 +687,7 @@
                                             <option value="农田退水入海口">农田退水入海口</option>
                                             <option value="水产养殖排污口">水产养殖排污口</option>
                                             <option value="雨污混合排污口">雨污混合排污口</option>
-				                            <option value="雨水排放口">雨水排放口</option>
+				                            <option value="雨水排污口">雨水排污口</option>
 				                            <option value="泄洪口">泄洪口</option>
 				                            <option value="其它">其它</option>
                                         </datalist>
@@ -733,7 +733,7 @@
                                     </div>
                                     <br>
                                     <div class="input-group">
-                                        <span class="input-group-addon">排放口经度</span>
+                                        <span class="input-group-addon">排污口经度</span>
                                         <input id="pwk11" name="longitude" type="text" class="form-control"
                                                placeholder="">
                                         <span class="input-group-addon">注释</span>
@@ -741,7 +741,7 @@
                                     <br>
 
                                     <div class="input-group">
-                                        <span class="input-group-addon">排放口纬度</span>
+                                        <span class="input-group-addon">排污口纬度</span>
                                         <input id="pwk12" name="latitude" type="text" class="form-control"
                                                placeholder="">
                                         <span class="input-group-addon">注释</span>
@@ -834,7 +834,7 @@
                                     </div>
                                     <br>
                                     <div class="input-group">
-                                        <span class="input-group-addon">排放口靠河岸位置</span>
+                                        <span class="input-group-addon">排污口靠河岸位置</span>
                                         <input id="pwk23" list="khwz3" name="position" type="text" class="form-control"
                                                placeholder="">
 											   <datalist id="khwz3">
@@ -1119,13 +1119,13 @@
                             <input type="checkbox" id="inlineCheckbox5" value="option5" onclick="exe()"> 单位名称
                         </label>
                         <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox6" value="option6" onclick="exe()"> 排放口名称
+                            <input type="checkbox" id="inlineCheckbox6" value="option6" onclick="exe()"> 排污口名称
                         </label>
                     </div>
                     <br>
                     <div>
                         <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox7" value="option7" onclick="exe()"> 排放口类型
+                            <input type="checkbox" id="inlineCheckbox7" value="option7" onclick="exe()"> 排污口类型
                         </label>
                         <label class="checkbox-inline">
                             <input type="checkbox" id="inlineCheckbox8" value="option8" onclick="exe()"> 所在市(city)
@@ -1140,13 +1140,13 @@
                             <input type="checkbox" id="inlineCheckbox11" value="option11" onclick="exe()"> 详细地址
                         </label>
                         <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox12" value="option12" onclick="exe()"> 排放口经度
+                            <input type="checkbox" id="inlineCheckbox12" value="option12" onclick="exe()"> 排污口经度
                         </label>
                     </div>
                     <br>
                     <div>
                         <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox13" value="option13" onclick="exe()"> 排放口纬度
+                            <input type="checkbox" id="inlineCheckbox13" value="option13" onclick="exe()"> 排污口纬度
                         </label>
                         <label class="checkbox-inline">
                             <input type="checkbox" id="inlineCheckbox14" value="option14" onclick="exe()"> 是否取得审批手续
@@ -1182,7 +1182,7 @@
                             <input type="checkbox" id="inlineCheckbox23" value="option23" onclick="exe()"> 是否为设置不合理排污口
                         </label>
                         <label class="checkbox-inline">
-                            <input type="checkbox" id="inlineCheckbox24" value="option24" onclick="exe()"> 排放口靠河岸位置
+                            <input type="checkbox" id="inlineCheckbox24" value="option24" onclick="exe()"> 排污口靠河岸位置
                         </label>
                     </div>
                     <br>
@@ -1333,9 +1333,9 @@
                            class="tableBasic">
                         <tr>
                             <td width="30%" align="center">文档模板</td>
-                            <td width="55%" align="center">排放口基本信息表.xls</td>
+                            <td width="55%" align="center">排污口基本信息表.xls</td>
                             <td width="15%" align="center">
-                                <a type="button" class="btnz btnz-info" id="download" href="download/排放口基本信息表.xls"
+                                <a type="button" class="btnz btnz-info" id="download" href="download/排污口基本信息表.xls"
                                    readonly=""><i class='glyphicon glyphicon-download'></i> 下载</a>
                             </td>
                         </tr>
@@ -1474,7 +1474,7 @@
         }
         if (val6 == true) {
             var temp6 = "<div class=\"input-group\">\n" +
-                "                                        <span class=\"input-group-addon\">排放口名称</span>\n" +
+                "                                        <span class=\"input-group-addon\">排污口名称</span>\n" +
                 "                                        <input id=\"select5\" name=\"pwkName\" type=\"text\" class=\"form-control\" placeholder=\"\">\n" +
                 "                                        <span class=\"input-group-addon\">注释</span>\n" +
                 "                                    </div>"
@@ -1486,7 +1486,7 @@
         }
         if (val7 == true) {
             var temp7 = "<div class=\"input-group\">\n" +
-                "                                        <span class=\"input-group-addon\">排放口类型</span>\n" +
+                "                                        <span class=\"input-group-addon\">排污口类型</span>\n" +
                 "                                        <input id=\"select6\" list=\"pwktype1\" name=\"pwkType\" type=\"text\" class=\"form-control\" placeholder=\"\">\n" +
 				"                                        <datalist id=\"pwktype1\">\n" +
                 "                                                <option value=\"工业废水排污口\">工业废水排污口</option>\n" +
@@ -1496,7 +1496,7 @@
                 "                                                <option value=\"农田退水入海口\">农田退水入海口</option>\n" +
                 "                                                <option value=\"水产养殖排污口\">水产养殖排污口</option>\n" +
                 "                                                <option value=\"雨污混合排污口\">雨污混合排污口</option>\n" +
-				"                                                <option value=\"雨水排放口\">雨水排放口</option>\n" +
+				"                                                <option value=\"雨水排污口\">雨水排污口</option>\n" +
 				"                                                <option value=\"泄洪口\">泄洪口</option>\n" +
 				"                                                <option value=\"其它\">其它</option>\n" +
                 "                                        </datalist>"+
@@ -1571,7 +1571,7 @@
         }
         if (val12 == true) {
             var temp12 = "<div class=\"input-group\">\n" +
-                "                                        <span class=\"input-group-addon\">排放口经度</span>\n" +
+                "                                        <span class=\"input-group-addon\">排污口经度</span>\n" +
                 "                                        <input id=\"select11\" name=\"longitude\" type=\"text\" class=\"form-control\"\n" +
                 "                                               placeholder=\"\">\n" +
                 "                                        <span class=\"input-group-addon\">注释</span>\n" +
@@ -1584,7 +1584,7 @@
         }
         if (val13 == true) {
             var temp13 = "<div class=\"input-group\">\n" +
-                "                                        <span class=\"input-group-addon\">排放口纬度</span>\n" +
+                "                                        <span class=\"input-group-addon\">排污口纬度</span>\n" +
                 "                                        <input id=\"select12\" name=\"latitude\" type=\"text\" class=\"form-control\"\n" +
                 "                                               placeholder=\"\">\n" +
                 "                                        <span class=\"input-group-addon\">注释</span>\n" +
@@ -1741,7 +1741,7 @@
         }
         if (val24 == true) {
             var temp24 = "<div class=\"input-group\">\n" +
-                "                                        <span class=\"input-group-addon\">排放口靠河岸位置</span>\n" +
+                "                                        <span class=\"input-group-addon\">排污口靠河岸位置</span>\n" +
                 "                                        <input id=\"select23\" list=\"khwz1\" name=\"position\" type=\"text\" class=\"form-control\"\n" +
                 "                                               placeholder=\"\">\n" +
 				"                                        <datalist id=\"khwz1\">\n" +

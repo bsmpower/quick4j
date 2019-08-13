@@ -55,17 +55,17 @@
             <form class="bs-example bs-example-form" role="echartform" id="echartform">
                 <div class="input-group">
                     <span class="input-group-addon">不达标排污口名称</span>
-                    <input id="pwk0" name="pwkname" type="text" class="form-control" placeholder="请输入指定的排放口名称">
+                    <input id="pwk0" name="pwkname" type="text" class="form-control" placeholder="请输入指定的排污口名称">
                 </div>
                 <br>
                 <div class="input-group">
                     <span class="input-group-addon">排污口类型</span>
-                    <input id="pwk1" list="pwkselect" type="text" class="form-control" placeholder="请选择排放口类型">
+                    <input id="pwk1" list="pwkselect" type="text" class="form-control" placeholder="请选择排污口类型">
                     <datalist id="pwkselect">
-                        <option value="雨水排放口">雨水排放口</option>
+                        <option value="雨水排污口">雨水排污口</option>
                         <option value="雨污混合口">雨污混合口</option>
                         <option value="雨水泄洪口">雨水泄洪口</option>
-                        <option value="排放口基本信息">排放口基本信息</option>
+                        <option value="排污口基本信息">排污口基本信息</option>
                         <option value="油田信息">油田信息</option>
                         <option value="港口码头">港口码头</option>
                         <option value="海岛名录">海岛名录</option>

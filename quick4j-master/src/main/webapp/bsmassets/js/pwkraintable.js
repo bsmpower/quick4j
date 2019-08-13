@@ -580,7 +580,7 @@ function initMap() {
                             "hyseaSzmb":data[i].hyseaSzmb,
                         };
                         var point = new Point(lon, lat, map.spatialReference);
-                        var infoTemplate = new InfoTemplate("雨水排放口信息", html);
+                        var infoTemplate = new InfoTemplate("雨水排污口信息", html);
                         var symbol1 = new PictureMarkerSymbol("app/img/location.png", 16, 16);
                         var graphic = new Graphic(point, symbol1, attr, infoTemplate);
                         graphicLayer.add(graphic);
@@ -852,7 +852,7 @@ function updatePoint(data){
             };
             console.log(lon);
             var point = new Point(lon, lat, map.spatialReference);
-            var infoTemplate = new InfoTemplate("雨水排放口信息", html);
+            var infoTemplate = new InfoTemplate("雨水排污口信息", html);
             var symbol1 = new PictureMarkerSymbol("app/img/location.png", 16, 16);
             var graphic = new Graphic(point, symbol1, attr, infoTemplate);
             graphicLayer.add(graphic);

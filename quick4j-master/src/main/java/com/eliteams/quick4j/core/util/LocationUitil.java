@@ -30,10 +30,10 @@ public class LocationUitil {
     public Map<String,Object> getlocation(String pwkname){
         Map<String, Object> modelmap = new HashMap<>();
         //第一步，我们需要七个类
-        //1.排放口基本信息
+        //1.排污口基本信息
         outlet ot = new outlet();
         ot.setPwkName(pwkname);
-        //2.雨水排放口
+        //2.雨水排污口
         rain_outlet rt = new rain_outlet();
         rt.setPskName(pwkname);
         //3.雨水泄洪口

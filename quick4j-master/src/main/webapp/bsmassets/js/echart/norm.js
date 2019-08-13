@@ -34,9 +34,9 @@ $(function () {
         $('#table-cont').css("display", "block");
 
         var url = "rest/statistics/multarget"
-        //排放口名字
+        //排污口名字
         var pwkname = $("#pwk0").val();
-        //排放口类型
+        //排污口类型
         var pwkselect = $("#pwk1").val();
         //统计开始年份
         var tjstart = $("#pwk2").val();
@@ -106,7 +106,7 @@ $(function () {
                 // 指定图表的配置项和数据
                 var option = {
                     title: {
-                        text: '排放口全指标达标情况'
+                        text: '排污口全指标达标情况'
                     },
                     tooltip: {},
                     legend: {
@@ -143,9 +143,9 @@ $(function () {
         $('#table-cont').css("display", "block");
 
         var url = "rest/statistics/multargetbs"
-        //排放口名字
+        //排污口名字
         var pwkname = $("#pwk0").val();
-        //排放口类型
+        //排污口类型
         var pwkselect = $("#pwk1").val();
         //统计开始年份
         var tjstart = $("#pwk2").val();
@@ -211,7 +211,7 @@ $(function () {
                 // 指定图表的配置项和数据
                 var option = {
                     title: {
-                        text: '排放口全指标达标情况'
+                        text: '排污口全指标达标情况'
                     },
                     tooltip: {},
                     legend: {
@@ -246,9 +246,9 @@ $(function () {
     $("#dndyxzanalyze").click(function () {
         var url = "rest/statistics/dndydtarget";
 
-        //排放口名字
+        //排污口名字
         var pwkname = $("#pwk0").val();
-        //排放口类型
+        //排污口类型
         var pwkselect = $("#pwk1").val();
         //统计开始年份
         var tjstart = $("#pwk2").val();
@@ -302,7 +302,7 @@ $(function () {
                 // 指定图表的配置项和数据
                 var option = {
                     title: {
-                        text: '排放口全指标达标情况'
+                        text: '排污口全指标达标情况'
                     },
                     tooltip: {},
                     legend: {
@@ -337,9 +337,9 @@ $(function () {
         $('#table-cont').css("display", "none");
 
         var url = "rest/statistics/dndydtargetbs";
-        //排放口名字
+        //排污口名字
         var pwkname = $("#pwk0").val();
-        //排放口类型
+        //排污口类型
         var pwkselect = $("#pwk1").val();
         //统计开始年份
         var tjstart = $("#pwk2").val();
@@ -392,7 +392,7 @@ $(function () {
                 // 指定图表的配置项和数据
                 var option = {
                     title: {
-                        text: '排放口全指标达标情况'
+                        text: '排污口全指标达标情况'
                     },
                     tooltip: {},
                     legend: {
@@ -430,9 +430,9 @@ $(function () {
         //扎啤配烧烤，还有热水澡
 
         var url = "rest/statistics/dydtarget";
-        //排放口名字
+        //排污口名字
         var pwkname = $("#pwk0").val();
-        //排放口类型
+        //排污口类型
         var pwkselect = $("#pwk1").val();
         //统计开始年份
         var tjstart = $("#pwk2").val();
@@ -481,7 +481,7 @@ $(function () {
                 // 指定图表的配置项和数据
                 var option = {
                     title: {
-                        text: '排放口全指标达标情况'
+                        text: '排污口全指标达标情况'
                     },
                     tooltip: {},
                     legend: {
@@ -518,9 +518,9 @@ $(function () {
         //扎啤配烧烤，还有热水澡
 
         var url = "rest/statistics/dydtargetbs";
-        //排放口名字
+        //排污口名字
         var pwkname = $("#pwk0").val();
-        //排放口类型
+        //排污口类型
         var pwkselect = $("#pwk1").val();
         //统计开始年份
         var tjstart = $("#pwk2").val();
@@ -569,7 +569,7 @@ $(function () {
                 // 指定图表的配置项和数据
                 var option = {
                     title: {
-                        text: '排放口全指标达标情况'
+                        text: '排污口全指标达标情况'
                     },
                     tooltip: {},
                     legend: {
@@ -597,7 +597,7 @@ $(function () {
         });
 
     })
-    //多排放口分析
+    //多排污口分析
 
     $("#mulpwkfx").click(function () {
         //获取到每个表格的东西
@@ -655,7 +655,7 @@ $(function () {
                 // 指定图表的配置项和数据
                 var option = {
                     title: {
-                        text: '排放口全指标达标情况'
+                        text: '排污口全指标达标情况'
                     },
                     tooltip: {},
                     legend: {
@@ -690,8 +690,8 @@ function addmessage() {
     count = count + 1;
     var temp1 = "<div class=\"input-group\">\n" +
         "                        <span class=\"input-group-addon\">排污口名称</span>\n" +
-        "                        <input id=\"pwkname\" name=\"tjyear\" type=\"text\" class=\"form-control\" placeholder=\"请输入指定的排放口名称\">\n" +
-        "                        <span class=\"input-group-addon\">所属排放口类别</span>\n" +
+        "                        <input id=\"pwkname\" name=\"tjyear\" type=\"text\" class=\"form-control\" placeholder=\"请输入指定的排污口名称\">\n" +
+        "                        <span class=\"input-group-addon\">所属排污口类别</span>\n" +
         "\n" +
         "                        <select name=\"pwkType\" class=\"form-control\" onchange=\"editpre()\">\n" +
         "                            <option value=\"\"></option>\n" +
@@ -702,7 +702,7 @@ function addmessage() {
         "                            <option value=\"农田退水入海口\">农田退水入海口</option>\n" +
         "                            <option value=\"水产养殖排污口\">水产养殖排污口</option>\n" +
         "                            <option value=\"雨污混合排污口\">雨污混合排污口</option>\n" +
-        "                            <option value=\"雨水排放口\">雨水排放口</option>\n" +
+        "                            <option value=\"雨水排污口\">雨水排污口</option>\n" +
         "                            <option value=\"泄洪口\">泄洪口</option>\n" +
         "                            <option value=\"其他\">其他</option>\n" +
         "                        </select>\n" +

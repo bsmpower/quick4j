@@ -331,7 +331,7 @@
                                         <option value="农田退水入海口">农田退水入海口</option>
                                         <option value="水产养殖排污口">水产养殖排污口</option>
                                         <option value="雨污混合排污口">雨污混合排污口</option>
-                                        <option value="雨水排放口">雨水排放口</option>
+                                        <option value="雨水排污口">雨水排污口</option>
                                         <option value="泄洪口">泄洪口</option>
                                         <option value="其他">其他</option>
                                     </select>
@@ -542,7 +542,7 @@
                                         <option value="农田退水入海口">农田退水入海口</option>
                                         <option value="水产养殖排污口">水产养殖排污口</option>
                                         <option value="雨污混合排污口">雨污混合排污口</option>
-                                        <option value="雨水排放口">雨水排放口</option>
+                                        <option value="雨水排污口">雨水排污口</option>
                                         <option value="泄洪口">泄洪口</option>
                                         <option value="其他">其他</option>
                                     </select>

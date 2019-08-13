@@ -16,8 +16,8 @@
     <div class="col-lg-6">
         <form class="bs-example bs-example-form" role="form" id="echartGen">
             <div class="input-group">
-                <span class="input-group-addon">排放口</span>
-                <input id="pwk0" name="tjyear" type="text" class="form-control" placeholder="请输入要统计的排放口名称">
+                <span class="input-group-addon">排污口</span>
+                <input id="pwk0" name="tjyear" type="text" class="form-control" placeholder="请输入要统计的排污口名称">
             </div>
             <br>
             <div class="input-group">
@@ -93,7 +93,7 @@
     // 指定图表的配置项和数据
     var option = {
         title: {
-            text: '排放口全指标达标情况'
+            text: '排污口全指标达标情况'
         },
         tooltip: {},
         legend: {

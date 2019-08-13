@@ -87,7 +87,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="myModalLabel">
-                        新增排放口信息
+                        新增排污口信息
                     </h4>
                 </div>
                 <div class="modal-body">
@@ -132,7 +132,7 @@
                     <%--&times;--%>
                     <%--</button>--%>
                     <h4 class="modal-title" id="myModalLabel1">
-                        更新排放口信息
+                        更新排污口信息
                     </h4>
                 </div>
                 <div class="modal-body">

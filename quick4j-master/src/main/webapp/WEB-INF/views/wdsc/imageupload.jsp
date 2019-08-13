@@ -54,10 +54,10 @@
                    value="请选择图片"/>
         </div>
         <div class="col-lg-3">
-            <input id="pwkid" type="text" class="form-control" placeholder="排放口编号">
+            <input id="pwkid" type="text" class="form-control" placeholder="排污口编号">
         </div>
         <div class="col-lg-3">
-            <input id="pwkname" type="text" class="form-control" placeholder="排放口名称">
+            <input id="pwkname" type="text" class="form-control" placeholder="排污口名称">
         </div>
         <div class="col-lg-4">
             <button id="upload" class="btn btn-success">上传</button>
@@ -84,8 +84,8 @@
             <th>ID</th>
             <th>编辑</th>
             <th>删除</th>
-            <th>排放口编号</th>
-            <th>排放口名称</th>
+            <th>排污口编号</th>
+            <th>排污口名称</th>
             <th>上传时间</th>
             <th>图片名称</th>
             <th>下载地址</th>

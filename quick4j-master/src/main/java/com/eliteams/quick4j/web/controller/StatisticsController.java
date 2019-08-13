@@ -247,7 +247,7 @@ public class StatisticsController {
 //        emission.setTjyear(tjstart);
         emission.setTjmonth(monitormonth);
 
-        //先查询出该排放口所有指定月份的信息
+        //先查询出该排污口所有指定月份的信息
         List<Emission> emissions = emissionService.selectEmission(emission);
 
         //筛选出年份的信息
@@ -404,7 +404,7 @@ public class StatisticsController {
 //        emission.setTjyear(tjstart);
         emission.setTjmonth(monitormonth);
 
-        //先查询出该排放口所有指定月份的信息
+        //先查询出该排污口所有指定月份的信息
         List<Emission> emissions = emissionService.selectEmission(emission);
 
         //筛选出年份的信息
@@ -980,11 +980,11 @@ public class StatisticsController {
         String dbtype = (String)request.getParameter("dbtype");
         String rivername;
         String city;
-        //搜索出排放口信息，根据pwkselect选择各种表
+        //搜索出排污口信息，根据pwkselect选择各种表
         //获取到排入河流名称 river
-        //搜索所有与这个河流有关的排放口信息
+        //搜索所有与这个河流有关的排污口信息
         switch(pwkselect){
-            case "雨水排放口":
+            case "雨水排污口":
                 rain_outlet rainOutlet = new rain_outlet();
                 rainOutlet.setPskName(pwkname);
                 rainOutlet.setTjyear(year);
@@ -996,7 +996,7 @@ public class StatisticsController {
                 modelmap.put("city",city);
 
                 //智者务其实，愚者争其名
-                //搜索与这个河流有关的排放口信息
+                //搜索与这个河流有关的排污口信息
                 rain_outlet rainOutletnew = new rain_outlet();
                 rainOutletnew.setRiverName(rivername);
                 List<rain_outlet> rsnew = rainOutletMapper.selectRainoutlet(rainOutletnew);
@@ -1004,12 +1004,12 @@ public class StatisticsController {
                 List<Double> lon = new ArrayList<>();
                 List<Double> lat = new ArrayList<>();
 
-                //获取排放口的pwkname、tjyear、tjmonth、type
+                //获取排污口的pwkname、tjyear、tjmonth、type
                 for(rain_outlet ros:rsnew){
                     String rosyear = ros.getTjyear();
                     String rosmonth =ros.getTjmonth();
                     String rospwkname = ros.getPskName();
-                    String rostype = "雨水排放口";
+                    String rostype = "雨水排污口";
 
                     Double longitude = ros.getLongitude();
                     lon.add(longitude);
@@ -1123,27 +1123,258 @@ public class StatisticsController {
 
                 List<rainsewage> rw = rainsewagemapper.selectRainsewage(re);
                 rivername = rw.get(0).getRiverName();
+                city = rw.get(0).getCity();
+                modelmap.put("city",city);
 
-                //搜索与这个河流有关的排放口信息
+                //搜索与这个河流有关的排污口信息
                 rainsewage renew = new rainsewage();
                 renew.setRiverName(rivername);
                 List<rainsewage> rwnew = rainsewagemapper.selectRainsewage(renew);
+                modelmap.put("length",rwnew.size());
+                List<Double> lon1 = new ArrayList<>();
+                List<Double> lat1 = new ArrayList<>();
+
+                for(rainsewage rge: rwnew){
+                    String rgeyear = rge.getTjyear();
+                    String rgemonth = rge.getTjmonth();
+                    String rgepwkname = rge.getPskName();
+                    String rgetype = "雨污混合口";
+
+                    Double longitude = rge.getLongitude();
+                    lon1.add(longitude);
+                    Double latitude = rge.getLatitude();
+                    lat1.add(latitude);
+
+                    //获取经纬度
+                    Emission emission = new Emission();
+                    emission.setPwkName(rgepwkname);
+                    emission.setTjyear(rgeyear);
+                    emission.setTjmonth(rgemonth);
+                    emission.setType(rgetype);
+
+                    //搜索相关数据
+                    List<Emission> emissions = emissionService.selectEmission(emission);
+                    switch(dbtype){
+                        case "salt":
+                            Double salt = emissions.get(0).getSalt();
+                            modelmap.put(rgepwkname,salt);
+                            break;
+                        case "COD":
+                            Double COD = emissions.get(0).getCOD();
+                            modelmap.put(rgepwkname,COD);
+                            break;
+                        case "NH3":
+                            Double NH3 = emissions.get(0).getNH3();
+                            modelmap.put(rgepwkname,NH3);
+                            break;
+                        case "P":
+                            Double P = emissions.get(0).getP();
+                            modelmap.put(rgepwkname,P);
+                            break;
+                        case "N":
+                            Double N = emissions.get(0).getN();
+                            modelmap.put(rgepwkname,N);
+                            break;
+                        case "Cr6":
+                            Double Cr6 = emissions.get(0).getCr6();
+                            modelmap.put(rgepwkname,Cr6);
+                            break;
+                        case "CN":
+                            Double CN = emissions.get(0).getCN();
+                            modelmap.put(rgepwkname,CN);
+                            break;
+                        case "fdcjqs":
+                            Double fdcjqs = emissions.get(0).getFdcjqs();
+                            modelmap.put(rgepwkname,fdcjqs);
+                            break;
+                        case "BOD5":
+                            Double BOD5 = emissions.get(0).getBOD5();
+                            modelmap.put(rgepwkname,BOD5);
+                            break;
+                        case "xfw":
+                            Double xfw = emissions.get(0).getXfw();
+                            modelmap.put(rgepwkname,xfw);
+                            break;
+                        case "oil":
+                            Double oil = emissions.get(0).getOil();
+                            modelmap.put(rgepwkname,oil);
+                            break;
+                        case "dzwy":
+                            Double dzwy = emissions.get(0).getDzwy();
+                            modelmap.put(rgepwkname,dzwy);
+                            break;
+                        case "phenol":
+                            Double phenol = emissions.get(0).getPhenol();
+                            modelmap.put(rgepwkname,phenol);
+                            break;
+                        case "As":
+                            Double As = emissions.get(0).getAs();
+                            modelmap.put(rgepwkname,As);
+                            break;
+                        case "Hg":
+                            Double Hg = emissions.get(0).getHg();
+                            modelmap.put(rgepwkname,Hg);
+                            break;
+                        case "Pb":
+                            Double Pb = emissions.get(0).getPb();
+                            modelmap.put(rgepwkname,Pb);
+                            break;
+                        case "Cd":
+                            Double Cd = emissions.get(0).getCd();
+                            modelmap.put(rgepwkname,Cd);
+                            break;
+                        case "PH":
+                            Double PH = emissions.get(0).getPH();
+                            modelmap.put(rgepwkname,PH);
+                            break;
+                        case "chloride":
+                            Double chloride = emissions.get(0).getChloride();
+                            modelmap.put(rgepwkname,chloride);
+                            break;
+                        case "sulfide":
+                            Double sulfide = emissions.get(0).getSulfide();
+                            modelmap.put(rgepwkname,sulfide);
+                            break;
+                        case "ylzbmhxj":
+                            Double ylzbmhxj = emissions.get(0).getYlzbmhxj();
+                            modelmap.put(rgepwkname,ylzbmhxj);
+                            break;
+                    }
+                }
+                modelmap.put("longitude",lon1);
+                modelmap.put("latitude",lat1);
                 break;
             case "雨水泄洪口":
                 rain_spillway rainSpillway = new rain_spillway();
                 rainSpillway.setXhkName(pwkname);
                 rainSpillway.setTjyear(year);
-                rainSpillway.setTjyear(month);
+                rainSpillway.setTjmonth(month);
 
                 List<rain_spillway> ry = rainSpillwayMapper.selectRainSpillway(rainSpillway);
                 rivername = ry.get(0).getRiverName();
+                city = ry.get(0).getCity();
+                modelmap.put("city",city);
 
-                //搜索与这个河流有关的排放口信息
+                //搜索与这个河流有关的排污口信息
                 rain_spillway rainSpillwaynew = new rain_spillway();
                 rainSpillwaynew.setRiverName(rivername);
                 List<rain_spillway> rynew = rainSpillwayMapper.selectRainSpillway(rainSpillwaynew);
+                modelmap.put("length",rynew.size());
+                List<Double> lon2 = new ArrayList<>();
+                List<Double> lat2 = new ArrayList<>();
+
+                //获取排污口的pwkname、tjyear、tjmonth、type
+                for(rain_spillway rsy:rynew){
+                    String rsyyear = rsy.getTjyear();
+                    String rsymonth = rsy.getTjmonth();
+                    String rsypwkname = rsy.getXhkName();
+                    String rsytype = "雨水泄洪口";
+
+                    Double longitude = rsy.getLongitude();
+                    lon2.add(longitude);
+                    Double latitude = rsy.getLatitude();
+                    lat2.add(latitude);
+
+                    //经纬度
+                    Emission emission = new Emission();
+                    emission.setPwkName(rsypwkname);
+                    emission.setTjyear(rsyyear);
+                    emission.setTjmonth(rsymonth);
+                    emission.setType(rsytype);
+
+                    //搜索相关数据
+                    List<Emission> emissions = emissionService.selectEmission(emission);
+                    switch(dbtype){
+                        case "salt":
+                            Double salt = emissions.get(0).getSalt();
+                            modelmap.put(rsypwkname,salt);
+                            break;
+                        case "COD":
+                            Double COD = emissions.get(0).getCOD();
+                            modelmap.put(rsypwkname,COD);
+                            break;
+                        case "NH3":
+                            Double NH3 = emissions.get(0).getNH3();
+                            modelmap.put(rsypwkname,NH3);
+                            break;
+                        case "P":
+                            Double P = emissions.get(0).getP();
+                            modelmap.put(rsypwkname,P);
+                            break;
+                        case "N":
+                            Double N = emissions.get(0).getN();
+                            modelmap.put(rsypwkname,N);
+                            break;
+                        case "Cr6":
+                            Double Cr6 = emissions.get(0).getCr6();
+                            modelmap.put(rsypwkname,Cr6);
+                            break;
+                        case "CN":
+                            Double CN = emissions.get(0).getCN();
+                            modelmap.put(rsypwkname,CN);
+                            break;
+                        case "fdcjqs":
+                            Double fdcjqs = emissions.get(0).getFdcjqs();
+                            modelmap.put(rsypwkname,fdcjqs);
+                            break;
+                        case "BOD5":
+                            Double BOD5 = emissions.get(0).getBOD5();
+                            modelmap.put(rsypwkname,BOD5);
+                            break;
+                        case "xfw":
+                            Double xfw = emissions.get(0).getXfw();
+                            modelmap.put(rsypwkname,xfw);
+                            break;
+                        case "oil":
+                            Double oil = emissions.get(0).getOil();
+                            modelmap.put(rsypwkname,oil);
+                            break;
+                        case "dzwy":
+                            Double dzwy = emissions.get(0).getDzwy();
+                            modelmap.put(rsypwkname,dzwy);
+                            break;
+                        case "phenol":
+                            Double phenol = emissions.get(0).getPhenol();
+                            modelmap.put(rsypwkname,phenol);
+                            break;
+                        case "As":
+                            Double As = emissions.get(0).getAs();
+                            modelmap.put(rsypwkname,As);
+                            break;
+                        case "Hg":
+                            Double Hg = emissions.get(0).getHg();
+                            modelmap.put(rsypwkname,Hg);
+                            break;
+                        case "Pb":
+                            Double Pb = emissions.get(0).getPb();
+                            modelmap.put(rsypwkname,Pb);
+                            break;
+                        case "Cd":
+                            Double Cd = emissions.get(0).getCd();
+                            modelmap.put(rsypwkname,Cd);
+                            break;
+                        case "PH":
+                            Double PH = emissions.get(0).getPH();
+                            modelmap.put(rsypwkname,PH);
+                            break;
+                        case "chloride":
+                            Double chloride = emissions.get(0).getChloride();
+                            modelmap.put(rsypwkname,chloride);
+                            break;
+                        case "sulfide":
+                            Double sulfide = emissions.get(0).getSulfide();
+                            modelmap.put(rsypwkname,sulfide);
+                            break;
+                        case "ylzbmhxj":
+                            Double ylzbmhxj = emissions.get(0).getYlzbmhxj();
+                            modelmap.put(rsypwkname,ylzbmhxj);
+                            break;
+                    }
+                }
+                modelmap.put("longitude",lon2);
+                modelmap.put("latitude",lat2);
                 break;
-            case "排放口基本信息":
+            case "排污口基本信息":
                 outlet ot = new outlet();
                 ot.setPwkName(pwkname);
                 ot.setTjyear(year);
@@ -1151,11 +1382,128 @@ public class StatisticsController {
 
                 List<outlet> outlets = outletmapper.selectPwk(ot);
                 rivername = outlets.get(0).getRiverName();
+                city = outlets.get(0).getCity();
+                modelmap.put("city",city);
 
-                //搜索与这个河流有关的排放口信息
+                //搜索与这个河流有关的排污口信息
                 outlet otnew = new outlet();
                 otnew.setRiverName(rivername);
                 List<outlet> outletsnew = outletmapper.selectPwk(otnew);
+                modelmap.put("length",outletsnew.size());
+                List<Double> lon3 = new ArrayList<>();
+                List<Double> lat3 = new ArrayList<>();
+
+                //获取排污口的pwkname、tjyear、tjmonth、type
+                for( outlet ros:outletsnew){
+                    String rosyear = ros.getTjyear();
+                    String rosmonth =ros.getTjmonth();
+                    String rospwkname = ros.getPwkName();
+                    String rostype = "排污口基本信息";
+
+                    Double longitude = ros.getLongitude();
+                    lon3.add(longitude);
+                    Double latitude = ros.getLatitude();
+                    lat3.add(latitude);
+                    //获取经纬度
+
+                    Emission emission = new Emission();
+                    emission.setPwkName(rospwkname);
+                    emission.setTjyear(rosyear);
+                    emission.setTjmonth(rosmonth);
+                    emission.setType(rostype);
+
+                    //搜索相关数据
+                    List<Emission> emissions = emissionService.selectEmission(emission);
+                    switch(dbtype){
+                        case "salt":
+                            Double salt = emissions.get(0).getSalt();
+                            modelmap.put(rospwkname,salt);
+                            break;
+                        case "COD":
+                            Double COD = emissions.get(0).getCOD();
+                            modelmap.put(rospwkname,COD);
+                            break;
+                        case "NH3":
+                            Double NH3 = emissions.get(0).getNH3();
+                            modelmap.put(rospwkname,NH3);
+                            break;
+                        case "P":
+                            Double P = emissions.get(0).getP();
+                            modelmap.put(rospwkname,P);
+                            break;
+                        case "N":
+                            Double N = emissions.get(0).getN();
+                            modelmap.put(rospwkname,N);
+                            break;
+                        case "Cr6":
+                            Double Cr6 = emissions.get(0).getCr6();
+                            modelmap.put(rospwkname,Cr6);
+                            break;
+                        case "CN":
+                            Double CN = emissions.get(0).getCN();
+                            modelmap.put(rospwkname,CN);
+                            break;
+                        case "fdcjqs":
+                            Double fdcjqs = emissions.get(0).getFdcjqs();
+                            modelmap.put(rospwkname,fdcjqs);
+                            break;
+                        case "BOD5":
+                            Double BOD5 = emissions.get(0).getBOD5();
+                            modelmap.put(rospwkname,BOD5);
+                            break;
+                        case "xfw":
+                            Double xfw = emissions.get(0).getXfw();
+                            modelmap.put(rospwkname,xfw);
+                            break;
+                        case "oil":
+                            Double oil = emissions.get(0).getOil();
+                            modelmap.put(rospwkname,oil);
+                            break;
+                        case "dzwy":
+                            Double dzwy = emissions.get(0).getDzwy();
+                            modelmap.put(rospwkname,dzwy);
+                            break;
+                        case "phenol":
+                            Double phenol = emissions.get(0).getPhenol();
+                            modelmap.put(rospwkname,phenol);
+                            break;
+                        case "As":
+                            Double As = emissions.get(0).getAs();
+                            modelmap.put(rospwkname,As);
+                            break;
+                        case "Hg":
+                            Double Hg = emissions.get(0).getHg();
+                            modelmap.put(rospwkname,Hg);
+                            break;
+                        case "Pb":
+                            Double Pb = emissions.get(0).getPb();
+                            modelmap.put(rospwkname,Pb);
+                            break;
+                        case "Cd":
+                            Double Cd = emissions.get(0).getCd();
+                            modelmap.put(rospwkname,Cd);
+                            break;
+                        case "PH":
+                            Double PH = emissions.get(0).getPH();
+                            modelmap.put(rospwkname,PH);
+                            break;
+                        case "chloride":
+                            Double chloride = emissions.get(0).getChloride();
+                            modelmap.put(rospwkname,chloride);
+                            break;
+                        case "sulfide":
+                            Double sulfide = emissions.get(0).getSulfide();
+                            modelmap.put(rospwkname,sulfide);
+                            break;
+                        case "ylzbmhxj":
+                            Double ylzbmhxj = emissions.get(0).getYlzbmhxj();
+                            modelmap.put(rospwkname,ylzbmhxj);
+                            break;
+                    }
+                }
+                modelmap.put("longitude",lon3);
+                modelmap.put("latitude",lat3);
+
                 break;
             case "油田信息":
                 oil_field oilField = new oil_field();
@@ -1165,11 +1513,127 @@ public class StatisticsController {
 
                 List<oil_field> oil_fields = oilFieldMapper.selectoilfield(oilField);
                 rivername = oil_fields.get(0).getRiverName();
+                city = oil_fields.get(0).getCity();
+                modelmap.put("city",city);
 
-                //搜索与这个河流有关的排放口信息
+                //搜索与这个河流有关的排污口信息
                 oil_field oilFieldnew = new oil_field();
                 oilFieldnew.setRiverName(rivername);
                 List<oil_field> oil_fieldsnew = oilFieldMapper.selectoilfield(oilFieldnew);
+                modelmap.put("length",oil_fieldsnew.size());
+                List<Double> lon4 = new ArrayList<>();
+                List<Double> lat4 = new ArrayList<>();
+
+                //获取排污口的pwkname、tjyear、tjmonth、type
+                for(oil_field ros:oil_fieldsnew){
+                    String rosyear = ros.getTjyear();
+                    String rosmonth =ros.getTjmonth();
+                    String rospwkname = ros.getYtName();
+                    String rostype = "油田信息";
+
+                    Double longitude = ros.getLongitude();
+                    lon4.add(longitude);
+                    Double latitude = ros.getLatitude();
+                    lat4.add(latitude);
+                    //获取经纬度
+
+                    Emission emission = new Emission();
+                    emission.setPwkName(rospwkname);
+                    emission.setTjyear(rosyear);
+                    emission.setTjmonth(rosmonth);
+                    emission.setType(rostype);
+
+                    //搜索相关数据
+                    List<Emission> emissions = emissionService.selectEmission(emission);
+                    switch(dbtype){
+                        case "salt":
+                            Double salt = emissions.get(0).getSalt();
+                            modelmap.put(rospwkname,salt);
+                            break;
+                        case "COD":
+                            Double COD = emissions.get(0).getCOD();
+                            modelmap.put(rospwkname,COD);
+                            break;
+                        case "NH3":
+                            Double NH3 = emissions.get(0).getNH3();
+                            modelmap.put(rospwkname,NH3);
+                            break;
+                        case "P":
+                            Double P = emissions.get(0).getP();
+                            modelmap.put(rospwkname,P);
+                            break;
+                        case "N":
+                            Double N = emissions.get(0).getN();
+                            modelmap.put(rospwkname,N);
+                            break;
+                        case "Cr6":
+                            Double Cr6 = emissions.get(0).getCr6();
+                            modelmap.put(rospwkname,Cr6);
+                            break;
+                        case "CN":
+                            Double CN = emissions.get(0).getCN();
+                            modelmap.put(rospwkname,CN);
+                            break;
+                        case "fdcjqs":
+                            Double fdcjqs = emissions.get(0).getFdcjqs();
+                            modelmap.put(rospwkname,fdcjqs);
+                            break;
+                        case "BOD5":
+                            Double BOD5 = emissions.get(0).getBOD5();
+                            modelmap.put(rospwkname,BOD5);
+                            break;
+                        case "xfw":
+                            Double xfw = emissions.get(0).getXfw();
+                            modelmap.put(rospwkname,xfw);
+                            break;
+                        case "oil":
+                            Double oil = emissions.get(0).getOil();
+                            modelmap.put(rospwkname,oil);
+                            break;
+                        case "dzwy":
+                            Double dzwy = emissions.get(0).getDzwy();
+                            modelmap.put(rospwkname,dzwy);
+                            break;
+                        case "phenol":
+                            Double phenol = emissions.get(0).getPhenol();
+                            modelmap.put(rospwkname,phenol);
+                            break;
+                        case "As":
+                            Double As = emissions.get(0).getAs();
+                            modelmap.put(rospwkname,As);
+                            break;
+                        case "Hg":
+                            Double Hg = emissions.get(0).getHg();
+                            modelmap.put(rospwkname,Hg);
+                            break;
+                        case "Pb":
+                            Double Pb = emissions.get(0).getPb();
+                            modelmap.put(rospwkname,Pb);
+                            break;
+                        case "Cd":
+                            Double Cd = emissions.get(0).getCd();
+                            modelmap.put(rospwkname,Cd);
+                            break;
+                        case "PH":
+                            Double PH = emissions.get(0).getPH();
+                            modelmap.put(rospwkname,PH);
+                            break;
+                        case "chloride":
+                            Double chloride = emissions.get(0).getChloride();
+                            modelmap.put(rospwkname,chloride);
+                            break;
+                        case "sulfide":
+                            Double sulfide = emissions.get(0).getSulfide();
+                            modelmap.put(rospwkname,sulfide);
+                            break;
+                        case "ylzbmhxj":
+                            Double ylzbmhxj = emissions.get(0).getYlzbmhxj();
+                            modelmap.put(rospwkname,ylzbmhxj);
+                            break;
+                    }
+                }
+                modelmap.put("longitude",lon4);
+                modelmap.put("latitude",lat4);
                 break;
             case "港口码头":
                 port pt = new port();
@@ -1179,25 +1643,257 @@ public class StatisticsController {
 
                 List<port> ports = portmapper.selectport(pt);
                 rivername = ports.get(0).getRiverName();
+                city = ports.get(0).getCity();
+                modelmap.put("city",city);
 
-                //搜索与这个河流有关的排放口信息
+                //搜索与这个河流有关的排污口信息
                 port ptnew = new port();
                 ptnew.setRiverName(rivername);
                 List<port> portsnew = portmapper.selectport(ptnew);
+                modelmap.put("length",portsnew.size());
+                List<Double> lon5 = new ArrayList<>();
+                List<Double> lat5 = new ArrayList<>();
+
+                //获取排污口的pwkname、tjyear、tjmonth、type
+                for(port ros:portsnew){
+                    String rosyear = ros.getTjyear();
+                    String rosmonth =ros.getTjmonth();
+                    String rospwkname = ros.getGkGame();
+                    String rostype = "港口码头";
+
+                    Double longitude = ros.getLongitude();
+                    lon5.add(longitude);
+                    Double latitude = ros.getLatitude();
+                    lat5.add(latitude);
+                    //获取经纬度
+
+                    Emission emission = new Emission();
+                    emission.setPwkName(rospwkname);
+                    emission.setTjyear(rosyear);
+                    emission.setTjmonth(rosmonth);
+                    emission.setType(rostype);
+
+                    //搜索相关数据
+                    List<Emission> emissions = emissionService.selectEmission(emission);
+                    switch(dbtype){
+                        case "salt":
+                            Double salt = emissions.get(0).getSalt();
+                            modelmap.put(rospwkname,salt);
+                            break;
+                        case "COD":
+                            Double COD = emissions.get(0).getCOD();
+                            modelmap.put(rospwkname,COD);
+                            break;
+                        case "NH3":
+                            Double NH3 = emissions.get(0).getNH3();
+                            modelmap.put(rospwkname,NH3);
+                            break;
+                        case "P":
+                            Double P = emissions.get(0).getP();
+                            modelmap.put(rospwkname,P);
+                            break;
+                        case "N":
+                            Double N = emissions.get(0).getN();
+                            modelmap.put(rospwkname,N);
+                            break;
+                        case "Cr6":
+                            Double Cr6 = emissions.get(0).getCr6();
+                            modelmap.put(rospwkname,Cr6);
+                            break;
+                        case "CN":
+                            Double CN = emissions.get(0).getCN();
+                            modelmap.put(rospwkname,CN);
+                            break;
+                        case "fdcjqs":
+                            Double fdcjqs = emissions.get(0).getFdcjqs();
+                            modelmap.put(rospwkname,fdcjqs);
+                            break;
+                        case "BOD5":
+                            Double BOD5 = emissions.get(0).getBOD5();
+                            modelmap.put(rospwkname,BOD5);
+                            break;
+                        case "xfw":
+                            Double xfw = emissions.get(0).getXfw();
+                            modelmap.put(rospwkname,xfw);
+                            break;
+                        case "oil":
+                            Double oil = emissions.get(0).getOil();
+                            modelmap.put(rospwkname,oil);
+                            break;
+                        case "dzwy":
+                            Double dzwy = emissions.get(0).getDzwy();
+                            modelmap.put(rospwkname,dzwy);
+                            break;
+                        case "phenol":
+                            Double phenol = emissions.get(0).getPhenol();
+                            modelmap.put(rospwkname,phenol);
+                            break;
+                        case "As":
+                            Double As = emissions.get(0).getAs();
+                            modelmap.put(rospwkname,As);
+                            break;
+                        case "Hg":
+                            Double Hg = emissions.get(0).getHg();
+                            modelmap.put(rospwkname,Hg);
+                            break;
+                        case "Pb":
+                            Double Pb = emissions.get(0).getPb();
+                            modelmap.put(rospwkname,Pb);
+                            break;
+                        case "Cd":
+                            Double Cd = emissions.get(0).getCd();
+                            modelmap.put(rospwkname,Cd);
+                            break;
+                        case "PH":
+                            Double PH = emissions.get(0).getPH();
+                            modelmap.put(rospwkname,PH);
+                            break;
+                        case "chloride":
+                            Double chloride = emissions.get(0).getChloride();
+                            modelmap.put(rospwkname,chloride);
+                            break;
+                        case "sulfide":
+                            Double sulfide = emissions.get(0).getSulfide();
+                            modelmap.put(rospwkname,sulfide);
+                            break;
+                        case "ylzbmhxj":
+                            Double ylzbmhxj = emissions.get(0).getYlzbmhxj();
+                            modelmap.put(rospwkname,ylzbmhxj);
+                            break;
+                    }
+                }
+                modelmap.put("longitude",lon5);
+                modelmap.put("latitude",lat5);
                 break;
             case "海岛名录":
                 island isd = new island();
-                isd.setHdName(pwkname);
+                isd.setHdpskName(pwkname);
                 isd.setTjyear(year);
                 isd.setTjmonth(month);
 
                 List<island> islands = islandmapper.selectisland(isd);
                 rivername = islands.get(0).getSeaName();
+                city = islands.get(0).getCity();
+                modelmap.put("city",city);
 
-                //搜索与这个河流有关的排放口信息
+                //搜索与这个河流有关的排污口信息
                 island isdnew = new island();
                 isdnew.setSeaName(rivername);
                 List<island> islandsnew = islandmapper.selectisland(isdnew);
+                modelmap.put("length",islandsnew.size());
+                List<Double> lon6 = new ArrayList<>();
+                List<Double> lat6 = new ArrayList<>();
+
+                //获取排污口的pwkname、tjyear、tjmonth、type
+                for(island ros:islandsnew){
+                    String rosyear = ros.getTjyear();
+                    String rosmonth =ros.getTjmonth();
+                    String rospwkname = ros.getHdpskName();
+                    String rostype = "海岛名录";
+
+                    Double longitude = ros.getLongitude();
+                    lon6.add(longitude);
+                    Double latitude = ros.getLatitude();
+                    lat6.add(latitude);
+                    //获取经纬度
+
+                    Emission emission = new Emission();
+                    emission.setPwkName(rospwkname);
+                    emission.setTjyear(rosyear);
+                    emission.setTjmonth(rosmonth);
+                    emission.setType(rostype);
+
+                    //搜索相关数据
+                    List<Emission> emissions = emissionService.selectEmission(emission);
+                    switch(dbtype){
+                        case "salt":
+                            Double salt = emissions.get(0).getSalt();
+                            modelmap.put(rospwkname,salt);
+                            break;
+                        case "COD":
+                            Double COD = emissions.get(0).getCOD();
+                            modelmap.put(rospwkname,COD);
+                            break;
+                        case "NH3":
+                            Double NH3 = emissions.get(0).getNH3();
+                            modelmap.put(rospwkname,NH3);
+                            break;
+                        case "P":
+                            Double P = emissions.get(0).getP();
+                            modelmap.put(rospwkname,P);
+                            break;
+                        case "N":
+                            Double N = emissions.get(0).getN();
+                            modelmap.put(rospwkname,N);
+                            break;
+                        case "Cr6":
+                            Double Cr6 = emissions.get(0).getCr6();
+                            modelmap.put(rospwkname,Cr6);
+                            break;
+                        case "CN":
+                            Double CN = emissions.get(0).getCN();
+                            modelmap.put(rospwkname,CN);
+                            break;
+                        case "fdcjqs":
+                            Double fdcjqs = emissions.get(0).getFdcjqs();
+                            modelmap.put(rospwkname,fdcjqs);
+                            break;
+                        case "BOD5":
+                            Double BOD5 = emissions.get(0).getBOD5();
+                            modelmap.put(rospwkname,BOD5);
+                            break;
+                        case "xfw":
+                            Double xfw = emissions.get(0).getXfw();
+                            modelmap.put(rospwkname,xfw);
+                            break;
+                        case "oil":
+                            Double oil = emissions.get(0).getOil();
+                            modelmap.put(rospwkname,oil);
+                            break;
+                        case "dzwy":
+                            Double dzwy = emissions.get(0).getDzwy();
+                            modelmap.put(rospwkname,dzwy);
+                            break;
+                        case "phenol":
+                            Double phenol = emissions.get(0).getPhenol();
+                            modelmap.put(rospwkname,phenol);
+                            break;
+                        case "As":
+                            Double As = emissions.get(0).getAs();
+                            modelmap.put(rospwkname,As);
+                            break;
+                        case "Hg":
+                            Double Hg = emissions.get(0).getHg();
+                            modelmap.put(rospwkname,Hg);
+                            break;
+                        case "Pb":
+                            Double Pb = emissions.get(0).getPb();
+                            modelmap.put(rospwkname,Pb);
+                            break;
+                        case "Cd":
+                            Double Cd = emissions.get(0).getCd();
+                            modelmap.put(rospwkname,Cd);
+                            break;
+                        case "PH":
+                            Double PH = emissions.get(0).getPH();
+                            modelmap.put(rospwkname,PH);
+                            break;
+                        case "chloride":
+                            Double chloride = emissions.get(0).getChloride();
+                            modelmap.put(rospwkname,chloride);
+                            break;
+                        case "sulfide":
+                            Double sulfide = emissions.get(0).getSulfide();
+                            modelmap.put(rospwkname,sulfide);
+                            break;
+                        case "ylzbmhxj":
+                            Double ylzbmhxj = emissions.get(0).getYlzbmhxj();
+                            modelmap.put(rospwkname,ylzbmhxj);
+                            break;
+                    }
+                }
+                modelmap.put("longitude",lon6);
+                modelmap.put("latitude",lat6);
                 break;
             case "断面信息":
                 break;

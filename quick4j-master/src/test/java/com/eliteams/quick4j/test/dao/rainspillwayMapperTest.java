@@ -15,9 +15,12 @@ public class rainspillwayMapperTest extends TestSupport {
 
     @Test
     public void testrain(){
-        rain_spillway rs = new rain_spillway();
+        rain_spillway rainSpillway = new rain_spillway();
+        rainSpillway.setXhkName("东北大学");
+        rainSpillway.setTjyear("2019");
+        rainSpillway.setTjmonth("8");
         List<rain_spillway> list = new ArrayList<>();
-        list = rain_spillwaymapper.selectRainSpillway(rs);
+        list = rain_spillwaymapper.selectRainSpillway(rainSpillway);
         System.out.println(list.size());
     }
 }

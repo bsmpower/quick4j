@@ -23,7 +23,7 @@ $(function () {
                  // 指定图表的配置项和数据
                  var option = {
                      title: {
-                         text: '排放口全指标达标情况'
+                         text: '排污口全指标达标情况'
                      },
                      tooltip: {
                          trigger: 'axis',
@@ -77,7 +77,7 @@ $(function () {
                 // 指定图表的配置项和数据
                 var option = {
                     title: {
-                        text: '排放口全指标达标情况'
+                        text: '排污口全指标达标情况'
                     },
                     tooltip: {
                         trigger: 'axis',

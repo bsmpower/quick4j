@@ -118,13 +118,13 @@
             </div>
             <br>
             <div class="input-group">
-                <span class="input-group-addon">排放口类型</span>
+                <span class="input-group-addon">排污口类型</span>
                 <input id="pwk3" list="pwktype" name="tjday" type="text" class="form-control" placeholder="请设置达标元素的值">
                 <datalist id="pwktype">
-                    <option value="rain_outlet">雨水排放口</option>
+                    <option value="rain_outlet">雨水排污口</option>
                     <option value="rainsewage">雨污混合口信息</option>
                     <option value="rain_spillway">雨水泄洪口</option>
-                    <option value="outlet">排放口基本信息</option>
+                    <option value="outlet">排污口基本信息</option>
                 </datalist>
             </div>
         </form>

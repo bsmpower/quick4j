@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>雨水排放口信息</title>
+    <title>雨水排污口信息</title>
     <style type="text/css">
         .table-cont {
             max-height: 300px;
@@ -97,8 +97,8 @@
                 <th>所在县(市/区)</th>
                 <th>所在乡镇</th>
                 <th>详细地址</th>
-                <th>排放口经度(E)</th>
-                <th>排放口纬度(N)</th>
+                <th>排污口经度(E)</th>
+                <th>排污口纬度(N)</th>
                 <th>排污口靠河岸位置</th>
                 <th>排水去向</th>
                 <th>入河方式</th>
@@ -126,7 +126,7 @@
     </div>
 </div>
 
-<%--新增排放口--%>
+<%--新增排污口--%>
 <div>
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" data-backdrop="static"
          aria-labelledby="myModalLabel" aria-hidden="true">
@@ -134,7 +134,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="myModalLabel">
-                        新增排放口信息
+                        新增排污口信息
                     </h4>
                 </div>
                 <div class="modal-body">
@@ -449,7 +449,7 @@
     </div>
 </div>
 
-<%--更新排放口--%>
+<%--更新排污口--%>
 <div>
     <div class="modal fade" id="myModaledit" tabindex="-1" role="dialog" data-backdrop="static"
          aria-labelledby="myModalLabel" aria-hidden="true">
@@ -460,7 +460,7 @@
                     <%--&times;--%>
                     <%--</button>--%>
                     <h4 class="modal-title" id="myModalLabel1">
-                        更新排放口信息
+                        更新排污口信息
                     </h4>
                 </div>
                 <div class="modal-body">
@@ -791,7 +791,7 @@
     </div>
 </div>
 
-<%--搜索排放口--%>
+<%--搜索排污口--%>
 <div>
     <div class="modal fade" id="myModalsearch" tabindex="-1" role="dialog" data-backdrop="static"
          aria-labelledby="myModalLabel" aria-hidden="true">
@@ -1088,7 +1088,7 @@
         }
         if (val5 == true) {
             var temp5 = "<div class=\"input-group\">\n" +
-                "                                        <span class=\"input-group-addon\">排放口编码</span>\n" +
+                "                                        <span class=\"input-group-addon\">排污口编码</span>\n" +
                 "                                        <input id=\"select5\" name=\"pwkName\" type=\"text\" class=\"form-control\" placeholder=\"\">\n" +
                 "                                        <span class=\"input-group-addon\">注释</span>\n" +
                 "                                    </div>"

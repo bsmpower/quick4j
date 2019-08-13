@@ -56,13 +56,13 @@
         <div class="col-lg-4">
             <form class="bs-example bs-example-form" role="echartform" id="echartform">
                 <div class="input-group">
-                    <span class="input-group-addon">排放口</span>
-                    <input id="pwk0" name="pwkname" type="text" class="form-control" placeholder="请输入指定的排放口名称">
+                    <span class="input-group-addon">排污口</span>
+                    <input id="pwk0" name="pwkname" type="text" class="form-control" placeholder="请输入指定的排污口名称">
                 </div>
                 <br>
                 <div class="input-group">
-                    <span class="input-group-addon">排放口类型</span>
-                    <input id="pwk1" list="pwkselect" type="text" class="form-control" placeholder="请选择排放口类型">
+                    <span class="input-group-addon">排污口类型</span>
+                    <input id="pwk1" list="pwkselect" type="text" class="form-control" placeholder="请选择排污口类型">
                     <datalist id="pwkselect">
                         <option value="工业废水排污口">工业废水排污口</option>
                         <option value="工业生活混合污水排污口">工业生活混合污水排污口</option>
@@ -71,7 +71,7 @@
                         <option value="农田退水入海口">农田退水入海口</option>
                         <option value="水产养殖排污口">水产养殖排污口</option>
                         <option value="雨污混合排污口">雨污混合排污口</option>
-                        <option value="雨水排放口">雨水排放口</option>
+                        <option value="雨水排污口">雨水排污口</option>
                         <option value="泄洪口">泄洪口</option>
                         <option value="其他">其他</option>
                     </datalist>
@@ -189,7 +189,7 @@
                 <div class="input-group" style="margin-left:10px;">
                     <button id="xzanalyze" type="button" class="btn btn-primary">多指标现值分析</button>
                     <button id="bsanalyze" type="button" class="btn btn-primary">多指标倍数分析</button>
-                    <button id="mulpwkanalyze" type="button" class="btn btn-primary">多排放口分析</button>
+                    <button id="mulpwkanalyze" type="button" class="btn btn-primary">多排污口分析</button>
                     <button id="dndyxzanalyze" type="button" class="btn btn-primary">多年单月单指标现值分析</button>
                     <button id="dndybsanalyze" type="button" class="btn btn-primary">多年单月单指标倍数分析</button>
                     <button id="dyxzanalyze" type="button" class="btn btn-primary">多月单指标现值分析</button>
@@ -207,7 +207,7 @@
                 // 指定图表的配置项和数据
                 var option = {
                     title: {
-                        text: '排放口全指标达标情况'
+                        text: '排污口全指标达标情况'
                     },
                     tooltip: {},
                     legend: {
@@ -275,14 +275,14 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <div>
-                        <h4 class="modal-title" id="myModalLabel3" style="display:inline-block">多排放口分析</h4>
+                        <h4 class="modal-title" id="myModalLabel3" style="display:inline-block">多排污口分析</h4>
                     </div>
                 </div>
                 <div class="modal-body">
                     <div class="input-group">
                         <span class="input-group-addon">排污口名称</span>
-                        <input id="pwkname" name="tjyear" type="text" class="form-control" placeholder="请输入指定的排放口名称">
-                        <span class="input-group-addon">所属排放口类别</span>
+                        <input id="pwkname" name="tjyear" type="text" class="form-control" placeholder="请输入指定的排污口名称">
+                        <span class="input-group-addon">所属排污口类别</span>
 
                         <select id="mulpwkType" name="pwkType" class="form-control" onchange="editpre()">
                             <option value=""></option>
@@ -293,7 +293,7 @@
                             <option value="农田退水入海口">农田退水入海口</option>
                             <option value="水产养殖排污口">水产养殖排污口</option>
                             <option value="雨污混合排污口">雨污混合排污口</option>
-                            <option value="雨水排放口">雨水排放口</option>
+                            <option value="雨水排污口">雨水排污口</option>
                             <option value="泄洪口">泄洪口</option>
                             <option value="其他">其他</option>
                         </select>
@@ -422,7 +422,7 @@
                                         <option value="农田退水入海口">农田退水入海口</option>
                                         <option value="水产养殖排污口">水产养殖排污口</option>
                                         <option value="雨污混合排污口">雨污混合排污口</option>
-                                        <option value="雨水排放口">雨水排放口</option>
+                                        <option value="雨水排污口">雨水排污口</option>
                                         <option value="泄洪口">泄洪口</option>
                                         <option value="其他">其他</option>
                                     </select>

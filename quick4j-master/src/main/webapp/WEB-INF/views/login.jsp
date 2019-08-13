@@ -22,7 +22,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <head>
 <base href="<%=basePath%>">
 <meta charset="utf-8"/>
-<title>辽宁省排放口信息管理系统</title>
+<title>辽宁省排污口信息管理系统</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="" name="description"/>
@@ -93,7 +93,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <!-- END LOGIN -->
 <!-- BEGIN COPYRIGHT -->
 <div class="copyright">
-	 2019 &copy; 东北大学 - 排放口信息管理系统
+	 2019 &copy; 东北大学 - 排污口信息管理系统
 </div>
 <!-- END COPYRIGHT -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->

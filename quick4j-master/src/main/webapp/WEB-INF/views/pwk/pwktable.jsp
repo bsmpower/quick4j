@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>排放口基本信息查询与维护</title>
+    <title>排污口基本信息查询与维护</title>
 </head>
 <body>
 <input type="button" id="button" value="提交" />

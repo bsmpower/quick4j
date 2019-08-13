@@ -19,8 +19,8 @@ var html = "";
 
 html += "<table class='table-striped table-hover table-bordered'>";
 html += "<tr><td>所在市</td><td>${city}</td></tr>";
-html += "<tr><td>排放口编号</td><td>${pwkCode}</td></tr>";
-html += "<tr><td>排放口名称</td><td>${pwkName}</td></tr>";
+html += "<tr><td>排污口编号</td><td>${pwkCode}</td></tr>";
+html += "<tr><td>排污口名称</td><td>${pwkName}</td></tr>";
 html += "<tr><td>所在县</td><td>${county}</td></tr>";
 html += "<tr><td>经度</td><td>${longitude}</td></tr>";
 html += "<tr><td>纬度</td><td>${latitude}</td></tr>";
@@ -364,7 +364,7 @@ function updatePoint(data){
             };
             console.log(lon);
             var point = new Point(lon, lat, map.spatialReference);
-            var infoTemplate = new InfoTemplate("不达标排放口位置信息", html);
+            var infoTemplate = new InfoTemplate("不达标排污口位置信息", html);
             var symbol1 = new PictureMarkerSymbol("app/img/location.png", 16, 16);
             var graphic = new Graphic(point, symbol1, attr, infoTemplate);
             graphicLayer.add(graphic);

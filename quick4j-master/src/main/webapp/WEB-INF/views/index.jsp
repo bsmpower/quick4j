@@ -50,7 +50,7 @@
     <!-- BEGIN TOP NAVIGATION BAR -->
     <div class="header-inner">
         <!-- BEGIN LOGO -->
-        <span class="navbar-brand" style="color: white;font-style: italic"><strong><span style="font-size: 24px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;排放口管理系统</span></strong></span>
+        <span class="navbar-brand" style="color: white;font-style: italic"><strong><span style="font-size: 24px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;排污口管理系统</span></strong></span>
         <!-- END LOGO -->
         <!-- BEGIN RESPONSIVE MENU TOGGLER -->
         <a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -168,13 +168,13 @@
 
                 <li class="">
                     <a href="javascript:;" id="pfkparent">
-                        <i class="fa fa-comment"></i><span class="title"> 排放口基础信息管理 </span><span
+                        <i class="fa fa-comment"></i><span class="title"> 排污口基础信息管理 </span><span
                             class="arrow "> </span>
                     </a>
                     <ul class="sub-menu">
                         <li>
                             <a href="rest/page/pwkraintable" id="pfkdr">
-                                雨水排放口信息
+                                雨水排污口信息
                             </a>
                         </li>
                         <li>
@@ -189,7 +189,7 @@
                         </li>
                         <li>
                             <a href="rest/page/pwktable" id="pfkwh">
-                                排放口基本信息
+                                排污口基本信息
                             </a>
                         </li>
                         <li>
@@ -303,7 +303,7 @@
                     <ul class="sub-menu">
                         <%--<li>--%>
                             <%--<a href="rest/page/analyze" id="analyzelist">--%>
-                                <%--排放口全指标达标情况--%>
+                                <%--排污口全指标达标情况--%>
                             <%--</a>--%>
                         <%--</li>--%>
                         <li>
@@ -316,11 +316,16 @@
                                 溯源分析
                             </a>
                         </li>
-                        <li>
-                            <a href="rest/page/suyuan" id="suyuanlist">
-                                排污口单点地图展示
+                        <%--<li>--%>
+                            <%--<a href="rest/page/suyuan" id="suyuanlist">--%>
+                                <%--排污口单点地图展示--%>
+                            <%--</a>--%>
+                        <%--</li>--%>
+                            <li>
+                                 <a href="rest/page/mulpwkanalyze" id="suyuanlist">
+                                     多排污口分析
                             </a>
-                        </li>
+                            </li>
                     </ul>
                 </li>
             </ul>

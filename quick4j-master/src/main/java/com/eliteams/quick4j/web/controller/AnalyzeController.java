@@ -41,7 +41,7 @@ public class AnalyzeController {
         String type = (String)request.getParameter("type");
         //要查到监测的年份
         String jcyear = (String)request.getParameter("jcyear");
-        //要查的排放口名称
+        //要查的排污口名称
         String pwkName = (String)request.getParameter("pwkName");
         //要检测的标准
         String line = (String)request.getParameter("line");
@@ -349,7 +349,7 @@ public class AnalyzeController {
         List list = new ArrayList();
         //要得到查询的类型
         String type = (String)request.getParameter("type");
-        //要查的排放口名称
+        //要查的排污口名称
         String pwkName = (String)request.getParameter("pwkName");
         //要检测的标准
         String line = (String)request.getParameter("line");
@@ -584,7 +584,7 @@ public class AnalyzeController {
     public List samecompare(HttpServletRequest request){
         //要得到查询的类型
         String type = (String)request.getParameter("type");
-        //要查的排放口名称
+        //要查的排污口名称
         String pwkName = (String)request.getParameter("pwkName");
 
         Emission es = new Emission();
@@ -1188,7 +1188,7 @@ public class AnalyzeController {
     public List linkCompare(HttpServletRequest request){
         //要得到查询的类型
         String type = (String)request.getParameter("type");
-        //要查的排放口名称
+        //要查的排污口名称
         String pwkName = (String)request.getParameter("pwkName");
         //要查到监测的年份
         String jcyear = (String)request.getParameter("jcyear");
@@ -1657,7 +1657,7 @@ public class AnalyzeController {
         String jcyear = (String)request.getParameter("jcyear");
         //要检测的标准
         String line = (String)request.getParameter("line");
-        //检查排放口的表
+        //检查排污口的表
         String pwkType = (String)request.getParameter("pwktype");
 
         double line1 = Double.parseDouble(line);
