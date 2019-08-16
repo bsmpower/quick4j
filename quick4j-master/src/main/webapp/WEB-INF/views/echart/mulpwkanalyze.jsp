@@ -57,6 +57,43 @@
                 <button id="mulpwkanalyze" type="button" class="btn btn-primary">多排污口分析</button>
         </div>
         <div class="col-lg-8">
+            <div id="main" style="width: 600px;height:400px;margin-left:100px;"></div>
+            <script type="text/javascript">
+                // 基于准备好的dom，初始化echarts实例
+                var myChart = echarts.init(document.getElementById('main'));
+
+                // 指定图表的配置项和数据
+                var option = {
+                    title: {
+                        text: '排污口全指标达标情况'
+                    },
+                    tooltip: {},
+                    legend: {
+                        data: ['折线图', '柱状图']
+                    },
+                    xAxis: {
+                        data: ["盐度", "", "化学需氧量", "氨氮", "总磷", "总氮"]
+                    },
+                    yAxis: {},
+                    series: [{
+                        name: '折线图',
+                        type: 'line',
+                        data: [5, 20, 36, 10, 10, 20]
+                    }, {
+                        type: 'bar',
+                        data: [5, 20, 36, 10, 10, 20],
+                        name: '柱状图',
+                        barWidth: 20,
+                        itemStyle: {
+                            color: 'orange',
+                            opacity: 0.5
+                        }
+                    }]
+                };
+
+                // 使用刚指定的配置项和数据显示图表。
+                myChart.setOption(option);
+            </script>
             <div id="map222" data-dojo-type="dijit/layout/ContentPane"
                  data-dojo-props="region:'center'"
                  style="overflow:hidden;height:430px;width:100%;margin-left: 3%;">
@@ -93,7 +130,7 @@
                         <input id="pwkname" name="tjyear" type="text" class="form-control" placeholder="请输入指定的排污口名称">
                         <span class="input-group-addon">所属排污口类别</span>
 
-                        <select id="mulpwkType" name="pwkType" class="form-control" onchange="editpre()">
+                        <select id="mulpwkType" name="pwkType" class="form-control">
                             <option value=""></option>
                             <option value="工业废水排污口">工业废水排污口</option>
                             <option value="工业生活混合污水排污口">工业生活混合污水排污口</option>
@@ -188,7 +225,7 @@
                                 <input type="checkbox" id="inlineCheckbox6" value="option6" onclick="exe()"> 六价铬
                             </label>
                             <label class="checkbox-inline">
-                                <input type="checkbox" id="inlineCheckbox7" value="option7" onclick="exe()"> 氰化物(
+                                <input type="checkbox" id="inlineCheckbox7" value="option7" onclick="exe()"> 氰化物
                             </label>
                             <label class="checkbox-inline">
                                 <input type="checkbox" id="inlineCheckbox8" value="option8" onclick="exe()"> 粪大肠菌群数
@@ -256,7 +293,7 @@
                     <div id="zhibiao_21"></div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="close">关闭</button>
                     <button type="button" class="btn btn-primary"  id="mulpwkfx">提交</button>
                 </div>
             </form>
@@ -288,11 +325,7 @@
         var val21 = document.getElementById("inlineCheckbox21").checked;
 
         if (val1 == true) {
-            var temp1 = "<div class=\"input-group\">\n" +
-                "                                    <span class=\"input-group-addon\">统计年份</span>\n" +
-                "                                    <input id=\"select0\" name=\"tjyear\" type=\"text\" class=\"form-control\" placeholder=\"\">\n" +
-                "                                    <span class=\"input-group-addon\">注释</span>\n" +
-                "                                </div>"
+            var temp1 = "<span id=\"select1\" class=\"input-group-addon\">盐度</span>";
             $("#zhibiao_1").html(temp1);
             $("#zhibiao_1").show();
         }
@@ -300,124 +333,164 @@
             $("#zhibiao_1").hide();
         }
         if (val2 == true) {
-
+            var temp2 = "<span id=\"select2\" class=\"input-group-addon\">化学需氧量</span>";
+            $("#zhibiao_2").html(temp2);
+            $("#zhibiao_2").show();
         }
         if (val2 == false) {
-
+            $("#zhibiao_2").hide();
         }
         if (val3 == true) {
-
+            var temp3 = "<span id=\"select3\" class=\"input-group-addon\">氨氮</span>";
+            $("#zhibiao_3").html(temp3);
+            $("#zhibiao_3").show();
         }
         if (val3 == false) {
-
+            $("#zhibiao_3").hide();
         }
         if (val4 == true) {
-
+            var temp4 = "<span id=\"select4\" class=\"input-group-addon\">总磷</span>";
+            $("#zhibiao_4").html(temp4);
+            $("#zhibiao_4").show();
         }
         if (val4 == false) {
-
+            $("#zhibiao_4").hide();
         }
         if (val5 == true) {
-
+            var temp5 = "<span id=\"select5\" class=\"input-group-addon\">总氮</span>";
+            $("#zhibiao_5").html(temp5);
+            $("#zhibiao_5").show();
         }
         if (val5 == false) {
-
+            $("#zhibiao_5").hide();
         }
         if (val6 == true) {
-
+            var temp6 = "<span id=\"select6\" class=\"input-group-addon\">六价铬</span>";
+            $("#zhibiao_6").html(temp6);
+            $("#zhibiao_6").show();
         }
         if (val6 == false) {
-
+            $("#zhibiao_6").hide();
         }
         if (val7 == true) {
-
+            var temp7 = "<span id=\"select7\" class=\"input-group-addon\">氰化物</span>";
+            $("#zhibiao_7").html(temp7);
+            $("#zhibiao_7").show();
         }
         if (val7 == false) {
-
+            $("#zhibiao_7").hide();
         }
         if (val8 == true) {
-
+            var temp8 = "<span id=\"select8\" class=\"input-group-addon\">粪大肠菌群数</span>";
+            $("#zhibiao_8").html(temp8);
+            $("#zhibiao_8").show();
         }
         if (val8 == false) {
-
+            $("#zhibiao_8").hide();
         }
         if (val9 == true) {
-
+            var temp9 = "<span id=\"select9\" class=\"input-group-addon\">五日生化需氧量</span>";
+            $("#zhibiao_9").html(temp9);
+            $("#zhibiao_9").show();
         }
         if (val9 == false) {
-
+            $("#zhibiao_9").hide();
         }
         if (val10 == true) {
-
+            var temp10 = "<span id=\"select10\" class=\"input-group-addon\">悬浮物</span>";
+            $("#zhibiao_10").html(temp10);
+            $("#zhibiao_10").show();
         }
         if (val10 == false) {
-
+            $("#zhibiao_10").hide();
         }
         if (val11 == true) {
-
+            var temp11 = "<span id=\"select11\" class=\"input-group-addon\">石油类</span>";
+            $("#zhibiao_11").html(temp11);
+            $("#zhibiao_11").show();
         }
         if (val11 == false) {
-
+            $("#zhibiao_11").hide();
         }
         if (val12 == true) {
-
+            var temp12 = "<span id=\"select12\" class=\"input-group-addon\"动植物油</span>";
+            $("#zhibiao_12").html(temp12);
+            $("#zhibiao_12").show();
         }
         if (val12 == false) {
-
+            $("#zhibiao_12").hide();
         }
         if (val13 == true) {
-
+            var temp13 = "<span id=\"select13\" class=\"input-group-addon\">挥发酚</span>";
+            $("#zhibiao_13").html(temp13);
+            $("#zhibiao_13").show();
         }
         if (val13 == false) {
-
+            $("#zhibiao_13").hide();
         }
         if (val14 == true) {
-
+            var temp14 = "<span id=\"select14\" class=\"input-group-addon\">总砷</span>";
+            $("#zhibiao_14").html(temp14);
+            $("#zhibiao_14").show();
         }
         if (val14 == false) {
-
+            $("#zhibiao_14").hide();
         }
         if (val15 == true) {
-
+            var temp15 = "<span id=\"select15\" class=\"input-group-addon\">总汞</span>";
+            $("#zhibiao_15").html(temp15);
+            $("#zhibiao_15").show();
         }
         if (val15 == false) {
-
+            $("#zhibiao_15").hide();
         }
         if (val16 == true) {
-
+            var temp16 = "<span id=\"select16\" class=\"input-group-addon\">总铅</span>";
+            $("#zhibiao_16").html(temp16);
+            $("#zhibiao_16").show();
         }
         if (val16 == false) {
-
+            $("#zhibiao_16").hide();
         }
         if (val17 == true) {
-
+            var temp17 = "<span id=\"select17\" class=\"input-group-addon\">总镉</span>";
+            $("#zhibiao_17").html(temp17);
+            $("#zhibiao_17").show();
         }
         if (val17 == false) {
-
+            $("#zhibiao_17").hide();
         }
         if (val18 == true) {
-
+            var temp18 = "<span id=\"select18\" class=\"input-group-addon\">PH值</span>";
+            $("#zhibiao_18").html(temp18);
+            $("#zhibiao_18").show();
         }
         if (val18 == false) {
-
+            $("#zhibiao_18").hide();
         }
         if (val19 == true) {
-
+            var temp19 = "<span id=\"select19\" class=\"input-group-addon\">氯化物</span>";
+            $("#zhibiao_19").html(temp19);
+            $("#zhibiao_19").show();
         }
-        if (val20 == false) {
-            $("#div_19").hide();
+        if (val19 == false) {
+            $("#zhibiao_19").hide();
         }
         if (val20 == true) {
-
+            var temp20 = "<span id=\"select20\" class=\"input-group-addon\">硫化物</span>";
+            $("#zhibiao_20").html(temp20);
+            $("#zhibiao_20").show();
         }
         if (val20 == false) {
-            $("#div_19").hide();
+            $("#zhibiao_20").hide();
         }
         if (val21 == true) {
-
+            var temp21 = "<span id=\"select21\" class=\"input-group-addon\">阴离子表面活性剂</span>";
+            $("#zhibiao_21").html(temp21);
+            $("#zhibiao_21").show();
         }
         if (val21 == false) {
-
+            $("#zhibiao_21").hide();
         }
     }
 </script>
