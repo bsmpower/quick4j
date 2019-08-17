@@ -323,7 +323,7 @@
                         <%--</li>--%>
                             <li>
                                  <a href="rest/page/mulpwkanalyze" id="suyuanlist">
-                                     多排污口分析
+                                     排污口相关分析
                             </a>
                             </li>
                     </ul>

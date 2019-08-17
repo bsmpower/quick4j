@@ -2013,4 +2013,41 @@ public class AnalyzeController {
         }
         return list;
     }
+
+    @RequestMapping("/mulpwkzbfx")
+    @ResponseBody
+    public List<Double> mulpwkzbfx(HttpServletRequest request,
+                                   @RequestParam("pwknamelist")String pwknamelist,
+                                   @RequestParam("pwktypelist")String pwktypelist,
+                                   @RequestParam("conditions")String conditions){
+        List<Double> list = new ArrayList();
+        List<String> bnlist = new ArrayList<>();
+        String[] a = pwknamelist.split(",");
+        for(int i = 0; i < a.length; i++){
+            String b[] = a[i].split("\"");
+            String pwkname = b[1];
+            bnlist.add(pwkname);
+        }
+
+        List<String> typelist = new ArrayList<>();
+        String[] c = pwktypelist.split(",");
+        for(int i = 0; i < c.length; i++){
+            String d[] = c[i].split("\"");
+            String pwktype = d[1];
+            typelist.add(pwktype);
+        }
+
+        List<String> conlist = new ArrayList<>();
+        String[] d = pwktypelist.split(",");
+        for(int i = 0; i < d.length; i++){
+            String e[] = d[i].split("\"");
+            String condition = e[1];
+            conlist.add(condition);
+        }
+
+        System.out.println(bnlist
+                .size());
+        return list;
+
+    }
 }
