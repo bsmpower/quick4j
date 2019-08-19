@@ -2016,11 +2016,15 @@ public class AnalyzeController {
 
     @RequestMapping("/mulpwkzbfx")
     @ResponseBody
-    public List<Double> mulpwkzbfx(HttpServletRequest request,
+    public List<List<Double>> mulpwkzbfx(HttpServletRequest request,
                                    @RequestParam("pwknamelist")String pwknamelist,
                                    @RequestParam("pwktypelist")String pwktypelist,
                                    @RequestParam("conditions")String conditions){
-        List<Double> list = new ArrayList();
+
+        String jcyear = (String) request.getParameter("jcyear");
+        String jcmonth = (String) request.getParameter("jcmonth");
+
+        //排放口名称列表
         List<String> bnlist = new ArrayList<>();
         String[] a = pwknamelist.split(",");
         for(int i = 0; i < a.length; i++){
@@ -2029,6 +2033,7 @@ public class AnalyzeController {
             bnlist.add(pwkname);
         }
 
+        //排放口类型列表
         List<String> typelist = new ArrayList<>();
         String[] c = pwktypelist.split(",");
         for(int i = 0; i < c.length; i++){
@@ -2037,17 +2042,122 @@ public class AnalyzeController {
             typelist.add(pwktype);
         }
 
+        //分析的元素类型
         List<String> conlist = new ArrayList<>();
-        String[] d = pwktypelist.split(",");
+        String[] d = conditions.split(",");
         for(int i = 0; i < d.length; i++){
             String e[] = d[i].split("\"");
             String condition = e[1];
             conlist.add(condition);
         }
 
-        System.out.println(bnlist
-                .size());
-        return list;
+        //元素一[排污口a，排污口b，排污口c...]
+        //查询排污口a,b,c，元素一的值
+        List<List<Double>> big = new ArrayList<>(bnlist.size());
+        for(int k = 0; k < bnlist.size(); k++){
+            List<Double> small = new ArrayList<>();
+            big.add(small);
+        }
+        System.out.println(big.size());
 
+        for(int j = 0; j < conlist.size(); j++){
+            for(int i = 0; i < bnlist.size(); i++){
+                Emission emission = new Emission();
+                emission.setPwkName(bnlist.get(i));
+                emission.setTjyear(jcyear);
+                emission.setTjmonth(jcmonth);
+                emission.setType(typelist.get(i));
+                List<Emission> esvalue = emissionService.selectEmission(emission);
+                for(Emission es:esvalue){
+                    switch (conlist.get(j)) {
+                        case "盐度":
+                            Double salt = es.getSalt();
+                            big.get(j).add(salt);
+                            break;
+                        case "化学需氧量":
+                            Double COD = es.getCOD();
+                            big.get(j).add(COD);
+                            break;
+                        case "氨氮":
+                            Double NH3 = es.getNH3();
+                            big.get(j).add(NH3);
+                            break;
+                        case "总磷":
+                            Double P = es.getP();
+                            big.get(j).add(P);
+                            break;
+                        case "总氮":
+                            Double N = es.getN();
+                            big.get(j).add(N);
+                            break;
+                        case "六价铬":
+                            Double Cr6 = es.getCr6();
+                            big.get(j).add(Cr6);
+                            break;
+                        case "氰化物":
+                            Double CN = es.getCN();
+                            big.get(j).add(CN);
+                            break;
+                        case "粪大肠菌群数":
+                            Double fdcjqs = es.getFdcjqs();
+                            big.get(j).add(fdcjqs);
+                            break;
+                        case "五日生化需氧量":
+                            Double BOD5 = es.getBOD5();
+                            big.get(j).add(BOD5);
+                            break;
+                        case "悬浮物":
+                            Double xfw = es.getXfw();
+                            big.get(j).add(xfw);
+                            break;
+                        case "石油类":
+                            Double oil = es.getOil();
+                            big.get(j).add(oil);
+                            break;
+                        case "动植物油":
+                            Double dzwy = es.getDzwy();
+                            big.get(j).add(dzwy);
+                            break;
+                        case "挥发酚":
+                            Double phenol = es.getPhenol();
+                            big.get(j).add(phenol);
+                            break;
+                        case "总砷":
+                            Double As = es.getAs();
+                            big.get(j).add(As);
+                            break;
+                        case "总汞":
+                            Double Hg = es.getSalt();
+                            big.get(j).add(Hg);
+                            break;
+                        case "总铅":
+                            Double Pb = es.getPb();
+                            big.get(j).add(Pb);
+                            break;
+                        case "总镉":
+                            Double Cd = es.getCd();
+                            big.get(j).add(Cd);
+                            break;
+                        case "PH值":
+                            Double PH = es.getPb();
+                            big.get(j).add(PH);
+                            break;
+                        case "氯化物":
+                            Double chloride = es.getChloride();
+                            big.get(j).add(chloride);
+                            break;
+                        case "硫化物":
+                            Double sulfide = es.getSulfide();
+                            big.get(j).add(sulfide);
+                            break;
+                        case "阴离子表面活性剂":
+                            Double ylzbmhxj = es.getYlzbmhxj();
+                            big.get(j).add(ylzbmhxj);
+                            break;
+                    }
+                }
+        }
+        }
+        return big;
     }
 }

@@ -405,7 +405,7 @@ function updatePoint(data){
             console.log(xbb);
             i = i + 2;
             var point = new Point(lon, lat, map.spatialReference);
-            var symbol1 = new PictureMarkerSymbol("app/img/histogram_or ange.png", 5, 16*xbb);
+            var symbol1 = new PictureMarkerSymbol("app/img/histogram_orange.png", 5, 16*xbb);
 
             var graphic = new Graphic(point, symbol1);
             graphicLayer.add(graphic);

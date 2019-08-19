@@ -528,180 +528,116 @@ $(function () {
                     alert("该排放口没有数据");
                 }else{
                     $('#tbodyone').empty();
-                    var allvalue=[];
-                    var value = [];
-                    var pwknamelist = [];
-                    $.each(data,function (index,item) {
-                        pwknamelist.push(item.pwkName);
-                        //放到列表中
-                        var lon = item.longitude;
-                        var lat = item.latitude;
-                        var cod = item.cod;
-                        console.log(lon);
-                        console.log(lat);
-                        console.log(cod);
-                        for(var i = 0; i<conditions.length;i++){
-                            if(conditions[i]=="盐度"){
-                                value.push(item.salt);
-                            }
-                            if(conditions[i]=="化学需氧量"){
-                                value.push(item.cod);
-                            }
-                            if(conditions[i]=="氨氮"){
-                                value.push(item.nh3);
-                            }
-                            if(conditions[i]=="总磷"){
-                                value.push(item.p);
-                            }
-                            if(conditions[i]=="总氮"){
-                                value.push(item.n);
-                            }
-                            if(conditions[i]=="六价铬"){
-                                value.push(item.cr6);
-                            }
-                            if(conditions[i]=="氰化物"){
-                                value.push(item.cn);
-                            }
-                            if(conditions[i]=="粪大肠菌群数"){
-                                value.push(item.fdcjqs);
-                            }
-                            if(conditions[i]=="五日生化需氧量"){
-                                value.push(item.bod5);
-                            }
-                            if(conditions[i]=="悬浮物"){
-                                value.push(item.xfw);
-                            }
-                            if(conditions[i]=="石油类"){
-                                value.push(item.oil);
-                            }
-                            if(conditions[i]=="动植物油"){
-                                value.push(item.dzwy);
-                            }
-                            if(conditions[i]=="挥发酚"){
-                                value.push(item.phenol);
-                            }
-                            if(conditions[i]=="总砷"){
-                                value.push(item.as);
-                            }
-                            if(conditions[i]=="总汞"){
-                                value.push(item.hg);
-                            }
-                            if(conditions[i]=="总铅"){
-                                value.push(item.pb);
-                            }
-                            if(conditions[i]=="总镉"){
-                                value.push(item.cd);
-                            }
-                            if(conditions[i]=="PH值"){
-                                value.push(item.ph);
-                            }
-                            if(conditions[i]=="氯化物"){
-                                value.push(item.chloride);
-                            }
-                            if(conditions[i]=="硫化物"){
-                                value.push(item.sulfide);
-                            }
-                            if(conditions[i]=="阴离子表面活性剂"){
-                                value.push(item.ylzbmhxj);
-                            }
-                        }
-                        console.log(value);
-                        allvalue.push(value);
-                        for(var j = 0; j<value.length; j++){
-                            var attrlist={
-                                "id":index,
-                                "pwkName":pwkName,
-                                "type":type,
-                                "city":item.city,
-                                "year": year,
-                                "month":month,
-                                "zbname":conditions[j],
-                                "value":value[j],
+                    var index = 1;
+                    for(var j = 0; j < conditions.length; j++) {
+                        for(var k = 0; k <pwknamelist.length; k++){
+                            var attrlist = {
+                                "id": index,
+                                "pwkName": pwknamelist[k],
+                                "type": pwktypelist[k],
+                                "city": "辽宁省",
+                                "year": jcyear,
+                                "month": jcmonth,
+                                "zbname": conditions[j],
+                                "zbdata": data[j][k],
                             };
-                            html = showlist(attrlist);
+                            console.log(data[j][k]);
+                            html = mulshowlist(attrlist);
                             $('#tbodyone').append(html);
-                            console.log(attrlist);
                         }
-                        // html = showlist(index, item);
-                        // console.log(html);
-                        // $('#tbodyone').append(html);
-                        //index代表数组下标
-                        //item代表每个元素内容
-                    })
+                        index=index+1;
+                    }
+                    var SeriesTotal = [];
 
                     var myChart = echarts.init(document.getElementById('main'));
+                    for(var i = 0; i<conditions.length;i++)
+                    {
+                        var item = {
+                            name: conditions[i],
+                            type: 'bar',
+                            barGap: 0,
+                            data: data[i]
+                        };
+                        SeriesTotal.push(item);
+                    }
 
+                    }
                     // 指定图表的配置项和数据
                     var option = {
                         title: {
-                            text: '单排放口多指标分析'
+                            text: '多排放口多指标分析'
                         },
                         tooltip: {},
+
                         legend: {
-                            data: ['折线图', '柱状图']
+                            data: conditions
                         },
-                        // legend: {
-                        //     data: conditions
-                        // },
-                        // xAxis: [
-                        //     {
-                        //         type: 'category',
-                        //         axisTick: {show: false},
-                        //         data: ["s","s","s","s"]
-                        //     }
-                        // ],
+                        toolbox: {
+                            show: true,
+                            orient: 'vertical',
+                            left: 'right',
+                            top: 'center',
+                            feature: {
+                                mark: {show: true},
+                                dataView: {show: true, readOnly: false},
+                                magicType: {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+                                restore: {show: true},
+                                saveAsImage: {show: true}
+                            }
+                        },
+                        xAxis: {
+                                data: pwknamelist
+                            },
+
                         yAxis: [
                             {
                                 type: 'value'
                             }
                         ],
-                        // series: [
-                        //     {
-                        //         name: conditions[0],
-                        //         type: 'bar',
-                        //         barGap: 0,
-                        //         data: [320, 332, 301, 334]
-                        //     },
-                        //     {
-                        //         name: conditions[1],
-                        //         type: 'bar',
-                        //         data: [220, 182, 191, 234]
-                        //     },
-                        //     {
-                        //         name: conditions[2],
-                        //         type: 'bar',
-                        //         data: [150, 232, 201, 154]
-                        //     },
-                        //     {
-                        //         name: conditions[3],
-                        //         type: 'bar',
-                        //         data: [98, 77, 101, 99]
-                        //     }
-                        // ]
-                        xAxis: {
-                            data: conditions
+                        dataZoom : { //数据区域缩放，仅对直角坐标系图表有效
+                            show: true, //是否显示，当show为true时则接管使用指定类目轴的全部系列数据，如不指定则接管全部直角坐标系数据
+                            realtime: true, //缩放变化是否实时显示。
+                            start: 0, //选择起始比例，默认为0%；从第一个数据开始，
+                            end: 100
+//选择结束比例，默认为100%；到最后一个数据，
                         },
-                        yAxis: {},
-                        series: [{
-                            name: '折线图',
-                            type: 'line',
-                            data: value
-                        }, {
-                            type: 'bar',
-                            data: value,
-                            name: '柱状图',
-                            barWidth: 20,
-                            itemStyle: {
-                                color: 'orange',
-                                opacity: 0.5
-                            }
-                        }]
+                        series: [
+                            // {
+                            //     name: conditions[0],
+                            //     type: 'bar',
+                            //     barGap: 0,
+                            //     data: [320, 332, 301, 334]
+                            // },
+                            // {
+                            //     name: conditions[1],
+                            //     type: 'bar',
+                            //     data: [220, 182, 191, 234]
+                            // },
+                            // {
+                            //     name: conditions[2],
+                            //     type: 'bar',
+                            //     data: [150, 232, 201, 154]
+                            // },
+                            // {
+                            //     name: conditions[3],
+                            //     type: 'bar',
+                            //     data: [98, 77, 101, 99]
+                            // }
+                        ],
+                        // grid:{
+                        //     x:25,
+                        //     y:45,
+                        //     x2:5,
+                        //     y2:20,
+                        //     borderWidth:1
+                        // },
+
                     };
 
                     // 使用刚指定的配置项和数据显示图表。
+                    option.series = SeriesTotal;
                     myChart.setOption(option);
                 }
-            }
         });
     });
 
@@ -725,7 +661,7 @@ function addmessage() {
         "                        <input id=\"pwkname\" name=\"tjyear\" type=\"text\" class=\"form-control\" placeholder=\"请输入指定的排污口名称\">\n" +
         "                        <span class=\"input-group-addon\">所属排污口类别</span>\n" +
         "\n" +
-        "                        <select name=\"pwkType\" class=\"form-control\" onchange=\"editpre()\">\n" +
+        "                        <select name=\"pwkType\" class=\"form-control\">\n" +
         "                            <option value=\"\"></option>\n" +
         "                            <option value=\"工业废水排污口\">工业废水排污口</option>\n" +
         "                            <option value=\"工业生活混合污水排污口\">工业生活混合污水排污口</option>\n" +
@@ -792,6 +728,13 @@ function showlist(item) {
     var showlist = "<tr id=\"t" + item.id + "\" class='noExl'><td><input type=\"checkbox\" name=\"piliang\" value=\"" + item.id + "\"/></td><td>" + item.id + "</td><td><a href=\"" + item.id + "\" onclick=\"editfunc(this);return false;\"><span class=\"glyphicon glyphicon-edit\"></span></a>" +
         "</td><td><a href=\"" + item.id + "\" onclick=\"deletefunc(this);return false;\"><span class=\"glyphicon glyphicon-trash\"></span></a>" + "</td><td>" + item.pwkName + "</td><td>" + item.type + "</td><td>" + item.city + "</td><td>" + item.year +
         "</td><td>" + item.month + "</td><td>" + item.zbname + "</td><td>" + item.value +
+        "</td></tr>";
+    return showlist;
+}
+function mulshowlist(item) {
+    var showlist = "<tr id=\"t" + item.id + "\" class='noExl'><td><input type=\"checkbox\" name=\"piliang\" value=\"" + item.id + "\"/></td><td>" + item.id + "</td><td><a href=\"" + item.id + "\" onclick=\"editfunc(this);return false;\"><span class=\"glyphicon glyphicon-edit\"></span></a>" +
+        "</td><td><a href=\"" + item.id + "\" onclick=\"deletefunc(this);return false;\"><span class=\"glyphicon glyphicon-trash\"></span></a>" + "</td><td>" + item.pwkName + "</td><td>" + item.type + "</td><td>" + item.city + "</td><td>" + item.year +
+        "</td><td>" + item.month + "</td><td>" + item.zbname + "</td><td>" + item.zbdata +
         "</td></tr>";
     return showlist;
 }

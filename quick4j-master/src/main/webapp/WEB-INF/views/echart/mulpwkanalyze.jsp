@@ -51,14 +51,18 @@
 <body>
 <div id="echart">
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-2">
             <%--输入排放口名称，排放口类型。--%>
             <%--监测指标多选，监测年份，监测月份。--%>
-                <button id="mulpwkanalyze" type="button" class="btn btn-primary">单排污口多指标分析</button>
-                <button id="mulpwkanalyze1" type="button" class="btn btn-primary">多排污口多指标分析</button>
+                <div class="input-group">
+                    <button id="mulpwkanalyze" type="button" class="btn btn-primary">单排污口多指标分析</button>
+                </div>
+                <div class="input-group">
+                     <button id="mulpwkanalyze1" type="button" class="btn btn-primary">多排污口多指标分析</button>
+                </div>
         </div>
-        <div class="col-lg-8">
-            <div id="main" style="width: 600px;height:400px;margin-left:100px;"></div>
+        <div class="col-lg-10">
+            <div id="main" style="width: 800px;height:500px;margin-left:60px;"></div>
             <script type="text/javascript">
                 // 基于准备好的dom，初始化echarts实例
                 var myChart = echarts.init(document.getElementById('main'));
