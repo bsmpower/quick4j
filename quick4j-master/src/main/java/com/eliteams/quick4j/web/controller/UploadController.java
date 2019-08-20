@@ -4,10 +4,12 @@ import com.eliteams.quick4j.core.util.ExcelUtil;
 import com.eliteams.quick4j.core.util.ImageUtil;
 import com.eliteams.quick4j.core.util.ImageUtil2;
 import com.eliteams.quick4j.core.util.POIUtil;
+import com.eliteams.quick4j.web.common.ResponseData;
 import com.eliteams.quick4j.web.dao.pictureMapper;
 import com.eliteams.quick4j.web.model.*;
 import com.eliteams.quick4j.web.service.*;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -721,7 +723,7 @@ public class UploadController {
 
     @RequestMapping("/uploadImage")
     @ResponseBody
-    public List<picture> uploadImage(HttpServletRequest request, @RequestParam(value = "file") MultipartFile imagefile, String pwkid,String pwkname) throws IOException {
+    public List<picture> uploadImage(HttpServletRequest request, @RequestParam(value = "file") MultipartFile imagefile, String pwkid,String pwkname,String snst) throws IOException {
         String realFileName = imagefile.getOriginalFilename();
         String imgPath;
         picture pic = new picture();
@@ -734,6 +736,7 @@ public class UploadController {
         pic.setImagename(pwkname);
         pic.setPath(imgPath);
         pic.setCreatetime(nowTimeStr);
+        pic.setSnst(snst);
         picturemapper.insert(pic);
         System.out.println(imgPath);
         //第二步进行读取
@@ -742,6 +745,32 @@ public class UploadController {
         list = picturemapper.selectpicture(piclist);
         System.out.println(list.size());
         return list;
+    }
+
+    @RequestMapping(value = "/deletePicture")
+    @ResponseBody
+    public ResponseData deleteIndustryPark(@RequestParam(value="id") String id){
+        System.out.println(id);
+        Integer id1 = Integer.parseInt(id);
+        picturemapper.deleteByPrimaryKey(id1);
+        return ResponseData.success();
+    }
+
+    @RequestMapping("/searchdata")
+    @ResponseBody
+    public List<picture> searchdata(@RequestParam(value="searchcondition")String searchcondition){
+        picture pic = new picture();
+        pic.setPwkid(searchcondition);
+        List<picture> list = picturemapper.selectpicture(pic);
+        if(list.size()==0){
+            picture pic1 = new picture();
+            pic1.setPwkname(searchcondition);
+            List<picture> list1 = picturemapper.selectpicture(pic1);
+            return list1;
+        }else{
+            return list;
+        }
+
     }
 
 }

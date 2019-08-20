@@ -53,11 +53,14 @@
             <input id="imagefile" type="file" name="imagefile" class="btn btn-primary btn-lg btn-block"
                    value="请选择图片"/>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-2">
             <input id="pwkid" type="text" class="form-control" placeholder="排污口编号">
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-2">
             <input id="pwkname" type="text" class="form-control" placeholder="排污口名称">
+        </div>
+        <div class="col-lg-2">
+            <input id="snst" type="text" class="form-control" placeholder="受纳水体">
         </div>
         <div class="col-lg-4">
             <button id="upload" class="btn btn-success">上传</button>
@@ -76,7 +79,24 @@
 <div class="alert alert-warning" id="warning1" style="width:700px">
     <strong>提示信息：</strong>同一文件请不要上传多次
 </div>
+
 <div class="table-cont" id="table-cont">
+    <div class="row">
+        <div class="col-lg-4">
+            <div style="float: left">
+                <input id="searchcondition" type="text" class="form-control" placeholder="搜索条件" style="height: 27px">
+            </div>
+            <div  style="float:left;">
+            <button id="searchfunc" type="button" class="btn btn-primary btn-sm" onclick="searchfunc()">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>搜索
+            </button>
+            </div>
+        </div>
+        <div class="col-lg-8">
+
+        </div>
+    </div>
+    <br>
     <table class="table table-striped table-bordered table-hover  table-condensed" id="tablediv">
         <thead>
         <tr class="success">
@@ -86,6 +106,7 @@
             <th>删除</th>
             <th>排污口编号</th>
             <th>排污口名称</th>
+            <th>受纳水体</th>
             <th>上传时间</th>
             <th>图片名称</th>
             <th>下载地址</th>

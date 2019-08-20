@@ -13,6 +13,16 @@ public class picture {
 
     private String path;
 
+    private String snst;
+
+    public String getSnst() {
+        return snst;
+    }
+
+    public void setSnst(String snst) {
+        this.snst = snst;
+    }
+
     public Integer getId() {
         return id;
     }

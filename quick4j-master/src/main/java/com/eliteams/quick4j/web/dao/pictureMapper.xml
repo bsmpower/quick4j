@@ -8,9 +8,11 @@
     <result column="createtime" property="createtime" jdbcType="VARCHAR" />
     <result column="imagename" property="imagename" jdbcType="VARCHAR" />
     <result column="path" property="path" jdbcType="VARCHAR" />
+    <result column="snst" property="snst" jdbcType="VARCHAR" />
+
   </resultMap>
   <sql id="Base_Column_List" >
-    id, pwkid, pwkname, createtime, imagename, path
+    id, pwkid, pwkname, createtime, imagename, path, snst
   </sql>
   <select id="selectpicture" resultMap="BaseResultMap" parameterType="com.eliteams.quick4j.web.model.picture" resultType="com.eliteams.quick4j.web.model.picture">
     SELECT *
@@ -31,6 +33,9 @@
       <if test="path != null and path !=''" >
         AND path = #{path,jdbcType=VARCHAR}
       </if>
+      <if test="snst != null and snst !=''" >
+        AND snst = #{snst,jdbcType=VARCHAR}
+      </if>
     </where>
   </select>
 
@@ -46,10 +51,10 @@
   </delete>
   <insert id="insert" parameterType="com.eliteams.quick4j.web.model.picture" >
     insert into picture (id, pwkid, pwkname, 
-      createtime, imagename, path
+      createtime, imagename, path, snst
       )
     values (#{id,jdbcType=INTEGER}, #{pwkid,jdbcType=VARCHAR}, #{pwkname,jdbcType=VARCHAR}, 
-      #{createtime,jdbcType=VARCHAR}, #{imagename,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}
+      #{createtime,jdbcType=VARCHAR}, #{imagename,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}, #{snst,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.eliteams.quick4j.web.model.picture" >
@@ -73,6 +78,9 @@
       <if test="path != null" >
         path,
       </if>
+      <if test="snst != null" >
+        snst,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -92,6 +100,9 @@
       </if>
       <if test="path != null" >
         #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="snst != null" >
+        #{snst,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -113,6 +124,9 @@
       <if test="path != null" >
         path = #{path,jdbcType=VARCHAR},
       </if>
+      <if test="snst != null" >
+        path = #{snst,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -122,7 +136,8 @@
       pwkname = #{pwkname,jdbcType=VARCHAR},
       createtime = #{createtime,jdbcType=VARCHAR},
       imagename = #{imagename,jdbcType=VARCHAR},
-      path = #{path,jdbcType=VARCHAR}
+      path = #{path,jdbcType=VARCHAR},
+      snst = #{snst,jdbcType=VARCHAR},
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
